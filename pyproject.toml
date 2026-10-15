@@ -1,0 +1,9 @@
+[project]
+name = "mor-pharmacophore"
+version = "0.1.0"
+description = "Pharmacophore motif matching for peptide-receptor screening: PLIP interactions, RDKit feature queries, Align-it scoring"
+requires-python = ">=3.10"
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]

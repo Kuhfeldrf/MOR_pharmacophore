@@ -1,0 +1,4 @@
+rdkit
+plip
+openbabel-wheel
+pytest
