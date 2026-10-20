@@ -68,13 +68,20 @@ def build_window(sequence, window=WINDOW, c_term="auto"):
 
 
 def embed_conformers(mol, n_conformers=N_CONFORMERS, seed=0xF00D,
-                     prune_rms=PRUNE_RMS, minimise=True):
-    """Embed and MMFF-minimise a conformer ensemble. Returns the mol with conformers."""
+                     prune_rms=PRUNE_RMS, minimise=True, n_threads=0):
+    """Embed and MMFF-minimise a conformer ensemble. Returns the mol with conformers.
+
+    `n_threads=0` means "use every core the job was given". Both the embedding and the
+    minimisation are threaded; leaving them single-threaded is the dominant cost of the
+    whole screen. This project has already lost a campaign to an unthreaded run
+    (OMP_NUM_THREADS=1, a measured 4.3x), so the default here is parallel.
+    """
     mol = Chem.AddHs(mol)
     params = AllChem.ETKDGv3()
     params.randomSeed = seed
     params.pruneRmsThresh = prune_rms
     params.useSmallRingTorsions = True
+    params.numThreads = n_threads
     ids = AllChem.EmbedMultipleConfs(mol, numConfs=n_conformers, params=params)
     if len(ids) == 0:
         raise ValueError("no conformers could be embedded")
@@ -82,17 +89,19 @@ def embed_conformers(mol, n_conformers=N_CONFORMERS, seed=0xF00D,
         # Failures are tolerated per-conformer: MMFF has no parameters for some states,
         # and dropping the ensemble over one conformer would lose the peptide.
         try:
-            AllChem.MMFFOptimizeMoleculeConfs(mol, maxIters=MMFF_MAX_ITERS)
+            AllChem.MMFFOptimizeMoleculeConfs(
+                mol, maxIters=MMFF_MAX_ITERS, numThreads=n_threads)
         except Exception:
             pass
     return mol
 
 
 def ensemble_for_sequence(sequence, window=WINDOW, c_term="auto",
-                          n_conformers=N_CONFORMERS, seed=0xF00D):
+                          n_conformers=N_CONFORMERS, seed=0xF00D, n_threads=0):
     """Convenience: window + embed in one call. Returns (mol, metadata)."""
     mol, truncated = build_window(sequence, window=window, c_term=c_term)
-    mol = embed_conformers(mol, n_conformers=n_conformers, seed=seed)
+    mol = embed_conformers(mol, n_conformers=n_conformers, seed=seed,
+                           n_threads=n_threads)
     meta = {
         "sequence": sequence,
         "window": sequence[:window],

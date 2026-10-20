@@ -1,0 +1,148 @@
+{
+  "generated": "2026-10-20",
+  "alignit_version": "align-it v1.0.4",
+  "source_complex": "data/8f7q_complex.pdb",
+  "ligand_chain": "P",
+  "protonation_pH": 7.4,
+  "ligand": "TYR-GLY-GLY-PHE-MET",
+  "feature_counts": {
+    "AROM": 2,
+    "HDON": 6,
+    "HACC": 5,
+    "LIPO": 2,
+    "POSC": 1
+  },
+  "n_features": 16,
+  "features": [
+    {
+      "type": "AROM",
+      "x": 131.621,
+      "y": 123.553,
+      "z": 140.86,
+      "alpha": 0.7
+    },
+    {
+      "type": "AROM",
+      "x": 134.092,
+      "y": 133.36,
+      "z": 139.852,
+      "alpha": 0.7
+    },
+    {
+      "type": "HDON",
+      "x": 135.313,
+      "y": 125.929,
+      "z": 138.165,
+      "alpha": 1.0
+    },
+    {
+      "type": "HDON",
+      "x": 129.585,
+      "y": 122.926,
+      "z": 142.612,
+      "alpha": 1.0
+    },
+    {
+      "type": "HDON",
+      "x": 135.577,
+      "y": 125.901,
+      "z": 140.975,
+      "alpha": 1.0
+    },
+    {
+      "type": "HDON",
+      "x": 136.739,
+      "y": 128.381,
+      "z": 141.457,
+      "alpha": 1.0
+    },
+    {
+      "type": "HDON",
+      "x": 135.338,
+      "y": 130.598,
+      "z": 142.411,
+      "alpha": 1.0
+    },
+    {
+      "type": "HDON",
+      "x": 134.462,
+      "y": 129.857,
+      "z": 144.89,
+      "alpha": 1.0
+    },
+    {
+      "type": "HACC",
+      "x": 133.499,
+      "y": 126.753,
+      "z": 141.073,
+      "alpha": 1.0
+    },
+    {
+      "type": "HACC",
+      "x": 137.03,
+      "y": 127.889,
+      "z": 143.637,
+      "alpha": 1.0
+    },
+    {
+      "type": "HACC",
+      "x": 137.272,
+      "y": 131.432,
+      "z": 143.191,
+      "alpha": 1.0
+    },
+    {
+      "type": "HACC",
+      "x": 133.164,
+      "y": 131.687,
+      "z": 145.094,
+      "alpha": 1.0
+    },
+    {
+      "type": "HACC",
+      "x": 135.962,
+      "y": 130.774,
+      "z": 147.061,
+      "alpha": 1.0
+    },
+    {
+      "type": "LIPO",
+      "x": 132.109,
+      "y": 123.765,
+      "z": 140.335,
+      "alpha": 0.7
+    },
+    {
+      "type": "LIPO",
+      "x": 134.14,
+      "y": 133.536,
+      "z": 139.436,
+      "alpha": 0.7
+    },
+    {
+      "type": "POSC",
+      "x": 135.313,
+      "y": 125.929,
+      "z": 138.165,
+      "alpha": 1.0
+    }
+  ],
+  "plip_interactions": {
+    "n_interactions": 9,
+    "hbond_residues": [
+      "THR220:R",
+      "TYR150:R",
+      "TYR328:R"
+    ],
+    "hydrophobic_residues": [
+      "GLN126:R",
+      "ILE146:R",
+      "TRP320:R",
+      "TYR150:R",
+      "VAL145:R",
+      "VAL238:R"
+    ],
+    "saltbridge_residues": [],
+    "pistack_residues": []
+  }
+}

@@ -146,7 +146,21 @@ works, whole-peptide scoring is the obvious next experiment, and if it does not,
 window was not the reason.
 
 Conformers: ETKDGv3, N=50 per window, MMFF-minimised, RMSD-pruned at 0.5 Å. Two seeds
-for the C5 stability check.
+for the C5 stability check. Embedding and minimisation are threaded across the
+allocation; left single-threaded they dominate the whole screen.
+
+**Consequence of the window, measured 2026-10-20: it collapses the library.** The 14,595
+targets share only **5,183 distinct N-terminal 5-residue windows**, and the 640
+Tyr-starting library peptides share only **219**. Peptides with the same window are the
+same molecule to this screen and necessarily receive identical scores.
+
+This is not a defect — peptides differing only beyond the window genuinely present the
+same thing to the template — but it caps what the screen can conclude, and it bears
+directly on C3: the baseline-matched comparison has an effective n of about 219 distinct
+scored entities rather than 639, with pervasive ties. **C3's AUROC must be reported with
+that effective n and with the tie structure stated**, or it will read as better powered
+than it is. Scoring is still run per peptide rather than per window, because the cost is
+small (§6) and per-peptide output is what downstream stages consume.
 
 ### 4.3 Stage 3 — Library ingestion
 

@@ -1,0 +1,57 @@
+{
+  "generated": "2026-10-20",
+  "metric": "tversky_ref",
+  "n_scored": 14595,
+  "n_library": 14571,
+  "C1": {
+    "ligand": "met_enkephalin",
+    "sequence": "YGGFM",
+    "score": 0.4575,
+    "library_quantile": 0.9308214947498455,
+    "pass": true
+  },
+  "C2": {
+    "ligand": "endomorphin_1",
+    "score": 0.5028,
+    "library_quantile": 0.987715324960538,
+    "pass": true
+  },
+  "C3": {
+    "n_positives": 21,
+    "n_negatives": 639,
+    "effective_n_negatives_unique_windows": 219,
+    "auroc": 0.6688650421044787,
+    "ci95": [
+      0.5284670988896341,
+      0.7991653625456442
+    ],
+    "pass": false,
+    "note": "Negatives share N-terminal windows, so ties are pervasive and the effective n is the unique-window count, not the peptide count."
+  },
+  "C4": {
+    "motif": "YPFP",
+    "n_starts": 4,
+    "n_spans": 74,
+    "median_starts": 0.4644,
+    "median_spans": 0.403,
+    "median_difference": 0.061399999999999955,
+    "auroc": 0.972972972972973,
+    "pass": true
+  },
+  "C5": {
+    "median_ensemble_spread": 0.144,
+    "max_ensemble_spread": 0.5286,
+    "seed2": "results/04_screen_seed2",
+    "n_compared": 14595,
+    "decile_churn_fraction": 0.7302500856457691,
+    "median_abs_score_delta": 0.021399999999999975,
+    "max_abs_score_delta": 0.174,
+    "pass": false
+  },
+  "library_score_distribution": {
+    "min": 0.2824,
+    "median": 0.363,
+    "max": 0.5925,
+    "p90": 0.4437
+  }
+}
