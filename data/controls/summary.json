@@ -1,0 +1,16 @@
+{
+  "generated": "2026-10-20",
+  "library": "data/library/peptides.tsv",
+  "positive_endogenous": 6,
+  "positive_endogenous_in_library": 0,
+  "positive_food": 18,
+  "positive_food_in_library": 1,
+  "positive_food_not_Y_start": [
+    "alphas1_casein_exorphin_7",
+    "alphas1_casein_exorphin_6",
+    "casoxin_D"
+  ],
+  "positional_starts": 4,
+  "positional_spans": 74,
+  "baseline_matched": 639
+}

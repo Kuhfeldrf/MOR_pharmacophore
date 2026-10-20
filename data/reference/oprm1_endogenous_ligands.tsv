@@ -1,0 +1,24 @@
+# Endogenous peptide ligands of OPRM1 (P35372, mu-opioid receptor), curated by IUPHAR/BPS
+# (Guide to Pharmacology). Transcribed 2026-10-20.
+#
+# These are the positive controls of record for the pharmacophore screen (PLAN.md 5.1).
+# pKi spans 8.1-8.5, i.e. 0.4 log units, so they are BINARY positives and cannot support
+# a potency-ranking claim. See docs/validated_screening_framework.md in
+# MOR_peptide_binding, where potency ranking was tested with 4.43 log units of range and
+# failed on seven metrics.
+#
+# c_term: free | amide. Endomorphin-1 is C-terminally amidated; the amide removes the
+# terminal carboxylate and that changes the pharmacophore feature set, so it is recorded
+# rather than assumed.
+#
+# met-enkephalin (YGGFM) is listed separately: it is the TEMPLATE ligand, present as the
+# N-terminal message segment of beta-endorphin in 8F7Q, and is therefore excluded from
+# the recovery statistics it would otherwise trivially pass.
+name	sequence	c_term	role	pKi	pmid	use
+leu_enkephalin	YGGFL	free	partial_agonist	8.1	9686407	positive
+dynorphin_A	YGGFLRRIRPKLKWDNQ	free	full_agonist	8.1	9686407	positive
+dynorphin_A_1_13	YGGFLRRIRPKLK	free	full_agonist	8.3	9686407	positive
+dynorphin_A_1_8	YGGFLRRI	free	full_agonist	8.4	9686407	positive
+dynorphin_B	YGGFLRRQFKVVT	free	full_agonist	8.5	9686407	positive
+endomorphin_1	YPWF	amide	full_agonist	8.3	9849897	positive
+met_enkephalin	YGGFM	free	full_agonist	NA	NA	template

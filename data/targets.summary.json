@@ -1,0 +1,12 @@
+{
+  "total": 14595,
+  "by_set": {
+    "library": 14571,
+    "positive_endogenous": 6,
+    "template_ligand": 1,
+    "positive_food": 17
+  },
+  "skipped_non_canonical": [
+    "CTOP"
+  ]
+}

@@ -1,0 +1,4526 @@
+{
+  "positive_endogenous": [
+    {
+      "name": "leu_enkephalin",
+      "sequence": "YGGFL",
+      "c_term": "free",
+      "role": "partial_agonist",
+      "pKi": "8.1",
+      "pmid": "9686407",
+      "in_library": false
+    },
+    {
+      "name": "dynorphin_A",
+      "sequence": "YGGFLRRIRPKLKWDNQ",
+      "c_term": "free",
+      "role": "full_agonist",
+      "pKi": "8.1",
+      "pmid": "9686407",
+      "in_library": false
+    },
+    {
+      "name": "dynorphin_A_1_13",
+      "sequence": "YGGFLRRIRPKLK",
+      "c_term": "free",
+      "role": "full_agonist",
+      "pKi": "8.3",
+      "pmid": "9686407",
+      "in_library": false
+    },
+    {
+      "name": "dynorphin_A_1_8",
+      "sequence": "YGGFLRRI",
+      "c_term": "free",
+      "role": "full_agonist",
+      "pKi": "8.4",
+      "pmid": "9686407",
+      "in_library": false
+    },
+    {
+      "name": "dynorphin_B",
+      "sequence": "YGGFLRRQFKVVT",
+      "c_term": "free",
+      "role": "full_agonist",
+      "pKi": "8.5",
+      "pmid": "9686407",
+      "in_library": false
+    },
+    {
+      "name": "endomorphin_1",
+      "sequence": "YPWF",
+      "c_term": "amide",
+      "role": "full_agonist",
+      "pKi": "8.3",
+      "pmid": "9849897",
+      "in_library": false
+    }
+  ],
+  "positive_food": [
+    {
+      "name": "alphas1_casein_exorphin_7",
+      "sequence": "RYLGYLE",
+      "c_term": "free",
+      "role": "agonist",
+      "starts_with_Y": false,
+      "in_library": false
+    },
+    {
+      "name": "alphas1_casein_exorphin_6",
+      "sequence": "RYLGYL",
+      "c_term": "free",
+      "role": "agonist",
+      "starts_with_Y": false,
+      "in_library": false
+    },
+    {
+      "name": "beta_casomorphin_4_bov",
+      "sequence": "YPFP",
+      "c_term": "free",
+      "role": "agonist",
+      "starts_with_Y": true,
+      "in_library": false
+    },
+    {
+      "name": "beta_casomorphin_5_bov",
+      "sequence": "YPFPG",
+      "c_term": "free",
+      "role": "agonist",
+      "starts_with_Y": true,
+      "in_library": false
+    },
+    {
+      "name": "beta_casomorphin_7_bov",
+      "sequence": "YPFPGPI",
+      "c_term": "free",
+      "role": "agonist",
+      "starts_with_Y": true,
+      "in_library": true
+    },
+    {
+      "name": "neocasomorphin_6",
+      "sequence": "YPVEPF",
+      "c_term": "free",
+      "role": "agonist",
+      "starts_with_Y": true,
+      "in_library": false
+    },
+    {
+      "name": "casoxin_A",
+      "sequence": "YPSYGLNY",
+      "c_term": "free",
+      "role": "antagonist",
+      "starts_with_Y": true,
+      "in_library": false
+    },
+    {
+      "name": "casoxin_B",
+      "sequence": "YPYY",
+      "c_term": "free",
+      "role": "antagonist",
+      "starts_with_Y": true,
+      "in_library": false
+    },
+    {
+      "name": "casoxin_C",
+      "sequence": "YIPIQYVLSR",
+      "c_term": "free",
+      "role": "antagonist",
+      "starts_with_Y": true,
+      "in_library": false
+    },
+    {
+      "name": "casoxin_D",
+      "sequence": "SRYPSY",
+      "c_term": "free",
+      "role": "antagonist",
+      "starts_with_Y": false,
+      "in_library": false
+    },
+    {
+      "name": "alpha_lactorphin",
+      "sequence": "YGLF",
+      "c_term": "amide",
+      "role": "agonist",
+      "starts_with_Y": true,
+      "in_library": false
+    },
+    {
+      "name": "beta_lactorphin",
+      "sequence": "YLLF",
+      "c_term": "amide",
+      "role": "agonist",
+      "starts_with_Y": true,
+      "in_library": false
+    },
+    {
+      "name": "lactoferroxin_A_bov",
+      "sequence": "YLGSRY",
+      "c_term": "free",
+      "role": "antagonist",
+      "starts_with_Y": true,
+      "in_library": false
+    },
+    {
+      "name": "beta_casomorphin_5_hum",
+      "sequence": "YPFVE",
+      "c_term": "free",
+      "role": "agonist",
+      "starts_with_Y": true,
+      "in_library": false
+    },
+    {
+      "name": "beta_casomorphin_7_hum",
+      "sequence": "YPFVEPI",
+      "c_term": "free",
+      "role": "agonist",
+      "starts_with_Y": true,
+      "in_library": false
+    },
+    {
+      "name": "casoxin_B_hum",
+      "sequence": "YPYY",
+      "c_term": "free",
+      "role": "antagonist",
+      "starts_with_Y": true,
+      "in_library": false
+    },
+    {
+      "name": "lactoferroxin_A_hum",
+      "sequence": "YLGSGY",
+      "c_term": "methyl_ester",
+      "role": "antagonist",
+      "starts_with_Y": true,
+      "in_library": false
+    },
+    {
+      "name": "met_enkephalin",
+      "sequence": "YGGFM",
+      "c_term": "free",
+      "role": "agonist",
+      "starts_with_Y": true,
+      "in_library": false
+    }
+  ],
+  "positional_control": {
+    "motif": "YPFP",
+    "starts_with_motif": [
+      {
+        "peptide_id": "pep_c31b4cd128",
+        "sequence": "YPFPGPI",
+        "length": 7,
+        "phases": "intestinal"
+      },
+      {
+        "peptide_id": "pep_f2a45b8961",
+        "sequence": "YPFPGPIPNS",
+        "length": 10,
+        "phases": "intestinal"
+      },
+      {
+        "peptide_id": "pep_8c043cc1ec",
+        "sequence": "YPFPGPIPNSLPQ",
+        "length": 13,
+        "phases": "intestinal"
+      },
+      {
+        "peptide_id": "pep_32e65e3eaf",
+        "sequence": "YPFPGPIPNSLPQNIPPLTQT",
+        "length": 21,
+        "phases": "gastric"
+      }
+    ],
+    "spans_motif_blocked_nterm": [
+      {
+        "peptide_id": "pep_d79337392b",
+        "sequence": "AQTQSLVYPFPGPI",
+        "length": 14,
+        "phases": "intestinal"
+      },
+      {
+        "peptide_id": "pep_aacf1ccbe7",
+        "sequence": "AQTQSLVYPFPGPIPN",
+        "length": 16,
+        "phases": "gastric;intestinal;undigested"
+      },
+      {
+        "peptide_id": "pep_36e3969ca8",
+        "sequence": "AQTQSLVYPFPGPIPNSLPQ",
+        "length": 20,
+        "phases": "intestinal"
+      },
+      {
+        "peptide_id": "pep_7943866f50",
+        "sequence": "AQTQSLVYPFPGPIPNSLPQN",
+        "length": 21,
+        "phases": "intestinal"
+      },
+      {
+        "peptide_id": "pep_acd585a22b",
+        "sequence": "AQTQSLVYPFPGPIPNSLPQNIPPLTQT",
+        "length": 28,
+        "phases": "gastric"
+      },
+      {
+        "peptide_id": "pep_363a16a166",
+        "sequence": "GLLYPFPK",
+        "length": 8,
+        "phases": "gastric"
+      },
+      {
+        "peptide_id": "pep_2fc14844da",
+        "sequence": "IHPFAQTQSLVYPFPGPIPN",
+        "length": 20,
+        "phases": "intestinal;undigested"
+      },
+      {
+        "peptide_id": "pep_a2dfb90553",
+        "sequence": "IHPFAQTQSLVYPFPGPIPNSLPQNIPPLTQT",
+        "length": 32,
+        "phases": "gastric"
+      },
+      {
+        "peptide_id": "pep_cf02ed35ae",
+        "sequence": "LQDKIHPFAQTQSLVYPFPGPIPNSLPQNIPPLTQT",
+        "length": 36,
+        "phases": "gastric"
+      },
+      {
+        "peptide_id": "pep_69ddc7d51e",
+        "sequence": "LVYPFPGP",
+        "length": 8,
+        "phases": "gastric"
+      },
+      {
+        "peptide_id": "pep_810f8428c2",
+        "sequence": "LVYPFPGPI",
+        "length": 9,
+        "phases": "gastric;intestinal"
+      },
+      {
+        "peptide_id": "pep_28987b2e16",
+        "sequence": "LVYPFPGPIP",
+        "length": 10,
+        "phases": "gastric;intestinal"
+      },
+      {
+        "peptide_id": "pep_c910119211",
+        "sequence": "LVYPFPGPIPN",
+        "length": 11,
+        "phases": "gastric;intestinal;undigested"
+      },
+      {
+        "peptide_id": "pep_c6b0f0c0a2",
+        "sequence": "LVYPFPGPIPNS",
+        "length": 12,
+        "phases": "gastric"
+      },
+      {
+        "peptide_id": "pep_90c944dcfb",
+        "sequence": "LVYPFPGPIPNSL",
+        "length": 13,
+        "phases": "gastric"
+      },
+      {
+        "peptide_id": "pep_98ad587ab7",
+        "sequence": "LVYPFPGPIPNSLP",
+        "length": 14,
+        "phases": "gastric"
+      },
+      {
+        "peptide_id": "pep_80a5482c29",
+        "sequence": "LVYPFPGPIPNSLPQ",
+        "length": 15,
+        "phases": "gastric"
+      },
+      {
+        "peptide_id": "pep_bc36b79402",
+        "sequence": "LVYPFPGPIPNSLPQN",
+        "length": 16,
+        "phases": "gastric"
+      },
+      {
+        "peptide_id": "pep_1bb6b37731",
+        "sequence": "LVYPFPGPIPNSLPQNIPP",
+        "length": 19,
+        "phases": "gastric"
+      },
+      {
+        "peptide_id": "pep_5fabcd10bf",
+        "sequence": "LVYPFPGPIPNSLPQNIPPL",
+        "length": 20,
+        "phases": "gastric"
+      },
+      {
+        "peptide_id": "pep_166b111344",
+        "sequence": "LVYPFPGPIPNSLPQNIPPLT",
+        "length": 21,
+        "phases": "gastric;intestinal"
+      },
+      {
+        "peptide_id": "pep_ade40abc92",
+        "sequence": "LVYPFPGPIPNSLPQNIPPLTQ",
+        "length": 22,
+        "phases": "gastric"
+      },
+      {
+        "peptide_id": "pep_0733cbbeda",
+        "sequence": "LVYPFPGPIPNSLPQNIPPLTQT",
+        "length": 23,
+        "phases": "gastric;intestinal"
+      },
+      {
+        "peptide_id": "pep_5e9a87af7e",
+        "sequence": "LVYPFPGPIPNSLPQNIPPLTQTP",
+        "length": 24,
+        "phases": "gastric"
+      },
+      {
+        "peptide_id": "pep_7e3396b7df",
+        "sequence": "LVYPFPGPIPNSLPQNIPPLTQTPV",
+        "length": 25,
+        "phases": "gastric"
+      },
+      {
+        "peptide_id": "pep_9c4bf4079a",
+        "sequence": "LVYPFPGPIPNSLPQNIPPLTQTPVVVPPFLQPE",
+        "length": 34,
+        "phases": "gastric"
+      },
+      {
+        "peptide_id": "pep_25fb0c40c3",
+        "sequence": "LVYPFPGPIPNSLPQNIPPLTQTPVVVPPFLQPEV",
+        "length": 35,
+        "phases": "gastric"
+      },
+      {
+        "peptide_id": "pep_d44380e96c",
+        "sequence": "LVYPFPGPIPNSLPQNIPPLTQTPVVVPPFLQPEVM",
+        "length": 36,
+        "phases": "gastric"
+      },
+      {
+        "peptide_id": "pep_f886739741",
+        "sequence": "LVYPFPGPIPNSLPQNIPPLTQTPVVVPPFLQPEVMG",
+        "length": 37,
+        "phases": "gastric"
+      },
+      {
+        "peptide_id": "pep_39266aed24",
+        "sequence": "LVYPFPGPIPNSLPQNIPPLTQTPVVVPPFLQPEVMGV",
+        "length": 38,
+        "phases": "gastric"
+      },
+      {
+        "peptide_id": "pep_dbac180c94",
+        "sequence": "LVYPFPGPIPNSLPQNIPPLTQTPVVVPPFLQPEVMGVSKVK",
+        "length": 42,
+        "phases": "gastric"
+      },
+      {
+        "peptide_id": "pep_13b991c96d",
+        "sequence": "LVYPFPGPIPNSLPQNIPPLTQTPVVVPPFLQPEVMGVSKVKE",
+        "length": 43,
+        "phases": "gastric"
+      },
+      {
+        "peptide_id": "pep_6c6609c5d0",
+        "sequence": "NYPPAYPFP",
+        "length": 9,
+        "phases": "gastric;intestinal"
+      },
+      {
+        "peptide_id": "pep_db70cb226b",
+        "sequence": "QSLVYPFPGPI",
+        "length": 11,
+        "phases": "intestinal"
+      },
+      {
+        "peptide_id": "pep_ddb3fa823b",
+        "sequence": "QSLVYPFPGPIPN",
+        "length": 13,
+        "phases": "gastric"
+      },
+      {
+        "peptide_id": "pep_bdb997e178",
+        "sequence": "QSLVYPFPGPIPNSLPQNIPPLTQT",
+        "length": 25,
+        "phases": "gastric;intestinal"
+      },
+      {
+        "peptide_id": "pep_5b9ee95da5",
+        "sequence": "QSLVYPFPGPIPNSLPQNIPPLTQTPVVVPPFLQPEVMG",
+        "length": 39,
+        "phases": "gastric"
+      },
+      {
+        "peptide_id": "pep_6f80962809",
+        "sequence": "QSLVYPFPGPIPNSLPQNIPPLTQTPVVVPPFLQPEVMGVSKVKE",
+        "length": 45,
+        "phases": "gastric"
+      },
+      {
+        "peptide_id": "pep_e87e3fb967",
+        "sequence": "QTQSLVYPFPGPIPNSLPQNIPPLTQT",
+        "length": 27,
+        "phases": "gastric"
+      },
+      {
+        "peptide_id": "pep_01c0723c17",
+        "sequence": "SLVYPFPGP",
+        "length": 9,
+        "phases": "intestinal"
+      },
+      {
+        "peptide_id": "pep_d300c5126a",
+        "sequence": "SLVYPFPGPI",
+        "length": 10,
+        "phases": "gastric;intestinal;undigested"
+      },
+      {
+        "peptide_id": "pep_c4a307c400",
+        "sequence": "SLVYPFPGPIP",
+        "length": 11,
+        "phases": "gastric;intestinal"
+      },
+      {
+        "peptide_id": "pep_15b81c70a0",
+        "sequence": "SLVYPFPGPIPN",
+        "length": 12,
+        "phases": "gastric;intestinal;undigested"
+      },
+      {
+        "peptide_id": "pep_28789c9d58",
+        "sequence": "SLVYPFPGPIPNS",
+        "length": 13,
+        "phases": "intestinal"
+      },
+      {
+        "peptide_id": "pep_20c11dca28",
+        "sequence": "SLVYPFPGPIPNSL",
+        "length": 14,
+        "phases": "gastric"
+      },
+      {
+        "peptide_id": "pep_9ddb63f0d7",
+        "sequence": "SLVYPFPGPIPNSLPQ",
+        "length": 16,
+        "phases": "gastric"
+      },
+      {
+        "peptide_id": "pep_17297191dd",
+        "sequence": "SLVYPFPGPIPNSLPQNIPPLT",
+        "length": 22,
+        "phases": "gastric"
+      },
+      {
+        "peptide_id": "pep_1a9ed7d0b2",
+        "sequence": "SLVYPFPGPIPNSLPQNIPPLTQT",
+        "length": 24,
+        "phases": "gastric;intestinal"
+      },
+      {
+        "peptide_id": "pep_89823eff59",
+        "sequence": "SLVYPFPGPIPNSLPQNIPPLTQTPVVVPPFLQPEVM",
+        "length": 37,
+        "phases": "gastric"
+      },
+      {
+        "peptide_id": "pep_2c437b8782",
+        "sequence": "TQSLVYPFPGPI",
+        "length": 12,
+        "phases": "intestinal"
+      },
+      {
+        "peptide_id": "pep_7b3ff2373f",
+        "sequence": "TQSLVYPFPGPIPN",
+        "length": 14,
+        "phases": "gastric;intestinal;undigested"
+      },
+      {
+        "peptide_id": "pep_68ee69b6d9",
+        "sequence": "TQSLVYPFPGPIPNSLPQNIPPLTQT",
+        "length": 26,
+        "phases": "gastric"
+      },
+      {
+        "peptide_id": "pep_e7ae85b02c",
+        "sequence": "TTIGLLYPFPK",
+        "length": 11,
+        "phases": "gastric"
+      },
+      {
+        "peptide_id": "pep_8219237a21",
+        "sequence": "VYPFPGP",
+        "length": 7,
+        "phases": "gastric;intestinal"
+      },
+      {
+        "peptide_id": "pep_0d2d91c907",
+        "sequence": "VYPFPGPI",
+        "length": 8,
+        "phases": "gastric;intestinal;undigested"
+      },
+      {
+        "peptide_id": "pep_592de7d86a",
+        "sequence": "VYPFPGPIP",
+        "length": 9,
+        "phases": "gastric;intestinal"
+      },
+      {
+        "peptide_id": "pep_a39d89b860",
+        "sequence": "VYPFPGPIPN",
+        "length": 10,
+        "phases": "gastric;intestinal;undigested"
+      },
+      {
+        "peptide_id": "pep_04d8cde1f9",
+        "sequence": "VYPFPGPIPNS",
+        "length": 11,
+        "phases": "gastric;intestinal"
+      },
+      {
+        "peptide_id": "pep_d8d24f5f25",
+        "sequence": "VYPFPGPIPNSL",
+        "length": 12,
+        "phases": "gastric;intestinal"
+      },
+      {
+        "peptide_id": "pep_129db1a9d5",
+        "sequence": "VYPFPGPIPNSLPQ",
+        "length": 14,
+        "phases": "gastric;intestinal"
+      },
+      {
+        "peptide_id": "pep_94f60c1bc5",
+        "sequence": "VYPFPGPIPNSLPQN",
+        "length": 15,
+        "phases": "gastric"
+      },
+      {
+        "peptide_id": "pep_2ffd7dce63",
+        "sequence": "VYPFPGPIPNSLPQNIPPLT",
+        "length": 20,
+        "phases": "gastric"
+      },
+      {
+        "peptide_id": "pep_3fbcd529cf",
+        "sequence": "VYPFPGPIPNSLPQNIPPLTQT",
+        "length": 22,
+        "phases": "gastric;intestinal"
+      },
+      {
+        "peptide_id": "pep_74ac59b163",
+        "sequence": "VYPFPGPIPNSLPQNIPPLTQTP",
+        "length": 23,
+        "phases": "gastric"
+      },
+      {
+        "peptide_id": "pep_dad80e03ff",
+        "sequence": "VYPFPGPIPNSLPQNIPPLTQTPV",
+        "length": 24,
+        "phases": "gastric"
+      },
+      {
+        "peptide_id": "pep_2c51a10144",
+        "sequence": "VYPFPGPIPNSLPQNIPPLTQTPVVVPPFLQPE",
+        "length": 33,
+        "phases": "gastric"
+      },
+      {
+        "peptide_id": "pep_d01143b1c9",
+        "sequence": "VYPFPGPIPNSLPQNIPPLTQTPVVVPPFLQPEV",
+        "length": 34,
+        "phases": "gastric"
+      },
+      {
+        "peptide_id": "pep_7ab3fc0b63",
+        "sequence": "VYPFPGPIPNSLPQNIPPLTQTPVVVPPFLQPEVM",
+        "length": 35,
+        "phases": "gastric"
+      },
+      {
+        "peptide_id": "pep_fd3f4adeba",
+        "sequence": "VYPFPGPIPNSLPQNIPPLTQTPVVVPPFLQPEVMG",
+        "length": 36,
+        "phases": "gastric"
+      },
+      {
+        "peptide_id": "pep_fea1e17454",
+        "sequence": "VYPFPGPIPNSLPQNIPPLTQTPVVVPPFLQPEVMGV",
+        "length": 37,
+        "phases": "gastric"
+      },
+      {
+        "peptide_id": "pep_f6b6d2c2d5",
+        "sequence": "VYPFPGPIPNSLPQNIPPLTQTPVVVPPFLQPEVMGVSK",
+        "length": 39,
+        "phases": "gastric"
+      },
+      {
+        "peptide_id": "pep_185590991a",
+        "sequence": "VYPFPGPIPNSLPQNIPPLTQTPVVVPPFLQPEVMGVSKVK",
+        "length": 41,
+        "phases": "gastric"
+      },
+      {
+        "peptide_id": "pep_a8acc4ff5d",
+        "sequence": "VYPFPGPIPNSLPQNIPPLTQTPVVVPPFLQPEVMGVSKVKE",
+        "length": 42,
+        "phases": "gastric"
+      },
+      {
+        "peptide_id": "pep_2cbab216a5",
+        "sequence": "VYPFPGPIPNSLPQNIPPLTQTPVVVPPFLQPEVMGVSKVKEAMAP",
+        "length": 46,
+        "phases": "gastric"
+      }
+    ]
+  },
+  "baseline_matched": [
+    {
+      "peptide_id": "pep_f063ee974e",
+      "sequence": "YAAGFGDRREEF",
+      "length": 12,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_f301bd18b5",
+      "sequence": "YADKPEVTQEQKKEFLDV",
+      "length": 18,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_deece1c04b",
+      "sequence": "YADNDNDSTFTGFLLYHDTN",
+      "length": 20,
+      "phases": "intestinal"
+    },
+    {
+      "peptide_id": "pep_a1f49763cd",
+      "sequence": "YAEAPSRLSPDDA",
+      "length": 13,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_f78fe0919b",
+      "sequence": "YAEAPSRLSPDDAD",
+      "length": 14,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_43e8d5e942",
+      "sequence": "YAEAPSRLSPDDADF",
+      "length": 15,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_73a2c4b2db",
+      "sequence": "YAENPTSGSTPQ",
+      "length": 12,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_297e95fc8f",
+      "sequence": "YAENPTSGSTPQGI",
+      "length": 14,
+      "phases": "gastric;intestinal"
+    },
+    {
+      "peptide_id": "pep_69af028c90",
+      "sequence": "YAHNARLTPLQF",
+      "length": 12,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_f7c49931fa",
+      "sequence": "YAHRGLDKLEENL",
+      "length": 13,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_85e2d7bfc6",
+      "sequence": "YAKPAAVRSPAQILQ",
+      "length": 15,
+      "phases": "gastric;intestinal"
+    },
+    {
+      "peptide_id": "pep_8e25944400",
+      "sequence": "YAKPAAVRSPAQILQW",
+      "length": 16,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_fa37f557bd",
+      "sequence": "YAKPAAVRSPAQILQWQ",
+      "length": 17,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_3ed9f23ca2",
+      "sequence": "YAKPAAVRSPAQILQWQV",
+      "length": 18,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_2536844a74",
+      "sequence": "YAKPAAVRSPAQILQWQVL",
+      "length": 19,
+      "phases": "gastric;intestinal"
+    },
+    {
+      "peptide_id": "pep_f862747b32",
+      "sequence": "YAKPAAVRSPAQILQWQVLS",
+      "length": 20,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_a0a3e00fa1",
+      "sequence": "YALPHAIL",
+      "length": 8,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_711b23ce43",
+      "sequence": "YALPHAILR",
+      "length": 9,
+      "phases": "gastric;undigested"
+    },
+    {
+      "peptide_id": "pep_8094b707dc",
+      "sequence": "YALPHAILRL",
+      "length": 10,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_42d6732d3d",
+      "sequence": "YALPHAILRLDL",
+      "length": 12,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_19a9e03ff9",
+      "sequence": "YALPHAIM",
+      "length": 8,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_cc6ead904c",
+      "sequence": "YALPHAIMR",
+      "length": 9,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_b04d2bf27d",
+      "sequence": "YALPHAIMRL",
+      "length": 10,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_470bbc2d56",
+      "sequence": "YALSASFEPFSNKGQTL",
+      "length": 17,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_89052bd0f3",
+      "sequence": "YALSHAVNNYHKTNPTGTQEL",
+      "length": 21,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_1edc17425a",
+      "sequence": "YALTDLEPATEY",
+      "length": 12,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_18053c2006",
+      "sequence": "YANAADIDY",
+      "length": 9,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_911537c3a4",
+      "sequence": "YANAADIDYIAGTNNMDGHIF",
+      "length": 21,
+      "phases": "gastric;intestinal"
+    },
+    {
+      "peptide_id": "pep_72ffd0ea0c",
+      "sequence": "YANAADIDYIAGTNNMDGHIFA",
+      "length": 22,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_a8d75f1549",
+      "sequence": "YANNVLSGGTTMYPGIADR",
+      "length": 19,
+      "phases": "gastric;intestinal;undigested"
+    },
+    {
+      "peptide_id": "pep_8e32230264",
+      "sequence": "YANNVLSGGTTMYPGIADRM",
+      "length": 20,
+      "phases": "gastric;intestinal;undigested"
+    },
+    {
+      "peptide_id": "pep_478d2d0a65",
+      "sequence": "YANNVLSGGTTMYPGIADRMQKEIT",
+      "length": 25,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_1cffbb4f14",
+      "sequence": "YANPAVVRP",
+      "length": 9,
+      "phases": "gastric;intestinal"
+    },
+    {
+      "peptide_id": "pep_08fc4bc130",
+      "sequence": "YANPAVVRPH",
+      "length": 10,
+      "phases": "gastric;intestinal"
+    },
+    {
+      "peptide_id": "pep_93c794aae0",
+      "sequence": "YANPAVVRPHA",
+      "length": 11,
+      "phases": "intestinal"
+    },
+    {
+      "peptide_id": "pep_ac0aa98b16",
+      "sequence": "YANPAVVRPHAQ",
+      "length": 12,
+      "phases": "intestinal"
+    },
+    {
+      "peptide_id": "pep_e8e97c59a5",
+      "sequence": "YANPAVVRPHAQIP",
+      "length": 14,
+      "phases": "gastric;intestinal"
+    },
+    {
+      "peptide_id": "pep_e8cfb1727c",
+      "sequence": "YANPAVVRPHAQIPQ",
+      "length": 15,
+      "phases": "gastric;intestinal"
+    },
+    {
+      "peptide_id": "pep_b74a8159c4",
+      "sequence": "YANPAVVRPHAQIPQR",
+      "length": 16,
+      "phases": "gastric;intestinal"
+    },
+    {
+      "peptide_id": "pep_ccf4529e84",
+      "sequence": "YANPAVVRPHAQIPQRQ",
+      "length": 17,
+      "phases": "gastric;intestinal"
+    },
+    {
+      "peptide_id": "pep_222312a400",
+      "sequence": "YANPAVVRPHAQIPQRQY",
+      "length": 18,
+      "phases": "gastric;intestinal"
+    },
+    {
+      "peptide_id": "pep_b912a3758b",
+      "sequence": "YANPAVVRPHAQIPQRQYL",
+      "length": 19,
+      "phases": "gastric;intestinal;undigested"
+    },
+    {
+      "peptide_id": "pep_8a5b3055cf",
+      "sequence": "YANPAVVRPHAQIPQRQYLP",
+      "length": 20,
+      "phases": "intestinal"
+    },
+    {
+      "peptide_id": "pep_0d23956b9d",
+      "sequence": "YANPAVVRPHAQIPQRQYLPN",
+      "length": 21,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_79efcad9e8",
+      "sequence": "YANPAVVRPHAQIPQRQYLPNS",
+      "length": 22,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_9ad27040da",
+      "sequence": "YANPAVVRPHAQIPQRQYLPNSHPPT",
+      "length": 26,
+      "phases": "gastric;intestinal"
+    },
+    {
+      "peptide_id": "pep_42d8264ff1",
+      "sequence": "YANPAVVRPHAQIPQRQYLPNSHPPTV",
+      "length": 27,
+      "phases": "gastric;intestinal"
+    },
+    {
+      "peptide_id": "pep_f937df183b",
+      "sequence": "YANPAVVRPHAQIPQRQYLPNSHPPTVV",
+      "length": 28,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_b48d858a17",
+      "sequence": "YANPAVVRPHAQIPQRQYLPNSHPPTVVR",
+      "length": 29,
+      "phases": "gastric;intestinal"
+    },
+    {
+      "peptide_id": "pep_ed77ed32ce",
+      "sequence": "YANPAVVRPHAQIPQRQYLPNSHPPTVVRRPNLHPS",
+      "length": 36,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_96966e8532",
+      "sequence": "YANPAVVRPHAQIPQRQYLPNSHPPTVVRRPNLHPSF",
+      "length": 37,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_6ecc3f1518",
+      "sequence": "YANTVLSGGTTMYPGIAD",
+      "length": 18,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_5c74e04d38",
+      "sequence": "YANTVLSGGTTMYPGIADR",
+      "length": 19,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_94e0ebe8c2",
+      "sequence": "YANTVLSGGTTMYPGIADRMQKEIT",
+      "length": 25,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_58489f141c",
+      "sequence": "YAPISGGDHAEVDVPK",
+      "length": 16,
+      "phases": "intestinal"
+    },
+    {
+      "peptide_id": "pep_129226b90e",
+      "sequence": "YASGRTTGIV",
+      "length": 10,
+      "phases": "gastric;intestinal"
+    },
+    {
+      "peptide_id": "pep_0ca1f48fc9",
+      "sequence": "YASGRTTGIVL",
+      "length": 11,
+      "phases": "gastric;undigested"
+    },
+    {
+      "peptide_id": "pep_267a6f827c",
+      "sequence": "YASGRTTGIVM",
+      "length": 11,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_fbe053afdf",
+      "sequence": "YASGRTTGIVMDSGDGVTHTVPIYEGY",
+      "length": 27,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_cc26e38412",
+      "sequence": "YASPDVSEPIDGLNPNEEEHRTY",
+      "length": 23,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_99880a4896",
+      "sequence": "YASPDVSEPIDGLNPNEEEHRTYL",
+      "length": 24,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_71860e9f34",
+      "sequence": "YAVAVVKK",
+      "length": 8,
+      "phases": "intestinal"
+    },
+    {
+      "peptide_id": "pep_c4a4b9b4d2",
+      "sequence": "YAVAVVKKGGSF",
+      "length": 12,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_7ec3b8e9f9",
+      "sequence": "YAVAVVKKGGSFQ",
+      "length": 13,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_7da3ba407b",
+      "sequence": "YAVAVVKKGGSFQL",
+      "length": 14,
+      "phases": "gastric;undigested"
+    },
+    {
+      "peptide_id": "pep_2a9c4bdf86",
+      "sequence": "YAVAVVKKGGSFQLNE",
+      "length": 16,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_4201ee459a",
+      "sequence": "YDATYETKESKKEDL",
+      "length": 15,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_42cf476820",
+      "sequence": "YDDRNEPVLR",
+      "length": 10,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_c6b60f18b2",
+      "sequence": "YDDRNEPVLRL",
+      "length": 11,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_cb5d2ed964",
+      "sequence": "YDESGPSIVHRK",
+      "length": 12,
+      "phases": "gastric;intestinal"
+    },
+    {
+      "peptide_id": "pep_416c44a81c",
+      "sequence": "YDGEEIATRGNV",
+      "length": 12,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_ff28778044",
+      "sequence": "YDGEEIATRGNVIV",
+      "length": 14,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_7e6d39cadb",
+      "sequence": "YDGRGDSVVYGL",
+      "length": 12,
+      "phases": "gastric;undigested"
+    },
+    {
+      "peptide_id": "pep_ee16fad967",
+      "sequence": "YDGRGDSVVYGLR",
+      "length": 13,
+      "phases": "gastric;undigested"
+    },
+    {
+      "peptide_id": "pep_ccf11b302c",
+      "sequence": "YDIAHTPGVA",
+      "length": 10,
+      "phases": "gastric;intestinal"
+    },
+    {
+      "peptide_id": "pep_d0c948419b",
+      "sequence": "YDKFSVGDA",
+      "length": 9,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_b08b6d2a6d",
+      "sequence": "YDKFSVGDAKT",
+      "length": 11,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_44c9ee4d23",
+      "sequence": "YDKNPWIQVNL",
+      "length": 11,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_3c223a80d8",
+      "sequence": "YDMNAANVGWNNSTFA",
+      "length": 16,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_5ec12d3927",
+      "sequence": "YDNEFGYSNRV",
+      "length": 11,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_0f60e06f86",
+      "sequence": "YDNGSNQVAFGRGNRGF",
+      "length": 17,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_ab7b6420d7",
+      "sequence": "YDTQAIVENNEST",
+      "length": 13,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_9c5e5f3ac5",
+      "sequence": "YDTQAIVENNESTEY",
+      "length": 15,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_8603118b20",
+      "sequence": "YDTQAIVQNNDSTEY",
+      "length": 15,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_9a3353ba09",
+      "sequence": "YDTQAIVQNNDSTEYGL",
+      "length": 17,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_bc9d0b927a",
+      "sequence": "YEAGLAPYK",
+      "length": 9,
+      "phases": "intestinal"
+    },
+    {
+      "peptide_id": "pep_55f2a54563",
+      "sequence": "YEAGLAPYKL",
+      "length": 10,
+      "phases": "gastric;intestinal"
+    },
+    {
+      "peptide_id": "pep_0a25c9740e",
+      "sequence": "YEAGLAPYKLRPV",
+      "length": 13,
+      "phases": "intestinal"
+    },
+    {
+      "peptide_id": "pep_d7768109ee",
+      "sequence": "YEAGLAPYKLRPVA",
+      "length": 14,
+      "phases": "gastric;intestinal"
+    },
+    {
+      "peptide_id": "pep_f0edee95bd",
+      "sequence": "YEAGLAPYKLRPVAA",
+      "length": 15,
+      "phases": "gastric;intestinal"
+    },
+    {
+      "peptide_id": "pep_8856750f6a",
+      "sequence": "YEAGLAPYKLRPVAAEVYGTERQPRTHY",
+      "length": 28,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_c02ed833df",
+      "sequence": "YEDLRGSVT",
+      "length": 9,
+      "phases": "intestinal"
+    },
+    {
+      "peptide_id": "pep_aa67159f56",
+      "sequence": "YEDSKSVRLED",
+      "length": 11,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_d080120e2a",
+      "sequence": "YEDSKSVRLEDS",
+      "length": 12,
+      "phases": "gastric;intestinal"
+    },
+    {
+      "peptide_id": "pep_7da431f8e3",
+      "sequence": "YEIARRHPYF",
+      "length": 10,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_dfd934a8dd",
+      "sequence": "YEILNSPEKA",
+      "length": 10,
+      "phases": "gastric;intestinal"
+    },
+    {
+      "peptide_id": "pep_6c9d708643",
+      "sequence": "YEKNNVM",
+      "length": 7,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_c19607a5e4",
+      "sequence": "YEKNNVML",
+      "length": 8,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_26fe7ddd56",
+      "sequence": "YEKNNVMLQ",
+      "length": 9,
+      "phases": "gastric;intestinal"
+    },
+    {
+      "peptide_id": "pep_09fd279247",
+      "sequence": "YEKNNVMLQW",
+      "length": 10,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_1173dad91c",
+      "sequence": "YEKYLGPQ",
+      "length": 8,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_bb0c853066",
+      "sequence": "YEKYLGPQY",
+      "length": 9,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_51f1f3ac5e",
+      "sequence": "YELPDGQVITIGNER",
+      "length": 15,
+      "phases": "gastric;intestinal"
+    },
+    {
+      "peptide_id": "pep_e6dd1fb14e",
+      "sequence": "YELPDGQVITIGNERF",
+      "length": 16,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_d704d383a0",
+      "sequence": "YERSIVDYKPNLDL",
+      "length": 14,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_ccf47f6436",
+      "sequence": "YESWVPKL",
+      "length": 8,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_0a7640ce9b",
+      "sequence": "YETSQLDDQSAETHSHK",
+      "length": 17,
+      "phases": "intestinal"
+    },
+    {
+      "peptide_id": "pep_110e636278",
+      "sequence": "YETSQLDDQSAETHSHKQS",
+      "length": 19,
+      "phases": "intestinal;undigested"
+    },
+    {
+      "peptide_id": "pep_1aeb969cbb",
+      "sequence": "YETSQLDDQSAETHSHKQSRLY",
+      "length": 22,
+      "phases": "undigested"
+    },
+    {
+      "peptide_id": "pep_65fedbea30",
+      "sequence": "YEVSQLKD",
+      "length": 8,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_e35db9ac12",
+      "sequence": "YFAGGDAGDAFDGFD",
+      "length": 15,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_8cfbd2cf3b",
+      "sequence": "YFAGGDAGDAFDGFDF",
+      "length": 16,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_b007447ccb",
+      "sequence": "YFYPEL",
+      "length": 6,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_0c32ecd562",
+      "sequence": "YGDEEKDKGLQTSQDAR",
+      "length": 17,
+      "phases": "intestinal"
+    },
+    {
+      "peptide_id": "pep_c4069fccc2",
+      "sequence": "YGDEEKDKGLQTSQDARF",
+      "length": 18,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_ef276275f8",
+      "sequence": "YGDNNHSQGVNWFH",
+      "length": 14,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_e4c4d6731c",
+      "sequence": "YGDNNHSQGVNWFHWK",
+      "length": 16,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_9e50d23509",
+      "sequence": "YGDNNHSQGVNWFHWKGHEHSIQF",
+      "length": 24,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_1bdf4625fc",
+      "sequence": "YGGIALPE",
+      "length": 8,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_0e0874ae88",
+      "sequence": "YGGIALPELI",
+      "length": 10,
+      "phases": "intestinal"
+    },
+    {
+      "peptide_id": "pep_ace5b16331",
+      "sequence": "YGGVSLPEWV",
+      "length": 10,
+      "phases": "intestinal"
+    },
+    {
+      "peptide_id": "pep_cd72fa72c6",
+      "sequence": "YGLFQISNK",
+      "length": 9,
+      "phases": "intestinal"
+    },
+    {
+      "peptide_id": "pep_8cf8965fa5",
+      "sequence": "YGLFQISNKL",
+      "length": 10,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_1506081b2a",
+      "sequence": "YGSAGPPPTGEEDTAEKDEL",
+      "length": 20,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_1be916ea12",
+      "sequence": "YGSKEDPQTFY",
+      "length": 11,
+      "phases": "gastric;intestinal"
+    },
+    {
+      "peptide_id": "pep_0330d4ce2e",
+      "sequence": "YGSKEDPQTFYY",
+      "length": 12,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_5885ba1869",
+      "sequence": "YGTERQPRTHY",
+      "length": 11,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_36ffa1f971",
+      "sequence": "YGTERQPRTHYY",
+      "length": 12,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_265e7ad177",
+      "sequence": "YGTNLYQR",
+      "length": 8,
+      "phases": "intestinal"
+    },
+    {
+      "peptide_id": "pep_d241138e84",
+      "sequence": "YHPMSEYPTYHTHG",
+      "length": 14,
+      "phases": "intestinal"
+    },
+    {
+      "peptide_id": "pep_0780fceb2b",
+      "sequence": "YHPMSEYPTYHTHGR",
+      "length": 15,
+      "phases": "intestinal"
+    },
+    {
+      "peptide_id": "pep_5a0bad5225",
+      "sequence": "YIAGTNNMDGHIF",
+      "length": 13,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_399bd7d828",
+      "sequence": "YIDQEELNKTKPI",
+      "length": 13,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_1c462c6391",
+      "sequence": "YIEAHGTGTKVGDPQELNGITRAL",
+      "length": 24,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_55e9cea9cf",
+      "sequence": "YIGSKYKKVVYRQYTDST",
+      "length": 18,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_064cea5db6",
+      "sequence": "YIKKIGYNPDTVA",
+      "length": 13,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_d062a59ba3",
+      "sequence": "YIPIQYVLSRYPSY",
+      "length": 14,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_f0683e55a4",
+      "sequence": "YIQQDTKGDYQKAL",
+      "length": 14,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_48788d9569",
+      "sequence": "YIQQDTKGDYQKALL",
+      "length": 15,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_e4b5c895c7",
+      "sequence": "YISPDQLADLYK",
+      "length": 12,
+      "phases": "intestinal"
+    },
+    {
+      "peptide_id": "pep_f371750db0",
+      "sequence": "YITGETKDQVANSAF",
+      "length": 15,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_b321a7d668",
+      "sequence": "YIYTGLSKHVEDVPAFQALGSLND",
+      "length": 24,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_5603bc948e",
+      "sequence": "YKAGFGDPHGEF",
+      "length": 12,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_8f98525d5b",
+      "sequence": "YKAIPVAQ",
+      "length": 8,
+      "phases": "gastric;intestinal"
+    },
+    {
+      "peptide_id": "pep_ad7ab45c93",
+      "sequence": "YKAIPVAQD",
+      "length": 9,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_a8ccb9fc3d",
+      "sequence": "YKAIPVAQDL",
+      "length": 10,
+      "phases": "gastric;intestinal"
+    },
+    {
+      "peptide_id": "pep_67876fc60c",
+      "sequence": "YKAIPVAQDLNA",
+      "length": 12,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_2f51e7c70b",
+      "sequence": "YKAIPVAQDLNAPSD",
+      "length": 15,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_6f7d1c4f15",
+      "sequence": "YKAIPVAQDLNAPSDWDSR",
+      "length": 19,
+      "phases": "gastric;intestinal"
+    },
+    {
+      "peptide_id": "pep_66539bb110",
+      "sequence": "YKAIPVAQDLNAPSDWDSRGKD",
+      "length": 22,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_c2dcd9b3b6",
+      "sequence": "YKAIPVAQDLNAPSDWDSRGKDSY",
+      "length": 24,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_5a0381a55d",
+      "sequence": "YKAIPVAQDLNAPSDWDSRGKDSYET",
+      "length": 26,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_16f9f80eaf",
+      "sequence": "YKAIPVAQDLNAPSDWDSRGKDSYETS",
+      "length": 27,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_75ff5e8ba0",
+      "sequence": "YKAIPVAQDLNAPSDWDSRGKDSYETSQL",
+      "length": 29,
+      "phases": "gastric;intestinal"
+    },
+    {
+      "peptide_id": "pep_f24276fc51",
+      "sequence": "YKAIPVAQDLNAPSDWDSRGKDSYETSQLDDQSAETHSHKQ",
+      "length": 41,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_7dc8f7133d",
+      "sequence": "YKEGDLTHF",
+      "length": 9,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_fb09557874",
+      "sequence": "YKFQNALL",
+      "length": 8,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_4c92ee6240",
+      "sequence": "YKIGGIGTVPVGRVETGVLKPGM",
+      "length": 23,
+      "phases": "gastric;intestinal"
+    },
+    {
+      "peptide_id": "pep_fd3bc7f7ae",
+      "sequence": "YKIPAFGSIPIE",
+      "length": 12,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_e6c4937dc9",
+      "sequence": "YKIPAFGSIPIEF",
+      "length": 13,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_fd811b96f8",
+      "sequence": "YKIPAFGSIPTEF",
+      "length": 13,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_b127b4e3d4",
+      "sequence": "YKLKVEGYSGTAGDSM",
+      "length": 16,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_4cec4e64ec",
+      "sequence": "YKLKVEGYSGTAGDSMA",
+      "length": 17,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_8e5ad1934b",
+      "sequence": "YKLKVEGYSGTAGDSMAYHNG",
+      "length": 21,
+      "phases": "gastric;intestinal"
+    },
+    {
+      "peptide_id": "pep_3a5e7c5c56",
+      "sequence": "YKLRAAEQYTPKAKYHGNVML",
+      "length": 21,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_11952e9dec",
+      "sequence": "YKLVSEF",
+      "length": 7,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_bb7f9f56a4",
+      "sequence": "YKPEFYTPDDGG",
+      "length": 12,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_e981629769",
+      "sequence": "YKQIGLY",
+      "length": 7,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_6a2853d220",
+      "sequence": "YKQKVEKVKHEDQQQGEDEHQ",
+      "length": 21,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_f7531e94fd",
+      "sequence": "YKQKVEKVKHEDQQQGEDEHQD",
+      "length": 22,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_bfc3feaf84",
+      "sequence": "YKQKVEKVKHEDQQQGEDEHQDK",
+      "length": 23,
+      "phases": "gastric;intestinal"
+    },
+    {
+      "peptide_id": "pep_79701f5f78",
+      "sequence": "YKQKVEKVKHEDQQQGEDEHQDKIY",
+      "length": 25,
+      "phases": "gastric;intestinal"
+    },
+    {
+      "peptide_id": "pep_3e71012fc0",
+      "sequence": "YKQKVEKVKHEDQQQGEDEHQDKIYP",
+      "length": 26,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_229809f0de",
+      "sequence": "YKQKVEKVKHEDQQQGEDEHQDKIYPS",
+      "length": 27,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_52fce2ae1e",
+      "sequence": "YKQKVEKVKHEDQQQGEDEHQDKIYPSF",
+      "length": 28,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_a3d91ac124",
+      "sequence": "YKQKVEKVKHEDQQQGEDEHQDKIYPSFQ",
+      "length": 29,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_fd8a1a5eca",
+      "sequence": "YKQKVEKVKHEDQQQGEDEHQDKIYPSFQPQP",
+      "length": 32,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_31cec8ad90",
+      "sequence": "YKQKVEKVKHEDQQQGEDEHQDKIYPSFQPQPLI",
+      "length": 34,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_ee452d544d",
+      "sequence": "YKQKVEKVKHEDQQQGEDEHQDKIYPSFQPQPLIY",
+      "length": 35,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_be2c836009",
+      "sequence": "YKRKANDESNEHSDVIDSQEL",
+      "length": 21,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_fb10cfeeba",
+      "sequence": "YKRKANDESNEHSDVIDSQELS",
+      "length": 22,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_9a32891e86",
+      "sequence": "YKRKANDESNEHSDVIDSQELSK",
+      "length": 23,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_1958dd22e4",
+      "sequence": "YKRKANDESNEHSDVIDSQELSKVSR",
+      "length": 26,
+      "phases": "gastric;intestinal"
+    },
+    {
+      "peptide_id": "pep_5781f300e0",
+      "sequence": "YKSFIKDYPVVS",
+      "length": 12,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_505e54bd7e",
+      "sequence": "YKSFIKDYPVVSIEDPFDQDDW",
+      "length": 22,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_e6080003d3",
+      "sequence": "YKSLTNDWEDHL",
+      "length": 12,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_fb8283f57e",
+      "sequence": "YKSQQSSD",
+      "length": 8,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_39c3d1a007",
+      "sequence": "YKSQQSSDPDPNCVDRPVEGY",
+      "length": 21,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_9b7cfbfa9c",
+      "sequence": "YKSVSLPSLDPASAKIEGNL",
+      "length": 20,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_18af6ba4fa",
+      "sequence": "YKTPDNID",
+      "length": 8,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_81ea61a684",
+      "sequence": "YKTWGLHL",
+      "length": 8,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_e9a4097cf9",
+      "sequence": "YKTWGLSA",
+      "length": 8,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_214c83e447",
+      "sequence": "YKVAYSNDSANW",
+      "length": 12,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_99eaa86573",
+      "sequence": "YKVLGKGKLPKQPVIVKAKF",
+      "length": 20,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_12bf99e539",
+      "sequence": "YKVPLAGLE",
+      "length": 9,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_1c32998ec5",
+      "sequence": "YKVPLAGLEY",
+      "length": 10,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_089eb177b3",
+      "sequence": "YKVPLAGLEYPM",
+      "length": 12,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_368e887420",
+      "sequence": "YKVPLAGLEYPML",
+      "length": 13,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_c296890f4d",
+      "sequence": "YKVPLAGLEYPMLH",
+      "length": 14,
+      "phases": "gastric;intestinal"
+    },
+    {
+      "peptide_id": "pep_a0b74b0578",
+      "sequence": "YKVPLAGLEYPMLHY",
+      "length": 15,
+      "phases": "gastric;intestinal"
+    },
+    {
+      "peptide_id": "pep_5d3ef61c88",
+      "sequence": "YKVPQLE",
+      "length": 7,
+      "phases": "intestinal"
+    },
+    {
+      "peptide_id": "pep_bc1a26d019",
+      "sequence": "YKVPQLEIV",
+      "length": 9,
+      "phases": "intestinal"
+    },
+    {
+      "peptide_id": "pep_6578313da6",
+      "sequence": "YKVPQLEIVPN",
+      "length": 11,
+      "phases": "gastric;intestinal;undigested"
+    },
+    {
+      "peptide_id": "pep_049aaf2381",
+      "sequence": "YKVPQLEIVPNSAEE",
+      "length": 15,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_3f4ddbd854",
+      "sequence": "YKVPQLEIVPNSAEER",
+      "length": 16,
+      "phases": "gastric;intestinal;undigested"
+    },
+    {
+      "peptide_id": "pep_3ced08af91",
+      "sequence": "YKVPQLEIVPNSAEERL",
+      "length": 17,
+      "phases": "gastric;intestinal;undigested"
+    },
+    {
+      "peptide_id": "pep_39e3b7a6bf",
+      "sequence": "YKVPQLEIVPNSAEERLH",
+      "length": 18,
+      "phases": "gastric;undigested"
+    },
+    {
+      "peptide_id": "pep_5b0e5ee4e9",
+      "sequence": "YKVPQLEIVPNSAEERLHS",
+      "length": 19,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_1040df749d",
+      "sequence": "YKVPQLEIVPNSAEERLHSM",
+      "length": 20,
+      "phases": "gastric;intestinal"
+    },
+    {
+      "peptide_id": "pep_ed029b83f2",
+      "sequence": "YKVPQLEIVPNSAEERLHSMK",
+      "length": 21,
+      "phases": "gastric;intestinal"
+    },
+    {
+      "peptide_id": "pep_cad222569b",
+      "sequence": "YKVPQLEIVPNSAEERLHSMKE",
+      "length": 22,
+      "phases": "gastric;intestinal"
+    },
+    {
+      "peptide_id": "pep_166a3e3c88",
+      "sequence": "YKVPQLEIVPNSAEERLHSMKEGIH",
+      "length": 25,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_9f8f99f759",
+      "sequence": "YKVPQLEIVPNSAEERLHSMKEGIHA",
+      "length": 26,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_fa3a881084",
+      "sequence": "YKVSNGAGTMSVSL",
+      "length": 14,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_3239647f37",
+      "sequence": "YKYDHNFVKAINA",
+      "length": 13,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_f7e0fc336f",
+      "sequence": "YLAGRDLSRLPQLVGVSTPLQGGSNSAAAIGQSSGEL",
+      "length": 37,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_4309f86948",
+      "sequence": "YLAPNNLKPVVAE",
+      "length": 13,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_092e34789a",
+      "sequence": "YLAPNNLKPVVAEF",
+      "length": 14,
+      "phases": "gastric;intestinal"
+    },
+    {
+      "peptide_id": "pep_105b754f97",
+      "sequence": "YLAPNNLKPVVAEFY",
+      "length": 15,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_9fb6138352",
+      "sequence": "YLAPNNLKPVVAEFYGSKEDPQTFY",
+      "length": 25,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_ebb1c86451",
+      "sequence": "YLDDNIKTYSDHPEKVNKDDEEF",
+      "length": 23,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_c8fdb57cf1",
+      "sequence": "YLEDNIKTY",
+      "length": 9,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_ad2ffa876b",
+      "sequence": "YLEPRHAEDKLITRE",
+      "length": 15,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_60c6ec5829",
+      "sequence": "YLEQLLR",
+      "length": 7,
+      "phases": "gastric;intestinal;undigested"
+    },
+    {
+      "peptide_id": "pep_349d2710a6",
+      "sequence": "YLFSHPSRMPVYPKWVGADHADD",
+      "length": 23,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_b99f1a8903",
+      "sequence": "YLGPQYVAGI",
+      "length": 10,
+      "phases": "intestinal"
+    },
+    {
+      "peptide_id": "pep_23273d785b",
+      "sequence": "YLGPQYVAGITNL",
+      "length": 13,
+      "phases": "intestinal"
+    },
+    {
+      "peptide_id": "pep_9bd0bb040b",
+      "sequence": "YLGPQYVAGITNLK",
+      "length": 14,
+      "phases": "intestinal"
+    },
+    {
+      "peptide_id": "pep_c33d085b73",
+      "sequence": "YLGPQYVAGITNLKK",
+      "length": 15,
+      "phases": "intestinal"
+    },
+    {
+      "peptide_id": "pep_a710b823e9",
+      "sequence": "YLGSGYFTAIQNL",
+      "length": 13,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_cc6492014c",
+      "sequence": "YLGSRYLTT",
+      "length": 9,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_9dc7816ffb",
+      "sequence": "YLGSRYLTTL",
+      "length": 10,
+      "phases": "intestinal"
+    },
+    {
+      "peptide_id": "pep_c822d83355",
+      "sequence": "YLGYLEQLL",
+      "length": 9,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_72a95f429b",
+      "sequence": "YLGYLEQLLR",
+      "length": 10,
+      "phases": "gastric;intestinal"
+    },
+    {
+      "peptide_id": "pep_122d3d1d72",
+      "sequence": "YLGYLEQLLRLK",
+      "length": 12,
+      "phases": "intestinal"
+    },
+    {
+      "peptide_id": "pep_702797b091",
+      "sequence": "YLHPVLQRQQLDY",
+      "length": 13,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_da20318a9f",
+      "sequence": "YLIQPDSSVKP",
+      "length": 11,
+      "phases": "intestinal"
+    },
+    {
+      "peptide_id": "pep_a9b74bb632",
+      "sequence": "YLKPIQRTIL",
+      "length": 10,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_becebd4c6c",
+      "sequence": "YLNIWVPQGR",
+      "length": 10,
+      "phases": "intestinal"
+    },
+    {
+      "peptide_id": "pep_7360d965f0",
+      "sequence": "YLNIWVPQGRKQVSRDL",
+      "length": 17,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_d1ee2ba05c",
+      "sequence": "YLNIWVPQGRKQVSRDLPVM",
+      "length": 20,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_65c33447b3",
+      "sequence": "YLPNSHPPT",
+      "length": 9,
+      "phases": "gastric;intestinal"
+    },
+    {
+      "peptide_id": "pep_06adf31f95",
+      "sequence": "YLPNSHPPTV",
+      "length": 10,
+      "phases": "intestinal"
+    },
+    {
+      "peptide_id": "pep_e4c300bbd3",
+      "sequence": "YLPNSHPPTVV",
+      "length": 11,
+      "phases": "intestinal"
+    },
+    {
+      "peptide_id": "pep_baa5e800dc",
+      "sequence": "YLPNSHPPTVVR",
+      "length": 12,
+      "phases": "intestinal"
+    },
+    {
+      "peptide_id": "pep_354590efbd",
+      "sequence": "YLPNSHPPTVVRRPNLHPSF",
+      "length": 20,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_10e64145ed",
+      "sequence": "YLQKGFPIKEDF",
+      "length": 12,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_e02ebc7d49",
+      "sequence": "YLRVTTVASHTSDSD",
+      "length": 15,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_72c7e634c0",
+      "sequence": "YLRVTTVASHTSDSDVPSGVTE",
+      "length": 22,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_297e3505f5",
+      "sequence": "YLRVTTVASHTSDSDVPSGVTEV",
+      "length": 23,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_dadb94559a",
+      "sequence": "YLTQETNKVET",
+      "length": 11,
+      "phases": "intestinal"
+    },
+    {
+      "peptide_id": "pep_354ccb108a",
+      "sequence": "YLVNNTPLNW",
+      "length": 10,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_ca746fb8cc",
+      "sequence": "YLVSIPL",
+      "length": 7,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_7b912155f2",
+      "sequence": "YLYQGPIVLNPWDQVK",
+      "length": 16,
+      "phases": "gastric;intestinal"
+    },
+    {
+      "peptide_id": "pep_c6973a4083",
+      "sequence": "YLYQGPIVLNPWDQVKRNAVPITPTL",
+      "length": 26,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_c405c28f82",
+      "sequence": "YMKHATKTAKDALSSVQESQVAQQARG",
+      "length": 27,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_306fa8c028",
+      "sequence": "YMKSLGVGF",
+      "length": 9,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_e14aa98092",
+      "sequence": "YNELLKSYQ",
+      "length": 9,
+      "phases": "intestinal"
+    },
+    {
+      "peptide_id": "pep_695b1c06c4",
+      "sequence": "YNELLKSYQWK",
+      "length": 11,
+      "phases": "intestinal"
+    },
+    {
+      "peptide_id": "pep_68ee1902c0",
+      "sequence": "YNELRVAPDEHPIL",
+      "length": 14,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_a4ad6b81c0",
+      "sequence": "YNELRVAPEEHPV",
+      "length": 13,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_4e1806f889",
+      "sequence": "YNELRVAPEEHPVL",
+      "length": 14,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_c48e4d3708",
+      "sequence": "YNIDTSSESPDHY",
+      "length": 13,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_e04d897b7f",
+      "sequence": "YNIQKESTLHL",
+      "length": 11,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_8948bb9ef9",
+      "sequence": "YNKYPDAV",
+      "length": 8,
+      "phases": "intestinal"
+    },
+    {
+      "peptide_id": "pep_7dcc9f14ad",
+      "sequence": "YNKYPDAVA",
+      "length": 9,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_f79dd60b87",
+      "sequence": "YNKYPDAVAT",
+      "length": 10,
+      "phases": "gastric;intestinal"
+    },
+    {
+      "peptide_id": "pep_a9f8b26d6a",
+      "sequence": "YNKYPDAVATW",
+      "length": 11,
+      "phases": "gastric;intestinal"
+    },
+    {
+      "peptide_id": "pep_fa5470b9db",
+      "sequence": "YNKYPDAVATWLNPDPSQKQNL",
+      "length": 22,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_bb4a05c85b",
+      "sequence": "YNMTDGSHIYT",
+      "length": 11,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_738c91c3c8",
+      "sequence": "YNQLQLQAAHA",
+      "length": 11,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_f9a46f25fe",
+      "sequence": "YNQLQLQAAHAQEQ",
+      "length": 14,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_37385713b6",
+      "sequence": "YNQLQLQAAHAQEQIR",
+      "length": 16,
+      "phases": "intestinal"
+    },
+    {
+      "peptide_id": "pep_2de09281c1",
+      "sequence": "YNQLQLQAAHAQEQIRRMNENS",
+      "length": 22,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_d6655c39eb",
+      "sequence": "YNVPAVAEEIQDEVDEL",
+      "length": 17,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_038f11f241",
+      "sequence": "YPDATDEDITSH",
+      "length": 12,
+      "phases": "gastric;intestinal;undigested"
+    },
+    {
+      "peptide_id": "pep_adb3ba7c33",
+      "sequence": "YPERLQNPSE",
+      "length": 10,
+      "phases": "gastric;intestinal"
+    },
+    {
+      "peptide_id": "pep_a4884eba9c",
+      "sequence": "YPERLQNPSES",
+      "length": 11,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_3e738f7070",
+      "sequence": "YPERLQNPSESS",
+      "length": 12,
+      "phases": "gastric;intestinal"
+    },
+    {
+      "peptide_id": "pep_4b09053a96",
+      "sequence": "YPERLQNPSESSEPIP",
+      "length": 16,
+      "phases": "gastric;undigested"
+    },
+    {
+      "peptide_id": "pep_91ce70ee00",
+      "sequence": "YPERLQNPSESSEPIPL",
+      "length": 17,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_dd021f6ca3",
+      "sequence": "YPERLQNPSESSEPIPLES",
+      "length": 19,
+      "phases": "gastric;intestinal"
+    },
+    {
+      "peptide_id": "pep_9b8895a16c",
+      "sequence": "YPERLQNPSESSEPIPLESR",
+      "length": 20,
+      "phases": "gastric;intestinal"
+    },
+    {
+      "peptide_id": "pep_a090d64ebd",
+      "sequence": "YPERLQNPSESSEPIPLESRE",
+      "length": 21,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_c330713380",
+      "sequence": "YPERLQNPSESSEPIPLESREE",
+      "length": 22,
+      "phases": "gastric;intestinal"
+    },
+    {
+      "peptide_id": "pep_73fd6da108",
+      "sequence": "YPERLQNPSESSEPIPLESREEY",
+      "length": 23,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_768a6a293e",
+      "sequence": "YPERLQNPSESSEPIPLESREEYMNG",
+      "length": 26,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_2f536ea94c",
+      "sequence": "YPERLQNPSESSEPIPLESREEYMNGM",
+      "length": 27,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_bb5bb78b16",
+      "sequence": "YPERLQNPSESSEPIPLESREEYMNGMN",
+      "length": 28,
+      "phases": "gastric;intestinal"
+    },
+    {
+      "peptide_id": "pep_fb2394ff9e",
+      "sequence": "YPERLQNPSESSEPIPLESREEYMNGMNR",
+      "length": 29,
+      "phases": "gastric;intestinal"
+    },
+    {
+      "peptide_id": "pep_32c6f681f0",
+      "sequence": "YPERLQNPSESSEPIPLESREEYMNGMNRQ",
+      "length": 30,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_f2a45b8961",
+      "sequence": "YPFPGPIPNS",
+      "length": 10,
+      "phases": "intestinal"
+    },
+    {
+      "peptide_id": "pep_8c043cc1ec",
+      "sequence": "YPFPGPIPNSLPQ",
+      "length": 13,
+      "phases": "intestinal"
+    },
+    {
+      "peptide_id": "pep_32e65e3eaf",
+      "sequence": "YPFPGPIPNSLPQNIPPLTQT",
+      "length": 21,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_c6ab658c81",
+      "sequence": "YPFVEPIP",
+      "length": 8,
+      "phases": "intestinal"
+    },
+    {
+      "peptide_id": "pep_19d2a157cc",
+      "sequence": "YPFVEPIPY",
+      "length": 9,
+      "phases": "intestinal"
+    },
+    {
+      "peptide_id": "pep_016651adae",
+      "sequence": "YPFVEPIPYGFLPQN",
+      "length": 15,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_f70dc63eae",
+      "sequence": "YPFVEPIPYGFLPQNILPLAQPA",
+      "length": 23,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_740a4b2430",
+      "sequence": "YPFVEPIPYGFLPQNILPLAQPAVVLPVPQPEIM",
+      "length": 34,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_f8dd688a6a",
+      "sequence": "YPGKIDVHWTRA",
+      "length": 12,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_7176078921",
+      "sequence": "YPIEHGIITNWDDMEK",
+      "length": 16,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_0742235388",
+      "sequence": "YPQIMQYVPFPPFSDISNPTAHENYEKNNV",
+      "length": 30,
+      "phases": "intestinal"
+    },
+    {
+      "peptide_id": "pep_07f56b39f3",
+      "sequence": "YPSFQPQPLI",
+      "length": 10,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_65854b117d",
+      "sequence": "YPSFQPQPLIY",
+      "length": 11,
+      "phases": "intestinal"
+    },
+    {
+      "peptide_id": "pep_487340aef7",
+      "sequence": "YPSFQPQPLIYPFVEPI",
+      "length": 17,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_15d61e1656",
+      "sequence": "YPSFQPQPLIYPFVEPIPY",
+      "length": 19,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_ffe9108363",
+      "sequence": "YPSFQPQPLIYPFVEPIPYGFLPQNILPLAQPAVVLPVPQPEIM",
+      "length": 44,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_d5a1bcd858",
+      "sequence": "YPSLSLHGIEGAFSGSGA",
+      "length": 18,
+      "phases": "intestinal"
+    },
+    {
+      "peptide_id": "pep_38fdcf2f89",
+      "sequence": "YPTYHTHGRYVPP",
+      "length": 13,
+      "phases": "undigested"
+    },
+    {
+      "peptide_id": "pep_a48555f6b7",
+      "sequence": "YPVEPFTES",
+      "length": 9,
+      "phases": "intestinal"
+    },
+    {
+      "peptide_id": "pep_742a428265",
+      "sequence": "YPVEPFTESQS",
+      "length": 11,
+      "phases": "gastric;intestinal"
+    },
+    {
+      "peptide_id": "pep_40984b40dc",
+      "sequence": "YPVEPFTESQSL",
+      "length": 12,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_7279729240",
+      "sequence": "YPVEPFTESQSLTL",
+      "length": 14,
+      "phases": "gastric;undigested"
+    },
+    {
+      "peptide_id": "pep_1b9a6eba3f",
+      "sequence": "YPVEPFTESQSLTLTDVENLHLPLP",
+      "length": 25,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_5e698017e8",
+      "sequence": "YPVTQPLAPVH",
+      "length": 11,
+      "phases": "gastric;intestinal"
+    },
+    {
+      "peptide_id": "pep_e3004036d9",
+      "sequence": "YPVTQPLAPVHNP",
+      "length": 13,
+      "phases": "intestinal"
+    },
+    {
+      "peptide_id": "pep_edd3be5fab",
+      "sequence": "YPVTQPLAPVHNPI",
+      "length": 14,
+      "phases": "gastric;intestinal"
+    },
+    {
+      "peptide_id": "pep_d7cd772684",
+      "sequence": "YPVTQPLAPVHNPIS",
+      "length": 15,
+      "phases": "gastric;intestinal"
+    },
+    {
+      "peptide_id": "pep_119af3d5ab",
+      "sequence": "YPVTQPLAPVHNPISV",
+      "length": 16,
+      "phases": "gastric;intestinal;undigested"
+    },
+    {
+      "peptide_id": "pep_8121124924",
+      "sequence": "YPYAVWYYPQ",
+      "length": 10,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_15bfab5dc8",
+      "sequence": "YPYAVWYYPQI",
+      "length": 11,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_af0987e2bf",
+      "sequence": "YPYAVWYYPQIM",
+      "length": 12,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_597730e350",
+      "sequence": "YPYAVWYYPQIMQ",
+      "length": 13,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_210dbe9636",
+      "sequence": "YQAEWDDYVPKL",
+      "length": 12,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_ea67c4c516",
+      "sequence": "YQEPVLGPV",
+      "length": 9,
+      "phases": "gastric;intestinal;undigested"
+    },
+    {
+      "peptide_id": "pep_432f6038f4",
+      "sequence": "YQEPVLGPVR",
+      "length": 10,
+      "phases": "gastric;intestinal"
+    },
+    {
+      "peptide_id": "pep_55b4ff79eb",
+      "sequence": "YQEPVLGPVRG",
+      "length": 11,
+      "phases": "gastric;intestinal;undigested"
+    },
+    {
+      "peptide_id": "pep_453b491dcb",
+      "sequence": "YQEPVLGPVRGP",
+      "length": 12,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_2fc4dc757b",
+      "sequence": "YQEPVLGPVRGPF",
+      "length": 13,
+      "phases": "gastric;intestinal"
+    },
+    {
+      "peptide_id": "pep_1731d96dba",
+      "sequence": "YQEPVLGPVRGPFP",
+      "length": 14,
+      "phases": "gastric;intestinal;undigested"
+    },
+    {
+      "peptide_id": "pep_83aa573850",
+      "sequence": "YQEPVLGPVRGPFPI",
+      "length": 15,
+      "phases": "gastric;intestinal;undigested"
+    },
+    {
+      "peptide_id": "pep_619743a488",
+      "sequence": "YQEPVLGPVRGPFPII",
+      "length": 16,
+      "phases": "gastric;intestinal;undigested"
+    },
+    {
+      "peptide_id": "pep_6c66d4a1e9",
+      "sequence": "YQEPVLGPVRGPFPIIV",
+      "length": 17,
+      "phases": "gastric;intestinal;undigested"
+    },
+    {
+      "peptide_id": "pep_373f7822e8",
+      "sequence": "YQGGTYSKASTPNGYDNGIIW",
+      "length": 21,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_2d52d51e5a",
+      "sequence": "YQGPIVLNPWDQ",
+      "length": 12,
+      "phases": "gastric;intestinal"
+    },
+    {
+      "peptide_id": "pep_d0b4b1bac2",
+      "sequence": "YQGPIVLNPWDQV",
+      "length": 13,
+      "phases": "gastric;intestinal"
+    },
+    {
+      "peptide_id": "pep_63cac22d5b",
+      "sequence": "YQGPIVLNPWDQVK",
+      "length": 14,
+      "phases": "gastric;intestinal"
+    },
+    {
+      "peptide_id": "pep_55e54f3ff4",
+      "sequence": "YQGPIVLNPWDQVKR",
+      "length": 15,
+      "phases": "gastric;intestinal"
+    },
+    {
+      "peptide_id": "pep_7209f3a917",
+      "sequence": "YQGPIVLNPWDQVKRN",
+      "length": 16,
+      "phases": "gastric;intestinal"
+    },
+    {
+      "peptide_id": "pep_a9d5e7a3f1",
+      "sequence": "YQGPIVLNPWDQVKRNAVPIT",
+      "length": 21,
+      "phases": "gastric;intestinal"
+    },
+    {
+      "peptide_id": "pep_7725e7e7f9",
+      "sequence": "YQGPIVLNPWDQVKRNAVPITP",
+      "length": 22,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_0a28f37907",
+      "sequence": "YQGPIVLNPWDQVKRNAVPITPT",
+      "length": 23,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_5b190facca",
+      "sequence": "YQGPIVLNPWDQVKRNAVPITPTL",
+      "length": 24,
+      "phases": "gastric;undigested"
+    },
+    {
+      "peptide_id": "pep_402a1740b2",
+      "sequence": "YQGPIVLNPWDQVKRNAVPITPTLN",
+      "length": 25,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_885025d8ef",
+      "sequence": "YQGPIVLNPWDQVKRNAVPITPTLNR",
+      "length": 26,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_ff4cf93494",
+      "sequence": "YQGPIVLNPWDQVKRNAVPITPTLNREQL",
+      "length": 29,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_9a43a963fe",
+      "sequence": "YQIFSYPNPLPTGF",
+      "length": 14,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_2dca805c69",
+      "sequence": "YQIFSYPNPLPTGFTGRD",
+      "length": 18,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_ce10434186",
+      "sequence": "YQIFSYPNPLPTGFTGRDPVA",
+      "length": 21,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_89f81bc513",
+      "sequence": "YQIFSYPNPLPTGFTGRDPVAL",
+      "length": 22,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_e169e92432",
+      "sequence": "YQKADDGRPFPQVIK",
+      "length": 15,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_d4a37eb072",
+      "sequence": "YQKADDGRPFPQVIKSKGGVVG",
+      "length": 22,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_270db505cf",
+      "sequence": "YQKFALPQYLK",
+      "length": 11,
+      "phases": "intestinal"
+    },
+    {
+      "peptide_id": "pep_d34bf5f4c3",
+      "sequence": "YQKFALPQYLKTVYQHQK",
+      "length": 18,
+      "phases": "intestinal"
+    },
+    {
+      "peptide_id": "pep_ee2f97fe4b",
+      "sequence": "YQKFPQY",
+      "length": 7,
+      "phases": "gastric;intestinal;undigested"
+    },
+    {
+      "peptide_id": "pep_18775a2e0a",
+      "sequence": "YQKFPQYL",
+      "length": 8,
+      "phases": "gastric;intestinal"
+    },
+    {
+      "peptide_id": "pep_445a9adf6e",
+      "sequence": "YQKFPQYLQ",
+      "length": 9,
+      "phases": "gastric;intestinal"
+    },
+    {
+      "peptide_id": "pep_69e50bbc8d",
+      "sequence": "YQKFPQYLQY",
+      "length": 10,
+      "phases": "gastric;undigested"
+    },
+    {
+      "peptide_id": "pep_4cbd4587f6",
+      "sequence": "YQKFPQYLQYL",
+      "length": 11,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_7a9a8767d4",
+      "sequence": "YQKTAPYVPMY",
+      "length": 11,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_02f0eaedbc",
+      "sequence": "YQKTAPYVPMYYVPNSY",
+      "length": 17,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_7e7b3c1541",
+      "sequence": "YQKTAPYVPMYYVPNSYPYYGTNL",
+      "length": 24,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_7901e0f33a",
+      "sequence": "YQLDAYPSG",
+      "length": 9,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_0536b995fa",
+      "sequence": "YQLDAYPSGA",
+      "length": 10,
+      "phases": "gastric;intestinal"
+    },
+    {
+      "peptide_id": "pep_16e0c59c6c",
+      "sequence": "YQLDAYPSGAW",
+      "length": 11,
+      "phases": "gastric;intestinal"
+    },
+    {
+      "peptide_id": "pep_b51eacdf17",
+      "sequence": "YQLDAYPSGAWY",
+      "length": 12,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_56b079e23c",
+      "sequence": "YQLDAYPSGAWYYVPLGTQYTDAPSF",
+      "length": 26,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_d3dbae5ea9",
+      "sequence": "YQNWKAY",
+      "length": 7,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_20b90812dd",
+      "sequence": "YQNWKAYAAGF",
+      "length": 11,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_e7a977b218",
+      "sequence": "YQNWKAYAAGFGDRREE",
+      "length": 17,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_43f74e788f",
+      "sequence": "YQQKPGQAPLL",
+      "length": 11,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_058a07fe5f",
+      "sequence": "YQQKPGQAPVL",
+      "length": 11,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_22f333b382",
+      "sequence": "YQQKPVA",
+      "length": 7,
+      "phases": "intestinal"
+    },
+    {
+      "peptide_id": "pep_d2e75a8b25",
+      "sequence": "YQQKPVAL",
+      "length": 8,
+      "phases": "gastric;intestinal;undigested"
+    },
+    {
+      "peptide_id": "pep_60e8270ffd",
+      "sequence": "YQQKPVALI",
+      "length": 9,
+      "phases": "gastric;intestinal"
+    },
+    {
+      "peptide_id": "pep_1046ed1a7c",
+      "sequence": "YQQKPVALIN",
+      "length": 10,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_4dabd8080f",
+      "sequence": "YQQKPVALINN",
+      "length": 11,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_5d87959cc3",
+      "sequence": "YQQKPVALINNQ",
+      "length": 12,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_541dbd44a2",
+      "sequence": "YQQKPVALINNQF",
+      "length": 13,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_be4f1fd6d7",
+      "sequence": "YQQKPVALINNQFLPYP",
+      "length": 17,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_9bff627c71",
+      "sequence": "YQQKPVALINNQFLPYPY",
+      "length": 18,
+      "phases": "gastric;intestinal"
+    },
+    {
+      "peptide_id": "pep_e12376943f",
+      "sequence": "YQQKPVALINNQFLPYPYY",
+      "length": 19,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_67ea3545dd",
+      "sequence": "YQQKPVALINNQFLPYPYYAKPA",
+      "length": 23,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_7354b2eb54",
+      "sequence": "YQQKPVALINNQFLPYPYYAKPAA",
+      "length": 24,
+      "phases": "gastric;intestinal"
+    },
+    {
+      "peptide_id": "pep_e4a76c1707",
+      "sequence": "YQQKPVALINNQFLPYPYYAKPAAV",
+      "length": 25,
+      "phases": "gastric;intestinal"
+    },
+    {
+      "peptide_id": "pep_054755248c",
+      "sequence": "YQQKPVALINNQFLPYPYYAKPAAVR",
+      "length": 26,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_4d4772760f",
+      "sequence": "YQQKPVALINNQFLPYPYYAKPAAVRS",
+      "length": 27,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_cabedb91f0",
+      "sequence": "YQQKPVALINNQFLPYPYYAKPAAVRSPAQ",
+      "length": 30,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_ff68ecf3df",
+      "sequence": "YQQKPVALINNQFLPYPYYAKPAAVRSPAQIL",
+      "length": 32,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_37e56c4d2b",
+      "sequence": "YQQKPVALINNQFLPYPYYAKPAAVRSPAQILQ",
+      "length": 33,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_8a61b56de9",
+      "sequence": "YQQKPVALINNQFLPYPYYAKPAAVRSPAQILQW",
+      "length": 34,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_0104b76d26",
+      "sequence": "YQQKPVALINNQFLPYPYYAKPAAVRSPAQILQWQVL",
+      "length": 37,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_d4391db3c6",
+      "sequence": "YQQLPGTAPK",
+      "length": 10,
+      "phases": "intestinal"
+    },
+    {
+      "peptide_id": "pep_8c889f4ff5",
+      "sequence": "YQQLPGTAPKL",
+      "length": 11,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_9083f8b92b",
+      "sequence": "YQRRPAIA",
+      "length": 8,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_b1703e719e",
+      "sequence": "YQRRPAIAIN",
+      "length": 10,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_309f3079c1",
+      "sequence": "YQRRPAIAINN",
+      "length": 11,
+      "phases": "gastric;intestinal"
+    },
+    {
+      "peptide_id": "pep_106cb62cac",
+      "sequence": "YQRRPAIAINNPYVP",
+      "length": 15,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_35845af15a",
+      "sequence": "YQRRPAIAINNPYVPR",
+      "length": 16,
+      "phases": "gastric;intestinal;undigested"
+    },
+    {
+      "peptide_id": "pep_e92fcfbeed",
+      "sequence": "YQRRPAIAINNPYVPRT",
+      "length": 17,
+      "phases": "gastric;intestinal"
+    },
+    {
+      "peptide_id": "pep_0f66c82a9b",
+      "sequence": "YQRRPAIAINNPYVPRTY",
+      "length": 18,
+      "phases": "gastric;intestinal;undigested"
+    },
+    {
+      "peptide_id": "pep_a4c11fb33d",
+      "sequence": "YQRRPAIAINNPYVPRTYY",
+      "length": 19,
+      "phases": "gastric;intestinal"
+    },
+    {
+      "peptide_id": "pep_b1c9178977",
+      "sequence": "YQRRPAIAINNPYVPRTYYA",
+      "length": 20,
+      "phases": "gastric;undigested"
+    },
+    {
+      "peptide_id": "pep_344e1d168e",
+      "sequence": "YQRRPAIAINNPYVPRTYYAN",
+      "length": 21,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_8eea88cc62",
+      "sequence": "YQRRPAIAINNPYVPRTYYANPA",
+      "length": 23,
+      "phases": "gastric;intestinal"
+    },
+    {
+      "peptide_id": "pep_92d1366ebe",
+      "sequence": "YQRRPAIAINNPYVPRTYYANPAVVRPH",
+      "length": 28,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_8f4c2d2454",
+      "sequence": "YQRRPAIAINNPYVPRTYYANPAVVRPHAQIPQ",
+      "length": 33,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_b7b176f95e",
+      "sequence": "YQRRPAIAINNPYVPRTYYANPAVVRPHAQIPQR",
+      "length": 34,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_c87029242e",
+      "sequence": "YQTNKAKHDELTYF",
+      "length": 14,
+      "phases": "gastric;intestinal"
+    },
+    {
+      "peptide_id": "pep_ec3c257f6d",
+      "sequence": "YQVLDVQRY",
+      "length": 9,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_fe8cc0b29d",
+      "sequence": "YQVLDVQRYPL",
+      "length": 11,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_6c52dd0062",
+      "sequence": "YQVLDVQRYPLY",
+      "length": 12,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_9ca6ab285b",
+      "sequence": "YQVLDVQRYPLYTQ",
+      "length": 14,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_1f12161903",
+      "sequence": "YREAPIDKKGNF",
+      "length": 12,
+      "phases": "gastric;undigested"
+    },
+    {
+      "peptide_id": "pep_da75b99309",
+      "sequence": "YREAPIDKKGNFNY",
+      "length": 14,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_181e323cd1",
+      "sequence": "YRIFTVNHKLLPVGRTVM",
+      "length": 18,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_d78a5e90e7",
+      "sequence": "YRIKYAPISGGDH",
+      "length": 13,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_ab9d435f29",
+      "sequence": "YRIKYAPISGGDHAEVDVPKSQQATTKTTL",
+      "length": 30,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_ef432d7386",
+      "sequence": "YRIKYAPISGGDHAEVDVPKSQQATTKTTLTGLRPGTEY",
+      "length": 39,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_547c29f57d",
+      "sequence": "YRQTGLAPGQEYE",
+      "length": 13,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_dcf1f279f8",
+      "sequence": "YRQTGLAPGQEYEISL",
+      "length": 16,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_8eb53f13c0",
+      "sequence": "YRTPNLGY",
+      "length": 8,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_ba0ab5221a",
+      "sequence": "YRTPNLGYS",
+      "length": 9,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_1c7c93cb08",
+      "sequence": "YRTPNLGYSF",
+      "length": 10,
+      "phases": "gastric;intestinal;undigested"
+    },
+    {
+      "peptide_id": "pep_f56b234077",
+      "sequence": "YRVGPLGF",
+      "length": 8,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_53a6f30259",
+      "sequence": "YRYYPYQSFQTPQHPSF",
+      "length": 17,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_e6c2cc0256",
+      "sequence": "YRYYPYQSFQTPQHPSFL",
+      "length": 18,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_61bcc78b86",
+      "sequence": "YSDHPEKVNKDDEEF",
+      "length": 15,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_23903009e2",
+      "sequence": "YSGSSKALVSTLVPLA",
+      "length": 16,
+      "phases": "undigested"
+    },
+    {
+      "peptide_id": "pep_7c7ceca8ef",
+      "sequence": "YSIGSSSEESAEVATEEVK",
+      "length": 19,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_76e9a4574c",
+      "sequence": "YSIITPNILRL",
+      "length": 11,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_c2d9bba4ac",
+      "sequence": "YSIITPNILRLESEET",
+      "length": 16,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_8a92716272",
+      "sequence": "YSLAMAASD",
+      "length": 9,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_c52dcbc06b",
+      "sequence": "YSLAMAASDI",
+      "length": 10,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_5ecc6eb970",
+      "sequence": "YSLAMAASDISL",
+      "length": 12,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_cc70ef2ded",
+      "sequence": "YSLAMAASDISLL",
+      "length": 13,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_d9af396742",
+      "sequence": "YSLAMAASDISLLDAQSAPLR",
+      "length": 21,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_512757806f",
+      "sequence": "YSLNGHEFDF",
+      "length": 10,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_876d78315b",
+      "sequence": "YSNSANDQNLGNGHGKDLLNGVKL",
+      "length": 24,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_a6892eb19b",
+      "sequence": "YSPNYNPQSRSVPPSASHVAPTET",
+      "length": 24,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_8502aed3a9",
+      "sequence": "YSRHPAENGKSNF",
+      "length": 13,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_94dee02b19",
+      "sequence": "YSRIPGLLSPHPL",
+      "length": 13,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_e472132b99",
+      "sequence": "YSRIPGLLSPHPLLQ",
+      "length": 15,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_a79ff65106",
+      "sequence": "YSRIPGLLSPHPLLQL",
+      "length": 16,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_daaa1d0639",
+      "sequence": "YSRIPGLLSPHPLLQLS",
+      "length": 17,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_295837a8a2",
+      "sequence": "YSRLKELTLED",
+      "length": 11,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_563ac54d14",
+      "sequence": "YSTYHTHGRYVPPGSTKRSPYEE",
+      "length": 23,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_cf23c95be8",
+      "sequence": "YSTYHTHGRYVPPGSTKRSPYEEVSAGNGGSN",
+      "length": 32,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_cc9d29ab6e",
+      "sequence": "YSVTANSKI",
+      "length": 9,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_514b3819d8",
+      "sequence": "YTDAPSFSDIPNPI",
+      "length": 14,
+      "phases": "gastric;intestinal"
+    },
+    {
+      "peptide_id": "pep_03bf3ead4f",
+      "sequence": "YTDAPSFSDIPNPIGSENSEKTTMPLW",
+      "length": 27,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_5487550552",
+      "sequence": "YTDGSVLLTHGGTEMGQGLHTKM",
+      "length": 23,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_a639e970ab",
+      "sequence": "YTEFTPTEK",
+      "length": 9,
+      "phases": "gastric;intestinal"
+    },
+    {
+      "peptide_id": "pep_cac5a5040e",
+      "sequence": "YTEFTPTEKDE",
+      "length": 11,
+      "phases": "gastric;intestinal;undigested"
+    },
+    {
+      "peptide_id": "pep_f6eace0562",
+      "sequence": "YTEFTPTEKDEY",
+      "length": 12,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_6f0168292b",
+      "sequence": "YTEGGFVEGVNK",
+      "length": 12,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_0ec3337bef",
+      "sequence": "YTEGGFVEGVNKK",
+      "length": 13,
+      "phases": "intestinal"
+    },
+    {
+      "peptide_id": "pep_2ab60ea033",
+      "sequence": "YTEGGFVEGVNKKL",
+      "length": 14,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_ed56a4ab05",
+      "sequence": "YTEGGFVEGVNKKLGL",
+      "length": 16,
+      "phases": "gastric;undigested"
+    },
+    {
+      "peptide_id": "pep_a7604823e3",
+      "sequence": "YTEGGFVEGVNKKLGLLGDS",
+      "length": 20,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_0f6480686d",
+      "sequence": "YTEGGFVEGVNKKLGLLGDSVD",
+      "length": 22,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_0d05101ffb",
+      "sequence": "YTEGGFVEGVNKKLGLLGDSVDI",
+      "length": 23,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_097bd279e9",
+      "sequence": "YTGLSKPREGFPSF",
+      "length": 14,
+      "phases": "gastric;intestinal"
+    },
+    {
+      "peptide_id": "pep_837ccf652b",
+      "sequence": "YTGLSKPREGFPSFQA",
+      "length": 16,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_1063c1c474",
+      "sequence": "YTIEILKVE",
+      "length": 9,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_d97305c4f1",
+      "sequence": "YTIYLNGDKAEA",
+      "length": 12,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_2e1c5fcf5d",
+      "sequence": "YTKGRVMPVL",
+      "length": 10,
+      "phases": "intestinal"
+    },
+    {
+      "peptide_id": "pep_056df0bf10",
+      "sequence": "YTKGRVMPVLK",
+      "length": 11,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_269813ae99",
+      "sequence": "YTKGRVMPVLKSPTIPFFDPQIPK",
+      "length": 24,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_6ca95e61da",
+      "sequence": "YTKGRVMPVLKSPTIPFFDPQIPKL",
+      "length": 25,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_50c3c03d7a",
+      "sequence": "YTKGRVMPVLKSPTIPFFDPQIPKLT",
+      "length": 26,
+      "phases": "gastric;intestinal"
+    },
+    {
+      "peptide_id": "pep_12870e9c76",
+      "sequence": "YTKGRVMPVLKSPTIPFFDPQIPKLTD",
+      "length": 27,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_351a200978",
+      "sequence": "YTKGRVMPVLKSPTIPFFDPQIPKLTDL",
+      "length": 28,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_b98b751821",
+      "sequence": "YTKGRVMPVLKSPTIPFFDPQIPKLTDLEN",
+      "length": 30,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_7c366fb071",
+      "sequence": "YTKGRVMPVLKSPTIPFFDPQIPKLTDLENL",
+      "length": 31,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_5743a715a1",
+      "sequence": "YTKGRVMPVLKSPTIPFFDPQIPKLTDLENLHLPLP",
+      "length": 36,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_c28b2b70e8",
+      "sequence": "YTKKVPQVSTPT",
+      "length": 12,
+      "phases": "gastric;intestinal"
+    },
+    {
+      "peptide_id": "pep_787bf5ee4e",
+      "sequence": "YTKKVPQVSTPTL",
+      "length": 13,
+      "phases": "gastric;intestinal"
+    },
+    {
+      "peptide_id": "pep_d3823f8488",
+      "sequence": "YTKLVGQDVARF",
+      "length": 12,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_a498e8ec6c",
+      "sequence": "YTLGVKQL",
+      "length": 8,
+      "phases": "gastric;intestinal"
+    },
+    {
+      "peptide_id": "pep_227f64baf7",
+      "sequence": "YTLLRNQPEPTM",
+      "length": 12,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_f7b792eec0",
+      "sequence": "YTLLRNQPEPTME",
+      "length": 13,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_fe7a3829b4",
+      "sequence": "YTLLRNQPEPTMEE",
+      "length": 14,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_168bd151bc",
+      "sequence": "YTLLRNQPEPTMEEIENAFQGNL",
+      "length": 23,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_f97973f175",
+      "sequence": "YTLLRNQPEPTVEE",
+      "length": 14,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_8795a5eaba",
+      "sequence": "YTLQDKAQVAD",
+      "length": 11,
+      "phases": "gastric;undigested"
+    },
+    {
+      "peptide_id": "pep_1b3be17aba",
+      "sequence": "YTLRIFAEKGPQKSSTIT",
+      "length": 18,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_cd4f9281df",
+      "sequence": "YTLRIFAEKGPQKSSTITAKF",
+      "length": 21,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_a8cfb6ca05",
+      "sequence": "YTTSSQLTL",
+      "length": 9,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_4569ad6bee",
+      "sequence": "YTVLQNEDTKSG",
+      "length": 12,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_f095d35dbd",
+      "sequence": "YVAVEERKAAGSRDVSL",
+      "length": 17,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_4407558406",
+      "sequence": "YVAVEERKAAGSRDVSLAKADAAPDEKVLDSGF",
+      "length": 33,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_ebc9f521f5",
+      "sequence": "YVAVEERKAAGSRDVSLAKADAAPDEKVLDSGFREIENK",
+      "length": 39,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_1040602442",
+      "sequence": "YVAVESRVKGSQGAKQVKAAPAGAAIQS",
+      "length": 28,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_d739b98df4",
+      "sequence": "YVDKNFINNPLAQAD",
+      "length": 15,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_a3e3849332",
+      "sequence": "YVEELKPT",
+      "length": 8,
+      "phases": "intestinal"
+    },
+    {
+      "peptide_id": "pep_d6ec29af0a",
+      "sequence": "YVEELKPTP",
+      "length": 9,
+      "phases": "intestinal"
+    },
+    {
+      "peptide_id": "pep_3044f40992",
+      "sequence": "YVEELKPTPE",
+      "length": 10,
+      "phases": "gastric;intestinal;undigested"
+    },
+    {
+      "peptide_id": "pep_563948fad7",
+      "sequence": "YVEELKPTPEG",
+      "length": 11,
+      "phases": "gastric;intestinal;undigested"
+    },
+    {
+      "peptide_id": "pep_6203fba611",
+      "sequence": "YVEELKPTPEGD",
+      "length": 12,
+      "phases": "gastric;intestinal;undigested"
+    },
+    {
+      "peptide_id": "pep_7b85c18cc0",
+      "sequence": "YVEELKPTPEGDL",
+      "length": 13,
+      "phases": "gastric;intestinal;undigested"
+    },
+    {
+      "peptide_id": "pep_998852a574",
+      "sequence": "YVEELKPTPEGDLE",
+      "length": 14,
+      "phases": "gastric;intestinal;undigested"
+    },
+    {
+      "peptide_id": "pep_36cfaa6905",
+      "sequence": "YVEELKPTPEGDLEI",
+      "length": 15,
+      "phases": "gastric;intestinal"
+    },
+    {
+      "peptide_id": "pep_4b2e12d1b7",
+      "sequence": "YVEELKPTPEGDLEIL",
+      "length": 16,
+      "phases": "gastric;intestinal;undigested"
+    },
+    {
+      "peptide_id": "pep_72a39e022b",
+      "sequence": "YVEELKPTPEGDLEILL",
+      "length": 17,
+      "phases": "gastric;intestinal"
+    },
+    {
+      "peptide_id": "pep_3719d6b1b3",
+      "sequence": "YVEELKPTPEGDLEILLQ",
+      "length": 18,
+      "phases": "intestinal"
+    },
+    {
+      "peptide_id": "pep_8c7890cd83",
+      "sequence": "YVEKGTQGKIVDL",
+      "length": 13,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_336857ddff",
+      "sequence": "YVEQLKPTPE",
+      "length": 10,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_4525eab577",
+      "sequence": "YVFGKPFATPTGYRPQDRTVSKAM",
+      "length": 24,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_67658fa8c3",
+      "sequence": "YVGDEAQSKRGIL",
+      "length": 13,
+      "phases": "gastric;intestinal;undigested"
+    },
+    {
+      "peptide_id": "pep_ff96c1119e",
+      "sequence": "YVGDEAQSKRGILT",
+      "length": 14,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_67252249a3",
+      "sequence": "YVINQAGDTIFNRAKL",
+      "length": 16,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_a6361dc431",
+      "sequence": "YVISYTGEKVPEITR",
+      "length": 15,
+      "phases": "intestinal"
+    },
+    {
+      "peptide_id": "pep_c4bf8da84f",
+      "sequence": "YVISYTGEKVPEITRTVSGNTVE",
+      "length": 23,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_eccd6c93bb",
+      "sequence": "YVISYTGEKVPEITRTVSGNTVEY",
+      "length": 24,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_97f23984cd",
+      "sequence": "YVLSRYPSY",
+      "length": 9,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_7afedf4e64",
+      "sequence": "YVNKEIQNAVNG",
+      "length": 12,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_c4afbcbd4e",
+      "sequence": "YVNKEIQNAVNGV",
+      "length": 13,
+      "phases": "intestinal"
+    },
+    {
+      "peptide_id": "pep_0d41f9984a",
+      "sequence": "YVNKEIQNAVNGVK",
+      "length": 14,
+      "phases": "gastric;intestinal"
+    },
+    {
+      "peptide_id": "pep_8bb4650916",
+      "sequence": "YVNKEIQNAVNGVKQ",
+      "length": 15,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_2b29bd9bf6",
+      "sequence": "YVNKEIQNAVNGVKQI",
+      "length": 16,
+      "phases": "intestinal"
+    },
+    {
+      "peptide_id": "pep_b98f9de31c",
+      "sequence": "YVNKEIQNAVNGVKQIK",
+      "length": 17,
+      "phases": "gastric;intestinal"
+    },
+    {
+      "peptide_id": "pep_c704ef9a99",
+      "sequence": "YVNKEIQNAVNGVKQIKT",
+      "length": 18,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_976ea95449",
+      "sequence": "YVNKEIQNAVNGVKQIKTLIEK",
+      "length": 22,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_f116641a87",
+      "sequence": "YVNKEIQNAVNGVKQIKTLIEKTNEER",
+      "length": 27,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_d600d8ff72",
+      "sequence": "YVPFPPF",
+      "length": 7,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_0be5ac0cc6",
+      "sequence": "YVPFPPFS",
+      "length": 8,
+      "phases": "gastric;intestinal"
+    },
+    {
+      "peptide_id": "pep_33f1390ffb",
+      "sequence": "YVPFPPFSD",
+      "length": 9,
+      "phases": "gastric;intestinal"
+    },
+    {
+      "peptide_id": "pep_47d912ae2e",
+      "sequence": "YVPFPPFSDI",
+      "length": 10,
+      "phases": "gastric;intestinal"
+    },
+    {
+      "peptide_id": "pep_3fda156189",
+      "sequence": "YVPFPPFSDISN",
+      "length": 12,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_2f48414cca",
+      "sequence": "YVPFPPFSDISNP",
+      "length": 13,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_c33dc300e7",
+      "sequence": "YVPFPPFSDISNPT",
+      "length": 14,
+      "phases": "gastric;intestinal"
+    },
+    {
+      "peptide_id": "pep_c42432edd7",
+      "sequence": "YVPFPPFSDISNPTA",
+      "length": 15,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_5e60b6dd48",
+      "sequence": "YVPFPPFSDISNPTAH",
+      "length": 16,
+      "phases": "gastric;intestinal"
+    },
+    {
+      "peptide_id": "pep_2647e79639",
+      "sequence": "YVPFPPFSDISNPTAHE",
+      "length": 17,
+      "phases": "gastric;intestinal"
+    },
+    {
+      "peptide_id": "pep_249be31435",
+      "sequence": "YVPFPPFSDISNPTAHEN",
+      "length": 18,
+      "phases": "gastric;intestinal"
+    },
+    {
+      "peptide_id": "pep_08aeab52bb",
+      "sequence": "YVPFPPFSDISNPTAHENY",
+      "length": 19,
+      "phases": "gastric;intestinal"
+    },
+    {
+      "peptide_id": "pep_050382a73c",
+      "sequence": "YVPFPPFSDISNPTAHENYE",
+      "length": 20,
+      "phases": "gastric;intestinal"
+    },
+    {
+      "peptide_id": "pep_ac02141ab3",
+      "sequence": "YVPFPPFSDISNPTAHENYEK",
+      "length": 21,
+      "phases": "gastric;intestinal"
+    },
+    {
+      "peptide_id": "pep_0e48dbe646",
+      "sequence": "YVPFPPFSDISNPTAHENYEKN",
+      "length": 22,
+      "phases": "gastric;intestinal"
+    },
+    {
+      "peptide_id": "pep_946b1f6144",
+      "sequence": "YVPFPPFSDISNPTAHENYEKNN",
+      "length": 23,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_31458ffd72",
+      "sequence": "YVPFPPFSDISNPTAHENYEKNNV",
+      "length": 24,
+      "phases": "gastric;intestinal"
+    },
+    {
+      "peptide_id": "pep_d04dced8c6",
+      "sequence": "YVPFPPFSDISNPTAHENYEKNNVM",
+      "length": 25,
+      "phases": "gastric;intestinal;undigested"
+    },
+    {
+      "peptide_id": "pep_c13ffd1515",
+      "sequence": "YVPFPPFSDISNPTAHENYEKNNVMLQ",
+      "length": 27,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_e67f215acf",
+      "sequence": "YVPFPPFSDISNPTAHENYEKNNVMLQW",
+      "length": 28,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_45c87f8ea1",
+      "sequence": "YVPLGTQYT",
+      "length": 9,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_d52a9a7437",
+      "sequence": "YVPLGTQYTD",
+      "length": 10,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_cdd13ac057",
+      "sequence": "YVPLGTQYTDA",
+      "length": 11,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_c511e7b9a0",
+      "sequence": "YVPLGTQYTDAP",
+      "length": 12,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_008e147cf0",
+      "sequence": "YVPLGTQYTDAPS",
+      "length": 13,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_9608ce5745",
+      "sequence": "YVPLGTQYTDAPSF",
+      "length": 14,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_2582ef2d1a",
+      "sequence": "YVPLGTQYTDAPSFSDIPN",
+      "length": 19,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_1bbccdac71",
+      "sequence": "YVPLGTQYTDAPSFSDIPNPI",
+      "length": 21,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_ab45c4bae8",
+      "sequence": "YVPLGTQYTDAPSFSDIPNPIG",
+      "length": 22,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_f208bc0bc6",
+      "sequence": "YVPLGTQYTDAPSFSDIPNPIGSE",
+      "length": 24,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_04cafee944",
+      "sequence": "YVPLGTQYTDAPSFSDIPNPIGSENSEK",
+      "length": 28,
+      "phases": "gastric;intestinal"
+    },
+    {
+      "peptide_id": "pep_91a886c105",
+      "sequence": "YVPLGTQYTDAPSFSDIPNPIGSENSEKTTMP",
+      "length": 32,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_064fead60e",
+      "sequence": "YVPLGTQYTDAPSFSDIPNPIGSENSEKTTMPL",
+      "length": 33,
+      "phases": "gastric;intestinal"
+    },
+    {
+      "peptide_id": "pep_11f633ee94",
+      "sequence": "YVPLGTQYTDAPSFSDIPNPIGSENSEKTTMPLW",
+      "length": 34,
+      "phases": "gastric;undigested"
+    },
+    {
+      "peptide_id": "pep_d2973347d5",
+      "sequence": "YVPNSYPY",
+      "length": 8,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_c9c40c7a84",
+      "sequence": "YVPNSYPYY",
+      "length": 9,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_4bafaef59e",
+      "sequence": "YVPNSYPYYGTN",
+      "length": 12,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_5980a308c6",
+      "sequence": "YVPNSYPYYGTNL",
+      "length": 13,
+      "phases": "gastric;intestinal;undigested"
+    },
+    {
+      "peptide_id": "pep_a538b9df73",
+      "sequence": "YVPNSYPYYGTNLY",
+      "length": 14,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_7c6ddb1d2d",
+      "sequence": "YVPNSYPYYGTNLYQ",
+      "length": 15,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_c17466d2f2",
+      "sequence": "YVPNSYPYYGTNLYQR",
+      "length": 16,
+      "phases": "intestinal"
+    },
+    {
+      "peptide_id": "pep_41b34aec20",
+      "sequence": "YVPPSSTDRSPY",
+      "length": 12,
+      "phases": "intestinal"
+    },
+    {
+      "peptide_id": "pep_3eeb6cd09a",
+      "sequence": "YVPPSSTDRSPYE",
+      "length": 13,
+      "phases": "intestinal"
+    },
+    {
+      "peptide_id": "pep_97bf126cc5",
+      "sequence": "YVPPSSTDRSPYEK",
+      "length": 14,
+      "phases": "intestinal"
+    },
+    {
+      "peptide_id": "pep_de556e95ee",
+      "sequence": "YVQELQKHQETAEKTKRVSTKEI",
+      "length": 23,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_d504c47930",
+      "sequence": "YVQTVKSSKGGPGSAVSPYPTFNPSSD",
+      "length": 27,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_0eef96c8cf",
+      "sequence": "YVRLGSL",
+      "length": 7,
+      "phases": "gastric;intestinal"
+    },
+    {
+      "peptide_id": "pep_44edf3b50d",
+      "sequence": "YVRLGSLSTKL",
+      "length": 11,
+      "phases": "gastric;intestinal"
+    },
+    {
+      "peptide_id": "pep_435f59f952",
+      "sequence": "YVRLGSLSTKLHSRA",
+      "length": 15,
+      "phases": "gastric;intestinal"
+    },
+    {
+      "peptide_id": "pep_5c9b4c50d7",
+      "sequence": "YVRLGSLSTKLHSRAYQQAL",
+      "length": 20,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_71c8266022",
+      "sequence": "YVRSKIAEYMNHL",
+      "length": 13,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_f797b5adcb",
+      "sequence": "YVSQFEGSALGKQLNLKL",
+      "length": 18,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_fb255697f5",
+      "sequence": "YVTIIDAPGH",
+      "length": 10,
+      "phases": "intestinal"
+    },
+    {
+      "peptide_id": "pep_14db420a40",
+      "sequence": "YVTIIDAPGHRDF",
+      "length": 13,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_75e895c794",
+      "sequence": "YWLLVLLAALNTLLQWLLRPLM",
+      "length": 22,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_78f5ff8729",
+      "sequence": "YYANPAVVRPHA",
+      "length": 12,
+      "phases": "intestinal"
+    },
+    {
+      "peptide_id": "pep_def8297826",
+      "sequence": "YYANPAVVRPHAQIPQ",
+      "length": 16,
+      "phases": "gastric;intestinal"
+    },
+    {
+      "peptide_id": "pep_190a84e16a",
+      "sequence": "YYANPAVVRPHAQIPQR",
+      "length": 17,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_d992b915c2",
+      "sequence": "YYANPAVVRPHAQIPQRQYL",
+      "length": 20,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_1a7c0e1f17",
+      "sequence": "YYANPAVVRPHAQIPQRQYLPNSHPPTV",
+      "length": 28,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_c429da8354",
+      "sequence": "YYANPAVVRPHAQIPQRQYLPNSHPPTVVRRPNLHPSF",
+      "length": 38,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_ac28d3bacf",
+      "sequence": "YYHGDHPVANSL",
+      "length": 12,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_0965756aa7",
+      "sequence": "YYLHPVL",
+      "length": 7,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_4f07ac03a9",
+      "sequence": "YYPQIM",
+      "length": 6,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_ef8e4f2d88",
+      "sequence": "YYPQIMQ",
+      "length": 7,
+      "phases": "gastric;intestinal"
+    },
+    {
+      "peptide_id": "pep_40c7fa7cdc",
+      "sequence": "YYPQIMQY",
+      "length": 8,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_99fc5cf8d1",
+      "sequence": "YYPQIMQYVPFPPFSDISNPTAH",
+      "length": 23,
+      "phases": "intestinal"
+    },
+    {
+      "peptide_id": "pep_e8cbc665a7",
+      "sequence": "YYPQIMQYVPFPPFSDISNPTAHE",
+      "length": 24,
+      "phases": "intestinal"
+    },
+    {
+      "peptide_id": "pep_fa336ce9fa",
+      "sequence": "YYPQIMQYVPFPPFSDISNPTAHEN",
+      "length": 25,
+      "phases": "gastric;intestinal"
+    },
+    {
+      "peptide_id": "pep_2d956e5f03",
+      "sequence": "YYPQIMQYVPFPPFSDISNPTAHENYE",
+      "length": 27,
+      "phases": "gastric;intestinal"
+    },
+    {
+      "peptide_id": "pep_daf30201c6",
+      "sequence": "YYPQIMQYVPFPPFSDISNPTAHENYEK",
+      "length": 28,
+      "phases": "gastric;intestinal"
+    },
+    {
+      "peptide_id": "pep_ce3284a83e",
+      "sequence": "YYPQIMQYVPFPPFSDISNPTAHENYEKNNV",
+      "length": 31,
+      "phases": "intestinal"
+    },
+    {
+      "peptide_id": "pep_e5624bd0b5",
+      "sequence": "YYPQIMQYVPFPPFSDISNPTAHENYEKNNVMLQ",
+      "length": 34,
+      "phases": "intestinal"
+    },
+    {
+      "peptide_id": "pep_a62066ee16",
+      "sequence": "YYQQKPVA",
+      "length": 8,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_06043a00a3",
+      "sequence": "YYQQKPVAL",
+      "length": 9,
+      "phases": "gastric;intestinal;undigested"
+    },
+    {
+      "peptide_id": "pep_d3fa499e2b",
+      "sequence": "YYQQKPVALI",
+      "length": 10,
+      "phases": "gastric;undigested"
+    },
+    {
+      "peptide_id": "pep_a8825dfabc",
+      "sequence": "YYQQKPVALINN",
+      "length": 12,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_74145599e9",
+      "sequence": "YYQQKPVALINNQF",
+      "length": 14,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_8648dc7471",
+      "sequence": "YYQQKPVALINNQFLPYPYYAKPA",
+      "length": 24,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_49d6666569",
+      "sequence": "YYQQKPVALINNQFLPYPYYAKPAA",
+      "length": 25,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_e7ae079310",
+      "sequence": "YYQQKPVALINNQFLPYPYYAKPAAVRS",
+      "length": 28,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_423f70ab3c",
+      "sequence": "YYQQKPVALINNQFLPYPYYAKPAAVRSPAQILQ",
+      "length": 34,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_0155e6ed80",
+      "sequence": "YYSNSANDQNLGNGHGKDLLNGVKL",
+      "length": 25,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_9199aafa16",
+      "sequence": "YYTEFTPTEKDE",
+      "length": 12,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_cd97de36c4",
+      "sequence": "YYTEFTPTEKDEY",
+      "length": 13,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_d049694cff",
+      "sequence": "YYVPLGTQ",
+      "length": 8,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_038f0adf41",
+      "sequence": "YYVPLGTQY",
+      "length": 9,
+      "phases": "gastric;intestinal"
+    },
+    {
+      "peptide_id": "pep_f5c9a12826",
+      "sequence": "YYVPLGTQYT",
+      "length": 10,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_9e25dcda3f",
+      "sequence": "YYVPLGTQYTD",
+      "length": 11,
+      "phases": "gastric;intestinal"
+    },
+    {
+      "peptide_id": "pep_a1c6f306c7",
+      "sequence": "YYVPLGTQYTDA",
+      "length": 12,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_12aa26ed3c",
+      "sequence": "YYVPLGTQYTDAP",
+      "length": 13,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_2c9128c66f",
+      "sequence": "YYVPLGTQYTDAPS",
+      "length": 14,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_975efbd924",
+      "sequence": "YYVPLGTQYTDAPSF",
+      "length": 15,
+      "phases": "gastric;intestinal;undigested"
+    },
+    {
+      "peptide_id": "pep_7ada229d3f",
+      "sequence": "YYVPLGTQYTDAPSFSD",
+      "length": 17,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_3f58c29f1b",
+      "sequence": "YYVPLGTQYTDAPSFSDIP",
+      "length": 19,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_d2ac5fe2c0",
+      "sequence": "YYVPLGTQYTDAPSFSDIPN",
+      "length": 20,
+      "phases": "gastric;undigested"
+    },
+    {
+      "peptide_id": "pep_29342fe8e5",
+      "sequence": "YYVPLGTQYTDAPSFSDIPNP",
+      "length": 21,
+      "phases": "gastric;intestinal"
+    },
+    {
+      "peptide_id": "pep_57fc2e269c",
+      "sequence": "YYVPLGTQYTDAPSFSDIPNPI",
+      "length": 22,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_47c66e64f9",
+      "sequence": "YYVPLGTQYTDAPSFSDIPNPIG",
+      "length": 23,
+      "phases": "gastric;undigested"
+    },
+    {
+      "peptide_id": "pep_fbfdb7dda7",
+      "sequence": "YYVPLGTQYTDAPSFSDIPNPIGS",
+      "length": 24,
+      "phases": "gastric;undigested"
+    },
+    {
+      "peptide_id": "pep_ca0f0ee90c",
+      "sequence": "YYVPLGTQYTDAPSFSDIPNPIGSE",
+      "length": 25,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_452e1024e9",
+      "sequence": "YYVPLGTQYTDAPSFSDIPNPIGSEN",
+      "length": 26,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_0c0cd33756",
+      "sequence": "YYVPLGTQYTDAPSFSDIPNPIGSENS",
+      "length": 27,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_d32a38e5bd",
+      "sequence": "YYVPLGTQYTDAPSFSDIPNPIGSENSE",
+      "length": 28,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_ec1ca6c71f",
+      "sequence": "YYVPLGTQYTDAPSFSDIPNPIGSENSEK",
+      "length": 29,
+      "phases": "gastric;intestinal"
+    },
+    {
+      "peptide_id": "pep_9437010795",
+      "sequence": "YYVPLGTQYTDAPSFSDIPNPIGSENSEKT",
+      "length": 30,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_7a93a0b539",
+      "sequence": "YYVPLGTQYTDAPSFSDIPNPIGSENSEKTT",
+      "length": 31,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_80817205a6",
+      "sequence": "YYVPLGTQYTDAPSFSDIPNPIGSENSEKTTM",
+      "length": 32,
+      "phases": "gastric;intestinal"
+    },
+    {
+      "peptide_id": "pep_12f0eb7fa8",
+      "sequence": "YYVPLGTQYTDAPSFSDIPNPIGSENSEKTTMP",
+      "length": 33,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_3602ea8f9d",
+      "sequence": "YYVPLGTQYTDAPSFSDIPNPIGSENSEKTTMPL",
+      "length": 34,
+      "phases": "gastric;intestinal;undigested"
+    },
+    {
+      "peptide_id": "pep_0f12bb75b5",
+      "sequence": "YYVPLGTQYTDAPSFSDIPNPIGSENSEKTTMPLW",
+      "length": 35,
+      "phases": "gastric;intestinal;undigested"
+    },
+    {
+      "peptide_id": "pep_d9bab2c07c",
+      "sequence": "YYVPLGTQYTDAPSFSDIPNPIGSENSGKTTMPLW",
+      "length": 35,
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_4693994e78",
+      "sequence": "YYVPNSYPYYGTN",
+      "length": 13,
+      "phases": "intestinal"
+    },
+    {
+      "peptide_id": "pep_9921b94f88",
+      "sequence": "YYVPNSYPYYGTNL",
+      "length": 14,
+      "phases": "gastric"
+    }
+  ],
+  "template_ligand": [
+    {
+      "name": "met_enkephalin",
+      "sequence": "YGGFM",
+      "c_term": "free",
+      "role": "full_agonist",
+      "pKi": "NA",
+      "pmid": "NA",
+      "use": "template"
+    }
+  ]
+}

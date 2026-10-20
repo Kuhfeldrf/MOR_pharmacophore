@@ -1,0 +1,23 @@
+{
+  "generated": "2026-10-20",
+  "source_workbook": "combine data sets simplifed.xlsx",
+  "source_sha256": "0efcfea10cf00637dcc99089ffcaacd194d143701e5d256372048f6c9efc1553",
+  "sheet_counts": {
+    "abbott": 2803,
+    "Sheet1": 0,
+    "Preterm_gastric": 10762,
+    "pre-term_intestinal": 6617,
+    "term_intestinial": 3677
+  },
+  "unique_peptides": 14571,
+  "tyr_starting": 640,
+  "rejected": 1,
+  "rejects": [
+    {
+      "sheet": "abbott",
+      "value": "B",
+      "reason": "non-standard residue"
+    }
+  ],
+  "min_length": 2
+}
