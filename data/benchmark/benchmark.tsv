@@ -1,0 +1,236 @@
+id	sequence	set	c_term	pKi	family	length
+act__CHEMBL217379	YGGFLRRI	active	free	7.451	YGGFL	8
+act__CHEMBL2369407	YGPFL	active	amide	4.81	YGPFL	5
+act__CHEMBL2369394	YGPFLR	active	amide	4.71	YGPFL	6
+act__CHEMBL2369391	YGPFLRR	active	amide	4.9	YGPFL	7
+act__CHEMBL2369395	YGPFLRRI	active	amide	4.79	YGPFL	8
+act__CHEMBL2369390	YGPFLRRIR	active	amide	5.22	YGPFL	9
+act__CHEMBL8234	YGGFL	active	free	8.025	YGGFL	5
+act__CHEMBL216640	YGGFLRRIRPK	active	amide	8.25	YGGFL	11
+act__CHEMBL407832	YGGFLRRIR	active	free	7.623	YGGFL	9
+act__CHEMBL63188	YGGFLR	active	free	7.391	YGGFL	6
+act__CHEMBL2369370	YGPFLRRR	active	amide	5.509	YGPFL	8
+act__CHEMBL293465	YGGFLRR	active	free	7.42	YGGFL	7
+act__CHEMBL362991	YPFP	active	amide	6.824	YPFP	4
+act__CHEMBL216696	YGGFLRRARPK	active	amide	8.706	YGGFL	11
+act__CHEMBL8072	FPSKP	active	free	5.125	FPSKP	5
+act__CHEMBL410260	LRHYINLITRQRY	active	free	5.409	LRHYI	13
+act__CHEMBL428276	SALRHYINLITRQRY	active	free	5.292	SALRH	15
+act__CHEMBL396460	FGGFTGARKSARKLANQ	active	free	6.36	FGGFT	17
+act__CHEMBL333357	YPFF	active	amide	8.513	YPFF	4
+act__CHEMBL13786	YGGFM	active	free	8.699	YGGFM	5
+act__CHEMBL247368	YGGFM	active	amide	7.921	YGGFM	5
+act__CHEMBL411557	YGGFLRRIRPKLKWDNQ	active	free	8.027	YGGFL	17
+act__CHEMBL316446	YPWF	active	amide	8.712	YPWF	4
+act__CHEMBL455502	YGWFL	active	amide	6.949	YGWFL	5
+act__CHEMBL504973	YGGWL	active	amide	7.917	YGGWL	5
+act__CHEMBL35838	YGGFL	active	amide	7.943	YGGFL	5
+act__CHEMBL466147	YPAA	active	amide	6.152	YPAA	4
+act__CHEMBL445690	YAWF	active	amide	5.496	YAWF	4
+act__CHEMBL387816	YPAF	active	amide	6.646	YPAF	4
+act__CHEMBL512955	YPWA	active	amide	7.138	YPWA	4
+act__CHEMBL2158957	YPWFFGLM	active	amide	9.137	YPWFF	8
+act__CHEMBL2158955	YPWFGLM	active	amide	8.796	YPWFG	7
+act__CHEMBL2409222	YGGFLRKYPK	active	free	8.137	YGGFL	10
+act__CHEMBL3810101	RYYRIK	active	amide	5.502	RYYRI	6
+act__CHEMBL405618	YGGFLRRIRPKLK	active	free	8.097	YGGFL	13
+act__CHEMBL285479	YAFGYPS	active	amide	5.663	YAFGY	7
+scr__CHEMBL217379	LYFGGRRI	scramble	free			8
+scr__CHEMBL2369407	GPLYF	scramble	amide			5
+scr__CHEMBL2369394	FRYGLP	scramble	amide			6
+scr__CHEMBL2369391	RRPGLYF	scramble	amide			7
+scr__CHEMBL2369395	FLIRGRYP	scramble	amide			8
+scr__CHEMBL2369390	RLRYFGPRI	scramble	amide			9
+scr__CHEMBL8234	GFGLY	scramble	free			5
+scr__CHEMBL216640	PRYRLGGRKFI	scramble	amide			11
+scr__CHEMBL407832	RLGFYRIGR	scramble	free			9
+scr__CHEMBL63188	RGGFLY	scramble	free			6
+scr__CHEMBL2369370	RRYLFGRP	scramble	amide			8
+scr__CHEMBL293465	YLGRRFG	scramble	free			7
+scr__CHEMBL362991	PFYP	scramble	amide			4
+scr__CHEMBL216696	GRAGLRPFRKY	scramble	amide			11
+scr__CHEMBL8072	PKSPF	scramble	free			5
+scr__CHEMBL410260	LYRQRNLIHRYTI	scramble	free			13
+scr__CHEMBL428276	HQILSYAYRIRRLNT	scramble	free			15
+scr__CHEMBL396460	ANGLTGRQFKSARKAGF	scramble	free			17
+scr__CHEMBL333357	FPYF	scramble	amide			4
+scr__CHEMBL13786	FGMYG	scramble	free			5
+scr__CHEMBL247368	GYGMF	scramble	amide			5
+scr__CHEMBL411557	GPNIQLWLRDRKFYKRG	scramble	free			17
+scr__CHEMBL316446	PFYW	scramble	amide			4
+scr__CHEMBL455502	LGYFW	scramble	amide			5
+scr__CHEMBL504973	GLYGW	scramble	amide			5
+scr__CHEMBL35838	GYGLF	scramble	amide			5
+scr__CHEMBL466147	AAPY	scramble	amide			4
+scr__CHEMBL445690	YWAF	scramble	amide			4
+scr__CHEMBL387816	FAPY	scramble	amide			4
+scr__CHEMBL512955	YWAP	scramble	amide			4
+scr__CHEMBL2158957	LMFFGYPW	scramble	amide			8
+scr__CHEMBL2158955	YFWLPGM	scramble	amide			7
+scr__CHEMBL2409222	YFLKYGKPGR	scramble	free			10
+scr__CHEMBL3810101	IYYKRR	scramble	amide			6
+scr__CHEMBL405618	LPRRIYGKFGRLK	scramble	free			13
+scr__CHEMBL285479	FYAYGPS	scramble	amide			7
+hard__pep_ccf47f6436	YESWVPKL	tyr_hard	auto			8
+hard__pep_71860e9f34	YAVAVVKK	tyr_hard	auto			8
+hard__pep_9083f8b92b	YQRRPAIA	tyr_hard	auto			8
+hard__pep_1173dad91c	YEKYLGPQ	tyr_hard	auto			8
+hard__pep_c19607a5e4	YEKNNVML	tyr_hard	auto			8
+hard__pep_f56b234077	YRVGPLGF	tyr_hard	auto			8
+hard__pep_a3e3849332	YVEELKPT	tyr_hard	auto			8
+hard__pep_18af6ba4fa	YKTPDNID	tyr_hard	auto			8
+hard__pep_d2973347d5	YVPNSYPY	tyr_hard	auto			8
+hard__pep_d600d8ff72	YVPFPPF	tyr_hard	auto			7
+hard__pep_81ea61a684	YKTWGLHL	tyr_hard	auto			8
+hard__pep_fb8283f57e	YKSQQSSD	tyr_hard	auto			8
+hard__pep_265e7ad177	YGTNLYQR	tyr_hard	auto			8
+hard__pep_ee2f97fe4b	YQKFPQY	tyr_hard	auto			7
+hard__pep_0965756aa7	YYLHPVL	tyr_hard	auto			7
+hard__pep_4f07ac03a9	YYPQIM	tyr_hard	auto			6
+hard__pep_0be5ac0cc6	YVPFPPFS	tyr_hard	auto			8
+hard__pep_a62066ee16	YYQQKPVA	tyr_hard	auto			8
+hard__pep_a498e8ec6c	YTLGVKQL	tyr_hard	auto			8
+hard__pep_c6ab658c81	YPFVEPIP	tyr_hard	auto			8
+hard__pep_445a9adf6e	YQKFPQYLQ	tyr_hard	auto			9
+hard__pep_711b23ce43	YALPHAILR	tyr_hard	auto			9
+hard__pep_bb0c853066	YEKYLGPQY	tyr_hard	auto			9
+hard__pep_12bf99e539	YKVPLAGLE	tyr_hard	auto			9
+hard__pep_22f333b382	YQQKPVA	tyr_hard	auto			7
+hard__pep_ef8e4f2d88	YYPQIMQ	tyr_hard	auto			7
+hard__pep_65fedbea30	YEVSQLKD	tyr_hard	auto			8
+hard__pep_d3dbae5ea9	YQNWKAY	tyr_hard	auto			7
+hard__pep_55b4ff79eb	YQEPVLGPVRG	tyr_hard	auto			11
+hard__pep_9e25dcda3f	YYVPLGTQYTD	tyr_hard	auto			11
+hard__pep_295837a8a2	YSRLKELTLED	tyr_hard	auto			11
+hard__pep_5885ba1869	YGTERQPRTHY	tyr_hard	auto			11
+hard__pep_038f0adf41	YYVPLGTQY	tyr_hard	auto			9
+hard__pep_cc6ead904c	YALPHAIMR	tyr_hard	auto			9
+hard__pep_ec3c257f6d	YQVLDVQRY	tyr_hard	auto			9
+hard__pep_65c33447b3	YLPNSHPPT	tyr_hard	auto			9
+hard__pep_60c6ec5829	YLEQLLR	tyr_hard	auto			7
+hard__pep_1bdf4625fc	YGGIALPE	tyr_hard	auto			8
+hard__pep_0eef96c8cf	YVRLGSL	tyr_hard	auto			7
+hard__pep_a0a3e00fa1	YALPHAIL	tyr_hard	auto			8
+hard__pep_fb09557874	YKFQNALL	tyr_hard	auto			8
+hard__pep_8f98525d5b	YKAIPVAQ	tyr_hard	auto			8
+hard__pep_8eb53f13c0	YRTPNLGY	tyr_hard	auto			8
+hard__pep_19a9e03ff9	YALPHAIM	tyr_hard	auto			8
+hard__pep_5d3ef61c88	YKVPQLE	tyr_hard	auto			7
+hard__pep_e9a4097cf9	YKTWGLSA	tyr_hard	auto			8
+hard__pep_6c9d708643	YEKNNVM	tyr_hard	auto			7
+hard__pep_11952e9dec	YKLVSEF	tyr_hard	auto			7
+hard__pep_40c7fa7cdc	YYPQIMQY	tyr_hard	auto			8
+hard__pep_c31b4cd128	YPFPGPI	tyr_hard	auto			7
+hard__pep_ca746fb8cc	YLVSIPL	tyr_hard	auto			7
+hard__pep_18775a2e0a	YQKFPQYL	tyr_hard	auto			8
+hard__pep_0ca1f48fc9	YASGRTTGIVL	tyr_hard	auto			11
+hard__pep_bb4a05c85b	YNMTDGSHIYT	tyr_hard	auto			11
+hard__pep_e04d897b7f	YNIQKESTLHL	tyr_hard	auto			11
+hard__pep_c6b60f18b2	YDDRNEPVLRL	tyr_hard	auto			11
+hard__pep_8948bb9ef9	YNKYPDAV	tyr_hard	auto			8
+hard__pep_d2e75a8b25	YQQKPVAL	tyr_hard	auto			8
+hard__pep_e981629769	YKQIGLY	tyr_hard	auto			7
+hard__pep_b007447ccb	YFYPEL	tyr_hard	auto			6
+hard__pep_3eeb6cd09a	YVPPSSTDRSPYE	tyr_hard	auto			13
+hard__pep_3239647f37	YKYDHNFVKAINA	tyr_hard	auto			13
+hard__pep_0a25c9740e	YEAGLAPYKLRPV	tyr_hard	auto			13
+hard__pep_94dee02b19	YSRIPGLLSPHPL	tyr_hard	auto			13
+hard__pep_48788d9569	YIQQDTKGDYQKALL	tyr_hard	auto			15
+hard__pep_016651adae	YPFVEPIPYGFLPQN	tyr_hard	auto			15
+hard__pep_c33d085b73	YLGPQYVAGITNLKK	tyr_hard	auto			15
+hard__pep_d7cd772684	YPVTQPLAPVHNPIS	tyr_hard	auto			15
+hard__pep_4cec4e64ec	YKLKVEGYSGTAGDSMA	tyr_hard	auto			17
+hard__pep_0f60e06f86	YDNGSNQVAFGRGNRGF	tyr_hard	auto			17
+hard__pep_7ada229d3f	YYVPLGTQYTDAPSFSD	tyr_hard	auto			17
+hard__pep_2647e79639	YVPFPPFSDISNPTAHE	tyr_hard	auto			17
+hard__pep_d049694cff	YYVPLGTQ	tyr_hard	auto			8
+hard__pep_72a39e022b	YVEELKPTPEGDLEILL	tyr_hard	auto			17
+hard__pep_fa37f557bd	YAKPAAVRSPAQILQWQ	tyr_hard	auto			17
+hard__pep_0c32ecd562	YGDEEKDKGLQTSQDAR	tyr_hard	auto			17
+hard__pep_6c66d4a1e9	YQEPVLGPVRGPFPIIV	tyr_hard	auto			17
+hard__pep_ccf11b302c	YDIAHTPGVA	tyr_hard	auto			10
+hard__pep_c52dcbc06b	YSLAMAASDI	tyr_hard	auto			10
+hard__pep_06adf31f95	YLPNSHPPTV	tyr_hard	auto			10
+hard__pep_f2a45b8961	YPFPGPIPNS	tyr_hard	auto			10
+hard__pep_8c7890cd83	YVEKGTQGKIVDL	tyr_hard	auto			13
+hard__pep_787bf5ee4e	YTKKVPQVSTPTL	tyr_hard	auto			13
+hard__pep_a1f49763cd	YAEAPSRLSPDDA	tyr_hard	auto			13
+hard__pep_cd97de36c4	YYTEFTPTEKDEY	tyr_hard	auto			13
+posstart__pep_c31b4cd128	YPFPGPI	positional_start	auto			7
+posstart__pep_f2a45b8961	YPFPGPIPNS	positional_start	auto			10
+posstart__pep_8c043cc1ec	YPFPGPIPNSLPQ	positional_start	auto			13
+posstart__pep_32e65e3eaf	YPFPGPIPNSLPQNIPPLTQT	positional_start	auto			21
+posspan__pep_d79337392b	AQTQSLVYPFPGPI	positional_span	auto			14
+posspan__pep_aacf1ccbe7	AQTQSLVYPFPGPIPN	positional_span	auto			16
+posspan__pep_36e3969ca8	AQTQSLVYPFPGPIPNSLPQ	positional_span	auto			20
+posspan__pep_7943866f50	AQTQSLVYPFPGPIPNSLPQN	positional_span	auto			21
+posspan__pep_acd585a22b	AQTQSLVYPFPGPIPNSLPQNIPPLTQT	positional_span	auto			28
+posspan__pep_363a16a166	GLLYPFPK	positional_span	auto			8
+posspan__pep_2fc14844da	IHPFAQTQSLVYPFPGPIPN	positional_span	auto			20
+posspan__pep_a2dfb90553	IHPFAQTQSLVYPFPGPIPNSLPQNIPPLTQT	positional_span	auto			32
+posspan__pep_cf02ed35ae	LQDKIHPFAQTQSLVYPFPGPIPNSLPQNIPPLTQT	positional_span	auto			36
+posspan__pep_69ddc7d51e	LVYPFPGP	positional_span	auto			8
+posspan__pep_810f8428c2	LVYPFPGPI	positional_span	auto			9
+posspan__pep_28987b2e16	LVYPFPGPIP	positional_span	auto			10
+posspan__pep_c910119211	LVYPFPGPIPN	positional_span	auto			11
+posspan__pep_c6b0f0c0a2	LVYPFPGPIPNS	positional_span	auto			12
+posspan__pep_90c944dcfb	LVYPFPGPIPNSL	positional_span	auto			13
+posspan__pep_98ad587ab7	LVYPFPGPIPNSLP	positional_span	auto			14
+posspan__pep_80a5482c29	LVYPFPGPIPNSLPQ	positional_span	auto			15
+posspan__pep_bc36b79402	LVYPFPGPIPNSLPQN	positional_span	auto			16
+posspan__pep_1bb6b37731	LVYPFPGPIPNSLPQNIPP	positional_span	auto			19
+posspan__pep_5fabcd10bf	LVYPFPGPIPNSLPQNIPPL	positional_span	auto			20
+posspan__pep_166b111344	LVYPFPGPIPNSLPQNIPPLT	positional_span	auto			21
+posspan__pep_ade40abc92	LVYPFPGPIPNSLPQNIPPLTQ	positional_span	auto			22
+posspan__pep_0733cbbeda	LVYPFPGPIPNSLPQNIPPLTQT	positional_span	auto			23
+posspan__pep_5e9a87af7e	LVYPFPGPIPNSLPQNIPPLTQTP	positional_span	auto			24
+posspan__pep_7e3396b7df	LVYPFPGPIPNSLPQNIPPLTQTPV	positional_span	auto			25
+posspan__pep_9c4bf4079a	LVYPFPGPIPNSLPQNIPPLTQTPVVVPPFLQPE	positional_span	auto			34
+posspan__pep_25fb0c40c3	LVYPFPGPIPNSLPQNIPPLTQTPVVVPPFLQPEV	positional_span	auto			35
+posspan__pep_d44380e96c	LVYPFPGPIPNSLPQNIPPLTQTPVVVPPFLQPEVM	positional_span	auto			36
+posspan__pep_f886739741	LVYPFPGPIPNSLPQNIPPLTQTPVVVPPFLQPEVMG	positional_span	auto			37
+posspan__pep_39266aed24	LVYPFPGPIPNSLPQNIPPLTQTPVVVPPFLQPEVMGV	positional_span	auto			38
+posspan__pep_dbac180c94	LVYPFPGPIPNSLPQNIPPLTQTPVVVPPFLQPEVMGVSKVK	positional_span	auto			42
+posspan__pep_13b991c96d	LVYPFPGPIPNSLPQNIPPLTQTPVVVPPFLQPEVMGVSKVKE	positional_span	auto			43
+posspan__pep_6c6609c5d0	NYPPAYPFP	positional_span	auto			9
+posspan__pep_db70cb226b	QSLVYPFPGPI	positional_span	auto			11
+posspan__pep_ddb3fa823b	QSLVYPFPGPIPN	positional_span	auto			13
+posspan__pep_bdb997e178	QSLVYPFPGPIPNSLPQNIPPLTQT	positional_span	auto			25
+posspan__pep_5b9ee95da5	QSLVYPFPGPIPNSLPQNIPPLTQTPVVVPPFLQPEVMG	positional_span	auto			39
+posspan__pep_6f80962809	QSLVYPFPGPIPNSLPQNIPPLTQTPVVVPPFLQPEVMGVSKVKE	positional_span	auto			45
+posspan__pep_e87e3fb967	QTQSLVYPFPGPIPNSLPQNIPPLTQT	positional_span	auto			27
+posspan__pep_01c0723c17	SLVYPFPGP	positional_span	auto			9
+posspan__pep_d300c5126a	SLVYPFPGPI	positional_span	auto			10
+posspan__pep_c4a307c400	SLVYPFPGPIP	positional_span	auto			11
+posspan__pep_15b81c70a0	SLVYPFPGPIPN	positional_span	auto			12
+posspan__pep_28789c9d58	SLVYPFPGPIPNS	positional_span	auto			13
+posspan__pep_20c11dca28	SLVYPFPGPIPNSL	positional_span	auto			14
+posspan__pep_9ddb63f0d7	SLVYPFPGPIPNSLPQ	positional_span	auto			16
+posspan__pep_17297191dd	SLVYPFPGPIPNSLPQNIPPLT	positional_span	auto			22
+posspan__pep_1a9ed7d0b2	SLVYPFPGPIPNSLPQNIPPLTQT	positional_span	auto			24
+posspan__pep_89823eff59	SLVYPFPGPIPNSLPQNIPPLTQTPVVVPPFLQPEVM	positional_span	auto			37
+posspan__pep_2c437b8782	TQSLVYPFPGPI	positional_span	auto			12
+posspan__pep_7b3ff2373f	TQSLVYPFPGPIPN	positional_span	auto			14
+posspan__pep_68ee69b6d9	TQSLVYPFPGPIPNSLPQNIPPLTQT	positional_span	auto			26
+posspan__pep_e7ae85b02c	TTIGLLYPFPK	positional_span	auto			11
+posspan__pep_8219237a21	VYPFPGP	positional_span	auto			7
+posspan__pep_0d2d91c907	VYPFPGPI	positional_span	auto			8
+posspan__pep_592de7d86a	VYPFPGPIP	positional_span	auto			9
+posspan__pep_a39d89b860	VYPFPGPIPN	positional_span	auto			10
+posspan__pep_04d8cde1f9	VYPFPGPIPNS	positional_span	auto			11
+posspan__pep_d8d24f5f25	VYPFPGPIPNSL	positional_span	auto			12
+posspan__pep_129db1a9d5	VYPFPGPIPNSLPQ	positional_span	auto			14
+posspan__pep_94f60c1bc5	VYPFPGPIPNSLPQN	positional_span	auto			15
+posspan__pep_2ffd7dce63	VYPFPGPIPNSLPQNIPPLT	positional_span	auto			20
+posspan__pep_3fbcd529cf	VYPFPGPIPNSLPQNIPPLTQT	positional_span	auto			22
+posspan__pep_74ac59b163	VYPFPGPIPNSLPQNIPPLTQTP	positional_span	auto			23
+posspan__pep_dad80e03ff	VYPFPGPIPNSLPQNIPPLTQTPV	positional_span	auto			24
+posspan__pep_2c51a10144	VYPFPGPIPNSLPQNIPPLTQTPVVVPPFLQPE	positional_span	auto			33
+posspan__pep_d01143b1c9	VYPFPGPIPNSLPQNIPPLTQTPVVVPPFLQPEV	positional_span	auto			34
+posspan__pep_7ab3fc0b63	VYPFPGPIPNSLPQNIPPLTQTPVVVPPFLQPEVM	positional_span	auto			35
+posspan__pep_fd3f4adeba	VYPFPGPIPNSLPQNIPPLTQTPVVVPPFLQPEVMG	positional_span	auto			36
+posspan__pep_fea1e17454	VYPFPGPIPNSLPQNIPPLTQTPVVVPPFLQPEVMGV	positional_span	auto			37
+posspan__pep_f6b6d2c2d5	VYPFPGPIPNSLPQNIPPLTQTPVVVPPFLQPEVMGVSK	positional_span	auto			39
+posspan__pep_185590991a	VYPFPGPIPNSLPQNIPPLTQTPVVVPPFLQPEVMGVSKVK	positional_span	auto			41
+posspan__pep_a8acc4ff5d	VYPFPGPIPNSLPQNIPPLTQTPVVVPPFLQPEVMGVSKVKE	positional_span	auto			42
+posspan__pep_2cbab216a5	VYPFPGPIPNSLPQNIPPLTQTPVVVPPFLQPEVMGVSKVKEAMAP	positional_span	auto			46

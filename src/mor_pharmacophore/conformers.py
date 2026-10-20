@@ -54,8 +54,13 @@ def build_window(sequence, window=WINDOW, c_term="auto"):
     """
     if not sequence:
         raise ValueError("empty sequence")
-    truncated = len(sequence) > window
-    fragment = sequence[:window]
+    # window=0 (or >= the length) means the whole peptide: no truncation, no cap.
+    if window and window > 0:
+        truncated = len(sequence) > window
+        fragment = sequence[:window]
+    else:
+        truncated = False
+        fragment = sequence
 
     mol = Chem.MolFromSequence(fragment)
     if mol is None:
@@ -104,7 +109,7 @@ def ensemble_for_sequence(sequence, window=WINDOW, c_term="auto",
                            n_threads=n_threads)
     meta = {
         "sequence": sequence,
-        "window": sequence[:window],
+        "window": sequence[:window] if (window and window > 0) else sequence,
         "truncated": truncated,
         "c_term_applied": "amide" if (c_term == "amide" or (c_term == "auto" and truncated)) else "free",
         "n_conformers": mol.GetNumConformers(),

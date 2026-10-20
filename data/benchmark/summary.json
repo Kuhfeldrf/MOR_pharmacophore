@@ -1,0 +1,24 @@
+{
+  "generated": "2026-10-20",
+  "total": 235,
+  "by_set": {
+    "active": 36,
+    "scramble": 36,
+    "tyr_hard": 85,
+    "positional_start": 4,
+    "positional_span": 74
+  },
+  "potency_pair": {
+    "high_family": "YGGFL",
+    "n_high": 11,
+    "low_family": "YGPFL",
+    "n_low": 6
+  },
+  "scramble_seed": 20261020,
+  "decoy_seed": 20261021,
+  "notes": {
+    "scrambles_unscrambleable": [],
+    "scrambles_starting_with_Y": 5,
+    "hard_decoy_length_shortfall": []
+  }
+}

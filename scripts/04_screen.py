@@ -152,6 +152,8 @@ def main():
         "seconds_conformers": round(t_conf, 1), "seconds_scoring": round(t_score, 1),
     }, indent=2) + "\n")
 
+    # The raw per-conformer table is retained: ensemble statistics (max / mean /
+    # top-k) are read from it post hoc, so changing the statistic costs no recompute.
     if not args.keep_sdf:
         for f in (raw_sdf, prot_sdf):
             Path(f).unlink(missing_ok=True)
