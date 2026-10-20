@@ -191,9 +191,16 @@ def main():
                 s2 = auroc(sc(sets["active"]), sc(sets["scramble"]))
 
                 # ---- E1 potency pair
-                e1 = auroc(sc(fam.get("YGGFL", [])), sc(fam.get("YGPFL", [])))
-                e1lo, e1hi = bootstrap_auroc(sc(fam.get("YGGFL", [])),
-                                             sc(fam.get("YGPFL", [])))
+                hi_s, lo_s = sc(fam.get("YGGFL", [])), sc(fam.get("YGPFL", []))
+                e1 = auroc(hi_s, lo_s)
+                e1lo, e1hi = bootstrap_auroc(hi_s, lo_s)
+                # A windowed screen collapses each family to its distinct windows, so
+                # the number of genuinely independent comparisons is the product of the
+                # UNIQUE scores, not of the peptide counts. At window 5 both families
+                # collapse to one point each: AUROC is then 0 or 1 with no power, and a
+                # bootstrap of 1-vs-1 returns a degenerate [1,1] interval. Recorded so
+                # that figure can never be read as a result.
+                e1_eff = len(set(hi_s)) * len(set(lo_s))
                 # ---- E2 potency ranking
                 pairs = [(a[i], float(bench[i]["pKi"]))
                          for i in sets["active"] if i in a and bench[i]["pKi"]]
@@ -217,6 +224,9 @@ def main():
                     "S1_pass": bool(rho == rho and rho >= S1_GATE),
                     "S2_auroc_vs_scramble": s2,
                     "E1_potency_pair_auroc": e1, "E1_ci95": [e1lo, e1hi],
+                    "E1_unique_high": len(set(hi_s)), "E1_unique_low": len(set(lo_s)),
+                    "E1_effective_comparisons": e1_eff,
+                    "E1_powered": bool(e1_eff >= 10),
                     "E2_spearman_vs_pKi": e2,
                     "E3_auroc_vs_tyr_hard": e3, "E3_ci95": [e3lo, e3hi],
                     "E4_endomorphin_percentile": e4,
@@ -248,14 +258,15 @@ def main():
     print(f"{len(results)} configurations evaluated; S1 gate rho >= {S1_GATE}")
     passing = [r for r in results if r["S1_pass"]]
     print(f"passing S1: {len(passing)}")
-    hdr = ("  nconf win metric      stat    S1rho   S2auc   E1pair  E2rho   E3auc  E5pos")
+    hdr = ("  nconf win metric      stat    S1rho   S2auc   E1pair    E2rho   E3auc  E5pos   (! = E1 underpowered)")
     print(hdr)
     for r in sorted(results, key=lambda r: -r["S2_auroc_vs_scramble"])[:12]:
-        print("  %5d %3d %-11s %-6s %6.3f %7.3f %7.3f %6.3f %7.3f %6.3f %s" % (
+        print("  %5d %3d %-11s %-6s %6.3f %7.3f %7.3f%-3s %6.3f %7.3f %6.3f %s" % (
             r["n_conformers"], r["window"], r["metric"], r["statistic"],
             r["S1_spearman"], r["S2_auroc_vs_scramble"], r["E1_potency_pair_auroc"],
-            r["E2_spearman_vs_pKi"], r["E3_auroc_vs_tyr_hard"],
-            r["E5_positional_auroc"], "S1ok" if r["S1_pass"] else ""))
+            "" if r["E1_powered"] else "!", r["E2_spearman_vs_pKi"],
+            r["E3_auroc_vs_tyr_hard"], r["E5_positional_auroc"],
+            "S1ok" if r["S1_pass"] else ""))
     if chosen:
         print("\nCHOSEN (on S1 gate + S2 only):")
         print(json.dumps(chosen, indent=2))
