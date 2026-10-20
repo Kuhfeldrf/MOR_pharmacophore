@@ -83,20 +83,25 @@ computed**.
 
 Each window evaluated only at the metric and statistic its selection stage chose.
 
-| | win 5 | **win 8** | win 12 |
-|---|---|---|---|
-| S1 reproducibility | 0.968 | 0.945 | 0.980 |
-| S2 vs scrambles | 0.772 | 0.691 | 0.550 |
-| **E1 potency pair** | 1.000 *(2 comparisons — not powered)* | **1.000 (40 comparisons)** | **0.348** |
-| E2 ρ vs pKi | 0.316 | **0.551** | 0.051 |
-| E3 vs Tyr-matched decoys | 0.706 [0.581, 0.817] | **0.726 [0.626, 0.820]** | 0.668 [0.538, 0.792] |
-| E4 endomorphin percentile | 0.671 | **0.976** | 1.000 |
-| E5 positional rule | 1.000 | 0.946 | 0.909 |
+| | win 5, 400 | win 8, 400 | **win 8, 800** | win 12, 150 |
+|---|---|---|---|---|
+| S1 reproducibility | 0.968 | 0.945 *(fails gate)* | **0.983** | 0.980 |
+| S2 vs scrambles | 0.772 | 0.691 | 0.681 | 0.550 |
+| **E1 potency pair** | 1.000 *(2 comparisons — not powered)* | 1.000 *(40 comp.)* | **0.803 [0.561, 0.970]** | **0.348** |
+| E2 ρ vs pKi | 0.316 | 0.551 | **0.496** | 0.051 |
+| E3 vs Tyr-matched decoys | 0.706 [0.581, 0.817] | 0.726 [0.626, 0.820] | **0.734 [0.632, 0.827]** | 0.668 [0.538, 0.792] |
+| E4 endomorphin percentile | 0.671 | 0.976 | **0.988** | 1.000 |
+| E5 positional rule | 1.000 | 0.946 | **0.946** | 0.909 |
+
+**The gate-passing configuration is window 8 at 800 conformers**, and it is the one the
+conclusions below rest on. Window 8 at 400 conformers is shown because the difference
+between the two columns is the study's most important methodological result (§4.2).
 
 ### 4.1 The potency pair: the method does the thing it claims to do
 
-**At window 8 the screen separates the `YGGFL` family from the `YGPFL` family perfectly,
-AUROC 1.000 over 40 independent comparisons.**
+**At window 8 with a converged ensemble the screen separates the `YGGFL` family from the
+`YGPFL` family at AUROC 0.803, 95% interval [0.561, 0.970] over 40 comparisons.** The
+interval excludes chance.
 
 These two families differ by a single **Gly3→Pro3** substitution and about three orders
 of magnitude of measured affinity (pKi 7.39–8.71 against 4.71–5.51). They are
@@ -109,17 +114,38 @@ This matters because **this project's co-folding pipeline fails the same contras
 iLIS scores 0.409, ranking the inactive series *above* the active one. This is the first
 method tested here that gets it right.
 
-### 4.2 Added value over the sequence baseline
+### 4.2 The perfect score was a sampling artefact, and the gate caught it
+
+At 400 conformers this same contrast scored **AUROC 1.000 with a degenerate [1.000,
+1.000] interval**. That configuration fails the reproducibility gate (ρ = 0.945). Doubling
+the ensemble to 800 conformers raises reproducibility to 0.983 and drops E1 to 0.803.
+
+The perfect separation was therefore partly an artefact of under-sampling: with too few
+conformers the best-matching conformer found for each peptide is effectively a draw from
+a long tail, and the draw happened to order the two families cleanly. More sampling gives
+a better-estimated and *less* flattering number.
+
+This is the same failure mode as the first study, where a single seed produced an
+apparent effect that a second seed removed — and it is the second time a pre-registered
+reproducibility criterion has caught an inflated result in this project. **An effect
+measured at a configuration that fails the gate should not be quoted**, however clean it
+looks. E2 moves the same way, 0.551 to 0.496.
+
+Note that E3 does *not* behave this way: it is 0.726 at 400 conformers and 0.734 at 800,
+i.e. stable under better sampling, which is a reason to trust it more than E1's point
+estimate.
+
+### 4.3 Added value over the sequence baseline
 
 E3 compares actives against Tyr-starting, length-matched library decoys, so the
 "starts with Tyr" baseline is constant across the comparison and cannot contribute.
 
-**Window 8 reaches 0.726 with a 95% interval of [0.626, 0.820]** — above 0.70 and
-excluding 0.5. The first run's equivalent measurement was 0.603–0.669 with an interval
+**Window 8 at 800 conformers reaches 0.734 with a 95% interval of [0.632, 0.827]** —
+above 0.70 and excluding 0.5, and stable across conformer counts. The first run's equivalent measurement was 0.603–0.669 with an interval
 that included chance. The improvement is attributable to the fixes in §1–2, not to a
 change of test.
 
-### 4.3 There is an optimum window, and it is interior
+### 4.4 There is an optimum window, and it is interior
 
 Window 12 **fails** the potency pair (0.348, worse than chance) and has essentially no
 potency correlation (ρ = 0.051), despite having the most comparisons available and the
@@ -132,9 +158,9 @@ The useful window is therefore **interior**: long enough to retain the residues 
 distinguish family members, short enough that the conformational space can actually be
 sampled. Window 8 is that compromise here.
 
-### 4.4 Potency ranking: a genuine partial positive
+### 4.5 Potency ranking: a genuine partial positive
 
-E2 at window 8 is **ρ = 0.551** against measured pKi across 36 peptides spanning 4.43 log
+E2 at the gated window-8 configuration is **ρ = 0.496** against measured pKi across 36 peptides spanning 4.43 log
 units. This project's prior work found potency ranking failing on seven separate metrics
 over the same dynamic range, so a moderate positive correlation is a real and
 unexpected result. It is reported as a secondary finding: E2 was pre-registered as an
@@ -143,10 +169,9 @@ families is not a basis for claiming calibrated affinity prediction.
 
 ## 5. Honest caveats
 
-- **Window 8's reproducibility is 0.945 on the full benchmark, marginally below the 0.95
-  gate**, which it cleared at 0.960 on the shorter selection set. The benchmark adds the
-  longer positional-control peptides, which are harder to sample. The gate was not
-  relaxed; the ensemble was doubled and re-measured instead (§6).
+- **Window 8 at 400 conformers fails the reproducibility gate** (0.945 against 0.95),
+  which it had cleared at 0.960 on the shorter selection set. The gate was not relaxed;
+  the ensemble was doubled to 800, which restores ρ = 0.983 — and lowers E1 (§4.2).
 - **E1's 40 comparisons come from 8 and 5 distinct windows**, not 40 independent
   molecules. Family members share sequence by construction, so this is one well-posed
   chemical contrast measured many ways, not 40 independent tests.
@@ -166,11 +191,15 @@ Measured on the 235-peptide benchmark, 8 cores:
 | window 5, 400 conformers | 13.0 | ~810 |
 | window 8, 400 conformers | 35.3 | ~2,200 |
 | window 12, 150 conformers | 29.3 | ~1,800 |
+| **window 8, 800 conformers** | **75.8** | **~4,700** |
 
 Library peptides have median length 15, so nearly all are truncated to the full window;
 the benchmark contains many peptides shorter than 8, so the library figure is a lower
 bound.
 
-**Window 8 is the configuration to scale**, because it is the only one whose central
-validation can be evaluated and passes it. It costs roughly 40× the first run's 52
-core-hours, which bought a result that did not reproduce.
+**Window 8 at 800 conformers is the configuration to scale.** It is the only
+configuration that both passes the reproducibility gate and can be evaluated on the
+study's central test, which it passes. At roughly 4,700 core-hours for the library it
+costs about 90× the first run's 52, which bought a result that did not reproduce.
+
+At 48 concurrent 8-core tasks that is approximately 12 hours of wall time.
