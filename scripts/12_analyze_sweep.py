@@ -110,8 +110,10 @@ def collapse(rows, metric, statistic):
 
 
 def load_config(path):
-    tab = Path(path) / "block0000" / "scores.tab"
-    return read_scores(tab) if tab.exists() else None
+    rows = []
+    for tab in sorted(Path(path).glob("block*/scores.tab")):
+        rows.extend(read_scores(tab))
+    return rows or None
 
 
 def parse_tag(tag):
@@ -150,13 +152,26 @@ def main():
         if rows:
             runs[(nc, w)][seed] = rows
 
+    # Only the (metric, statistic) chosen by the SELECTION stage is evaluated per
+    # window. Scanning all nine here and reporting the best would re-introduce exactly
+    # the selection-on-evaluation that STUDY.md 3 exists to prevent.
+    selected = {}
+    sel_path = args.out / "selection_results.json"
+    if sel_path.exists():
+        sel = json.loads(sel_path.read_text()).get("chosen_per_window") or {}
+        for w, r in sel.items():
+            selected[int(w)] = (r["metric"], r["statistic"])
+    print(f"selected per window (from selection stage): {selected}\n")
+
     results = []
     for (nc, w), by_seed in sorted(runs.items()):
         seeds = sorted(by_seed)
         if len(seeds) < 2:
             continue
-        for metric in METRICS:
-            for stat in STATISTICS:
+        combos = ([selected[w]] if w in selected
+                  else [(m, st) for m in METRICS for st in STATISTICS])
+        for metric, stat in combos:
+            if True:
                 a = collapse(by_seed[seeds[0]], metric, stat)
                 b = collapse(by_seed[seeds[1]], metric, stat)
                 shared = sorted(set(a) & set(b))

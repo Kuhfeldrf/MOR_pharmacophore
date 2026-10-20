@@ -1,0 +1,73 @@
+id	sequence	set	c_term	pKi	family	length
+act__CHEMBL217379	YGGFLRRI	active	free	7.451	YGGFL	8
+act__CHEMBL2369407	YGPFL	active	amide	4.81	YGPFL	5
+act__CHEMBL2369394	YGPFLR	active	amide	4.71	YGPFL	6
+act__CHEMBL2369391	YGPFLRR	active	amide	4.9	YGPFL	7
+act__CHEMBL2369395	YGPFLRRI	active	amide	4.79	YGPFL	8
+act__CHEMBL2369390	YGPFLRRIR	active	amide	5.22	YGPFL	9
+act__CHEMBL8234	YGGFL	active	free	8.025	YGGFL	5
+act__CHEMBL216640	YGGFLRRIRPK	active	amide	8.25	YGGFL	11
+act__CHEMBL407832	YGGFLRRIR	active	free	7.623	YGGFL	9
+act__CHEMBL63188	YGGFLR	active	free	7.391	YGGFL	6
+act__CHEMBL2369370	YGPFLRRR	active	amide	5.509	YGPFL	8
+act__CHEMBL293465	YGGFLRR	active	free	7.42	YGGFL	7
+act__CHEMBL362991	YPFP	active	amide	6.824	YPFP	4
+act__CHEMBL216696	YGGFLRRARPK	active	amide	8.706	YGGFL	11
+act__CHEMBL8072	FPSKP	active	free	5.125	FPSKP	5
+act__CHEMBL410260	LRHYINLITRQRY	active	free	5.409	LRHYI	13
+act__CHEMBL428276	SALRHYINLITRQRY	active	free	5.292	SALRH	15
+act__CHEMBL396460	FGGFTGARKSARKLANQ	active	free	6.36	FGGFT	17
+act__CHEMBL333357	YPFF	active	amide	8.513	YPFF	4
+act__CHEMBL13786	YGGFM	active	free	8.699	YGGFM	5
+act__CHEMBL247368	YGGFM	active	amide	7.921	YGGFM	5
+act__CHEMBL411557	YGGFLRRIRPKLKWDNQ	active	free	8.027	YGGFL	17
+act__CHEMBL316446	YPWF	active	amide	8.712	YPWF	4
+act__CHEMBL455502	YGWFL	active	amide	6.949	YGWFL	5
+act__CHEMBL504973	YGGWL	active	amide	7.917	YGGWL	5
+act__CHEMBL35838	YGGFL	active	amide	7.943	YGGFL	5
+act__CHEMBL466147	YPAA	active	amide	6.152	YPAA	4
+act__CHEMBL445690	YAWF	active	amide	5.496	YAWF	4
+act__CHEMBL387816	YPAF	active	amide	6.646	YPAF	4
+act__CHEMBL512955	YPWA	active	amide	7.138	YPWA	4
+act__CHEMBL2158957	YPWFFGLM	active	amide	9.137	YPWFF	8
+act__CHEMBL2158955	YPWFGLM	active	amide	8.796	YPWFG	7
+act__CHEMBL2409222	YGGFLRKYPK	active	free	8.137	YGGFL	10
+act__CHEMBL3810101	RYYRIK	active	amide	5.502	RYYRI	6
+act__CHEMBL405618	YGGFLRRIRPKLK	active	free	8.097	YGGFL	13
+act__CHEMBL285479	YAFGYPS	active	amide	5.663	YAFGY	7
+scr__CHEMBL217379	LYFGGRRI	scramble	free			8
+scr__CHEMBL2369407	GPLYF	scramble	amide			5
+scr__CHEMBL2369394	FRYGLP	scramble	amide			6
+scr__CHEMBL2369391	RRPGLYF	scramble	amide			7
+scr__CHEMBL2369395	FLIRGRYP	scramble	amide			8
+scr__CHEMBL2369390	RLRYFGPRI	scramble	amide			9
+scr__CHEMBL8234	GFGLY	scramble	free			5
+scr__CHEMBL216640	PRYRLGGRKFI	scramble	amide			11
+scr__CHEMBL407832	RLGFYRIGR	scramble	free			9
+scr__CHEMBL63188	RGGFLY	scramble	free			6
+scr__CHEMBL2369370	RRYLFGRP	scramble	amide			8
+scr__CHEMBL293465	YLGRRFG	scramble	free			7
+scr__CHEMBL362991	PFYP	scramble	amide			4
+scr__CHEMBL216696	GRAGLRPFRKY	scramble	amide			11
+scr__CHEMBL8072	PKSPF	scramble	free			5
+scr__CHEMBL410260	LYRQRNLIHRYTI	scramble	free			13
+scr__CHEMBL428276	HQILSYAYRIRRLNT	scramble	free			15
+scr__CHEMBL396460	ANGLTGRQFKSARKAGF	scramble	free			17
+scr__CHEMBL333357	FPYF	scramble	amide			4
+scr__CHEMBL13786	FGMYG	scramble	free			5
+scr__CHEMBL247368	GYGMF	scramble	amide			5
+scr__CHEMBL411557	GPNIQLWLRDRKFYKRG	scramble	free			17
+scr__CHEMBL316446	PFYW	scramble	amide			4
+scr__CHEMBL455502	LGYFW	scramble	amide			5
+scr__CHEMBL504973	GLYGW	scramble	amide			5
+scr__CHEMBL35838	GYGLF	scramble	amide			5
+scr__CHEMBL466147	AAPY	scramble	amide			4
+scr__CHEMBL445690	YWAF	scramble	amide			4
+scr__CHEMBL387816	FAPY	scramble	amide			4
+scr__CHEMBL512955	YWAP	scramble	amide			4
+scr__CHEMBL2158957	LMFFGYPW	scramble	amide			8
+scr__CHEMBL2158955	YFWLPGM	scramble	amide			7
+scr__CHEMBL2409222	YFLKYGKPGR	scramble	free			10
+scr__CHEMBL3810101	IYYKRR	scramble	amide			6
+scr__CHEMBL405618	LPRRIYGKFGRLK	scramble	free			13
+scr__CHEMBL285479	FYAYGPS	scramble	amide			7

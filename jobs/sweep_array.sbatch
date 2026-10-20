@@ -5,7 +5,7 @@
 #SBATCH --mem=24G
 #SBATCH -t 240
 #SBATCH -o /scratch/kuhfeldr-Kuhfeld_temp/MOR_pharmacophore/logs/sweep/%A_%a.log
-#SBATCH --array=0-17
+#SBATCH --array=0-17%9
 # STUDY.md 4: the optimisation sweep.
 #
 # 9 conformer configurations (n_conformers x window) x 2 seeds = 18 tasks, each over the

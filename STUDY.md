@@ -116,7 +116,33 @@ are read from the same score table and cost nothing extra.
 seeds for S1. Scoring variants are expanded post hoc from the stored tables.
 
 **Pre-registered tie-break:** among configurations passing the S1 gate, choose the
-highest S2; ties broken by lower cost. Cost is recorded but is not a selection criterion
+highest S2; ties broken by lower cost.
+
+### 4.1 Amendment, 2026-10-20, made on S1/S2 only and before any evaluation metric was computed
+
+Two facts from stage A forced a change, and both were visible from the selection
+metrics alone:
+
+1. **Full-peptide conformers are not viable.** A 17-mer has 81 rotatable bonds and
+   default ETKDGv3 returns *zero* conformers for it; with random starting coordinates it
+   returns 20 in 73 s, so 500 would cost ~30 min for one peptide. `window = full` is
+   replaced by `window = 12`. More importantly, embedding silently under-delivers at
+   window >= 8 without `useRandomCoords` (50 requested -> 21, 2, 1 at windows 8, 10, 12),
+   which is now fixed and guarded.
+2. **The selection rule picks a window under which the central test is undefined.**
+   Ranked by S1 then S2, the best configuration uses window 5 — but window 5 collapses
+   the 11-member `YGGFL` family and the 6-member `YGPFL` family to one point each, so E1
+   becomes a single comparison with no error bars. Window 8 gives 30 family-pair
+   comparisons and window 12 gives 54.
+
+**Amended rule:** the selection metrics choose `n_conformers`, `metric` and `statistic`
+*within each window*, and all three windows are carried into evaluation. The window is a
+structural choice about which questions are answerable, not a tunable parameter, so it is
+reported rather than optimised away. The globally best configuration under the original
+rule is still reported as primary.
+
+This amendment was written before any E metric had been computed, and the evaluation
+metrics remain untouched by selection. Cost is recorded but is not a selection criterion
 on its own, because the benchmark is small and the library screen is only ~52 CPU-hours
 at the cheapest setting.
 
