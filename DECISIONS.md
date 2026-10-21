@@ -99,9 +99,15 @@ thing to run.**
 *mandatory* plus ≥2 others, retaining 28,070 of ~198,000 peptides as a filter before any
 ranking ([PMC6865014](https://pmc.ncbi.nlm.nih.gov/articles/PMC6865014/)).
 **Why it matters here.** Requiring `POSC` (the Tyr1 ammonium anchor) would enforce the
-message motif instead of letting accumulated feature count substitute for it. This is a
-filter-then-rank design rather than rank-only, and it is cheap to test on data already
-scored.
+message motif instead of letting accumulated feature count substitute for it — a
+filter-then-rank design rather than rank-only.
+**Cost correction.** This is *not* free re-analysis, as first recorded here. Align-it's
+score table reports only a *count* of matched features, not their identities, so enforcing
+a geometric match on a specific feature needs the aligned-pharmacophore output
+(`align_it -o`) and therefore a rescreen. What *is* free is the weaker version — requiring
+the candidate to *possess* a positive-charge feature at all, i.e. an unblocked
+N-terminus — but that is close to the free-N-terminus flag already carried separately
+(D6.11) and is not the same test.
 
 ---
 
@@ -422,7 +428,7 @@ success.
 | # | Change | Basis | Cost |
 |---|---|---|---|
 | 1 | **Add receptor-derived exclusion volumes** (D2.4) | literature; mechanistically targets the confound | one template rebuild + one benchmark rescreen |
-| 2 | **Make `POSC` a mandatory feature** (D2.5) | literature; filter-then-rank | re-analysis only, no rescreen |
+| 2 | **Make `POSC` a mandatory feature** (D2.5) | literature; filter-then-rank | rescreen with `-o`; see cost correction in D2.5 |
 | 3 | **Expand the active set to power the 2- and 3-aromatic strata** (D6.6) | measured; 26 of 36 actives in a stratum at AUROC 0.513 | curation, not compute |
 | 4 | Adopt AVE-style debiasing for decoy selection | literature; [LIT-PCBA](https://www.researchgate.net/publication/340614114_LIT-PCBA_An_unbiased_dataset_for_machine_learning_and_virtual_screening) uses asymmetric validation embedding for exactly this | moderate |
 | 5 | Test `max` vs `mean` under exclusion volumes | the D5.5 tension may resolve differently once bulk is penalised | re-analysis only |
