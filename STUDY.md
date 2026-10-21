@@ -242,3 +242,40 @@ the test that should have been the centrepiece from the start.
 
 A matched-control benchmark measures the capability you care about and cannot see what
 dominates an unmatched screen. Both are needed.
+
+---
+
+## 8. Metric corrections from the methodology literature, 2026-10-21
+
+Everything above was decided on this project's own measurements. Checked against the
+virtual-screening methodology literature, two of those choices are wrong and one is
+confirmed. Recorded here as amendments; full evidence in
+[`docs/optimisation_study.md`](docs/optimisation_study.md) §9.
+
+**8.1 Screening contrasts are scored with BEDROC, not AUROC.** ROC AUC equals an average
+of the actives' ranks, so early recognition is cancelled by late recognition (Truchon &
+Bayly, *J Chem Inf Model* 2007, 47:488–508). BEDROC at α = 20 replaces it **for
+screening-shaped questions only** — E3 and the library ranking. **E1 keeps AUROC**: it is
+a two-sample comparison, where AUROC is the Mann-Whitney *U* and is correct. Because this
+study has 36 actives against the ~50 recommended for stable BEDROC, a permutation null is
+computed rather than assumed, and BEDROC is not reported for benchmark-sized contrasts at
+all (N = 121 with α = 20 puts all weight in the top ~10 ranks).
+
+**8.2 Decoys must be matched on the properties that drive the score.** `tyr_hard` matched
+Tyr-start and length but not aromatic count, which is textbook **artificial enrichment**
+(*Bioinformatics* 2021, 37:2134; *PLOS ONE* 2019 e0220113). Matched E3 is **0.490 against
+0.733 unmatched**, so the original figure measured the confound. From now on a decoy set
+must be matched on the pharmacophore feature inventory — not just length and the
+N-terminal residue — and E6 is the check that it was.
+
+**8.3 TVERSKY_REF is confirmed.** Tversky weighted toward query features outperformed
+nine alternatives in a large pharmacophore-descriptor screening benchmark, with Tanimoto
+carrying a documented small-molecule bias. The §7 confound is the known cost of the
+asymmetry, not a defect. No change.
+
+**8.4 The resulting pre-registration for the next receptor** is E1 (AUROC), E2, E3
+(BEDROC + aromatic-matched decoys), E4, E5, E6 (reporting constraint), E7 (epimer sign
+test) — with the decoy set matched on feature inventory before anything is run, and the
+active set checked for sufficient actives per stratum to power E3 within strata. The
+present study cannot power the 2-aromatic stratum, which is where 26 of its 36 actives
+sit.

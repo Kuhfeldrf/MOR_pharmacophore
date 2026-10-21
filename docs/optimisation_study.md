@@ -448,3 +448,128 @@ as the deliverable, and should be read as "peptides whose feature inventory matc
 opioid message template", not as "peptides predicted to adopt the message conformation".
 The 8 peptides clearing endomorphin-1 in the 3-aromatic stratum remain the part worth
 following up, on that narrower basis.
+
+*§8.4's conclusion is further narrowed by §9.2 below: the feature-composition claim
+itself does not survive a matched benchmark.*
+
+---
+
+## 9. Checked against the methodology literature
+
+Everything to §8 was decided on this project's own measurements. Checking those choices
+against the virtual-screening methodology literature found two metric errors, and
+vindicated one choice. Machine-readable:
+[`screening_metrics.json`](screening_metrics.json).
+
+### 9.1 AUROC is the wrong summary for a screen
+
+Truchon & Bayly (*J Chem Inf Model* 2007, 47:488–508) show ROC AUC is equivalent to an
+average of the actives' ranks, so early recognition is cancelled by late recognition —
+the wrong summary for a method whose entire purpose is the top of a list. They propose
+**BEDROC** with α = 20, putting 80% of the weight in the top 8%.
+
+AUROC is not wrong everywhere, and the distinction matters: **E1 is a two-sample
+comparison**, where AUROC is the Mann-Whitney *U* statistic and is exactly right. The
+error is confined to the screening-shaped questions. Those, computed properly:
+
+| ranking all 14,595 scored peptides | AUROC | BEDROC α=20 | null p99 | EF 1% | EF 5% |
+|---|---|---|---|---|---|
+| 24 reference ligands | 0.915 | **0.322** | 0.136 | 8.3 | 9.2 |
+| 7 endogenous + template only | 0.964 | **0.517** | 0.214 | 14.3 | 20.0 |
+
+Both clear a permutation null (computed rather than assumed, because 36 actives is below
+the ~50 Truchon & Bayly recommend for stable BEDROC). Best-ranked reference ligand is
+43rd of 14,595. **Read alone this is the study's most favourable result** — and §9.2 is
+why it cannot be read alone.
+
+A second lesson from the same source: BEDROC on the *benchmark* contrasts is not
+meaningful. With 36 actives against 85 decoys, N = 121 and α = 20 concentrates all weight
+in the top ~10 ranks. E3's BEDROC is 0.610 against a null p99 of 0.612 — i.e. not
+distinguishable from random. That is a statement about the metric being misapplied at
+that sample size, not a result.
+
+### 9.2 The decoys were not matched on the property that drives the score — and E3 does not survive matching
+
+`tyr_hard` matches the actives on Tyr-start and length but **not on aromatic count**, the
+property correlating with the score at ρ +0.909. The benchmark-design literature names
+this failure mode: **artificial enrichment**, performance attributable to the difference
+in chemical space between actives and decoys rather than to binding (*Bioinformatics*
+2021, 37:2134; and *PLOS ONE* 2019 e0220113 on DUD-E's hidden bias, which distinguishes
+analogue bias from decoy bias). DUD-E's own principle is property similarity with
+topological dissimilarity; this benchmark satisfies it for length and the N-terminal
+residue and violates it for the one property that matters.
+
+Recomputing E3 within matched aromatic strata — actives against Tyr-starting library
+decoys of the *same* aromatic count, distinct windows only:
+
+| aromatic count | actives | matched decoys | AUROC |
+|---|---|---|---|
+| 1 | 2 | 118 | 0.011 |
+| **2** | **26** | **86** | **0.513** |
+| 3 | 7 | 24 | 0.833 |
+| 4 | 1 | 5 | 0.900 |
+| **pooled (comparison-weighted)** | | | **0.490** |
+
+**E3 falls from 0.733 to 0.490 — chance.** The stratum holding 26 of the 36 actives sits
+at 0.513. The 0.733 was artificial enrichment from aromatic count, exactly as the decoy
+literature predicts, and the 9.0× noise-floor margin of §8.3 measured that confound
+rather than a capability.
+
+This is the controlled version of what script 14 reached for and got wrong: the fix is a
+**matched benchmark**, not a score transform. It required no new computation — the
+library screen had already scored every Tyr-starting library peptide at the same
+configuration and seed as the benchmark run.
+
+The one stratum with signal is 3 aromatics, AUROC 0.833 on 7 actives against 24 decoys.
+That is thin, and it is also exactly where §7.4's 8 shortlisted peptides sit, so the two
+results are at least internally consistent. It is the only surviving quantitative basis
+for the shortlist.
+
+### 9.3 TVERSKY_REF was the right choice, and the confound is its documented flip side
+
+A large virtual-screening benchmark on pharmacophore-triplet descriptors found Tversky
+weighted toward the **query** features "by far the most successful and the least
+failure-prone" of ten dissimilarity scores, with Tanimoto failing to defend its
+privileged status, and performance insensitive to tuning α. Tanimoto carries a
+documented bias toward smaller compounds and stops decreasing as the second molecule
+grows. So selecting TVERSKY_REF empirically landed on the literature's recommendation —
+and the §7.2 confound is the known cost of the asymmetry, not a bug: ignoring excess
+candidate features is exactly what makes it robust to size mismatch *and* what lets a
+His-rich repeat accumulate coverage. Caveat: that benchmark used 2-D pharmacophore
+fingerprints, not 3-D overlap.
+
+### 9.4 Mean-over-conformers is non-standard but defensible
+
+No head-to-head benchmark of max / mean / Boltzmann-weighted conformer aggregation turned
+up. Max-over-conformers is described as standard practice for shape methods, so this
+pipeline's `mean` is the minority choice. Supporting it: one study aggregating across
+*pharmacophore models* (not conformers) found mean gave slightly better enrichment than
+max, and this project's own S1 measurement is direct — ρ = 0.537 at `max` against 0.983
+at `mean`. A separate finding that raising conformer counts increases recall but reduces
+precision matches §4.2, where doubling the ensemble lowered E1 from 1.000 to 0.803.
+
+The interpretive cost stands and is now sharper: `mean` asks how well a peptide's
+accessible ensemble matches the template on average, not whether it can adopt a matching
+pose. The second question is what binding requires; §8.2 shows this pipeline cannot
+resolve it at any setting.
+
+### 9.5 Revised conclusion
+
+Three statements, in decreasing order of confidence:
+
+1. **Uncontrolled, the screen enriches known opioid peptides from the library** —
+   BEDROC 0.322–0.517 above a permutation null, EF(1%) 8–14×, best reference ligand 43rd
+   of 14,595 (§9.1).
+2. **That enrichment is not demonstrably more than aromatic-group content.** With
+   aromatic count matched, E3 is 0.490 (§9.2). The screen has not been shown to add value
+   over counting F/W/Y/H in the N-terminal window.
+3. **It does not read 3-D arrangement at all** — epimer pairs, below the noise floor and
+   in the wrong direction (§8.2).
+
+The honest summary of this pipeline is that it is a reproducible, well-characterised
+implementation whose discriminating power has not been separated from aromatic-residue
+content, with one underpowered exception (3-aromatic stratum, AUROC 0.833, n = 7).
+
+What would settle it: an aromatic-matched active set large enough to power the 2- and
+3-aromatic strata. That is a data-curation task, not a compute task, and it is the only
+remaining question worth spending on.

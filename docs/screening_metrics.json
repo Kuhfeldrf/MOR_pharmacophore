@@ -1,0 +1,127 @@
+{
+  "generated": "2026-10-21",
+  "metric": "tversky_ref_mean",
+  "alpha": 20.0,
+  "configuration": {
+    "window": 8,
+    "n_conformers": 800,
+    "seed": 61453
+  },
+  "A_library_retrieval": {
+    "all_reference_ligands": {
+      "n_actives": 24,
+      "n_total": 14595,
+      "auroc": 0.9147722073525039,
+      "RIE": 6.3299969115128425,
+      "BEDROC_alpha20": 0.3217328901958845,
+      "BEDROC_permutation_null": {
+        "median": 0.045266398607868394,
+        "p95": 0.10595135737442428,
+        "p99": 0.13569351100154112
+      },
+      "BEDROC_exceeds_null_p99": true,
+      "enrichment_factor": {
+        "0.01": 8.330479452054794,
+        "0.05": 9.163527397260275,
+        "0.1": 6.664383561643835
+      },
+      "median_rank": 1118.5,
+      "best_rank": 43.0,
+      "worst_rank": 5109.5
+    },
+    "endogenous_and_template_only": {
+      "n_actives": 7,
+      "n_total": 14595,
+      "auroc": 0.964393434917153,
+      "RIE": 10.28110921295716,
+      "BEDROC_alpha20": 0.5165248940239017,
+      "BEDROC_permutation_null": {
+        "median": 0.028378848159056353,
+        "p95": 0.15778168973111947,
+        "p99": 0.21381908097990857
+      },
+      "BEDROC_exceeds_null_p99": true,
+      "enrichment_factor": {
+        "0.01": 14.280821917808218,
+        "0.05": 19.993150684931507,
+        "0.1": 9.996575342465754
+      },
+      "median_rank": 659.0,
+      "best_rank": 43.0,
+      "worst_rank": 680.5
+    }
+  },
+  "B_E3_aromatic_matched": {
+    "per_stratum": [
+      {
+        "aromatic_count": 1,
+        "n_actives": 2,
+        "n_decoys": 118,
+        "auroc": 0.01059322033898305,
+        "median_active": 0.3286,
+        "median_decoy": 0.3411
+      },
+      {
+        "aromatic_count": 2,
+        "n_actives": 26,
+        "n_decoys": 86,
+        "auroc": 0.5134168157423972,
+        "median_active": 0.3627,
+        "median_decoy": 0.3631
+      },
+      {
+        "aromatic_count": 3,
+        "n_actives": 7,
+        "n_decoys": 24,
+        "auroc": 0.8333333333333334,
+        "median_active": 0.3875,
+        "median_decoy": 0.3787
+      },
+      {
+        "aromatic_count": 4,
+        "n_actives": 1,
+        "n_decoys": 5,
+        "auroc": 0.9,
+        "median_active": 0.4014,
+        "median_decoy": 0.3952
+      }
+    ],
+    "pooled_auroc_weighted": 0.4896030245746692,
+    "unmatched_E3_for_comparison": 0.733,
+    "note": "Pooling is weighted by stratum comparison count. The unmatched E3 of 0.733 is the figure this replaces; the difference between them is the artificial enrichment attributable to aromatic count."
+  },
+  "C_E3_bedroc": {
+    "unmatched_decoys": {
+      "RIE": 2.0450659940666047,
+      "BEDROC_alpha20": 0.610038082841294,
+      "n_total": 121,
+      "n_actives": 36,
+      "BEDROC_permutation_null": {
+        "median": 0.2936716777825079,
+        "p95": 0.5139087403371685,
+        "p99": 0.6123766851463587
+      },
+      "enrichment_factor": {
+        "0.01": 3.361111111111111,
+        "0.05": 2.800925925925926,
+        "0.1": 1.9606481481481481
+      }
+    },
+    "aromatic_matched_decoys": {
+      "RIE": 2.341273677489362,
+      "BEDROC_alpha20": 0.3364794135244021,
+      "n_total": 269,
+      "n_actives": 36,
+      "BEDROC_permutation_null": {
+        "median": 0.13539749270927348,
+        "p95": 0.26269039041954173,
+        "p99": 0.31806259595611125
+      },
+      "enrichment_factor": {
+        "0.01": 2.490740740740741,
+        "0.05": 2.8739316239316244,
+        "0.1": 1.9372427983539096
+      }
+    }
+  }
+}
