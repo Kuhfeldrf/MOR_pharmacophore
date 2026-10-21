@@ -7,6 +7,8 @@ and, if it does, with what settings. The first run's result
 ([`docs/screen_validation.md`](docs/screen_validation.md)) is the starting point, not
 something to be defended.
 
+Engineering and statistics decisions, with rationale and status: [`DECISIONS.md`](DECISIONS.md).
+
 Scope: one receptor, OPRM1 (P35372). Establish a validated framework and optimised
 settings, then scale to the full library.
 

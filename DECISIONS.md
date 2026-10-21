@@ -1,0 +1,431 @@
+# Computational decision log
+
+Every non-obvious choice in this pipeline, why it was made, what evidence supports it, and
+whether it survived. Written so that any number in
+[`docs/optimisation_study.md`](docs/optimisation_study.md) can be traced to the decisions
+that produced it, including the decisions that were later wrong.
+
+**Status vocabulary**
+
+| | |
+|---|---|
+| **HELD** | made, tested, still in force |
+| **REVISED** | changed after evidence; both versions recorded |
+| **WITHDRAWN** | made, found wrong, removed; kept here because the reasoning is instructive |
+| **OPEN** | identified, not yet acted on |
+
+Evidence is either **measured** (a number from this project, with the script that produced
+it) or **literature** (a citation). Decisions marked *measured* were tested on this
+system; decisions marked *literature* were taken on precedent and should be treated as
+weaker until tested here.
+
+Design intent and pre-registered criteria live in [`STUDY.md`](STUDY.md); this file is the
+engineering and statistics record.
+
+---
+
+## 1. Source data and library construction
+
+### D1.1 Peptide library from the digestion workbook — HELD
+**Decision.** `combine data sets simplifed.xlsx` → `data/library/peptides.tsv`, 14,571
+unique sequences. `peptide_id = "pep_" + sha256(sequence)[:10]`.
+**Rationale.** A content-derived ID is stable across re-ingests and makes a changed
+sequence a changed ID rather than a silent mutation of an existing record.
+**Evidence.** `scripts/01_library.py` writes `provenance.json` with the SHA-256 of the
+source workbook, so the library can be proved to match a specific file.
+
+### D1.2 Deduplicate by sequence, not by source row — HELD
+**Decision.** Identical sequences from different phases/matrices collapse to one peptide,
+with the phases/matrices retained as metadata.
+**Rationale.** The screen scores chemistry, not provenance. Scoring the same sequence
+twice would double-count it in every downstream distribution.
+
+### D1.3 CTOP excluded — HELD
+**Decision.** Skipped as `NON_CANONICAL`.
+**Rationale.** Contains residues outside the 20-letter alphabet, which
+`Chem.MolFromSequence` cannot build. Recorded as an explicit skip rather than a silent
+drop.
+
+---
+
+## 2. Receptor and template
+
+### D2.1 Template from 8F7Q, held-out structure 8F7R — HELD
+**Decision.** Build the pharmacophore from 8F7Q chain P only; never use 8F7R in template
+construction, and use it solely for held-out retrieval (E4).
+**Rationale.** A template validated on the structure it was built from proves nothing.
+**Evidence.** *Measured* — endomorphin-1 retrieved at the ~99th percentile from 8F7R
+(`docs/screen_validation.md`).
+
+### D2.2 PLIP for interaction detection — HELD
+**Decision.** Derive features from PLIP-detected receptor–ligand interactions rather than
+from the ligand alone.
+**Rationale.** Makes the template a model of *the interaction*, not of the ligand's own
+feature set.
+
+### D2.3 Protonate at pH 7.4 before typing — REVISED (originally omitted)
+**Decision.** `obabel -p 7.4` on the complex before feature assignment.
+**Why it changed.** *Measured* — the deposited PDB has no hydrogens, so the free
+N-terminal amine typed as a neutral donor and the template was built with **zero charge
+features**. Protonation recovered the `POSC` feature that corresponds to the Tyr1
+ammonium–D147 salt bridge, the single most conserved contact in the opioid message.
+**Status.** Held since. A warning fires if `POSC` is absent, so this cannot regress
+silently.
+
+### D2.4 No exclusion volumes — OPEN, and the highest-value outstanding change
+**Decision as made.** The template contains 16 purely attractive features (2 AROM, 6
+HDON, 5 HACC, 2 LIPO, 1 POSC) and no exclusion volumes.
+**Why this is wrong.** Align-it's score table has a dedicated exclusion-volume overlap
+column, which in every run of this pipeline is identically zero: **nothing penalises a
+candidate for bulk or for features the pocket cannot accommodate.** This is the
+mechanistic origin of the aromatic confound of §7 — a His-rich 8-mer accumulates template
+coverage with no counter-pressure.
+**Literature.** Both relevant precedents include them. The 4DKL MOR tetrapeptide screen
+used "LigandScout default volumes derived from the receptor structure"
+([PMC6865014](https://pmc.ncbi.nlm.nih.gov/articles/PMC6865014/)); apo2ph4 keeps all
+exclusion volumes, removing only duplicates
+([PMC9832483](https://pmc.ncbi.nlm.nih.gov/articles/PMC9832483/)).
+**Predicted effect, stated before testing.** Receptor-derived exclusion spheres should
+lower scores for over-large, feature-dense windows more than for message-like ones, i.e.
+reduce E6 *without* the proportional loss of E1 seen when the metric was changed
+(§8.1 of the study). If E6 falls and E1 holds, the confound was an artefact of an
+incomplete template rather than a property of the method. If both fall together, the
+collinearity is intrinsic. **Either outcome is informative, which is why this is the next
+thing to run.**
+
+### D2.5 No mandatory features — OPEN
+**Decision as made.** Pure similarity score; no feature is required to match.
+**Literature.** The 4DKL tetrapeptide screen made the positive-ionizable feature
+*mandatory* plus ≥2 others, retaining 28,070 of ~198,000 peptides as a filter before any
+ranking ([PMC6865014](https://pmc.ncbi.nlm.nih.gov/articles/PMC6865014/)).
+**Why it matters here.** Requiring `POSC` (the Tyr1 ammonium anchor) would enforce the
+message motif instead of letting accumulated feature count substitute for it. This is a
+filter-then-rank design rather than rank-only, and it is cheap to test on data already
+scored.
+
+---
+
+## 3. Peptide preparation
+
+### D3.1 N-terminal window truncation — HELD, with a documented cost
+**Decision.** Score only the N-terminal *w* residues; `window = 8` in production.
+**Rationale.** Opioid activity requires a free N-terminal Tyr and the message motif is
+N-terminal; whole peptides are also conformationally intractable (D3.3).
+**Cost, measured and material.** Peptides sharing a window are one molecule to the screen.
+14,595 targets collapse to 5,183 distinct windows; the 640 Tyr-starting library peptides
+collapse to 234 windows. Everything past residue 8 is invisible to the score. This is
+recorded in every output file via the `window` column so no ranking can be read without
+it.
+
+### D3.2 Window 8 specifically — HELD
+**Evidence.** *Measured* — window 5 collapses both E1 families to one point each, so the
+central test is undefined; window 12 fails E1 at 0.348 with ρ = 0.051 against pKi, i.e.
+reproducible noise at 57 rotatable bonds. The usable window is interior.
+
+### D3.3 Whole-peptide scoring abandoned — HELD
+**Evidence.** *Measured* — a 17-mer has 81 rotatable bonds and default ETKDGv3 returns
+**zero** conformers; with random coordinates 20 take 73 s, so 500 would cost ~30 min for
+one peptide.
+
+### D3.4 Protonation at pH 7.4 — HELD
+Applied to candidates as well as the template, for consistency of charge features.
+
+### D3.5 C-terminal amidation of truncated windows — HELD
+**Decision.** Cap the artificial C-terminus of a truncated window as an amide; leave
+genuinely free acids free; honour known amidation.
+**Rationale.** Truncation creates a carboxylate that does not exist in the parent peptide.
+Leaving it would add a spurious negative charge and acceptor at a position that is, in the
+real molecule, a peptide bond.
+
+---
+
+## 4. Conformer generation
+
+### D4.1 ETKDGv3 with `useRandomCoords=True` — REVISED (originally default coords)
+**Why it changed.** *Measured, and this was a silent corruption.* Asking for 50 conformers
+on the N-terminal window of dynorphin A returned 48 / 21 / 2 / 1 at windows 5 / 8 / 10 /
+12, **with no error raised.** The first screen ran at window 5 and got 48 of 50, which is
+why it never surfaced. With random starting coordinates all return 50.
+**Guard.** An ensemble below `MIN_CONFORMER_FRACTION` (0.5) of the requested size now
+raises rather than being scored.
+
+### D4.2 800 conformers in production — HELD
+**Evidence.** *Measured* — window 8 at 400 conformers fails the S1 gate at ρ = 0.945;
+800 gives ρ = 0.983. The doubling also lowered E1 from 1.000 to 0.803, which is the
+correct direction (§6.2).
+**Literature tension, unresolved.** One conformer-generation study suggests ensembles
+below 25 suffice for most tasks and that more conformers raise recall but lower precision
+([JCIM 63:6598](https://pubs.acs.org/jcisd8/article/63/21/6598/987873/Conformer-Generation-for-Structure-Based-Drug)).
+That was for drug-like molecules; a 37-rotatable-bond peptide window is a different
+regime, and the S1 measurement here is direct. Noted rather than resolved.
+
+### D4.3 `pruneRmsThresh = 0.5`, MMFF minimisation — HELD
+Standard settings; not independently tested here. Marked as *untested* rather than
+validated.
+
+### D4.4 Thread count from the SLURM allocation — HELD
+**Why.** *Measured* — RDKit's `numThreads=0` means every core on the *machine*, not every
+core in the *allocation*. Eight 8-core tasks on a 64-core node each spawned 64 threads and
+drove measured CPULoad to 319. `allocated_threads()` reads `SLURM_CPUS_PER_TASK`, then
+`OMP_NUM_THREADS`, then `sched_getaffinity`. This is the mirror image of the
+`OMP_NUM_THREADS=1` fault that cost this project an earlier campaign.
+
+### D4.5 Fixed, recorded seeds; two seeds per configuration — HELD
+Reproducibility (S1) is a *selection gate*, so it has to be measurable; one seed cannot
+measure it. Every run records its seed in the output path.
+
+### D4.6 D-amino-acid support via α-carbon inversion — HELD
+**Decision.** Lowercase = D (`YaFGYPS` is [D-Ala²]dermorphin). Implemented by inverting
+the chiral tag of the alpha carbon identified through RDKit's PDB residue info, since
+`Chem.MolFromSequence` builds all-L.
+**Rationale.** Required for E7 (§6.5); no other contrast available here holds composition
+*exactly* fixed.
+**Evidence.** *Measured* — inverts residue 2 from S to R at identical molecular formula
+and identical stereo-free skeleton; D-glycine correctly refused.
+
+---
+
+## 5. Scoring
+
+### D5.1 Align-it v1.0.4 — HELD
+Built from source with the conda toolchain (conda-forge OpenBabel needs a newer CXXABI
+than RHEL's libstdc++ provides). Version is recorded in every run log.
+
+### D5.2 Score-table column layout verified empirically — HELD
+**Why.** The columns were initially *guessed* and the `overlap` index was wrong. Corrected
+against actual v1.0.4 output. An 11-column layout is now asserted in code.
+**Lesson recorded.** Parsing an external binary's output format from assumption is a
+silent-corruption risk of the same class as D4.1.
+
+### D5.3 TVERSKY_REF as the similarity metric — HELD, and literature-confirmed
+**Decision.** Reference-weighted Tversky, i.e. what fraction of the *template's* features
+the candidate covers.
+**Evidence, measured.** Selected on S1 + S2 before the evaluation metrics were computed.
+**Evidence, literature.** Independently the recommended choice: Tversky weighted toward
+query features was "by far the most successful and the least failure-prone" of ten
+dissimilarity scores in a large pharmacophore-descriptor screening benchmark, with
+Tanimoto failing to defend its privileged status and performance insensitive to tuning α
+([summary](https://www.researchgate.net/publication/237015604_Do_Not_Hesitate_to_Use_Tversky-and_Other_Hints_for_Successful_Active_Analogue_Searches_with_Feature_Count_Descriptors)).
+Tanimoto additionally carries a documented bias toward smaller molecules and stops
+decreasing as the second molecule grows
+([shape-similarity review](https://pmc.ncbi.nlm.nih.gov/articles/PMC6068280/)).
+**Known cost, not a defect.** The asymmetry that makes it robust to size mismatch is
+exactly what lets a feature-dense candidate accumulate coverage. The right remedy is
+exclusion volumes (D2.4), not a different metric — see D5.4.
+
+### D5.4 Metric NOT changed to reduce the confound — HELD (an explicit decision not to act)
+**Evidence.** *Measured* — across all nine metric × statistic combinations, the confound
+and the evaluation metrics are collinear: tversky_ref/mean E6 +0.913 with E1 0.803;
+tanimoto/top10 E6 +0.730 with E1 0.515; tversky_db/mean E6 +0.310 with E1 0.439. Every
+metric that weakens the confound weakens the signal proportionally, and the only
+combinations clearing a ρ = 0.6 ceiling sit at chance on E1.
+**Conclusion.** Composition and shape are confounded in the *benchmark*, not in the
+scoring function. `scripts/16_reselect_with_e6.py`.
+
+### D5.5 Mean over the conformer ensemble, not max — HELD, with the interpretive cost stated
+**Evidence, measured.** `max` is the noisiest order statistic available: seed-to-seed
+ρ = 0.537 at `max` against 0.983 at `mean`. This single change mattered more than any
+other in the pipeline — at matched conformer counts it is the difference between failing
+and passing the S1 gate.
+**Literature position.** `mean` is the *minority* choice; max-over-conformers is commonly
+described as standard for shape methods. The one comparison found favoured mean, but
+aggregated across pharmacophore *models* rather than conformers
+([Molecules 25:385](https://doi.org/10.3390/molecules25020385)), so it does not transfer
+cleanly.
+**Interpretive cost, explicit.** `mean` asks how well a peptide's accessible ensemble
+matches the template *on average*, not whether it can adopt a matching pose. The second
+question is closer to what binding requires. It is also the one that is not reproducible
+at achievable cost here — and E7 (§6.5) indicates this pipeline cannot resolve pose-level
+differences at any setting.
+
+### D5.6 Per-conformer score tables retained — HELD
+All ensemble statistics and all three metrics are recomputable post hoc from
+`scores.tab` without rescreening. This is why the matched-decoy E3 (§6.6) and the
+nine-combination comparison (D5.4) cost no new compute. Storage cost: 1.2 GB for the
+library screen, kept on scratch and never committed.
+
+---
+
+## 6. Benchmark design and statistics
+
+### D6.1 Selection metrics separated from evaluation metrics, pre-registered — HELD
+**Decision.** S1 (reproducibility, gate ρ ≥ 0.95) and S2 (actives vs scrambles) may
+choose the configuration; E1–E5 are reported and never used to choose.
+**Enforced in code, not only in prose.** `scripts/11_select.py` is given a selection set
+containing *only* actives and scrambles, so the evaluation metrics cannot be computed at
+that stage even by accident.
+**Why it earned its place.** *Measured* — the gate caught an inflated result twice: the
+first study's tier structure (73% decile churn) and E1 = 1.000 at 400 conformers, which
+fell to 0.803 once the ensemble converged.
+
+### D6.2 Amendment to the selection rule, made before any E metric was computed — HELD
+**Decision.** Choose `n_conformers`/metric/statistic *within* each window; carry all
+windows into evaluation.
+**Why.** The original rule selected window 5, under which E1 is undefined. Recorded in
+`STUDY.md` §4.1 with an explicit timestamp relative to the evaluation metrics, because an
+amendment made after seeing evaluation numbers would not be worth anything.
+
+### D6.3 The potency-pair control as the centrepiece — HELD
+`YGGFL…` (n = 11, pKi 7.39–8.71) vs `YGPFL…` (n = 6, pKi 4.71–5.51): one Gly3→Pro
+substitution, ~3 log units, length- and aromatic-matched, all Tyr-starting. No sequence
+rule separates them.
+
+### D6.4 E1 kept as AUROC — HELD (deliberately not changed to BEDROC)
+**Rationale.** E1 is a two-sample comparison, where AUROC *is* the Mann-Whitney *U*
+statistic and is the correct choice. The early-recognition critique (D6.8) applies to
+screening-shaped questions, not to this one. Changing it would have been cargo-culting a
+correct criticism into the wrong place.
+
+### D6.5 E7, epimer discrimination, as a sign test — HELD
+**Decision.** L/D epimer pairs; score by exact two-sided binomial sign test, not AUROC.
+**Rationale.** The literature direction for the L-Ala² substitution is qualitative SAR,
+not a matched pKi pair, so there is no measured scale on which to build an interval.
+Inventing one would overstate the evidence.
+**Scope control.** δ-selective deltorphins carry no directional prediction against a μ
+template and are reported but **excluded** from the test, rather than counted in whichever
+direction helps.
+**Result.** 1 of 3 μ-relevant pairs correct, p = 1.00.
+
+### D6.6 Decoys must be matched on the properties that drive the score — REVISED
+**Decision as made.** `tyr_hard` = Tyr-starting library peptides, length-matched.
+**Why it was wrong.** Not matched on aromatic count, the property correlating with the
+score at ρ +0.909. The benchmark literature names this **artificial enrichment**:
+performance attributable to the difference in chemical space between actives and decoys
+rather than to binding
+([Bioinformatics 37:2134](https://academic.oup.com/bioinformatics/article/37/15/2134/6126797)),
+and DUD-E's hidden bias is the canonical case
+([PLOS ONE 14:e0220113](https://journals.plos.org/plosone/article?id=10.1371%2Fjournal.pone.0220113)).
+DUD-E's own principle is property similarity with topological dissimilarity; this
+benchmark met it for length and the N-terminal residue and violated it for the one
+property that mattered.
+**Effect, measured.** E3 falls from **0.733 to 0.490** when aromatic count is matched; the
+stratum holding 26 of the 36 actives sits at 0.513. `scripts/19_screening_metrics.py`.
+**Now required.** A decoy set must be matched on the pharmacophore feature inventory
+before anything is run, and E6 is the check that it was.
+
+### D6.7 Percentile stratification of the score — WITHDRAWN
+**Decision as made.** Convert each score to its rank within the library windows of the
+same aromatic count.
+**Why withdrawn.** Failed its own invariance control: E1 should have been unchanged and
+moved 0.803 → 0.712, because family members do not share an aromatic count at window 8,
+so stratifying split a contrast it was meant to leave alone. It also promoted
+zero-aromatic peptides (raw 0.3019) to the 99.96th percentile for topping a stratum in
+which nothing matches the template.
+**Kept in the repo** (`scripts/14_composition_control.py`) because the reason it failed is
+the clearest statement of what the confound is: aromatic count is not a nuisance variable
+when the template's anchors *are* aromatics.
+**Superseded by** D6.6 — the fix is a matched benchmark, not a score transform.
+
+### D6.8 BEDROC for screening-shaped contrasts — REVISED (originally AUROC everywhere)
+**Why it changed.** *Literature* — ROC AUC is equivalent to an average of the actives'
+ranks, so early recognition is cancelled by late recognition, which is the wrong summary
+for a method whose purpose is the top of a list (Truchon & Bayly, *J Chem Inf Model* 2007,
+47:488–508;
+[overview](https://www.researchgate.net/publication/6517236_Evaluating_Virtual_Screening_Methods_Good_and_Bad_Metrics_for_the_Early_Recognition_Problem)).
+BEDROC at α = 20 puts 80% of the weight in the top 8%.
+**Scope.** Applied to the library ranking and E3 only; **not** to E1 (D6.4).
+**Sample-size caveat, acted on.** BEDROC's variance is only controlled near ~50 actives;
+this study has 36. So a **permutation null is computed rather than assumed**, and BEDROC
+is *not reported* for benchmark-sized contrasts at all — at N = 121 with α = 20 all weight
+falls in the top ~10 ranks, and E3's BEDROC of 0.610 against a null p99 of 0.612 is a
+statement about misapplying a metric, not a result.
+
+### D6.9 Effect sizes reported in units of the measured seed jitter — HELD
+**Decision.** Every contrast reports `margin / S1_median_abs_delta` alongside its AUROC,
+and is flagged **noise-floor limited** below 2×.
+**Why.** An AUROC says how consistently two groups are ordered and nothing about how far
+apart. This project was misled by that gap twice (D6.1). Measured at the gated
+configuration: S2 5.9×, E1 3.2×, E3 9.0×, E5 3.1×, **E7 −1.4× (below the floor, wrong
+direction)**.
+**Status.** A reporting change only, applied to numbers already computed; it chooses
+nothing.
+
+### D6.10 Tiers anchored to a decoy background, not library deciles — HELD
+**Rationale.** Library deciles describe the conformer seed as much as the peptide, because
+the library score distribution is compressed relative to the seed jitter. Every tier edge
+is additionally checked against the measured jitter and reported as *unsafe* if closer to
+its neighbour than the jitter.
+**Outcome.** All edges cleared the jitter — and the tiers were still wrong, for the
+unrelated reason in D6.6. A passing safety check on a badly posed comparison is still a
+badly posed comparison.
+
+### D6.11 The free-N-terminal-Tyr rule kept separate from the score — HELD
+Never folded into the ranking; carried as its own column so the contribution of the free
+one-line sequence rule stays separable from the 3D matching's.
+
+---
+
+## 7. Infrastructure
+
+### D7.1 Everything runs as a SLURM batch job — HELD
+A benchmark was once run on the ORCA login node for 12+ minutes. Killed and resubmitted.
+No analysis step, including pure re-analysis of score tables, now runs interactively.
+
+### D7.2 Block-parallel arrays with per-block output — HELD
+Each block writes its own `.tsv` and `scores.tab`, so a failed block can be rerun alone.
+**Measured benefit.** Two of 300 library blocks "failed"; both had received zero peptides
+(49 × 298 > 14,595) and the empty-table guard refused to write a header-only file. The
+distinction between an empty block and a lost block was visible immediately.
+
+### D7.3 Refuse to write an empty score table — HELD
+A zero-row output that looks like a successful run is worse than a failure.
+
+### D7.4 Trajectories and score tables stay on scratch — HELD
+Only derived, human-readable results are committed. Grant-internal documents are excluded
+via `.git/info/exclude`.
+
+---
+
+## 8. Where this sits against the published work
+
+Calibration, so the numbers above can be read against the field rather than in isolation.
+
+| | AUROC |
+|---|---|
+| This screen, library retrieval, **uncontrolled** | 0.915 |
+| Best ML model for MOR ligands, held-out split ([µORScreen, 2026](https://pmc.ncbi.nlm.nih.gov/articles/PMC13488679/)) | 0.714 |
+| Shape-overlap screening, mean over DUD-E | 0.58 |
+| Shape-overlap screening, mean over LIT-PCBA (debiased) | 0.54 |
+| **This screen, E3, aromatic-matched** | **0.490** |
+
+Two things follow. First, an uncontrolled 0.915 exceeding the best published MOR model by
+0.20 is itself evidence of residual bias rather than of a better method. Second, the
+matched 0.490 is *close to* what shape-based methods generally achieve on debiased
+benchmarks — so this is a field-wide difficulty showing up here, not a defect unique to
+this implementation. Neither observation makes the matched result good.
+
+On template provenance: no published MOR pharmacophore appears to be derived from a
+cryo-EM peptide complex. The existing models are built from the 4DKL X-ray structure with
+a morphinan antagonist
+([PMC6865014](https://pmc.ncbi.nlm.nih.gov/articles/PMC6865014/),
+[PMC4757823](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4757823/)) or are ligand-based
+on morphinans
+([model](https://link.springer.com/article/10.1186/1471-2210-10-S1-A4)). A peptide-complex
+template is therefore not redundant with the literature — which is a point in favour of
+the approach, independent of how this validation turned out.
+
+On validation rigour: the closest methodological precedent — a receptor-based
+pharmacophore from 4DKL screening ~198,000 tetrapeptides, 28,070 passing the filter, 3
+assayed, 1 active — validated its pharmacophore on **two compounds** (Tyr-Gly-Gly-Phe
+retained, rubiscolin-5 discarded) with no decoy set, no enrichment factor and no
+retrospective screen
+([PMC6865014](https://pmc.ncbi.nlm.nih.gov/articles/PMC6865014/)). The validation in this
+repository is considerably more thorough than the published comparator, and it is the
+thoroughness that produced the negative result. That asymmetry is worth stating plainly in
+any write-up: a less careful version of this same pipeline would have reported a clean
+success.
+
+---
+
+## 9. Open decisions, in priority order
+
+| # | Change | Basis | Cost |
+|---|---|---|---|
+| 1 | **Add receptor-derived exclusion volumes** (D2.4) | literature; mechanistically targets the confound | one template rebuild + one benchmark rescreen |
+| 2 | **Make `POSC` a mandatory feature** (D2.5) | literature; filter-then-rank | re-analysis only, no rescreen |
+| 3 | **Expand the active set to power the 2- and 3-aromatic strata** (D6.6) | measured; 26 of 36 actives in a stratum at AUROC 0.513 | curation, not compute |
+| 4 | Adopt AVE-style debiasing for decoy selection | literature; [LIT-PCBA](https://www.researchgate.net/publication/340614114_LIT-PCBA_An_unbiased_dataset_for_machine_learning_and_virtual_screening) uses asymmetric validation embedding for exactly this | moderate |
+| 5 | Test `max` vs `mean` under exclusion volumes | the D5.5 tension may resolve differently once bulk is penalised | re-analysis only |
+
+Items 1 and 2 are the ones that could change the study's conclusion. Item 3 is what would
+make the conclusion trustworthy either way.
