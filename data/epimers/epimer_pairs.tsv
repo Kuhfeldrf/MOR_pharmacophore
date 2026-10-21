@@ -1,0 +1,11 @@
+id	sequence	set	c_term	pair	form	note
+epi_dermorphin_D	YaFGYPS	epimer	amide	dermorphin	D	natural amphibian MOR-selective agonist, D-Ala2
+epi_dermorphin_L	YAFGYPS	epimer	amide	dermorphin	L	L-Ala2 diastereomer
+epi_deltorphin1_D	YaFDVVG	epimer	amide	deltorphin_I	D	natural amphibian, D-Ala2
+epi_deltorphin1_L	YAFDVVG	epimer	amide	deltorphin_I	L	L-Ala2 diastereomer
+epi_deltorphin2_D	YaFEVVG	epimer	amide	deltorphin_II	D	natural amphibian, D-Ala2
+epi_deltorphin2_L	YAFEVVG	epimer	amide	deltorphin_II	L	L-Ala2 diastereomer
+epi_dala2_metenk_D	YaGFM	epimer	amide	dala2_met_enkephalin	D	[D-Ala2]Met-enkephalinamide
+epi_dala2_metenk_L	YAGFM	epimer	amide	dala2_met_enkephalin	L	[L-Ala2] diastereomer
+epi_dala2_leuenk_D	YaGFL	epimer	amide	dala2_leu_enkephalin	D	[D-Ala2]Leu-enkephalinamide
+epi_dala2_leuenk_L	YAGFL	epimer	amide	dala2_leu_enkephalin	L	[L-Ala2] diastereomer

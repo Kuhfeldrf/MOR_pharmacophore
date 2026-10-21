@@ -66,26 +66,100 @@ def _amidate_c_terminus(mol):
     return out
 
 
+def parse_sequence(sequence):
+    """Split a sequence into (upper_case_sequence, set_of_D_positions).
+
+    A lowercase letter marks a D-amino acid at that position, the usual convention:
+    `YaGFLM` is [D-Ala2]-... . Everything else is unchanged, so an all-uppercase
+    sequence round-trips to (sequence, empty set) and the digestion library - which is
+    all-L - is unaffected.
+
+    D-residues exist here for one reason. The study's central test (STUDY.md 2.1) rests
+    on contrasts that hold composition fixed and vary only shape, and an L/D epimer pair
+    is the limiting case: identical atoms, identical aromatic count, identical
+    everything a composition rule can see, differing only in the handedness of one
+    alpha carbon. Those pairs are immune to the aromatic-count confound of
+    docs/optimisation_study.md 7 by construction, which is what no pair in the current
+    active set manages.
+    """
+    upper, d_positions = [], set()
+    for i, ch in enumerate(sequence):
+        if ch.islower():
+            d_positions.add(i)
+            upper.append(ch.upper())
+        else:
+            upper.append(ch)
+    return "".join(upper), d_positions
+
+
+_CHIRAL_FLIP = {
+    Chem.ChiralType.CHI_TETRAHEDRAL_CW: Chem.ChiralType.CHI_TETRAHEDRAL_CCW,
+    Chem.ChiralType.CHI_TETRAHEDRAL_CCW: Chem.ChiralType.CHI_TETRAHEDRAL_CW,
+}
+
+
+def _invert_alpha_carbons(mol, positions):
+    """Invert the alpha carbon of each 1-based residue position in `positions`.
+
+    RDKit builds peptides from one-letter codes as all-L and attaches PDB residue
+    info, so the alpha carbon of residue n is the atom named " CA " with residue
+    number n. Inverting its chiral tag is enough: the tag is what the embedding
+    honours, so the generated conformers are genuinely D at that centre.
+    """
+    edit = Chem.RWMol(mol)
+    found = set()
+    for atom in edit.GetAtoms():
+        info = atom.GetPDBResidueInfo()
+        if info is None or info.GetName().strip() != "CA":
+            continue
+        resnum = info.GetResidueNumber()
+        if resnum not in positions:
+            continue
+        tag = atom.GetChiralTag()
+        if tag not in _CHIRAL_FLIP:
+            raise ValueError(
+                f"residue {resnum} ({info.GetResidueName().strip()}) has no "
+                "tetrahedral alpha carbon, so it has no D form - glycine cannot be "
+                "a D-residue")
+        atom.SetChiralTag(_CHIRAL_FLIP[tag])
+        found.add(resnum)
+    missing = set(positions) - found
+    if missing:
+        raise ValueError(f"no alpha carbon found for residue position(s) {sorted(missing)}")
+    out = edit.GetMol()
+    Chem.SanitizeMol(out)
+    Chem.AssignStereochemistry(out, cleanIt=True, force=True)
+    return out
+
+
 def build_window(sequence, window=WINDOW, c_term="auto"):
     """Return (mol, was_truncated) for the N-terminal window of `sequence`.
 
     c_term: "auto"   - amidate if truncated, otherwise free acid (D5)
             "amide"  - amidate regardless (peptide is genuinely amidated)
             "free"   - leave the free acid
+
+    A lowercase residue means the D enantiomer at that position (see `parse_sequence`).
     """
     if not sequence:
         raise ValueError("empty sequence")
+    upper, d_positions = parse_sequence(sequence)
     # window=0 (or >= the length) means the whole peptide: no truncation, no cap.
     if window and window > 0:
-        truncated = len(sequence) > window
-        fragment = sequence[:window]
+        truncated = len(upper) > window
+        fragment = upper[:window]
     else:
         truncated = False
-        fragment = sequence
+        fragment = upper
+    # Only D-positions inside the window survive truncation; 1-based for PDB residues.
+    d_in_window = {i + 1 for i in d_positions if i < len(fragment)}
 
     mol = Chem.MolFromSequence(fragment)
     if mol is None:
         raise ValueError(f"RDKit could not build a peptide from {fragment!r}")
+
+    if d_in_window:
+        mol = _invert_alpha_carbons(mol, d_in_window)
 
     if c_term == "amide" or (c_term == "auto" and truncated):
         mol = _amidate_c_terminus(mol)

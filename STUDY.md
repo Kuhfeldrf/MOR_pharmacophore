@@ -189,14 +189,56 @@ outrank every endogenous opioid peptide
 
 - **E6 Composition confound.** Spearman ρ between score and the number of aromatic
   (F/W/Y/H) residues in the scored window, across the screened library.
-  *Ceiling: above ρ = 0.6, raw cross-library tiers are not reported;* ranking is confined
-  to the composition strata the known actives occupy, with the bar set by the weakest
-  known active in the same stratum.
 
-Full percentile stratification was tried as a remedy and rejected: it failed its own E1
-invariance control and promoted peptides with no aromatic groups at all. The rejection is
-kept in the record (`scripts/14_composition_control.py`) because why it failed is the
-clearest available statement of what the confound is.
+### 7.1 Correction, same day: E6 is a reporting constraint, not a gate
+
+E6 was first written here with a *ceiling of ρ = 0.6, above which a metric is
+ineligible*. **That was wrong and is withdrawn.** Testing all nine metric × statistic
+combinations against E6 and E1–E5 together
+([`scripts/16_reselect_with_e6.py`](scripts/16_reselect_with_e6.py),
+[`docs/reselection_e6.json`](docs/reselection_e6.json)) shows E6 and the evaluation
+metrics are **collinear**: TVERSKY_REF/mean has E6 +0.913 and E1 0.803, TANIMOTO/top10
+has E6 +0.730 and E1 0.515, TVERSKY_DB/mean has E6 +0.310 and E1 0.439. The only
+combinations that clear a 0.6 ceiling sit at chance on the study's central test.
+
+The mechanism explains why, and it is not a defect to be tuned away. TVERSKY_REF
+measures how much of the *template's* pharmacophore a candidate covers, the template's
+anchors are the Tyr1 and Phe4 aromatics of the opioid message, and a Gly3→Pro
+substitution changes how well those anchors can be presented. "Tracks aromatic coverage"
+and "separates the potency pair" are one property, not two that trade off. A gate that
+eliminates every working configuration is a badly posed gate.
+
+**E6 is therefore a constraint on how output is reported, not on which metric is used:**
+above ρ = 0.6, raw cross-library tiers are not reported, and ranking is confined to the
+composition strata the known actives occupy with the bar set by the weakest known active
+in the same stratum. The score stays as selected; what changes is the comparison it is
+allowed to make. A score can be a valid within-stratum ranking and an invalid
+cross-stratum one at the same time, and E6 measures exactly that gap.
+
+Full percentile stratification was tried as an alternative remedy and rejected: it failed
+its own E1 invariance control and promoted peptides with no aromatic groups at all. The
+rejection is kept in the record (`scripts/14_composition_control.py`) because why it
+failed is the clearest available statement of what the confound is.
+
+### 7.2 What can actually break the collinearity
+
+No choice of metric can, because composition and shape are confounded in the *benchmark*,
+not in the scoring function: of the 23 single- and double-substitution pairs with ≥1 log
+pKi gap in the active set, only 9 are aromatic-matched and those collapse to about two
+substitution types. The remaining 14 all gain or lose an aromatic residue, so E6 would
+answer them for free.
+
+**L/D epimer pairs are the limiting case and the way out.** An epimer pair has identical
+atoms, identical aromatic count and identical everything a composition rule can see,
+differing only in the handedness of one alpha carbon — so aromatic count is held exactly
+fixed and any separation is necessarily conformational. `conformers.py` now builds them
+(lowercase = D, so `YaFGYPS` is [D-Ala²]dermorphin), validated to invert the alpha carbon
+S→R at identical molecular formula and skeleton, with D-Gly correctly refused.
+
+**E7, pre-registered for the next receptor: epimer discrimination.** AUROC over
+naturally-occurring D-residue opioid peptides against their L diastereomers. This is the
+one test that can distinguish "reads the shape" from "counts the aromatics", and it is
+the test that should have been the centrepiece from the start.
 
 A matched-control benchmark measures the capability you care about and cannot see what
 dominates an unmatched screen. Both are needed.
