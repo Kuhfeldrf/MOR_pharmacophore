@@ -341,3 +341,110 @@ library, with a stated ceiling above which raw cross-library tiers are not repor
 
 Window 8 remains the configuration. The raw tiers do not survive; the within-stratum
 shortlist does.
+
+---
+
+## 8. What the score actually reads
+
+Three changes, all post-hoc, all driven by §7. Machine-readable:
+[`reselection_e6.json`](reselection_e6.json), [`epimer_test.json`](epimer_test.json),
+[`effect_sizes.json`](effect_sizes.json).
+
+### 8.1 The confound cannot be fixed by choice of metric
+
+All nine metric × statistic combinations, scored on the confound and the pre-registered
+metrics together:
+
+| metric / statistic | E6 (arom ρ) | S1 | S2 | E1 | E2 | E3 |
+|---|---|---|---|---|---|---|
+| tversky_ref top10 | +0.910 | 0.883 | 0.711 | 0.879 | 0.550 | 0.679 |
+| **tversky_ref mean** | **+0.913** | **0.983** | **0.681** | **0.803** | **0.496** | **0.734** |
+| tanimoto mean | +0.722 | 0.989 | 0.573 | 0.470 | 0.121 | 0.675 |
+| tanimoto top10 | +0.730 | 0.934 | 0.593 | 0.515 | 0.146 | 0.614 |
+| tversky_db top10 | +0.334 | 0.988 | 0.555 | 0.470 | 0.087 | 0.609 |
+| tversky_db mean | +0.310 | 0.998 | 0.534 | 0.439 | 0.074 | 0.639 |
+
+**E6 and the evaluation metrics are collinear.** Every metric that weakens the confound
+weakens E1 and E2 in proportion, and the two combinations that clear a ρ = 0.6 ceiling
+sit at chance on the study's central test. The ceiling committed in STUDY.md §7 was
+therefore withdrawn the same day: a gate that eliminates every working configuration is
+badly posed, and E6 now constrains the *comparison the score may make* rather than which
+score is used.
+
+The mechanism is not a defect. TVERSKY_REF measures coverage of the template's
+pharmacophore; the template's anchors are the Tyr1 and Phe4 aromatics of the message;
+Gly3→Pro changes how well those can be presented. Tracking aromatic coverage and
+separating the potency pair are one property.
+
+### 8.2 E7: the screen does not resolve stereochemistry
+
+Since no metric can decouple composition from shape, the benchmark has to. An L/D epimer
+pair is the limiting case — identical atoms, identical aromatic count, identical
+constitution, differing only in the handedness of one α-carbon — so any separation is
+necessarily conformational. `conformers.py` now builds these (lowercase = D).
+
+| pair | D | L | Δ | direction |
+|---|---|---|---|---|
+| dermorphin | 0.3826 | 0.3817 | +0.0009 | correct |
+| [D-Ala²]Met-enkephalinamide | 0.3673 | 0.3691 | −0.0018 | wrong |
+| [D-Ala²]Leu-enkephalinamide | 0.3662 | 0.3719 | −0.0057 | wrong |
+| deltorphin I *(δ-selective, excluded)* | 0.3758 | 0.3750 | +0.0008 | — |
+| deltorphin II *(δ-selective, excluded)* | 0.3691 | 0.3699 | −0.0008 | — |
+
+**1 of 3 μ-relevant pairs in the predicted direction, exact two-sided p = 1.00.** The
+deltorphins are δ-selective, carry no directional prediction against a μ template, and
+are excluded from the sign test rather than counted in whichever direction helps.
+
+The direction for L-Ala² comes from qualitative SAR, not a matched pKi pair, so this is
+scored as a sign test and no interval is invented for a quantity with no measured scale
+here.
+
+### 8.3 Effect sizes against the noise floor — the reporting change that matters most
+
+An AUROC says how consistently two groups are ordered and nothing about how far apart.
+This project has been misled by that gap twice: 73% decile churn in the first study, and
+E1 = 1.000 at 400 conformers in this one. So every contrast is now reported as a margin
+in units of the measured seed jitter (0.0013 at this configuration):
+
+| contrast | AUROC | margin | in jitter | status |
+|---|---|---|---|---|
+| S2 actives vs scrambles | 0.680 | +0.0078 | 5.9× | resolved |
+| **E1 potency pair** | **0.803** | **+0.0043** | **3.2×** | **resolved** |
+| **E3 vs Tyr-matched decoys** | **0.733** | **+0.0119** | **9.0×** | **resolved** |
+| E5 positional rule | 0.946 | +0.0041 | 3.1× | resolved |
+| **E7 epimer pairs** | — | **−0.0018** | **−1.4×** | **noise-floor limited** |
+
+E1 survives this test at 3.2× the jitter, and **E3 is the strongest contrast in the
+study at 9.0×** — which is consistent with §4.2, where E3 was the metric stable under
+better sampling while E1 was not. E7 is the only contrast below the floor, and it points
+the wrong way.
+
+### 8.4 The conclusion this forces
+
+The three contrasts form a ladder, and reading them together is more informative than any
+one of them:
+
+| what changes | example | effect |
+|---|---|---|
+| aromatic count | library-wide | ρ = 0.909, dominates |
+| feature composition at fixed aromatic count | Gly3→Pro (Pro adds a lipophilic ring, removes a backbone donor) | E1 = 0.803, 3.2× jitter |
+| nothing but 3D arrangement | L/D epimer | p = 1.00, below the noise floor |
+
+**The score tracks pharmacophore feature composition, with no resolvable contribution
+from 3D arrangement.** That is a narrower claim than §4.1 made and it supersedes it.
+E1 is real and is not the aromatic confound — Gly3→Pro is aromatic-matched — but it is
+also not evidence of shape reading, because Pro changes the feature inventory. The one
+contrast that isolates shape returns nothing.
+
+This is a negative result for the method *as a 3D shape-matching method*, and it stands
+regardless of settings, because it was measured at the configuration that passes every
+gate. What the screen is, demonstrably, is a well-calibrated pharmacophore-feature
+composition filter: E3 at 9× the noise floor against Tyr- and length-matched decoys is a
+real and useful capability, and it is not what "pharmacophore matching" is usually taken
+to claim.
+
+Practical consequence for the library output: the within-stratum shortlist of §7.4 stands
+as the deliverable, and should be read as "peptides whose feature inventory matches the
+opioid message template", not as "peptides predicted to adopt the message conformation".
+The 8 peptides clearing endomorphin-1 in the 3-aromatic stratum remain the part worth
+following up, on that narrower basis.

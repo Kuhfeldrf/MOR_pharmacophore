@@ -146,9 +146,15 @@ def main():
     if n and k == n:
         print("  All mu pairs ordered correctly at exactly matched composition.")
     elif n and k <= n / 2:
-        print("  The screen does not order epimer pairs. At exactly matched "
-              "composition\n  it has no conformational signal, which means E1 was "
-              "reading the composition\n  difference that accompanies Gly3->Pro.")
+        print("  The screen does not order epimer pairs: at exactly matched feature\n"
+              "  composition it has no resolving power. Note what this does and does "
+              "not\n  say about E1. Gly3->Pro is aromatic-matched, so E1 is not "
+              "explained by the\n  aromatic confound - but Pro adds a lipophilic ring "
+              "and removes a backbone\n  donor, so it still changes FEATURE "
+              "composition. Epimerisation changes no\n  feature count at all. The "
+              "pattern across the three is that the score tracks\n  pharmacophore "
+              "feature composition and not 3D arrangement; see\n  "
+              "scripts/18_effect_sizes.py for each contrast's margin in jitter units.")
     print("\nwrote %s" % (args.out / "epimer_test.json"))
 
 

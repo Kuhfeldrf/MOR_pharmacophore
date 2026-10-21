@@ -1,0 +1,79 @@
+{
+  "generated": "2026-10-21",
+  "metric": "tversky_ref_mean",
+  "configuration": {
+    "window": 8,
+    "n_conformers": 800
+  },
+  "seed_jitter_median_abs_delta": 0.0013332624957916317,
+  "noise_floor_multiple": 2.0,
+  "note": "Reporting change only; applied to already-computed numbers and used to choose nothing. A contrast below the noise-floor multiple has an ordering the method cannot reliably reproduce, whatever its AUROC.",
+  "contrasts": [
+    {
+      "contrast": "S2",
+      "description": "actives vs composition-matched scrambles",
+      "auroc": 0.6797839506172839,
+      "n_pos": 36,
+      "n_neg": 36,
+      "median_pos": 0.36305,
+      "median_neg": 0.3552,
+      "margin": 0.007849999999999968,
+      "margin_in_jitter": 5.887812808638999,
+      "noise_floor_limited": false
+    },
+    {
+      "contrast": "E1",
+      "description": "YGGFL family vs YGPFL family (Gly3->Pro, ~3 log units)",
+      "auroc": 0.803030303030303,
+      "n_pos": 11,
+      "n_neg": 6,
+      "median_pos": 0.3663,
+      "median_neg": 0.362,
+      "margin": 0.004300000000000026,
+      "margin_in_jitter": 3.225171347407382,
+      "noise_floor_limited": false
+    },
+    {
+      "contrast": "E3",
+      "description": "actives vs Tyr-starting length-matched library decoys",
+      "auroc": 0.7330065359477124,
+      "n_pos": 36,
+      "n_neg": 85,
+      "median_pos": 0.36305,
+      "median_neg": 0.3511,
+      "margin": 0.01194999999999996,
+      "margin_in_jitter": 8.962976186399501,
+      "noise_floor_limited": false
+    },
+    {
+      "contrast": "E5",
+      "description": "starts-with-YPFP vs spans-YPFP",
+      "auroc": 0.9459459459459459,
+      "n_pos": 4,
+      "n_neg": 74,
+      "median_pos": 0.3511,
+      "median_neg": 0.347,
+      "margin": 0.004100000000000048,
+      "margin_in_jitter": 3.0751633777605445,
+      "noise_floor_limited": false
+    },
+    {
+      "contrast": "E7",
+      "description": "mu-relevant L/D epimer pairs, paired difference (exactly composition-matched)",
+      "auroc": null,
+      "n_pos": 3,
+      "n_neg": 3,
+      "median_pos": null,
+      "median_neg": null,
+      "margin": -0.0017999999999999683,
+      "margin_in_jitter": -1.3500717268216629,
+      "noise_floor_limited": true,
+      "paired_deltas": [
+        0.0009000000000000119,
+        -0.0017999999999999683,
+        -0.005699999999999983
+      ],
+      "n_correct_direction": 1
+    }
+  ]
+}
