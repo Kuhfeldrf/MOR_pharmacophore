@@ -1,0 +1,446 @@
+{
+  "generated": "2026-10-21",
+  "configuration": {
+    "window": 8,
+    "n_conformers": 800,
+    "metric": "tversky_ref",
+    "statistic": "mean"
+  },
+  "n_library_scored": 14571,
+  "seed_jitter_median_abs_delta": 0.0013332624957916317,
+  "tier_edges": [
+    {
+      "tier": "tier1",
+      "decoy_percentile": 0.99,
+      "score_cut": 0.3997549875042086
+    },
+    {
+      "tier": "tier2",
+      "decoy_percentile": 0.95,
+      "score_cut": 0.3786536125000002
+    },
+    {
+      "tier": "tier3",
+      "decoy_percentile": 0.9,
+      "score_cut": 0.3751331499999997
+    }
+  ],
+  "unsafe_tier_edges": [],
+  "tier_counts": {
+    "tier1": 22,
+    "tier2": 111,
+    "tier3": 68,
+    "untiered": 14370
+  },
+  "tyr_starting_by_tier": {
+    "tier1": 3,
+    "tier2": 20,
+    "tier3": 28,
+    "untiered": 589
+  },
+  "decoy_background_n": 85,
+  "active_median": 0.3631214374999997,
+  "decoy_median": 0.35107661850000005,
+  "top": [
+    {
+      "peptide_id": "pep_3c4ecf2fda",
+      "sequence": "HSHEFHSHEDMLVVDPKSKEEDKHL",
+      "score": 0.41824436349999966,
+      "tier": "tier1",
+      "free_nterm_tyr": "no",
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_255b63a25c",
+      "sequence": "FHSHEFHSHE",
+      "score": 0.413664,
+      "tier": "tier1",
+      "free_nterm_tyr": "no",
+      "phases": "intestinal"
+    },
+    {
+      "peptide_id": "pep_e0175bd3ab",
+      "sequence": "FHSHEFHSHEDM",
+      "score": 0.413664,
+      "tier": "tier1",
+      "free_nterm_tyr": "no",
+      "phases": "gastric;intestinal"
+    },
+    {
+      "peptide_id": "pep_7d14b3f89b",
+      "sequence": "EFHSHEFHSH",
+      "score": 0.40984792375000006,
+      "tier": "tier1",
+      "free_nterm_tyr": "no",
+      "phases": "intestinal"
+    },
+    {
+      "peptide_id": "pep_b5b46e7a5f",
+      "sequence": "EFHSHEFHSHE",
+      "score": 0.40984792375000006,
+      "tier": "tier1",
+      "free_nterm_tyr": "no",
+      "phases": "intestinal"
+    },
+    {
+      "peptide_id": "pep_8cfce9a2da",
+      "sequence": "EFHSHEFHSHEDM",
+      "score": 0.40984792375000006,
+      "tier": "tier1",
+      "free_nterm_tyr": "no",
+      "phases": "intestinal"
+    },
+    {
+      "peptide_id": "pep_d65fc8526c",
+      "sequence": "EFHSHEFHSHEDML",
+      "score": 0.40984792375000006,
+      "tier": "tier1",
+      "free_nterm_tyr": "no",
+      "phases": "gastric;intestinal"
+    },
+    {
+      "peptide_id": "pep_266ac0d506",
+      "sequence": "EFHSHEFHSHEDMLVVDPK",
+      "score": 0.40984792375000006,
+      "tier": "tier1",
+      "free_nterm_tyr": "no",
+      "phases": "gastric;intestinal"
+    },
+    {
+      "peptide_id": "pep_2c03ab4d48",
+      "sequence": "EFHSHEFHSHEDMLVVDPKSK",
+      "score": 0.40984792375000006,
+      "tier": "tier1",
+      "free_nterm_tyr": "no",
+      "phases": "intestinal"
+    },
+    {
+      "peptide_id": "pep_1fb9517365",
+      "sequence": "EFHSHEFHSHEDMLVVDPKSKEEDK",
+      "score": 0.40984792375000006,
+      "tier": "tier1",
+      "free_nterm_tyr": "no",
+      "phases": "intestinal"
+    },
+    {
+      "peptide_id": "pep_0971ab6313",
+      "sequence": "EFHSHEFHSHEDMLVVDPKSKEEDKH",
+      "score": 0.40984792375000006,
+      "tier": "tier1",
+      "free_nterm_tyr": "no",
+      "phases": "gastric;intestinal"
+    },
+    {
+      "peptide_id": "pep_0bcd41108e",
+      "sequence": "EFHSHEFHSHEDMLVVDPKSKEEDKHL",
+      "score": 0.40984792375000006,
+      "tier": "tier1",
+      "free_nterm_tyr": "no",
+      "phases": "intestinal"
+    },
+    {
+      "peptide_id": "pep_de18bdcc76",
+      "sequence": "EFHSHEFHSHEDMLVVDPKSKEEDKHLK",
+      "score": 0.40984792375000006,
+      "tier": "tier1",
+      "free_nterm_tyr": "no",
+      "phases": "gastric;intestinal"
+    },
+    {
+      "peptide_id": "pep_faba7a73e0",
+      "sequence": "EFHSHEFHSHEDMLVVDPKSKEEDKHLKF",
+      "score": 0.40984792375000006,
+      "tier": "tier1",
+      "free_nterm_tyr": "no",
+      "phases": "gastric;intestinal"
+    },
+    {
+      "peptide_id": "pep_6c4070d6b7",
+      "sequence": "EFHSHEFHSHEDMLVVDPKSKEEDKHLKFR",
+      "score": 0.40984792375000006,
+      "tier": "tier1",
+      "free_nterm_tyr": "no",
+      "phases": "gastric;intestinal"
+    },
+    {
+      "peptide_id": "pep_0f3e847a37",
+      "sequence": "FHWKGHEHSIQ",
+      "score": 0.40934471874999956,
+      "tier": "tier1",
+      "free_nterm_tyr": "no",
+      "phases": "intestinal"
+    },
+    {
+      "peptide_id": "pep_acd306b771",
+      "sequence": "EKIWHHTFYNE",
+      "score": 0.4066352625000001,
+      "tier": "tier1",
+      "free_nterm_tyr": "no",
+      "phases": "gastric;intestinal"
+    },
+    {
+      "peptide_id": "pep_b805ef8929",
+      "sequence": "SHEFHSHEDMLVVDPK",
+      "score": 0.40311422500000005,
+      "tier": "tier1",
+      "free_nterm_tyr": "no",
+      "phases": "intestinal"
+    },
+    {
+      "peptide_id": "pep_563ac54d14",
+      "sequence": "YSTYHTHGRYVPPGSTKRSPYEE",
+      "score": 0.4014038411225003,
+      "tier": "tier1",
+      "free_nterm_tyr": "yes",
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_cf23c95be8",
+      "sequence": "YSTYHTHGRYVPPGSTKRSPYEEVSAGNGGSN",
+      "score": 0.4014038411225003,
+      "tier": "tier1",
+      "free_nterm_tyr": "yes",
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_3832bff02a",
+      "sequence": "EKIWHHTF",
+      "score": 0.4001836875000002,
+      "tier": "tier1",
+      "free_nterm_tyr": "no",
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_3239647f37",
+      "sequence": "YKYDHNFVKAINA",
+      "score": 0.3997549875042086,
+      "tier": "tier1",
+      "free_nterm_tyr": "yes",
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_b84eb5af11",
+      "sequence": "HPHPHLSF",
+      "score": 0.3996545075000001,
+      "tier": "tier2",
+      "free_nterm_tyr": "no",
+      "phases": "gastric;intestinal;undigested"
+    },
+    {
+      "peptide_id": "pep_17aa2f33c6",
+      "sequence": "EKIWHHSF",
+      "score": 0.39898726250000005,
+      "tier": "tier2",
+      "free_nterm_tyr": "no",
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_97419fec6b",
+      "sequence": "HFHSPAFQHPPT",
+      "score": 0.3979305375000001,
+      "tier": "tier2",
+      "free_nterm_tyr": "no",
+      "phases": "intestinal"
+    },
+    {
+      "peptide_id": "pep_e67337c780",
+      "sequence": "HFHSPAFQHPPTE",
+      "score": 0.3979305375000001,
+      "tier": "tier2",
+      "free_nterm_tyr": "no",
+      "phases": "gastric;intestinal"
+    },
+    {
+      "peptide_id": "pep_6b4ca007b0",
+      "sequence": "HFHSPAFQHPPTEF",
+      "score": 0.3979305375000001,
+      "tier": "tier2",
+      "free_nterm_tyr": "no",
+      "phases": "gastric;intestinal"
+    },
+    {
+      "peptide_id": "pep_68984c97d4",
+      "sequence": "HEFHSHEDMLVVDPK",
+      "score": 0.39770803749999933,
+      "tier": "tier2",
+      "free_nterm_tyr": "no",
+      "phases": "intestinal"
+    },
+    {
+      "peptide_id": "pep_73e71011a3",
+      "sequence": "IHFHSPAFQHPP",
+      "score": 0.3964881999999996,
+      "tier": "tier2",
+      "free_nterm_tyr": "no",
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_3e4cbd216f",
+      "sequence": "IHFHSPAFQHPPTE",
+      "score": 0.3964881999999996,
+      "tier": "tier2",
+      "free_nterm_tyr": "no",
+      "phases": "gastric;intestinal"
+    },
+    {
+      "peptide_id": "pep_9da6796b39",
+      "sequence": "IHFHSPAFQHPPTEF",
+      "score": 0.3964881999999996,
+      "tier": "tier2",
+      "free_nterm_tyr": "no",
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_d970351bd7",
+      "sequence": "AVYHHFISD",
+      "score": 0.3964721987499999,
+      "tier": "tier2",
+      "free_nterm_tyr": "no",
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_38fdcf2f89",
+      "sequence": "YPTYHTHGRYVPP",
+      "score": 0.39521980750000046,
+      "tier": "tier2",
+      "free_nterm_tyr": "yes",
+      "phases": "undigested"
+    },
+    {
+      "peptide_id": "pep_ac28d3bacf",
+      "sequence": "YYHGDHPVANSL",
+      "score": 0.3939959401249999,
+      "tier": "tier2",
+      "free_nterm_tyr": "yes",
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_93c724bf17",
+      "sequence": "VFDHWQILPGDPFDNSSRPSQV",
+      "score": 0.3905782500024237,
+      "tier": "tier2",
+      "free_nterm_tyr": "no",
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_27508d584d",
+      "sequence": "KSLFSHAFEVVKT",
+      "score": 0.3904850625,
+      "tier": "tier2",
+      "free_nterm_tyr": "no",
+      "phases": "gastric;undigested"
+    },
+    {
+      "peptide_id": "pep_349d2710a6",
+      "sequence": "YLFSHPSRMPVYPKWVGADHADD",
+      "score": 0.3892466005000004,
+      "tier": "tier2",
+      "free_nterm_tyr": "yes",
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_b106f3d054",
+      "sequence": "SLFSHAFEV",
+      "score": 0.3892150375000004,
+      "tier": "tier2",
+      "free_nterm_tyr": "no",
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_6961a1de4f",
+      "sequence": "SLFSHAFEVV",
+      "score": 0.3892150375000004,
+      "tier": "tier2",
+      "free_nterm_tyr": "no",
+      "phases": "intestinal"
+    },
+    {
+      "peptide_id": "pep_bd1ed939e1",
+      "sequence": "SLFSHAFEVVKT",
+      "score": 0.3892150375000004,
+      "tier": "tier2",
+      "free_nterm_tyr": "no",
+      "phases": "gastric;undigested"
+    },
+    {
+      "peptide_id": "pep_89fbc7be2c",
+      "sequence": "ITHRIHWESASLLR",
+      "score": 0.3880946759999997,
+      "tier": "tier2",
+      "free_nterm_tyr": "no",
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_620e79f0aa",
+      "sequence": "ISLPHFLHGSPELAEPIESLSPNEEEHSTY",
+      "score": 0.38793869499999983,
+      "tier": "tier2",
+      "free_nterm_tyr": "no",
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_81ea61a684",
+      "sequence": "YKTWGLHL",
+      "score": 0.3872755188599998,
+      "tier": "tier2",
+      "free_nterm_tyr": "yes",
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_b0a3ba82d0",
+      "sequence": "FSHAFEVVKT",
+      "score": 0.3871784500000001,
+      "tier": "tier2",
+      "free_nterm_tyr": "no",
+      "phases": "gastric;undigested"
+    },
+    {
+      "peptide_id": "pep_181e323cd1",
+      "sequence": "YRIFTVNHKLLPVGRTVM",
+      "score": 0.3871307174999998,
+      "tier": "tier2",
+      "free_nterm_tyr": "yes",
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_56c54a2183",
+      "sequence": "ALWHVPEHAVV",
+      "score": 0.38694057874999993,
+      "tier": "tier2",
+      "free_nterm_tyr": "no",
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_b11bd4cccd",
+      "sequence": "MEKIWHHSF",
+      "score": 0.3869352624999997,
+      "tier": "tier2",
+      "free_nterm_tyr": "no",
+      "phases": "gastric;intestinal"
+    },
+    {
+      "peptide_id": "pep_1a72d60dd6",
+      "sequence": "VSREFHSHEFHSHEDM",
+      "score": 0.3864418125000001,
+      "tier": "tier2",
+      "free_nterm_tyr": "no",
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_43d3b00016",
+      "sequence": "VSREFHSHEFHSHEDMLVVDPK",
+      "score": 0.3864418125000001,
+      "tier": "tier2",
+      "free_nterm_tyr": "no",
+      "phases": "gastric"
+    },
+    {
+      "peptide_id": "pep_be11c41521",
+      "sequence": "VSREFHSHEFHSHEDMLVVDPKSKEEDKHLK",
+      "score": 0.3864418125000001,
+      "tier": "tier2",
+      "free_nterm_tyr": "no",
+      "phases": "gastric"
+    }
+  ]
+}

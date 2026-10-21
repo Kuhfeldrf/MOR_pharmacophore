@@ -171,3 +171,32 @@ Stated now so it cannot be softened later:
   tested in this project so far has.
 
 Any of these is reported as the study's result.
+
+---
+
+## 7. Post-hoc addition, 2026-10-21: E6, the composition confound
+
+**Added after the full library screen, from its result, and therefore post-hoc for this
+receptor.** Pre-registered here for the next one.
+
+None of E1–E5 could detect what the library ranking showed. Every decoy set above
+controls composition by construction — `scramble` is composition-matched, `tyr_hard` is
+Tyr- and length-matched — so all of them hold the confound fixed and are blind to it. On
+the unmatched library, ρ between the score and the aromatic-residue count of the scored
+window is **+0.909**, the raw tier 1 contains no known active, and 22 library peptides
+outrank every endogenous opioid peptide
+([`docs/optimisation_study.md`](docs/optimisation_study.md) §7).
+
+- **E6 Composition confound.** Spearman ρ between score and the number of aromatic
+  (F/W/Y/H) residues in the scored window, across the screened library.
+  *Ceiling: above ρ = 0.6, raw cross-library tiers are not reported;* ranking is confined
+  to the composition strata the known actives occupy, with the bar set by the weakest
+  known active in the same stratum.
+
+Full percentile stratification was tried as a remedy and rejected: it failed its own E1
+invariance control and promoted peptides with no aromatic groups at all. The rejection is
+kept in the record (`scripts/14_composition_control.py`) because why it failed is the
+clearest available statement of what the confound is.
+
+A matched-control benchmark measures the capability you care about and cannot see what
+dominates an unmatched screen. Both are needed.

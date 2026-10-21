@@ -203,3 +203,141 @@ study's central test, which it passes. At roughly 4,700 core-hours for the libra
 costs about 90× the first run's 52, which bought a result that did not reproduce.
 
 At 48 concurrent 8-core tasks that is approximately 12 hours of wall time.
+
+**Measured:** 2,800 core-hours, 8.2 h wall over 300 array blocks (298 non-empty; two
+blocks received zero peptides because 49 × 298 > 14,595, and the empty-table guard
+refused them rather than writing a header-only file). The benchmark extrapolation was
+68% high because the benchmark contains many peptides shorter than the window, which
+embed faster per peptide than a truncated 8-mer. All 14,571 library peptides scored.
+
+---
+
+## 7. The full library screen, and the confound it exposed
+
+Ranking the library at the validated configuration produced a result that the
+pre-registered benchmark had no way to catch. **This section is post-hoc** — everything
+in it was written after the library ranking existed — and is labelled as such throughout.
+Machine-readable: [`library_report.json`](library_report.json),
+[`composition_control.json`](composition_control.json),
+[`library_shortlist.json`](library_shortlist.json).
+
+### 7.1 No known active reaches tier 1
+
+Tiers were anchored to the Tyr-matched decoy background, not to library deciles. Edges
+were 0.3998 / 0.3787 / 0.3751 (decoy p99/p95/p90) against a seed jitter of 0.0013, so
+**every edge clears the jitter** — the tier-safety check passes, which was the question
+§6 was built to answer.
+
+It is the contents that are wrong:
+
+| | |
+|---|---|
+| tier 1 | 22 peptides — **8 distinct windows**, 2 Tyr-starting |
+| tier 2 | 133 peptides, 75 windows |
+| tier 3 | 201 peptides, 105 windows |
+| untiered | 14,370 |
+
+Best endogenous ligand, endomorphin-1, scores 0.3875 — the **99.7th library percentile**,
+but *below* the tier-1 cut. Leu-enkephalin is at 97.3%, the dynorphins at 95.4%, the
+template's own met-enkephalin at 95.6%. So 22 library peptides outrank every known
+opioid peptide, and the eight windows they come from are `EFHSHEFH`, `FHSHEFHS`,
+`HSHEFHSH`, `SHEFHSHE`, `FHWKGHEH`, `EKIWHHTF`, `YKYDHNFV`, `YSTYHTHG` — one His-rich
+repeat family and two Tyr/His windows.
+
+### 7.2 The score is close to a staircase in aromatic count
+
+Spearman ρ between the score and simple composition of the scored window, over all
+14,571 library windows:
+
+| | ρ |
+|---|---|
+| **aromatic residues (F/W/Y/H)** | **+0.909** |
+| His count | +0.434 |
+| matched features | +0.350 |
+| starts with Tyr | +0.240 |
+| window length | −0.069 |
+| charged (K/R/D/E/H) | −0.006 |
+
+The strata barely overlap:
+
+| aromatics | distinct windows | median | max |
+|---|---|---|---|
+| 0 | 2,469 | 0.2840 | 0.3020 |
+| 1 | 2,077 | 0.3382 | 0.3519 |
+| 2 | 703 | 0.3583 | 0.3775 |
+| 3 | 144 | 0.3766 | 0.3906 |
+| 4 | 19 | 0.3965 | 0.4066 |
+| 5 | 5 | 0.4098 | 0.4182 |
+
+Every endogenous ligand sits at 2 or 3 aromatics. **Every tier-1 window sits at 4 or 5** —
+strata of 19 and 5 windows, containing no known active. His supplies an aromatic ring, a
+donor and an acceptor at one residue, so a His-rich repeat accumulates template coverage
+without presenting the message motif at all.
+
+This does not touch E1. The `YGGFL` and `YGPFL` families are exactly aromatic-matched, so
+§4.1's 0.803 is a conformational result and stands. E3 is partly affected: its decoys are
+Tyr-matched, which fixes the first residue but not the total aromatic count.
+
+### 7.3 A remedy that failed its own control, and is therefore not used
+
+Percentile stratification — score converted to its rank within the library windows of the
+same aromatic count — was implemented ([`14_composition_control.py`](../scripts/14_composition_control.py))
+with E1 as its invariance control, and **rejected on two independent grounds**:
+
+| | raw | stratified |
+|---|---|---|
+| E1 potency pair | 0.803 | **0.712** |
+| E2 ρ vs pKi | 0.497 | 0.356 |
+| E3 vs Tyr-matched decoys | 0.733 | 0.643 |
+| E4 endomorphin percentile | 0.988 | 0.940 |
+| E5 positional rule | 0.946 | 0.959 |
+
+E1 should have been *unchanged* and moved by 0.09, because at window 8 the family members
+do not all share an aromatic count (`YGGFLRRI` has 2, `YGGFLRKY` has 3), so stratifying
+splits a contrast it was meant to leave alone. And it promoted zero-aromatic peptides
+(`LTTLKNLRETAE`, raw 0.3019) to the 99.96th percentile for being the best of a stratum in
+which nothing matches the template. Aromatic count is not a nuisance variable here: the
+template's anchors *are* the Tyr1 and Phe4 aromatics of the message.
+
+Recording the rejected attempt rather than deleting it, because the reason it failed is
+the clearest statement of what the confound actually is.
+
+### 7.4 What is reported instead
+
+Rank only within the strata the endogenous ligands occupy (2 and 3 aromatics), against a
+bar set by the weakest endogenous ligand in the *same* stratum
+([`15_shortlist.py`](../scripts/15_shortlist.py)):
+
+| stratum | bar | library windows clearing it |
+|---|---|---|
+| 2 aromatics | dynorphin A, 0.3623 | 355 of 703 |
+| 3 aromatics | endomorphin-1, 0.3875 | 8 of 144 |
+
+**363 peptides, 212 distinct windows, 72 Tyr-starting** —
+[`library_shortlist.tsv`](library_shortlist.tsv). The 52 peptides in the 4- and
+5-aromatic strata are listed separately and flagged as uncalibratable
+([`library_high_aromatic_flagged.tsv`](library_high_aromatic_flagged.tsv)) rather than
+ranked alongside.
+
+The 2-aromatic bar is weak: half that stratum clears the weakest endogenous ligand. That
+is the library-scale restatement of E3 = 0.734 — real separation, not a sharp filter. The
+3-aromatic stratum is the selective one, 8 of 144 clearing endomorphin-1, and those eight
+are the part of this output worth anything downstream.
+
+### 7.5 What this changes about the framework
+
+The study's conclusion in §4 is unaltered: with composition held fixed the method reads
+conformation, at AUROC 0.803 on a three-log-unit contrast that this project's co-folding
+pipeline gets backwards. What §7 adds is that **the pre-registered benchmark could not
+have detected the library-scale confound**, because every one of its decoy sets controls
+composition by construction — scrambles are composition-matched, Tyr-decoys are
+Tyr-matched and length-matched. A benchmark built entirely from matched controls measures
+the thing you care about and is blind to the thing that dominates an unmatched library.
+
+The framework needs a sixth evaluation metric, pre-registered for the next receptor:
+**E6, the composition confound** — ρ between score and aromatic count across the screened
+library, with a stated ceiling above which raw cross-library tiers are not reported. At
++0.909 this screen is far above any ceiling worth setting.
+
+Window 8 remains the configuration. The raw tiers do not survive; the within-stratum
+shortlist does.

@@ -1,7 +1,7 @@
 {
-  "generated": "2026-10-20",
+  "generated": "2026-10-21",
   "s1_gate": 0.95,
-  "n_configurations": 3,
+  "n_configurations": 4,
   "chosen": {
     "n_conformers": 400,
     "window": 5,
@@ -113,6 +113,34 @@
         0.8196078431372549
       ],
       "E4_endomorphin_percentile": 0.9764705882352941,
+      "E5_positional_auroc": 0.9459459459459459
+    },
+    {
+      "n_conformers": 800,
+      "window": 8,
+      "metric": "tversky_ref",
+      "statistic": "mean",
+      "S1_spearman": 0.9827538868344206,
+      "S1_median_abs_delta": 0.0013332624957916317,
+      "S1_p10_p90_spread": 0.036708255249999155,
+      "S1_pass": true,
+      "S2_auroc_vs_scramble": 0.6805555555555556,
+      "E1_potency_pair_auroc": 0.803030303030303,
+      "E1_ci95": [
+        0.5606060606060606,
+        0.9696969696969697
+      ],
+      "E1_unique_high": 8,
+      "E1_unique_low": 5,
+      "E1_effective_comparisons": 40,
+      "E1_powered": true,
+      "E2_spearman_vs_pKi": 0.4963617704806651,
+      "E3_auroc_vs_tyr_hard": 0.7336601307189542,
+      "E3_ci95": [
+        0.6316993464052287,
+        0.826797385620915
+      ],
+      "E4_endomorphin_percentile": 0.9882352941176471,
       "E5_positional_auroc": 0.9459459459459459
     }
   ]

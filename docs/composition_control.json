@@ -1,0 +1,628 @@
+{
+  "generated": "2026-10-21",
+  "post_hoc": true,
+  "note": "Diagnostic and remedy written after the library screen; not a pre-registered metric. E1 is the control on the remedy: the YGGFL/YGPFL families are aromatic-matched, so stratification must leave E1 unchanged.",
+  "score_field": "tversky_ref_mean",
+  "confound_spearman": {
+    "aromatic_FWYH": 0.909066798729798,
+    "his": 0.43421765530151757,
+    "matched_features": 0.3502159136027672,
+    "window_length": -0.06909397489500534,
+    "charged_KRDEH": -0.006301211883066566,
+    "starts_with_Y": 0.2398269794663591
+  },
+  "aromatic_bin_sizes": {
+    "0": 2469,
+    "1": 2077,
+    "2": 703,
+    "3": 144,
+    "4": 19,
+    "5": 5
+  },
+  "benchmark_raw": {
+    "E1_potency_pair_auroc": 0.803030303030303,
+    "E1_ci95": [
+      0.5606060606060606,
+      0.9696969696969697
+    ],
+    "E1_effective_comparisons": 40,
+    "E2_spearman_vs_pKi": 0.496939690747859,
+    "E3_auroc_vs_tyr_hard": 0.7330065359477124,
+    "E3_ci95": [
+      0.6300653594771242,
+      0.8266339869281045
+    ],
+    "E4_endomorphin_percentile": 0.9882352941176471,
+    "E5_positional_auroc": 0.9459459459459459,
+    "n_scored": 235
+  },
+  "benchmark_stratified": {
+    "E1_potency_pair_auroc": 0.7121212121212122,
+    "E1_ci95": [
+      0.4393939393939394,
+      0.9393939393939394
+    ],
+    "E1_effective_comparisons": 40,
+    "E2_spearman_vs_pKi": 0.3558958127717375,
+    "E3_auroc_vs_tyr_hard": 0.6425170068027211,
+    "E3_ci95": [
+      0.5335034013605442,
+      0.7491496598639455
+    ],
+    "E4_endomorphin_percentile": 0.9404761904761905,
+    "E5_positional_auroc": 0.9594594594594594,
+    "n_scored": 232
+  },
+  "references_stratified": [
+    {
+      "id": "beta_lactorphin",
+      "set": "positive_food",
+      "window": "YLLF",
+      "raw": 0.3815,
+      "stratified": 1.0
+    },
+    {
+      "id": "alpha_lactorphin",
+      "set": "positive_food",
+      "window": "YGLF",
+      "raw": 0.3781,
+      "stratified": 1.0
+    },
+    {
+      "id": "endomorphin_1",
+      "set": "positive_endogenous",
+      "window": "YPWF",
+      "raw": 0.3875,
+      "stratified": 0.9583333333333334
+    },
+    {
+      "id": "leu_enkephalin",
+      "set": "positive_endogenous",
+      "window": "YGGFL",
+      "raw": 0.3674,
+      "stratified": 0.8890469416785206
+    },
+    {
+      "id": "dynorphin_B",
+      "set": "positive_endogenous",
+      "window": "YGGFLRRQ",
+      "raw": 0.3647,
+      "stratified": 0.8165007112375533
+    },
+    {
+      "id": "lactoferroxin_A_hum",
+      "set": "positive_food",
+      "window": "YLGSGY",
+      "raw": 0.3632,
+      "stratified": 0.7467994310099573
+    },
+    {
+      "id": "met_enkephalin",
+      "set": "template_ligand",
+      "window": "YGGFM",
+      "raw": 0.3628,
+      "stratified": 0.732574679943101
+    },
+    {
+      "id": "dynorphin_A",
+      "set": "positive_endogenous",
+      "window": "YGGFLRRI",
+      "raw": 0.3623,
+      "stratified": 0.7112375533428165
+    },
+    {
+      "id": "dynorphin_A_1_13",
+      "set": "positive_endogenous",
+      "window": "YGGFLRRI",
+      "raw": 0.3623,
+      "stratified": 0.7112375533428165
+    },
+    {
+      "id": "dynorphin_A_1_8",
+      "set": "positive_endogenous",
+      "window": "YGGFLRRI",
+      "raw": 0.3623,
+      "stratified": 0.7112375533428165
+    },
+    {
+      "id": "lactoferroxin_A_bov",
+      "set": "positive_food",
+      "window": "YLGSRY",
+      "raw": 0.3587,
+      "stratified": 0.5277382645803699
+    },
+    {
+      "id": "beta_casomorphin_5_hum",
+      "set": "positive_food",
+      "window": "YPFVE",
+      "raw": 0.3578,
+      "stratified": 0.4822190611664296
+    },
+    {
+      "id": "beta_casomorphin_7_hum",
+      "set": "positive_food",
+      "window": "YPFVEPI",
+      "raw": 0.3571,
+      "stratified": 0.4480796586059744
+    },
+    {
+      "id": "beta_casomorphin_5_bov",
+      "set": "positive_food",
+      "window": "YPFPG",
+      "raw": 0.3519,
+      "stratified": 0.23897581792318634
+    },
+    {
+      "id": "casoxin_C",
+      "set": "positive_food",
+      "window": "YIPIQYVL",
+      "raw": 0.3516,
+      "stratified": 0.22901849217638692
+    },
+    {
+      "id": "beta_casomorphin_7_bov",
+      "set": "positive_food",
+      "window": "YPFPGPI",
+      "raw": 0.3504,
+      "stratified": 0.1934566145092461
+    },
+    {
+      "id": "neocasomorphin_6",
+      "set": "positive_food",
+      "window": "YPVEPF",
+      "raw": 0.3501,
+      "stratified": 0.1891891891891892
+    },
+    {
+      "id": "casoxin_A",
+      "set": "positive_food",
+      "window": "YPSYGLNY",
+      "raw": 0.3628,
+      "stratified": 0.1388888888888889
+    },
+    {
+      "id": "beta_casomorphin_4_bov",
+      "set": "positive_food",
+      "window": "YPFP",
+      "raw": 0.3471,
+      "stratified": 0.1251778093883357
+    },
+    {
+      "id": "alphas1_casein_exorphin_6",
+      "set": "positive_food",
+      "window": "RYLGYL",
+      "raw": 0.3455,
+      "stratified": 0.11095305832147938
+    },
+    {
+      "id": "alphas1_casein_exorphin_7",
+      "set": "positive_food",
+      "window": "RYLGYLE",
+      "raw": 0.3445,
+      "stratified": 0.09957325746799431
+    },
+    {
+      "id": "casoxin_B",
+      "set": "positive_food",
+      "window": "YPYY",
+      "raw": 0.3558,
+      "stratified": 0.09027777777777778
+    },
+    {
+      "id": "casoxin_B_hum",
+      "set": "positive_food",
+      "window": "YPYY",
+      "raw": 0.3558,
+      "stratified": 0.09027777777777778
+    },
+    {
+      "id": "casoxin_D",
+      "set": "positive_food",
+      "window": "SRYPSY",
+      "raw": 0.3367,
+      "stratified": 0.01849217638691323
+    }
+  ],
+  "top_stratified": [
+    {
+      "peptide_id": "pep_91281988bf",
+      "sequence": "DVLHTFT",
+      "window": "DVLHTFT",
+      "raw": 0.3775,
+      "stratified": 1.0,
+      "n_aromatic": 2
+    },
+    {
+      "peptide_id": "pep_ad8da0c8d2",
+      "sequence": "LLGLLALTSACYIQNCPLGGKRAVLDLDVRTCL",
+      "window": "LLGLLALT",
+      "raw": 0.302,
+      "stratified": 1.0,
+      "n_aromatic": 0
+    },
+    {
+      "peptide_id": "pep_93c724bf17",
+      "sequence": "VFDHWQILPGDPFDNSSRPSQV",
+      "window": "VFDHWQIL",
+      "raw": 0.3906,
+      "stratified": 1.0,
+      "n_aromatic": 3
+    },
+    {
+      "peptide_id": "pep_262bcec5df",
+      "sequence": "VLVHTSVSPSPD",
+      "window": "VLVHTSVS",
+      "raw": 0.3519,
+      "stratified": 1.0,
+      "n_aromatic": 1
+    },
+    {
+      "peptide_id": "pep_26ac6da247",
+      "sequence": "VLVHTSVSPSPDN",
+      "window": "VLVHTSVS",
+      "raw": 0.3519,
+      "stratified": 1.0,
+      "n_aromatic": 1
+    },
+    {
+      "peptide_id": "pep_51e381bc69",
+      "sequence": "VLVHTSVSPSPDNL",
+      "window": "VLVHTSVS",
+      "raw": 0.3519,
+      "stratified": 1.0,
+      "n_aromatic": 1
+    },
+    {
+      "peptide_id": "pep_548ee89da1",
+      "sequence": "VLVHTSVSPSPDNLR",
+      "window": "VLVHTSVS",
+      "raw": 0.3519,
+      "stratified": 1.0,
+      "n_aromatic": 1
+    },
+    {
+      "peptide_id": "pep_245ac5bc26",
+      "sequence": "VLVHTSVSPSPDNLRR",
+      "window": "VLVHTSVS",
+      "raw": 0.3519,
+      "stratified": 1.0,
+      "n_aromatic": 1
+    },
+    {
+      "peptide_id": "pep_2cc3c0b3bb",
+      "sequence": "VLVHTSVSPSPDNLRRF",
+      "window": "VLVHTSVS",
+      "raw": 0.3519,
+      "stratified": 1.0,
+      "n_aromatic": 1
+    },
+    {
+      "peptide_id": "pep_d4a2377b7d",
+      "sequence": "LKELLDLKAQHPDAK",
+      "window": "LKELLDLK",
+      "raw": 0.3019,
+      "stratified": 0.9995949777237748,
+      "n_aromatic": 0
+    },
+    {
+      "peptide_id": "pep_567d8892ca",
+      "sequence": "LTTLKNLRETAE",
+      "window": "LTTLKNLR",
+      "raw": 0.3019,
+      "stratified": 0.9995949777237748,
+      "n_aromatic": 0
+    },
+    {
+      "peptide_id": "pep_fd96dc7840",
+      "sequence": "LTTLKNLRETAEE",
+      "window": "LTTLKNLR",
+      "raw": 0.3019,
+      "stratified": 0.9995949777237748,
+      "n_aromatic": 0
+    },
+    {
+      "peptide_id": "pep_5ee5afea13",
+      "sequence": "LTTLKNLRETAEEVKAR",
+      "window": "LTTLKNLR",
+      "raw": 0.3019,
+      "stratified": 0.9995949777237748,
+      "n_aromatic": 0
+    },
+    {
+      "peptide_id": "pep_4fcf0ca6cf",
+      "sequence": "LTTLKNLRETAEEVKARY",
+      "window": "LTTLKNLR",
+      "raw": 0.3019,
+      "stratified": 0.9995949777237748,
+      "n_aromatic": 0
+    },
+    {
+      "peptide_id": "pep_f3188702e3",
+      "sequence": "LVDHTLDGRVLF",
+      "window": "LVDHTLDG",
+      "raw": 0.3518,
+      "stratified": 0.9995185363505056,
+      "n_aromatic": 1
+    },
+    {
+      "peptide_id": "pep_5f3dff4021",
+      "sequence": "LVVLNFGDVGLSAGLQASD",
+      "window": "LVVLNFGD",
+      "raw": 0.3512,
+      "stratified": 0.999037072701011,
+      "n_aromatic": 1
+    },
+    {
+      "peptide_id": "pep_cd1135f5df",
+      "sequence": "LEQLLRLKK",
+      "window": "LEQLLRLK",
+      "raw": 0.3018,
+      "stratified": 0.9987849331713244,
+      "n_aromatic": 0
+    },
+    {
+      "peptide_id": "pep_3bd6ea5bb8",
+      "sequence": "LEQLLRLKKY",
+      "window": "LEQLLRLK",
+      "raw": 0.3018,
+      "stratified": 0.9987849331713244,
+      "n_aromatic": 0
+    },
+    {
+      "peptide_id": "pep_b4eb0a6dd6",
+      "sequence": "LEQLLRLKKYK",
+      "window": "LEQLLRLK",
+      "raw": 0.3018,
+      "stratified": 0.9987849331713244,
+      "n_aromatic": 0
+    },
+    {
+      "peptide_id": "pep_eda200e1ab",
+      "sequence": "LEQLLRLKKYKVPQL",
+      "window": "LEQLLRLK",
+      "raw": 0.3018,
+      "stratified": 0.9987849331713244,
+      "n_aromatic": 0
+    },
+    {
+      "peptide_id": "pep_41e0e1c0ec",
+      "sequence": "LEQLLRLKKYKVPQLEIVPNSAEERLHSMKE",
+      "window": "LEQLLRLK",
+      "raw": 0.3018,
+      "stratified": 0.9987849331713244,
+      "n_aromatic": 0
+    },
+    {
+      "peptide_id": "pep_914f1c93a1",
+      "sequence": "LEQLLRLKKYKVPQLEIVPNSAEERLHSMKEGIHA",
+      "window": "LEQLLRLK",
+      "raw": 0.3018,
+      "stratified": 0.9987849331713244,
+      "n_aromatic": 0
+    },
+    {
+      "peptide_id": "pep_e9a4097cf9",
+      "sequence": "YKTWGLSA",
+      "window": "YKTWGLSA",
+      "raw": 0.3767,
+      "stratified": 0.9985775248933144,
+      "n_aromatic": 2
+    },
+    {
+      "peptide_id": "pep_d65120d9cf",
+      "sequence": "NTPVTWLVGPFAPGITEKAPEE",
+      "window": "NTPVTWLV",
+      "raw": 0.351,
+      "stratified": 0.9985556090515166,
+      "n_aromatic": 1
+    },
+    {
+      "peptide_id": "pep_9a4aa33ec1",
+      "sequence": "ELLRISLLLIQSWLEPV",
+      "window": "ELLRISLL",
+      "raw": 0.3017,
+      "stratified": 0.9983799108950993,
+      "n_aromatic": 0
+    },
+    {
+      "peptide_id": "pep_7c7ceca8ef",
+      "sequence": "YSIGSSSEESAEVATEEVK",
+      "window": "YSIGSSSE",
+      "raw": 0.3505,
+      "stratified": 0.9980741454020221,
+      "n_aromatic": 1
+    },
+    {
+      "peptide_id": "pep_7d5981b9df",
+      "sequence": "IVDLVKELDRDTV",
+      "window": "IVDLVKEL",
+      "raw": 0.301,
+      "stratified": 0.9979748886188741,
+      "n_aromatic": 0
+    },
+    {
+      "peptide_id": "pep_6bcdf912c2",
+      "sequence": "KVEGFDLVQKPS",
+      "window": "KVEGFDLV",
+      "raw": 0.3504,
+      "stratified": 0.9975926817525277,
+      "n_aromatic": 1
+    },
+    {
+      "peptide_id": "pep_ad11025355",
+      "sequence": "KVEGFDLVQKPSY",
+      "window": "KVEGFDLV",
+      "raw": 0.3504,
+      "stratified": 0.9975926817525277,
+      "n_aromatic": 1
+    },
+    {
+      "peptide_id": "pep_edbaf6845a",
+      "sequence": "KVEGFDLVQKPSYYV",
+      "window": "KVEGFDLV",
+      "raw": 0.3504,
+      "stratified": 0.9975926817525277,
+      "n_aromatic": 1
+    },
+    {
+      "peptide_id": "pep_3916aa796c",
+      "sequence": "LLLNQELLL",
+      "window": "LLLNQELL",
+      "raw": 0.3004,
+      "stratified": 0.9975698663426489,
+      "n_aromatic": 0
+    },
+    {
+      "peptide_id": "pep_6270bec8ae",
+      "sequence": "LLLNQELLLN",
+      "window": "LLLNQELL",
+      "raw": 0.3004,
+      "stratified": 0.9975698663426489,
+      "n_aromatic": 0
+    },
+    {
+      "peptide_id": "pep_1a4fa0b0a3",
+      "sequence": "LLLNQELLLNPT",
+      "window": "LLLNQELL",
+      "raw": 0.3004,
+      "stratified": 0.9975698663426489,
+      "n_aromatic": 0
+    },
+    {
+      "peptide_id": "pep_c460d07924",
+      "sequence": "LLLNQELLLNPTH",
+      "window": "LLLNQELL",
+      "raw": 0.3004,
+      "stratified": 0.9975698663426489,
+      "n_aromatic": 0
+    },
+    {
+      "peptide_id": "pep_0cb41b48dd",
+      "sequence": "LLLNQELLLNPTHQ",
+      "window": "LLLNQELL",
+      "raw": 0.3004,
+      "stratified": 0.9975698663426489,
+      "n_aromatic": 0
+    },
+    {
+      "peptide_id": "pep_e35a4d5f0c",
+      "sequence": "LLLNQELLLNPTHQI",
+      "window": "LLLNQELL",
+      "raw": 0.3004,
+      "stratified": 0.9975698663426489,
+      "n_aromatic": 0
+    },
+    {
+      "peptide_id": "pep_b89b230ee3",
+      "sequence": "LLLNQELLLNPTHQIY",
+      "window": "LLLNQELL",
+      "raw": 0.3004,
+      "stratified": 0.9975698663426489,
+      "n_aromatic": 0
+    },
+    {
+      "peptide_id": "pep_a5f9944e6e",
+      "sequence": "LLLNQELLLNPTHQIYP",
+      "window": "LLLNQELL",
+      "raw": 0.3004,
+      "stratified": 0.9975698663426489,
+      "n_aromatic": 0
+    },
+    {
+      "peptide_id": "pep_37340bc9f0",
+      "sequence": "LLLNQELLLNPTHQIYPV",
+      "window": "LLLNQELL",
+      "raw": 0.3004,
+      "stratified": 0.9975698663426489,
+      "n_aromatic": 0
+    },
+    {
+      "peptide_id": "pep_1ee6893a6b",
+      "sequence": "LLLNQELLLNPTHQIYPVT",
+      "window": "LLLNQELL",
+      "raw": 0.3004,
+      "stratified": 0.9975698663426489,
+      "n_aromatic": 0
+    },
+    {
+      "peptide_id": "pep_f494184971",
+      "sequence": "LLLNQELLLNPTHQIYPVTQ",
+      "window": "LLLNQELL",
+      "raw": 0.3004,
+      "stratified": 0.9975698663426489,
+      "n_aromatic": 0
+    },
+    {
+      "peptide_id": "pep_17f6a4322d",
+      "sequence": "LLLNQELLLNPTHQIYPVTQP",
+      "window": "LLLNQELL",
+      "raw": 0.3004,
+      "stratified": 0.9975698663426489,
+      "n_aromatic": 0
+    },
+    {
+      "peptide_id": "pep_de8e5c8d38",
+      "sequence": "LLLNQELLLNPTHQIYPVTQPL",
+      "window": "LLLNQELL",
+      "raw": 0.3004,
+      "stratified": 0.9975698663426489,
+      "n_aromatic": 0
+    },
+    {
+      "peptide_id": "pep_ecf5f192ba",
+      "sequence": "LLLNQELLLNPTHQIYPVTQPLAP",
+      "window": "LLLNQELL",
+      "raw": 0.3004,
+      "stratified": 0.9975698663426489,
+      "n_aromatic": 0
+    },
+    {
+      "peptide_id": "pep_b775ef87ec",
+      "sequence": "LLLNQELLLNPTHQIYPVTQPLAPV",
+      "window": "LLLNQELL",
+      "raw": 0.3004,
+      "stratified": 0.9975698663426489,
+      "n_aromatic": 0
+    },
+    {
+      "peptide_id": "pep_218565a2b5",
+      "sequence": "LLLNQELLLNPTHQIYPVTQPLAPVH",
+      "window": "LLLNQELL",
+      "raw": 0.3004,
+      "stratified": 0.9975698663426489,
+      "n_aromatic": 0
+    },
+    {
+      "peptide_id": "pep_82fe72781e",
+      "sequence": "LLLNQELLLNPTHQIYPVTQPLAPVHN",
+      "window": "LLLNQELL",
+      "raw": 0.3004,
+      "stratified": 0.9975698663426489,
+      "n_aromatic": 0
+    },
+    {
+      "peptide_id": "pep_a3ee9e7891",
+      "sequence": "LLLNQELLLNPTHQIYPVTQPLAPVHNP",
+      "window": "LLLNQELL",
+      "raw": 0.3004,
+      "stratified": 0.9975698663426489,
+      "n_aromatic": 0
+    },
+    {
+      "peptide_id": "pep_2510d47467",
+      "sequence": "LLLNQELLLNPTHQIYPVTQPLAPVHNPI",
+      "window": "LLLNQELL",
+      "raw": 0.3004,
+      "stratified": 0.9975698663426489,
+      "n_aromatic": 0
+    },
+    {
+      "peptide_id": "pep_c840f10929",
+      "sequence": "LLLNQELLLNPTHQIYPVTQPLAPVHNPIS",
+      "window": "LLLNQELL",
+      "raw": 0.3004,
+      "stratified": 0.9975698663426489,
+      "n_aromatic": 0
+    }
+  ]
+}
