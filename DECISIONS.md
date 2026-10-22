@@ -159,11 +159,41 @@ raises rather than being scored.
 **Evidence.** *Measured* — window 8 at 400 conformers fails the S1 gate at ρ = 0.945;
 800 gives ρ = 0.983. The doubling also lowered E1 from 1.000 to 0.803, which is the
 correct direction (§6.2).
-**Literature tension, unresolved.** One conformer-generation study suggests ensembles
-below 25 suffice for most tasks and that more conformers raise recall but lower precision
-([JCIM 63:6598](https://pubs.acs.org/jcisd8/article/63/21/6598/987873/Conformer-Generation-for-Structure-Based-Drug)).
-That was for drug-like molecules; a 37-rotatable-bond peptide window is a different
-regime, and the S1 measurement here is direct. Noted rather than resolved.
+**Literature tension — sharper than first recorded, and still unresolved** (McNutt et
+al., *J Chem Inf Model* 2023, 63:6598, read in full 2026-10-22). Their recommendation is
+not a cost argument and it is specifically about pharmacophore screening:
+
+> "in screening tasks, generating larger ensembles can decrease performance … due to
+> increasing the number of false positives … a reduced conformational ensemble of less
+> than 25 conformers … is likely sufficient … We emphasize that this recommendation is
+> **not primarily motivated by the reduced computational demands** … but by the potential
+> **decrease in accuracy** that arises when generating more conformers, which **increases
+> the false positive rate faster than the true positive rate**."
+
+Taken at face value this says 800 conformers is actively harmful, and that the pipeline's
+single most expensive decision is wrong by a factor of >30.
+
+**Why it is probably not a contradiction — the mechanism depends on D5.5.** Conventional
+pharmacophore screening is a *hit-or-miss* match, equivalent to the `max` statistic: one
+conformer matching is enough. Under `max`, each additional conformer is another chance at
+a spurious match, so the false-positive rate grows with ensemble size — exactly the
+failure they describe. This pipeline scores the ensemble **mean**, where additional
+conformers improve an average rather than adding draws to a maximum, and the measured
+consequence is the opposite: reproducibility *rises* with ensemble size (ρ 0.945 → 0.983
+from 400 → 800). Their result and ours are consistent if the mechanism is `max`-specific.
+
+**This is an inference, not a measurement**, and it is testable here: if their effect is
+`max`-specific, then screening performance under `max` should degrade with ensemble size
+while performance under `mean` does not. The sweep data needed already exists (400 and
+800 conformers at window 8, both seeds, all statistics recomputable from
+`scores.tab`). Added as item 6 in §9.
+
+**Two of their findings support choices already made:** selecting the lowest-energy
+conformers does *not* improve retrieval of bioactive conformations, while rmsd-based
+diversity filtering does (supports D4.3's `pruneRmsThresh`, and they note stricter
+thresholds matter more for pharmacophore search); and ETKDGv3's built-in geometric and
+knowledge-based constraints "need less refinement" than ML-generated conformers
+(supports D4.1).
 
 ### D4.3 `pruneRmsThresh = 0.5`, MMFF minimisation — HELD
 Standard settings; not independently tested here. Marked as *untested* rather than
@@ -218,6 +248,31 @@ decreasing as the second molecule grows
 **Known cost, not a defect.** The asymmetry that makes it robust to size mismatch is
 exactly what lets a feature-dense candidate accumulate coverage. The right remedy is
 exclusion volumes (D2.4), not a different metric — see D5.4.
+
+**Support qualified 2026-10-22, on reading the primary paper** (Horvath, Marcou & Varnek,
+*J Chem Inf Model* 2013). Two corrections to how this entry read the evidence:
+
+1. **The descriptors are topological, not 3-D.** ISIDA *colored fragment / pharmacophore
+   triplet count* vectors over ~0.75 M similarity-search runs on 165 ChEMBL targets. The
+   headline result — query-biased Tversky the best and least failure-prone of ten scores,
+   Tanimoto failing to defend its status, performance insensitive to α (0.9 and 0.7 both
+   beat Tanimoto) — is a 2-D feature-count result. It is **weaker support for a 3-D
+   overlap score than this entry originally implied**, and is a conceptual import rather
+   than a transferred benchmark.
+2. **Their conditional may point the other way for this target.** They separate
+   *growable* queries, which admit active analogues carrying additional features and are
+   best served by α > 0.5, from *conservative* queries that allow no growth, whose
+   "specific application domain" is **candidate-biased Tversky at α < 0.5**. The opioid
+   message pocket is sterically tight — 49 pocket-lining exclusion spheres from 18
+   residues (D2.4) — which makes it a conservative query being scored with a strongly
+   query-biased metric.
+
+This does not reverse D5.3 on its own, because the measured alternative here was poor:
+TVERSKY_DB (the candidate-biased direction) gave E1 = 0.439, i.e. chance (D5.4). But that
+measurement was made **without exclusion volumes**, so it tested the asymmetry while the
+"no growth" constraint was absent from the template entirely. The two are confounded, and
+D2.4 is the experiment that separates them. Retest the metric asymmetry once exclusion
+volumes are in (now item 5 in §9).
 
 ### D5.4 Metric NOT changed to reduce the confound — HELD (an explicit decision not to act)
 **Evidence.** *Measured* — across all nine metric × statistic combinations, the confound
@@ -330,11 +385,35 @@ for a method whose purpose is the top of a list (Truchon & Bayly, *J Chem Inf Mo
 [overview](https://www.researchgate.net/publication/6517236_Evaluating_Virtual_Screening_Methods_Good_and_Bad_Metrics_for_the_Early_Recognition_Problem)).
 BEDROC at α = 20 puts 80% of the weight in the top 8%.
 **Scope.** Applied to the library ranking and E3 only; **not** to E1 (D6.4).
-**Sample-size caveat, acted on.** BEDROC's variance is only controlled near ~50 actives;
-this study has 36. So a **permutation null is computed rather than assumed**, and BEDROC
-is *not reported* for benchmark-sized contrasts at all — at N = 121 with α = 20 all weight
-falls in the top ~10 ranks, and E3's BEDROC of 0.610 against a null p99 of 0.612 is a
-statement about misapplying a metric, not a result.
+**Sample-size caveat, acted on.** A **permutation null is computed rather than assumed**,
+and BEDROC is *not reported* for benchmark-sized contrasts.
+
+**Attribution corrected 2026-10-22, on reading the primary paper.** This entry previously
+said BEDROC's variance "is only controlled near ~50 actives". Truchon & Bayly make no such
+threshold claim — n = 50 is an illustrative figure in their worked example. What they
+actually give is stronger and usable directly:
+
+- An analytical upper bound on the metric's standard deviation,
+  **STD_max = 1 / sqrt(8n)**, offered explicitly "for planning evaluations". For this
+  study: n = 24 reference ligands → 0.072; n = 7 endogenous → 0.134. The observed BEDROC
+  values sit ~3.7–3.8 of those units above their permutation-null medians.
+- A **comparability condition, α·R_a ≪ 1** (R_a = n/N), required for BEDROC to be free of
+  the saturation effect and for cross-study comparison to be meaningful. This is the
+  precise version of what this entry previously hand-waved as "all weight falls in the
+  top ~10 ranks":
+
+| contrast | n / N | α·R_a | verdict |
+|---|---|---|---|
+| library, 24 ref ligands | 24 / 14,595 | 0.033 | ✓ reportable |
+| library, 7 endogenous | 7 / 14,595 | 0.010 | ✓ reportable |
+| E3, unmatched decoys | 36 / 121 | 5.95 | ✗ saturated |
+| E3, aromatic-matched | 36 / 269 | 2.68 | ✗ saturated |
+
+So the decision not to report BEDROC for E3 was right, but for a reason I can now state
+exactly rather than approximately. Truchon & Bayly additionally criticise EF for not
+discriminating ranking quality *before* the threshold and for having high variance with a
+maximum that depends on R_a — so the EF values reported alongside BEDROC in §9.1 of the
+study are secondary, not primary.
 
 ### D6.9 Effect sizes reported in units of the measured seed jitter — HELD
 **Decision.** Every contrast reports `margin / S1_median_abs_delta` alongside its AUROC,
@@ -431,7 +510,8 @@ success.
 | 2 | **Make `POSC` a mandatory feature** (D2.5) | literature; filter-then-rank | rescreen with `-o`; see cost correction in D2.5 |
 | 3 | **Expand the active set to power the 2- and 3-aromatic strata** (D6.6) | measured; 26 of 36 actives in a stratum at AUROC 0.513 | curation, not compute |
 | 4 | Adopt AVE-style debiasing for decoy selection | literature; [LIT-PCBA](https://www.researchgate.net/publication/340614114_LIT-PCBA_An_unbiased_dataset_for_machine_learning_and_virtual_screening) uses asymmetric validation embedding for exactly this | moderate |
-| 5 | Test `max` vs `mean` under exclusion volumes | the D5.5 tension may resolve differently once bulk is penalised | re-analysis only |
+| 5 | **Retest the Tversky asymmetry once exclusion volumes are in** (D5.3) | literature; TVERSKY_DB was tested with the "no growth" constraint absent from the template, so metric and constraint were confounded | re-analysis of the D2.4 rescreen |
+| 6 | **Test whether the ensemble-size penalty is `max`-specific** (D4.2) | literature; McNutt's false-positive mechanism should apply to `max` and not to `mean`, which would reconcile 800 conformers with a <25 recommendation | re-analysis only, data already on disk |
 
 Items 1 and 2 are the ones that could change the study's conclusion. Item 3 is what would
 make the conclusion trustworthy either way.

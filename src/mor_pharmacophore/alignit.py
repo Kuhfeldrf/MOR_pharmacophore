@@ -70,15 +70,25 @@ def generate_pharmacophore(molecule_path, out_phar, mol_type=None):
 
 
 def score(reference_phar, dbase_path, scores_out, aligned_out=None,
-          rank_by="TANIMOTO", cutoff=None, best=None, db_type=None):
+          rank_by="TANIMOTO", cutoff=None, best=None, db_type=None,
+          with_exclusion=False):
     """Score every molecule in `dbase_path` against the `reference_phar` template.
 
     Returns the path to the score table. `rank_by` TVERSKY_REF weights the reference's
     own features, which is the asymmetric option to use when candidates are larger than
     the template.
+
+    `with_exclusion` passes Align-it's `--withExclusion`, which makes EXCL spheres in
+    the template part of the alignment optimisation and populates the exclusion-overlap
+    column. Without it, EXCL features in a template are parsed and then silently
+    ignored - so a template carrying exclusion volumes scored without this flag gives
+    exactly the same numbers as one without them. Default False so that templates with
+    no EXCL features behave as before.
     """
     args = ["-r", str(reference_phar), "--refType", "PHAR",
             "-d", str(dbase_path), "-s", str(scores_out), "--rankBy", rank_by]
+    if with_exclusion:
+        args += ["--withExclusion"]
     if aligned_out:
         args += ["-o", str(aligned_out)]
     if db_type:

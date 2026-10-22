@@ -1,0 +1,87 @@
+{
+  "generated": "2026-10-22",
+  "metric": "tversky_ref",
+  "window": 8,
+  "hypothesis": "McNutt 2023's larger-ensemble penalty is a false-positive mechanism specific to hit-or-miss (max) matching, and should not apply to the ensemble mean",
+  "results": [
+    {
+      "n_conformers": 400,
+      "statistic": "max",
+      "S1_spearman": 0.568719694506315,
+      "S2_auroc_vs_scramble": 0.7154706790123457,
+      "E3_auroc_vs_tyr_hard": 0.6544934640522876,
+      "E1_potency_pair_auroc": 0.6893939393939394,
+      "n_scored": 235
+    },
+    {
+      "n_conformers": 400,
+      "statistic": "mean",
+      "S1_spearman": 0.9447409494714998,
+      "S2_auroc_vs_scramble": 0.691358024691358,
+      "E3_auroc_vs_tyr_hard": 0.7397058823529412,
+      "E1_potency_pair_auroc": 0.9696969696969697,
+      "n_scored": 235
+    },
+    {
+      "n_conformers": 400,
+      "statistic": "top10",
+      "S1_spearman": 0.8790540380990568,
+      "S2_auroc_vs_scramble": 0.7102623456790124,
+      "E3_auroc_vs_tyr_hard": 0.6883986928104575,
+      "E1_potency_pair_auroc": 0.946969696969697,
+      "n_scored": 235
+    },
+    {
+      "n_conformers": 800,
+      "statistic": "max",
+      "S1_spearman": 0.5373835627221275,
+      "S2_auroc_vs_scramble": 0.6896219135802469,
+      "E3_auroc_vs_tyr_hard": 0.6790849673202615,
+      "E1_potency_pair_auroc": 0.8106060606060606,
+      "n_scored": 235
+    },
+    {
+      "n_conformers": 800,
+      "statistic": "mean",
+      "S1_spearman": 0.9827538868344206,
+      "S2_auroc_vs_scramble": 0.6790123456790124,
+      "E3_auroc_vs_tyr_hard": 0.7421568627450981,
+      "E1_potency_pair_auroc": 0.8787878787878788,
+      "n_scored": 235
+    },
+    {
+      "n_conformers": 800,
+      "statistic": "top10",
+      "S1_spearman": 0.88288681636325,
+      "S2_auroc_vs_scramble": 0.7025462962962963,
+      "E3_auroc_vs_tyr_hard": 0.6898692810457516,
+      "E1_potency_pair_auroc": 0.9242424242424243,
+      "n_scored": 235
+    }
+  ],
+  "deltas_small_to_large_ensemble": {
+    "max": {
+      "from": 400,
+      "to": 800,
+      "dS2": -0.025848765432098797,
+      "dE3": 0.02459150326797388,
+      "dS1": -0.03133613178418748
+    },
+    "mean": {
+      "from": 400,
+      "to": 800,
+      "dS2": -0.012345679012345623,
+      "dE3": 0.002450980392156854,
+      "dS1": 0.03801293736292077
+    },
+    "top10": {
+      "from": 400,
+      "to": 800,
+      "dS2": -0.007716049382716084,
+      "dE3": 0.0014705882352941124,
+      "dS1": 0.0038327782641931485
+    }
+  },
+  "verdict": "reconciliation NOT supported",
+  "caveat": "Two conformer counts and one window is a weak test of an interaction; it can refute the reconciliation but cannot establish it. AUROC is also the wrong summary for screening (D6.8) - used here only because the question is a relative change in the same metric across ensemble sizes."
+}

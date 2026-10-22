@@ -90,6 +90,10 @@ def main():
     ap.add_argument("--n-conformers", default=N_CONFORMERS, type=int)
     ap.add_argument("--window", default=WINDOW, type=int)
     ap.add_argument("--seed", default=0xF00D, type=int)
+    ap.add_argument("--with-exclusion", action="store_true",
+                    help="honour EXCL spheres in the template (align-it ignores them "
+                         "otherwise, so a template with exclusion volumes scored "
+                         "without this gives identical numbers to one without)")
     ap.add_argument("--keep-sdf", action="store_true",
                     help="retain conformer SDFs (they are transient by default; "
                          "scratch is tight)")
@@ -118,7 +122,8 @@ def main():
     t1 = time.time()
     prot_sdf = protonate_sdf(raw_sdf, work / "conformers_h.sdf")
     scores_tab = work / "scores.tab"
-    score(args.template, prot_sdf, scores_tab, db_type="SDF", rank_by="TVERSKY_REF")
+    score(args.template, prot_sdf, scores_tab, db_type="SDF", rank_by="TVERSKY_REF",
+          with_exclusion=args.with_exclusion)
     t_score = time.time() - t1
     print(f"  scoring: {t_score:.1f}s")
 

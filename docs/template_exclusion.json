@@ -1,0 +1,51 @@
+{
+  "generated": "2026-10-22",
+  "source_complex": "data/8f7q_complex.pdb",
+  "ligand_chain": "P",
+  "base_template": "results/01_template/mor_template.phar",
+  "base_feature_counts": {
+    "AROM": 2,
+    "HACC": 5,
+    "HDON": 6,
+    "LIPO": 2,
+    "POSC": 1
+  },
+  "parameters": {
+    "contact_A": 5.0,
+    "dedupe_A": 1.5,
+    "clear_of_feature_A": 2.0,
+    "alphas": [
+      0.5,
+      1.0
+    ]
+  },
+  "n_receptor_heavy_atoms": 2312,
+  "n_pocket_lining": 65,
+  "n_dropped_on_attractive_feature": 0,
+  "n_exclusion_spheres": 49,
+  "lining_residues": [
+    "ASN129",
+    "ASP149",
+    "CYS219",
+    "GLN126",
+    "ILE146",
+    "ILE298",
+    "ILE324",
+    "LYS235",
+    "LYS305",
+    "MET153",
+    "THR220",
+    "TRP135",
+    "TRP320",
+    "TYR150",
+    "TYR328",
+    "VAL145",
+    "VAL238",
+    "VAL302"
+  ],
+  "templates_written": [
+    "results/01_template/mor_template_excl_a0p5.phar",
+    "results/01_template/mor_template_excl_a1.phar"
+  ],
+  "scoring_requirement": "align_it must be called with --withExclusion"
+}
