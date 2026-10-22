@@ -72,7 +72,7 @@ ammonium–D147 salt bridge, the single most conserved contact in the opioid mes
 **Status.** Held since. A warning fires if `POSC` is absent, so this cannot regress
 silently.
 
-### D2.4 No exclusion volumes — OPEN, and the highest-value outstanding change
+### D2.4 No exclusion volumes — REVISED; exclusion volumes added, two independent sets agree
 **Decision as made.** The template contains 16 purely attractive features (2 AROM, 6
 HDON, 5 HACC, 2 LIPO, 1 POSC) and no exclusion volumes.
 **Why this is wrong.** Align-it's score table has a dedicated exclusion-volume overlap
@@ -92,6 +92,42 @@ reduce E6 *without* the proportional loss of E1 seen when the metric was changed
 incomplete template rather than a property of the method. If both fall together, the
 collinearity is intrinsic. **Either outcome is informative, which is why this is the next
 thing to run.**
+
+**Measured outcome — the prediction held, on two independent sets.** Implemented in
+`scripts/20_template_exclusion.py` (86 spheres over 32 contact residues including ECL2,
+placed on receptor heavy atoms within 5.0 Å of ligand, deduped at 1.5 Å, cleared 2.0 Å
+from attractive features) and plumbed through `alignit.score(with_exclusion=True)`.
+
+Note first a trap that cost a run: **`align_it` parses EXCL features and silently ignores
+them unless `--withExclusion` is passed.** A template carrying exclusion volumes scored
+without the flag returns numerically identical results, so the change can appear to do
+nothing. Recorded in the `alignit.py` docstring.
+
+| evidence | without exclusion | with exclusion (α=1.0) |
+|---|---|---|
+| 14-peptide diagnostic (job 241229): message peptides − His-rich windows | **−0.0444** (His-rich win) | **+0.0677** |
+| dietary E8 AUROC, agonist vs antagonist, μ-only (job 241252) | 0.444 (chance, exact p=0.63) | **0.917, exact p=0.0154** |
+| dietary E6 ρ vs aromatic count | +0.149 | **−0.261** |
+| dietary S1 seed reproducibility | 0.942 | **0.994** |
+
+E6 fell and performance *rose* — the outcome the prediction labelled "the confound was an
+artefact of an incomplete template rather than a property of the method". The dietary
+result is the stronger of the two because its confound points the wrong way (antagonists
+are *more* aromatic, 2.67 vs 2.00), so it cannot be produced by composition; see
+[`docs/dietary_screen.md`](docs/dietary_screen.md).
+
+α=1.0 over α=0.5: α=0.5 gave a larger gap (+0.0943) but crushed scores to 0.03–0.17, and a
+compressed range against an unchanged *absolute* jitter costs resolution.
+
+**Cost.** `--withExclusion` scoring is ~2.5× slower (559 s → 1374–1494 s per block at the
+p5 template; scoring is ~20% of a run). At the p8 template it is far worse — 6921 s for a
+single 14-peptide block, which overran the 4 h `short` partition on job 241247.
+
+**Still open:** neither set is the pre-registered 235-peptide benchmark. Stage C (job
+241259) is what moves this to HELD. The seed jitter was re-measured rather than assumed:
+scores compress under exclusion (median 0.228 → 0.154) but the absolute jitter does **not**
+(0.00105 either way), so margins in jitter units remain comparable. `23_dietary_screen.py`
+now measures jitter per configuration instead of taking it from a flag.
 
 ### D2.5 No mandatory features — OPEN
 **Decision as made.** Pure similarity score; no feature is required to match.

@@ -50,6 +50,7 @@ import glob
 import json
 import random
 from collections import defaultdict
+from itertools import combinations
 from datetime import date
 from pathlib import Path
 
@@ -66,6 +67,39 @@ def auroc(pos, neg):
         return float("nan")
     wins = sum(1.0 if p > n else (0.5 if p == n else 0.0) for p in pos for n in neg)
     return wins / (len(pos) * len(neg))
+
+
+def exact_auroc_p(pos, neg):
+    """One-sided exact Mann-Whitney p for AUROC(pos, neg) >= observed.
+
+    With 3 antagonists the bootstrap CI is coarse - it can only take a few
+    discrete values - so the exact permutation p is the honest statistic here.
+    Enumerates every assignment of which (n_neg) of the N ranks are negatives,
+    which is at most a few thousand orderings at these sizes.
+    """
+    npos, nneg = len(pos), len(neg)
+    if not npos or not nneg:
+        return float("nan")
+    tot = npos * nneg
+    u_obs = auroc(pos, neg) * tot
+    hits = n = 0
+    for c in combinations(range(1, npos + nneg + 1), nneg):
+        u_pos = tot - (sum(c) - nneg * (nneg + 1) // 2)
+        n += 1
+        hits += u_pos >= u_obs - 1e-9
+    return hits / n
+
+
+def loo_antagonist_auroc(pos, neg):
+    """AUROC recomputed with each negative dropped in turn.
+
+    E8 rests on 3 antagonists. If the result is carried by one peptide, the
+    range returned here will straddle 0.5 and the claim should not be made.
+    """
+    if len(neg) < 2:
+        return []
+    return sorted(auroc(pos, [x for j, x in enumerate(neg) if j != i])
+                  for i in range(len(neg)))
 
 
 def bootstrap_auroc(pos, neg, n=2000, seed=7):
@@ -126,9 +160,15 @@ def main():
     ap.add_argument("--meta", default=Path("data/dietary/dietary_peptides.tsv"),
                     type=Path)
     ap.add_argument("--out", default=Path("docs"), type=Path)
-    ap.add_argument("--jitter", default=0.0013, type=float,
-                    help="measured seed jitter at the production configuration, used to "
-                         "report every margin as a multiple of the noise floor")
+    ap.add_argument("--jitter", default=None, type=float,
+                    help="override the noise floor. By default the jitter is MEASURED "
+                         "per configuration from the two seeds in that configuration's "
+                         "own runs, which matters here: exclusion volumes compress the "
+                         "score range (0.228 -> 0.154 median), so a jitter carried over "
+                         "from a non-exclusion run is the wrong denominator. Measured, "
+                         "the absolute jitter turns out NOT to compress with the scores "
+                         "(0.00105 both with and without exclusion), but that is a "
+                         "result, not an assumption to build in.")
     args = ap.parse_args()
     args.out.mkdir(parents=True, exist_ok=True)
 
@@ -147,7 +187,7 @@ def main():
 
     report = {
         "generated": date.today().isoformat(), "metric": METRIC,
-        "seed_jitter": args.jitter,
+        "seed_jitter_override": args.jitter,
         "n_peptides": len(meta),
         "predictions_registered_before_scoring": {
             "E8": "agonists score above antagonists (template is an active-state, "
@@ -179,6 +219,15 @@ def main():
                 s1 = spearman([float(runs[tag][seeds[0]][p][METRIC]) for p in shared],
                               [float(runs[tag][seeds[1]][p][METRIC]) for p in shared])
 
+        # noise floor, measured in THIS configuration rather than inherited
+        jitter = args.jitter
+        if jitter is None:
+            jitter = float("nan")
+            if len(seeds) >= 2 and len(shared) >= 3:
+                jitter = median([abs(float(runs[tag][seeds[0]][p][METRIC])
+                                     - float(runs[tag][seeds[1]][p][METRIC]))
+                                 for p in shared])
+
         def subset(pred):
             return [p for p in score if pred(meta[p])]
 
@@ -198,9 +247,12 @@ def main():
             return {
                 "pool": label, "n_agonist": len(ago), "n_antagonist": len(ant),
                 "auroc": auroc(ago, ant), "ci95": [lo, hi],
+                "exact_p_one_sided": exact_auroc_p(ago, ant),
+                "loo_antagonist_auroc": loo_antagonist_auroc(ago, ant),
                 "median_agonist": median(ago), "median_antagonist": median(ant),
-                "margin": marg, "margin_in_jitter": marg / args.jitter,
-                "noise_floor_limited": bool(abs(marg) < 2 * args.jitter),
+                "margin": marg, "seed_jitter_measured": jitter,
+                "margin_in_jitter": marg / jitter,
+                "noise_floor_limited": bool(abs(marg) < 2 * jitter),
                 "mean_aromatic_agonist": sum(
                     n_aromatic(meta[p]["sequence"][:8]) for p in pool
                     if meta[p]["activity"].lower().startswith("ago")) / max(1, len(ago)),
@@ -256,10 +308,14 @@ def main():
             if not e:
                 continue
             print("  %-20s AUROC %.3f [%.2f, %.2f]  n=%d/%d  margin %+.4f (%+.1fx "
-                  "jitter)%s" % (key, e["auroc"], e["ci95"][0], e["ci95"][1],
+                  "jitter, measured %.5f)%s" % (key, e["auroc"], e["ci95"][0], e["ci95"][1],
                                  e["n_agonist"], e["n_antagonist"], e["margin"],
-                                 e["margin_in_jitter"],
+                                 e["margin_in_jitter"], e["seed_jitter_measured"],
                                  "  NOISE-FLOOR" if e["noise_floor_limited"] else ""))
+            print("  %-20s exact p %.4f (one-sided)   leave-one-antagonist-out "
+                  "AUROC %s" % ("", e["exact_p_one_sided"],
+                                " ".join("%.3f" % v
+                                         for v in e["loo_antagonist_auroc"])))
             print("  %-20s aromatic: agonists %.2f vs antagonists %.2f"
                   % ("", e["mean_aromatic_agonist"], e["mean_aromatic_antagonist"]))
         for key in ("E9_all_published", "E9_mu_assays_only", "E9_mu_agonists_only"):

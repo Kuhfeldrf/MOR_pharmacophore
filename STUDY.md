@@ -281,3 +281,58 @@ test) — with the decoy set matched on feature inventory before anything is run
 active set checked for sufficient actives per stratum to power E3 within strata. The
 present study cannot power the 2-aromatic stratum, which is where 26 of its 36 actives
 sit.
+
+---
+
+## 9. The steric bound: exclusion volumes, and E8 as the confound-resistant test
+
+§7 and §8 end in a bad place. Every positive number in the study was readable as
+aromatic-residue count, and matched-decoy E3 (0.490) said the method had no demonstrated
+signal beyond composition. §9 is the resolution, and it came from the structure paper
+rather than from more tuning.
+
+**9.1 The defect was mis-stated.** Wang et al. (*Cell* 2023, 186:413–427) report that the
+YGGF message occupies a "highly aromatic pocket" conserved across all four opioid
+receptors, and that synthetic YGGF alone activates all four. Aromatic preference is
+therefore **real chemistry**, not an artefact — our ρ = +0.909 was reading something true.
+What was wrong is that the pocket is a chamber of *fixed size*, and our score had no upper
+bound: it rewarded aromatic coverage without limit, which is how a His-rich repeat
+(`EFHSHEFH`, 5 aromatics) outscored every endogenous ligand (2–3). The correct statement
+is **the score captured the pocket's aromatic preference and omitted its steric bound**,
+which is why no choice of similarity metric helped (§8.1 — every metric that weakened the
+correlation weakened E1 proportionally) and why exclusion volumes are the right fix.
+
+**9.2 Implemented and measured.** 86 receptor-derived exclusion spheres over 32 contact
+residues. On the 14-peptide diagnostic the defect **inverts**: message peptides minus
+His-rich windows goes −0.0444 → **+0.0677**, with per-peptide penalties ordered as the
+structure requires (met-enkephalin, whose window *is* the template ligand, penalised least
+at −0.074; His-rich repeats most, −0.19 to −0.21).
+
+**9.3 E8, and why it is the test that should have been designed first.** The dietary
+peptide set ([`docs/dietary_screen.md`](docs/dietary_screen.md)) contains 14 agonists and
+3 antagonists with published IC50 values we did not curate. Its antagonists are **more**
+aromatic than its agonists (2.67 vs 2.00), so the confound predicts the *opposite* of the
+structural hypothesis. That makes it the first discriminating test in the study.
+
+| | agonist-vs-antagonist AUROC (μ assays) | exact p |
+|---|---|---|
+| p5, no exclusion | 0.528 | 0.47 |
+| p8, no exclusion | 0.444 | 0.63 |
+| **p8 + exclusion** | **0.917** | **0.0154** |
+
+Leave-one-antagonist-out gives 0.875 / 0.875 / 1.000, so it is not one peptide. ρ vs
+aromatic count flips +0.149 → −0.261 and S1 rises to 0.994.
+
+**9.4 Two negative results worth as much as the positive one.** (a) Extending the template
+from 5 to 8 residues to capture the load-bearing E8–R213(ECL2) hydrogen bond makes E8
+*worse* on its own (0.528 → 0.444): more reference features without a bound gives a
+candidate more ways to accumulate overlap. A bigger template is not automatically a better
+one. (b) **Potency ranking still fails** — E9 reaches only ρ = +0.16, and the two weakest
+agonists in the set rank first and second while met-enkephalin, 250× more potent, ranks
+third. The method discriminates *binding mode*, not affinity, and must be described that
+way.
+
+**9.5 Pre-registration amended.** E8 replaces E3 as the headline evaluation metric: E3 is
+confound-limited by construction, whereas E8's confound is adversarial. E3 is retained as
+a reported secondary. Two independent sets now support the steric bound; neither is the
+pre-registered 235-peptide benchmark, which is what Stage C exists to settle.

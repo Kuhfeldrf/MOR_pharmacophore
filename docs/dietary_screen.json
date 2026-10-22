@@ -1,0 +1,954 @@
+{
+  "generated": "2026-10-22",
+  "metric": "tversky_ref_mean",
+  "seed_jitter_override": null,
+  "n_peptides": 20,
+  "predictions_registered_before_scoring": {
+    "E8": "agonists score above antagonists (template is an active-state, agonist-bound structure); robust to the aromatic confound because antagonists here are MORE aromatic (2.6 vs 2.0)",
+    "E9": "weak positive correlation with pIC50 at best"
+  },
+  "configurations": {
+    "p5": {
+      "seeds": [
+        "20261020",
+        "61453"
+      ],
+      "n_scored": 20,
+      "S1_spearman_this_set": 0.9620158634441753,
+      "E8_all_published": {
+        "pool": "published, supported termini",
+        "n_agonist": 14,
+        "n_antagonist": 3,
+        "auroc": 0.4523809523809524,
+        "ci95": [
+          0.19047619047619047,
+          0.7142857142857143
+        ],
+        "exact_p_one_sided": 0.6161764705882353,
+        "loo_antagonist_auroc": [
+          0.39285714285714285,
+          0.42857142857142855,
+          0.5357142857142857
+        ],
+        "median_agonist": 0.35645,
+        "median_antagonist": 0.35509999999999997,
+        "margin": 0.0013500000000000179,
+        "seed_jitter_measured": 0.001700000000000007,
+        "margin_in_jitter": 0.7941176470588307,
+        "noise_floor_limited": true,
+        "mean_aromatic_agonist": 2.0,
+        "mean_aromatic_antagonist": 2.6666666666666665
+      },
+      "E8_mu_assays_only": {
+        "pool": "mu-dominant assays only",
+        "n_agonist": 12,
+        "n_antagonist": 3,
+        "auroc": 0.5277777777777778,
+        "ci95": [
+          0.25,
+          0.8333333333333334
+        ],
+        "exact_p_one_sided": 0.4725274725274725,
+        "loo_antagonist_auroc": [
+          0.4583333333333333,
+          0.5,
+          0.625
+        ],
+        "median_agonist": 0.3594,
+        "median_antagonist": 0.35509999999999997,
+        "margin": 0.004300000000000026,
+        "seed_jitter_measured": 0.001700000000000007,
+        "margin_in_jitter": 2.529411764705887,
+        "noise_floor_limited": false,
+        "mean_aromatic_agonist": 2.0,
+        "mean_aromatic_antagonist": 2.6666666666666665
+      },
+      "E9_all_published": {
+        "pool": "published, supported termini",
+        "n": 17,
+        "spearman_vs_pIC50": 0.08088235294117649
+      },
+      "E9_mu_assays_only": {
+        "pool": "mu-dominant assays only",
+        "n": 15,
+        "spearman_vs_pIC50": -0.025
+      },
+      "E9_mu_agonists_only": {
+        "pool": "mu-dominant agonists only",
+        "n": 12,
+        "spearman_vs_pIC50": 0.11888111888111888
+      },
+      "E6_rho_vs_aromatic": 0.14907119849998599,
+      "ranked": [
+        {
+          "id": "diet_beta_lactorphin",
+          "name": "\u03b2-lactorphin",
+          "sequence": "YLLF",
+          "activity": "Agonist",
+          "ic50_uM": "160",
+          "pIC50": "3.796",
+          "score": 0.3801,
+          "n_aromatic": 2,
+          "assay_bias": "mu_dominant",
+          "flagged": false
+        },
+        {
+          "id": "diet_alpha_lactorphin",
+          "name": "\u03b1-lactorphin",
+          "sequence": "YGLF",
+          "activity": "Agonist",
+          "ic50_uM": "50",
+          "pIC50": "4.301",
+          "score": 0.37745,
+          "n_aromatic": 2,
+          "assay_bias": "mu_dominant",
+          "flagged": false
+        },
+        {
+          "id": "diet_lactoferroxin_a",
+          "name": "Lactoferroxin A",
+          "sequence": "YLGSGY",
+          "activity": "Antagonist",
+          "ic50_uM": "15.3",
+          "pIC50": "4.815",
+          "score": 0.36495,
+          "n_aromatic": 2,
+          "assay_bias": "unspecified",
+          "flagged": true
+        },
+        {
+          "id": "diet_met_enkephalin",
+          "name": "Met-enkephalin",
+          "sequence": "YGGFM",
+          "activity": "Agonist",
+          "ic50_uM": "0.2",
+          "pIC50": "6.699",
+          "score": 0.3628,
+          "n_aromatic": 2,
+          "assay_bias": "mu_dominant",
+          "flagged": false
+        },
+        {
+          "id": "diet_soymorphin_6",
+          "name": "Soymorphin-6",
+          "sequence": "YPFVVN",
+          "activity": "Agonist",
+          "ic50_uM": "9.2",
+          "pIC50": "5.036",
+          "score": 0.3624,
+          "n_aromatic": 2,
+          "assay_bias": "mu_dominant",
+          "flagged": false
+        },
+        {
+          "id": "diet_casoxin_a",
+          "name": "Casoxin A",
+          "sequence": "YPSYGLNY",
+          "activity": "Antagonist",
+          "ic50_uM": "200",
+          "pIC50": "3.699",
+          "score": 0.36205,
+          "n_aromatic": 3,
+          "assay_bias": "mu_dominant",
+          "flagged": false
+        },
+        {
+          "id": "diet_soymorphin_7",
+          "name": "Soymorphin-7",
+          "sequence": "YPFVVNA",
+          "activity": "Agonist",
+          "ic50_uM": "13",
+          "pIC50": "4.886",
+          "score": 0.36114999999999997,
+          "n_aromatic": 2,
+          "assay_bias": "mu_dominant",
+          "flagged": false
+        },
+        {
+          "id": "diet_soymorphin_5",
+          "name": "Soymorphin-5",
+          "sequence": "YPFVV",
+          "activity": "Agonist",
+          "ic50_uM": "6",
+          "pIC50": "5.222",
+          "score": 0.36095,
+          "n_aromatic": 2,
+          "assay_bias": "mu_dominant",
+          "flagged": false
+        },
+        {
+          "id": "diet_lactoferrin_f319324_bovine_homolog",
+          "name": "Lactoferrin f319\u2013324 (bovine homolog of lactoferroxin A)",
+          "sequence": "YLGSRY",
+          "activity": "Antagonist",
+          "ic50_uM": "",
+          "pIC50": "",
+          "score": 0.36005,
+          "n_aromatic": 2,
+          "assay_bias": "unknown",
+          "flagged": true
+        },
+        {
+          "id": "diet_beta_casomorphin_5_human",
+          "name": "\u03b2-casomorphin-5",
+          "sequence": "YPFVE",
+          "activity": "Agonist",
+          "ic50_uM": "14",
+          "pIC50": "4.854",
+          "score": 0.35785,
+          "n_aromatic": 2,
+          "assay_bias": "mu_dominant",
+          "flagged": false
+        },
+        {
+          "id": "diet_casoxin_b",
+          "name": "Casoxin B",
+          "sequence": "YPYY",
+          "activity": "Antagonist",
+          "ic50_uM": "100",
+          "pIC50": "4.000",
+          "score": 0.35509999999999997,
+          "n_aromatic": 3,
+          "assay_bias": "mu_dominant",
+          "flagged": false
+        },
+        {
+          "id": "diet_beta_casomorphin_7_human",
+          "name": "\u03b2-casomorphin-7",
+          "sequence": "YPFVEPI",
+          "activity": "Agonist",
+          "ic50_uM": "25",
+          "pIC50": "4.602",
+          "score": 0.35505,
+          "n_aromatic": 2,
+          "assay_bias": "mu_dominant",
+          "flagged": false
+        },
+        {
+          "id": "diet_casoxin_c",
+          "name": "Casoxin C",
+          "sequence": "YIPIQYVLSR",
+          "activity": "Antagonist",
+          "ic50_uM": "5",
+          "pIC50": "5.301",
+          "score": 0.35435,
+          "n_aromatic": 2,
+          "assay_bias": "mu_dominant",
+          "flagged": false
+        },
+        {
+          "id": "diet_beta_casomorphin_5_bovine",
+          "name": "\u03b2-casomorphin-5",
+          "sequence": "YPFPG",
+          "activity": "Agonist",
+          "ic50_uM": "6.5",
+          "pIC50": "5.187",
+          "score": 0.3527,
+          "n_aromatic": 2,
+          "assay_bias": "mu_dominant",
+          "flagged": false
+        },
+        {
+          "id": "diet_beta_casomorphin_7_bovine",
+          "name": "\u03b2-casomorphin-7",
+          "sequence": "YPFPGPI",
+          "activity": "Agonist",
+          "ic50_uM": "57",
+          "pIC50": "4.244",
+          "score": 0.35165,
+          "n_aromatic": 2,
+          "assay_bias": "mu_dominant",
+          "flagged": false
+        },
+        {
+          "id": "diet_neocasomorphin_6",
+          "name": "Neocasomorphin-6",
+          "sequence": "YPVEPF",
+          "activity": "Agonist",
+          "ic50_uM": "59",
+          "pIC50": "4.229",
+          "score": 0.3506,
+          "n_aromatic": 2,
+          "assay_bias": "mu_dominant",
+          "flagged": false
+        },
+        {
+          "id": "diet_beta_casomorphin_4",
+          "name": "\u03b2-casomorphin-4",
+          "sequence": "YPFP",
+          "activity": "Agonist",
+          "ic50_uM": "22",
+          "pIC50": "4.658",
+          "score": 0.3498,
+          "n_aromatic": 2,
+          "assay_bias": "mu_dominant",
+          "flagged": false
+        },
+        {
+          "id": "diet_alphas1_casein_exorphin_7_mer",
+          "name": "\u03b1s1-casein-exorphin (7-mer)",
+          "sequence": "RYLGYLE",
+          "activity": "Agonist",
+          "ic50_uM": "30",
+          "pIC50": "4.523",
+          "score": 0.3466,
+          "n_aromatic": 2,
+          "assay_bias": "delta_dominant",
+          "flagged": false
+        },
+        {
+          "id": "diet_alphas1_casein_exorphin_6_mer",
+          "name": "\u03b1s1-casein-exorphin (6-mer)",
+          "sequence": "RYLGYL",
+          "activity": "Agonist",
+          "ic50_uM": "70",
+          "pIC50": "4.155",
+          "score": 0.34604999999999997,
+          "n_aromatic": 2,
+          "assay_bias": "delta_dominant",
+          "flagged": false
+        },
+        {
+          "id": "diet_casoxin_6_listed_as_casoxin_d",
+          "name": "Casoxin-6 (listed as 'Casoxin D')",
+          "sequence": "SRYPSY",
+          "activity": "Antagonist",
+          "ic50_uM": "",
+          "pIC50": "",
+          "score": 0.33694999999999997,
+          "n_aromatic": 2,
+          "assay_bias": "unknown",
+          "flagged": true
+        }
+      ]
+    },
+    "p8": {
+      "seeds": [
+        "20261020",
+        "61453"
+      ],
+      "n_scored": 20,
+      "S1_spearman_this_set": 0.9424596379167722,
+      "E8_all_published": {
+        "pool": "published, supported termini",
+        "n_agonist": 14,
+        "n_antagonist": 3,
+        "auroc": 0.38095238095238093,
+        "ci95": [
+          0.11904761904761904,
+          0.6904761904761905
+        ],
+        "exact_p_one_sided": 0.7455882352941177,
+        "loo_antagonist_auroc": [
+          0.2857142857142857,
+          0.35714285714285715,
+          0.5
+        ],
+        "median_agonist": 0.22625,
+        "median_antagonist": 0.2272,
+        "margin": -0.0009500000000000064,
+        "seed_jitter_measured": 0.0010500000000000093,
+        "margin_in_jitter": -0.9047619047619029,
+        "noise_floor_limited": true,
+        "mean_aromatic_agonist": 2.0,
+        "mean_aromatic_antagonist": 2.6666666666666665
+      },
+      "E8_mu_assays_only": {
+        "pool": "mu-dominant assays only",
+        "n_agonist": 12,
+        "n_antagonist": 3,
+        "auroc": 0.4444444444444444,
+        "ci95": [
+          0.1388888888888889,
+          0.75
+        ],
+        "exact_p_one_sided": 0.6329670329670329,
+        "loo_antagonist_auroc": [
+          0.3333333333333333,
+          0.4166666666666667,
+          0.5833333333333334
+        ],
+        "median_agonist": 0.2274,
+        "median_antagonist": 0.2272,
+        "margin": 0.00019999999999997797,
+        "seed_jitter_measured": 0.0010500000000000093,
+        "margin_in_jitter": 0.19047619047616782,
+        "noise_floor_limited": true,
+        "mean_aromatic_agonist": 2.0,
+        "mean_aromatic_antagonist": 2.6666666666666665
+      },
+      "E9_all_published": {
+        "pool": "published, supported termini",
+        "n": 17,
+        "spearman_vs_pIC50": -0.002450980392156863
+      },
+      "E9_mu_assays_only": {
+        "pool": "mu-dominant assays only",
+        "n": 15,
+        "spearman_vs_pIC50": -0.11071428571428571
+      },
+      "E9_mu_agonists_only": {
+        "pool": "mu-dominant agonists only",
+        "n": 12,
+        "spearman_vs_pIC50": -0.055944055944055944
+      },
+      "E6_rho_vs_aromatic": 0.14907119849998599,
+      "ranked": [
+        {
+          "id": "diet_beta_lactorphin",
+          "name": "\u03b2-lactorphin",
+          "sequence": "YLLF",
+          "activity": "Agonist",
+          "ic50_uM": "160",
+          "pIC50": "3.796",
+          "score": 0.24095,
+          "n_aromatic": 2,
+          "assay_bias": "mu_dominant",
+          "flagged": false
+        },
+        {
+          "id": "diet_alpha_lactorphin",
+          "name": "\u03b1-lactorphin",
+          "sequence": "YGLF",
+          "activity": "Agonist",
+          "ic50_uM": "50",
+          "pIC50": "4.301",
+          "score": 0.23875000000000002,
+          "n_aromatic": 2,
+          "assay_bias": "mu_dominant",
+          "flagged": false
+        },
+        {
+          "id": "diet_casoxin_a",
+          "name": "Casoxin A",
+          "sequence": "YPSYGLNY",
+          "activity": "Antagonist",
+          "ic50_uM": "200",
+          "pIC50": "3.699",
+          "score": 0.23199999999999998,
+          "n_aromatic": 3,
+          "assay_bias": "mu_dominant",
+          "flagged": false
+        },
+        {
+          "id": "diet_soymorphin_7",
+          "name": "Soymorphin-7",
+          "sequence": "YPFVVNA",
+          "activity": "Agonist",
+          "ic50_uM": "13",
+          "pIC50": "4.886",
+          "score": 0.23145,
+          "n_aromatic": 2,
+          "assay_bias": "mu_dominant",
+          "flagged": false
+        },
+        {
+          "id": "diet_soymorphin_6",
+          "name": "Soymorphin-6",
+          "sequence": "YPFVVN",
+          "activity": "Agonist",
+          "ic50_uM": "9.2",
+          "pIC50": "5.036",
+          "score": 0.2313,
+          "n_aromatic": 2,
+          "assay_bias": "mu_dominant",
+          "flagged": false
+        },
+        {
+          "id": "diet_lactoferroxin_a",
+          "name": "Lactoferroxin A",
+          "sequence": "YLGSGY",
+          "activity": "Antagonist",
+          "ic50_uM": "15.3",
+          "pIC50": "4.815",
+          "score": 0.23120000000000002,
+          "n_aromatic": 2,
+          "assay_bias": "unspecified",
+          "flagged": true
+        },
+        {
+          "id": "diet_lactoferrin_f319324_bovine_homolog",
+          "name": "Lactoferrin f319\u2013324 (bovine homolog of lactoferroxin A)",
+          "sequence": "YLGSRY",
+          "activity": "Antagonist",
+          "ic50_uM": "",
+          "pIC50": "",
+          "score": 0.23045,
+          "n_aromatic": 2,
+          "assay_bias": "unknown",
+          "flagged": true
+        },
+        {
+          "id": "diet_met_enkephalin",
+          "name": "Met-enkephalin",
+          "sequence": "YGGFM",
+          "activity": "Agonist",
+          "ic50_uM": "0.2",
+          "pIC50": "6.699",
+          "score": 0.22949999999999998,
+          "n_aromatic": 2,
+          "assay_bias": "mu_dominant",
+          "flagged": false
+        },
+        {
+          "id": "diet_soymorphin_5",
+          "name": "Soymorphin-5",
+          "sequence": "YPFVV",
+          "activity": "Agonist",
+          "ic50_uM": "6",
+          "pIC50": "5.222",
+          "score": 0.22820000000000001,
+          "n_aromatic": 2,
+          "assay_bias": "mu_dominant",
+          "flagged": false
+        },
+        {
+          "id": "diet_casoxin_c",
+          "name": "Casoxin C",
+          "sequence": "YIPIQYVLSR",
+          "activity": "Antagonist",
+          "ic50_uM": "5",
+          "pIC50": "5.301",
+          "score": 0.2272,
+          "n_aromatic": 2,
+          "assay_bias": "mu_dominant",
+          "flagged": false
+        },
+        {
+          "id": "diet_beta_casomorphin_7_human",
+          "name": "\u03b2-casomorphin-7",
+          "sequence": "YPFVEPI",
+          "activity": "Agonist",
+          "ic50_uM": "25",
+          "pIC50": "4.602",
+          "score": 0.2266,
+          "n_aromatic": 2,
+          "assay_bias": "mu_dominant",
+          "flagged": false
+        },
+        {
+          "id": "diet_beta_casomorphin_5_human",
+          "name": "\u03b2-casomorphin-5",
+          "sequence": "YPFVE",
+          "activity": "Agonist",
+          "ic50_uM": "14",
+          "pIC50": "4.854",
+          "score": 0.2259,
+          "n_aromatic": 2,
+          "assay_bias": "mu_dominant",
+          "flagged": false
+        },
+        {
+          "id": "diet_casoxin_b",
+          "name": "Casoxin B",
+          "sequence": "YPYY",
+          "activity": "Antagonist",
+          "ic50_uM": "100",
+          "pIC50": "4.000",
+          "score": 0.22415000000000002,
+          "n_aromatic": 3,
+          "assay_bias": "mu_dominant",
+          "flagged": false
+        },
+        {
+          "id": "diet_beta_casomorphin_7_bovine",
+          "name": "\u03b2-casomorphin-7",
+          "sequence": "YPFPGPI",
+          "activity": "Agonist",
+          "ic50_uM": "57",
+          "pIC50": "4.244",
+          "score": 0.22385,
+          "n_aromatic": 2,
+          "assay_bias": "mu_dominant",
+          "flagged": false
+        },
+        {
+          "id": "diet_neocasomorphin_6",
+          "name": "Neocasomorphin-6",
+          "sequence": "YPVEPF",
+          "activity": "Agonist",
+          "ic50_uM": "59",
+          "pIC50": "4.229",
+          "score": 0.2238,
+          "n_aromatic": 2,
+          "assay_bias": "mu_dominant",
+          "flagged": false
+        },
+        {
+          "id": "diet_alphas1_casein_exorphin_7_mer",
+          "name": "\u03b1s1-casein-exorphin (7-mer)",
+          "sequence": "RYLGYLE",
+          "activity": "Agonist",
+          "ic50_uM": "30",
+          "pIC50": "4.523",
+          "score": 0.2231,
+          "n_aromatic": 2,
+          "assay_bias": "delta_dominant",
+          "flagged": false
+        },
+        {
+          "id": "diet_beta_casomorphin_5_bovine",
+          "name": "\u03b2-casomorphin-5",
+          "sequence": "YPFPG",
+          "activity": "Agonist",
+          "ic50_uM": "6.5",
+          "pIC50": "5.187",
+          "score": 0.2227,
+          "n_aromatic": 2,
+          "assay_bias": "mu_dominant",
+          "flagged": false
+        },
+        {
+          "id": "diet_beta_casomorphin_4",
+          "name": "\u03b2-casomorphin-4",
+          "sequence": "YPFP",
+          "activity": "Agonist",
+          "ic50_uM": "22",
+          "pIC50": "4.658",
+          "score": 0.22044999999999998,
+          "n_aromatic": 2,
+          "assay_bias": "mu_dominant",
+          "flagged": false
+        },
+        {
+          "id": "diet_alphas1_casein_exorphin_6_mer",
+          "name": "\u03b1s1-casein-exorphin (6-mer)",
+          "sequence": "RYLGYL",
+          "activity": "Agonist",
+          "ic50_uM": "70",
+          "pIC50": "4.155",
+          "score": 0.22039999999999998,
+          "n_aromatic": 2,
+          "assay_bias": "delta_dominant",
+          "flagged": false
+        },
+        {
+          "id": "diet_casoxin_6_listed_as_casoxin_d",
+          "name": "Casoxin-6 (listed as 'Casoxin D')",
+          "sequence": "SRYPSY",
+          "activity": "Antagonist",
+          "ic50_uM": "",
+          "pIC50": "",
+          "score": 0.21585,
+          "n_aromatic": 2,
+          "assay_bias": "unknown",
+          "flagged": true
+        }
+      ]
+    },
+    "p8excl": {
+      "seeds": [
+        "20261020",
+        "61453"
+      ],
+      "n_scored": 20,
+      "S1_spearman_this_set": 0.9939849624060151,
+      "E8_all_published": {
+        "pool": "published, supported termini",
+        "n_agonist": 14,
+        "n_antagonist": 3,
+        "auroc": 0.8333333333333334,
+        "ci95": [
+          0.5714285714285714,
+          1.0
+        ],
+        "exact_p_one_sided": 0.045588235294117645,
+        "loo_antagonist_auroc": [
+          0.7857142857142857,
+          0.7857142857142857,
+          0.9285714285714286
+        ],
+        "median_agonist": 0.1618,
+        "median_antagonist": 0.133,
+        "margin": 0.028799999999999992,
+        "seed_jitter_measured": 0.0010499999999999954,
+        "margin_in_jitter": 27.42857142857154,
+        "noise_floor_limited": false,
+        "mean_aromatic_agonist": 2.0,
+        "mean_aromatic_antagonist": 2.6666666666666665
+      },
+      "E8_mu_assays_only": {
+        "pool": "mu-dominant assays only",
+        "n_agonist": 12,
+        "n_antagonist": 3,
+        "auroc": 0.9166666666666666,
+        "ci95": [
+          0.6666666666666666,
+          1.0
+        ],
+        "exact_p_one_sided": 0.015384615384615385,
+        "loo_antagonist_auroc": [
+          0.875,
+          0.875,
+          1.0
+        ],
+        "median_agonist": 0.1653,
+        "median_antagonist": 0.133,
+        "margin": 0.032299999999999995,
+        "seed_jitter_measured": 0.0010499999999999954,
+        "margin_in_jitter": 30.761904761904894,
+        "noise_floor_limited": false,
+        "mean_aromatic_agonist": 2.0,
+        "mean_aromatic_antagonist": 2.6666666666666665
+      },
+      "E9_all_published": {
+        "pool": "published, supported termini",
+        "n": 17,
+        "spearman_vs_pIC50": 0.22058823529411767
+      },
+      "E9_mu_assays_only": {
+        "pool": "mu-dominant assays only",
+        "n": 15,
+        "spearman_vs_pIC50": 0.16428571428571428
+      },
+      "E9_mu_agonists_only": {
+        "pool": "mu-dominant agonists only",
+        "n": 12,
+        "spearman_vs_pIC50": 0.13986013986013987
+      },
+      "E6_rho_vs_aromatic": -0.2608745973749755,
+      "ranked": [
+        {
+          "id": "diet_alpha_lactorphin",
+          "name": "\u03b1-lactorphin",
+          "sequence": "YGLF",
+          "activity": "Agonist",
+          "ic50_uM": "50",
+          "pIC50": "4.301",
+          "score": 0.19785,
+          "n_aromatic": 2,
+          "assay_bias": "mu_dominant",
+          "flagged": false
+        },
+        {
+          "id": "diet_beta_lactorphin",
+          "name": "\u03b2-lactorphin",
+          "sequence": "YLLF",
+          "activity": "Agonist",
+          "ic50_uM": "160",
+          "pIC50": "3.796",
+          "score": 0.18945,
+          "n_aromatic": 2,
+          "assay_bias": "mu_dominant",
+          "flagged": false
+        },
+        {
+          "id": "diet_met_enkephalin",
+          "name": "Met-enkephalin",
+          "sequence": "YGGFM",
+          "activity": "Agonist",
+          "ic50_uM": "0.2",
+          "pIC50": "6.699",
+          "score": 0.1845,
+          "n_aromatic": 2,
+          "assay_bias": "mu_dominant",
+          "flagged": false
+        },
+        {
+          "id": "diet_beta_casomorphin_4",
+          "name": "\u03b2-casomorphin-4",
+          "sequence": "YPFP",
+          "activity": "Agonist",
+          "ic50_uM": "22",
+          "pIC50": "4.658",
+          "score": 0.17165,
+          "n_aromatic": 2,
+          "assay_bias": "mu_dominant",
+          "flagged": false
+        },
+        {
+          "id": "diet_beta_casomorphin_5_bovine",
+          "name": "\u03b2-casomorphin-5",
+          "sequence": "YPFPG",
+          "activity": "Agonist",
+          "ic50_uM": "6.5",
+          "pIC50": "5.187",
+          "score": 0.16845,
+          "n_aromatic": 2,
+          "assay_bias": "mu_dominant",
+          "flagged": false
+        },
+        {
+          "id": "diet_soymorphin_5",
+          "name": "Soymorphin-5",
+          "sequence": "YPFVV",
+          "activity": "Agonist",
+          "ic50_uM": "6",
+          "pIC50": "5.222",
+          "score": 0.16775,
+          "n_aromatic": 2,
+          "assay_bias": "mu_dominant",
+          "flagged": false
+        },
+        {
+          "id": "diet_lactoferroxin_a",
+          "name": "Lactoferroxin A",
+          "sequence": "YLGSGY",
+          "activity": "Antagonist",
+          "ic50_uM": "15.3",
+          "pIC50": "4.815",
+          "score": 0.1658,
+          "n_aromatic": 2,
+          "assay_bias": "unspecified",
+          "flagged": true
+        },
+        {
+          "id": "diet_beta_casomorphin_5_human",
+          "name": "\u03b2-casomorphin-5",
+          "sequence": "YPFVE",
+          "activity": "Agonist",
+          "ic50_uM": "14",
+          "pIC50": "4.854",
+          "score": 0.16285,
+          "n_aromatic": 2,
+          "assay_bias": "mu_dominant",
+          "flagged": false
+        },
+        {
+          "id": "diet_soymorphin_6",
+          "name": "Soymorphin-6",
+          "sequence": "YPFVVN",
+          "activity": "Agonist",
+          "ic50_uM": "9.2",
+          "pIC50": "5.036",
+          "score": 0.16075,
+          "n_aromatic": 2,
+          "assay_bias": "mu_dominant",
+          "flagged": false
+        },
+        {
+          "id": "diet_soymorphin_7",
+          "name": "Soymorphin-7",
+          "sequence": "YPFVVNA",
+          "activity": "Agonist",
+          "ic50_uM": "13",
+          "pIC50": "4.886",
+          "score": 0.15705,
+          "n_aromatic": 2,
+          "assay_bias": "mu_dominant",
+          "flagged": false
+        },
+        {
+          "id": "diet_casoxin_b",
+          "name": "Casoxin B",
+          "sequence": "YPYY",
+          "activity": "Antagonist",
+          "ic50_uM": "100",
+          "pIC50": "4.000",
+          "score": 0.15284999999999999,
+          "n_aromatic": 3,
+          "assay_bias": "mu_dominant",
+          "flagged": false
+        },
+        {
+          "id": "diet_beta_casomorphin_7_bovine",
+          "name": "\u03b2-casomorphin-7",
+          "sequence": "YPFPGPI",
+          "activity": "Agonist",
+          "ic50_uM": "57",
+          "pIC50": "4.244",
+          "score": 0.1521,
+          "n_aromatic": 2,
+          "assay_bias": "mu_dominant",
+          "flagged": false
+        },
+        {
+          "id": "diet_lactoferrin_f319324_bovine_homolog",
+          "name": "Lactoferrin f319\u2013324 (bovine homolog of lactoferroxin A)",
+          "sequence": "YLGSRY",
+          "activity": "Antagonist",
+          "ic50_uM": "",
+          "pIC50": "",
+          "score": 0.15,
+          "n_aromatic": 2,
+          "assay_bias": "unknown",
+          "flagged": true
+        },
+        {
+          "id": "diet_neocasomorphin_6",
+          "name": "Neocasomorphin-6",
+          "sequence": "YPVEPF",
+          "activity": "Agonist",
+          "ic50_uM": "59",
+          "pIC50": "4.229",
+          "score": 0.1471,
+          "n_aromatic": 2,
+          "assay_bias": "mu_dominant",
+          "flagged": false
+        },
+        {
+          "id": "diet_beta_casomorphin_7_human",
+          "name": "\u03b2-casomorphin-7",
+          "sequence": "YPFVEPI",
+          "activity": "Agonist",
+          "ic50_uM": "25",
+          "pIC50": "4.602",
+          "score": 0.1459,
+          "n_aromatic": 2,
+          "assay_bias": "mu_dominant",
+          "flagged": false
+        },
+        {
+          "id": "diet_alphas1_casein_exorphin_6_mer",
+          "name": "\u03b1s1-casein-exorphin (6-mer)",
+          "sequence": "RYLGYL",
+          "activity": "Agonist",
+          "ic50_uM": "70",
+          "pIC50": "4.155",
+          "score": 0.1331,
+          "n_aromatic": 2,
+          "assay_bias": "delta_dominant",
+          "flagged": false
+        },
+        {
+          "id": "diet_casoxin_a",
+          "name": "Casoxin A",
+          "sequence": "YPSYGLNY",
+          "activity": "Antagonist",
+          "ic50_uM": "200",
+          "pIC50": "3.699",
+          "score": 0.133,
+          "n_aromatic": 3,
+          "assay_bias": "mu_dominant",
+          "flagged": false
+        },
+        {
+          "id": "diet_casoxin_c",
+          "name": "Casoxin C",
+          "sequence": "YIPIQYVLSR",
+          "activity": "Antagonist",
+          "ic50_uM": "5",
+          "pIC50": "5.301",
+          "score": 0.13225,
+          "n_aromatic": 2,
+          "assay_bias": "mu_dominant",
+          "flagged": false
+        },
+        {
+          "id": "diet_alphas1_casein_exorphin_7_mer",
+          "name": "\u03b1s1-casein-exorphin (7-mer)",
+          "sequence": "RYLGYLE",
+          "activity": "Agonist",
+          "ic50_uM": "30",
+          "pIC50": "4.523",
+          "score": 0.12755,
+          "n_aromatic": 2,
+          "assay_bias": "delta_dominant",
+          "flagged": false
+        },
+        {
+          "id": "diet_casoxin_6_listed_as_casoxin_d",
+          "name": "Casoxin-6 (listed as 'Casoxin D')",
+          "sequence": "SRYPSY",
+          "activity": "Antagonist",
+          "ic50_uM": "",
+          "pIC50": "",
+          "score": 0.1271,
+          "n_aromatic": 2,
+          "assay_bias": "unknown",
+          "flagged": true
+        }
+      ]
+    }
+  }
+}

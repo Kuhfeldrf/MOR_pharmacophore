@@ -153,10 +153,10 @@ and carried as a separate column.
 |---|---|---|
 | 1 | Rebuild the complex from the deposition; peptide extent an explicit choice | **done**, `22_prepare_complex.py` |
 | 2 | Template at extent 8, matching the candidate window and capturing E8–R213(ECL2) | **done**, `results/template_p8` |
-| 3 | Exclusion volumes to encode the chamber's steric bound (§4) | **done**, 86 spheres / 32 residues incl. ECL2 |
-| 4 | Dietary-peptide screen against measured IC50 (§6 makes this the better-matched set) | **running** |
+| 3 | Exclusion volumes to encode the chamber's steric bound (§4) | **done and validated**, 86 spheres / 32 residues incl. ECL2; see [`../DECISIONS.md`](../DECISIONS.md) D2.4 |
+| 4 | Dietary-peptide screen against measured IC50 (§6 makes this the better-matched set) | **done** — [`dietary_screen.md`](dietary_screen.md). E8 agonist-vs-antagonist AUROC **0.917** (exact p=0.015) with exclusion volumes vs 0.444 without; confirms §4 |
 | 5 | Record that PLIP evidence omits the D149 salt bridge; protonate before PLIP | open |
-| 6 | Second template from 8F7R for the endomorphin mode; costs the E4 held-out test | **open — needs a decision** |
+| 6 | Second template from 8F7R for the endomorphin mode; costs the E4 held-out test | **open — needs a decision**, and now better motivated: the dietary set is mostly `YP…` and scored 0.917 even against the *wrong* mode |
 | 7 | Water-mediated Y1 network cannot be represented without ordered waters | open; may be out of scope for Align-it |
 | 8 | Stop any claim of mOR-selectivity; the message template is pan-opioid (§5) | **applied** to the write-up |
 | 9 | Extract their Figure 1A / Table S2 pEC50 values across all four receptors as additional affinity data | open; would help power E3 strata |
