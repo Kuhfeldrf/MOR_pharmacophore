@@ -1,0 +1,141 @@
+{
+  "generated": "2026-10-22",
+  "metric": "tversky_ref",
+  "window": 8,
+  "hypothesis": "McNutt 2023's larger-ensemble penalty is a false-positive mechanism specific to hit-or-miss (max) matching, and should not apply to the ensemble mean",
+  "results": [
+    {
+      "n_conformers": 10,
+      "statistic": "max",
+      "S1_spearman": 0.440907950216953,
+      "S2_auroc_vs_scramble": 0.689429012345679,
+      "E3_auroc_vs_tyr_hard": 0.5788398692810458,
+      "E1_potency_pair_auroc": 0.6136363636363636,
+      "n_scored": 235
+    },
+    {
+      "n_conformers": 10,
+      "statistic": "mean",
+      "S1_spearman": 0.566211660904932,
+      "S2_auroc_vs_scramble": 0.6531635802469136,
+      "E3_auroc_vs_tyr_hard": 0.6929738562091503,
+      "E1_potency_pair_auroc": 0.6060606060606061,
+      "n_scored": 235
+    },
+    {
+      "n_conformers": 10,
+      "statistic": "top10",
+      "S1_spearman": 0.440907950216953,
+      "S2_auroc_vs_scramble": 0.689429012345679,
+      "E3_auroc_vs_tyr_hard": 0.5788398692810458,
+      "E1_potency_pair_auroc": 0.6136363636363636,
+      "n_scored": 235
+    },
+    {
+      "n_conformers": 25,
+      "statistic": "max",
+      "S1_spearman": 0.3849425563608476,
+      "S2_auroc_vs_scramble": 0.6635802469135803,
+      "E3_auroc_vs_tyr_hard": 0.5996732026143791,
+      "E1_potency_pair_auroc": 0.5303030303030303,
+      "n_scored": 235
+    },
+    {
+      "n_conformers": 25,
+      "statistic": "mean",
+      "S1_spearman": 0.5760534236877549,
+      "S2_auroc_vs_scramble": 0.6535493827160495,
+      "E3_auroc_vs_tyr_hard": 0.7065359477124182,
+      "E1_potency_pair_auroc": 0.6363636363636364,
+      "n_scored": 235
+    },
+    {
+      "n_conformers": 25,
+      "statistic": "top10",
+      "S1_spearman": 0.5088837834303074,
+      "S2_auroc_vs_scramble": 0.6595293209876543,
+      "E3_auroc_vs_tyr_hard": 0.6148692810457517,
+      "E1_potency_pair_auroc": 0.5606060606060606,
+      "n_scored": 235
+    },
+    {
+      "n_conformers": 50,
+      "statistic": "max",
+      "S1_spearman": 0.294045062542083,
+      "S2_auroc_vs_scramble": 0.6873070987654322,
+      "E3_auroc_vs_tyr_hard": 0.6171568627450981,
+      "E1_potency_pair_auroc": 0.5681818181818181,
+      "n_scored": 235
+    },
+    {
+      "n_conformers": 50,
+      "statistic": "mean",
+      "S1_spearman": 0.6702375368727808,
+      "S2_auroc_vs_scramble": 0.6477623456790123,
+      "E3_auroc_vs_tyr_hard": 0.7338235294117648,
+      "E1_potency_pair_auroc": 0.7727272727272727,
+      "n_scored": 235
+    },
+    {
+      "n_conformers": 50,
+      "statistic": "top10",
+      "S1_spearman": 0.5590863442397874,
+      "S2_auroc_vs_scramble": 0.679783950617284,
+      "E3_auroc_vs_tyr_hard": 0.6602124183006536,
+      "E1_potency_pair_auroc": 0.6439393939393939,
+      "n_scored": 235
+    },
+    {
+      "n_conformers": 100,
+      "statistic": "max",
+      "S1_spearman": 0.5357924606338276,
+      "S2_auroc_vs_scramble": 0.7390046296296295,
+      "E3_auroc_vs_tyr_hard": 0.6712418300653595,
+      "E1_potency_pair_auroc": 0.8257575757575758,
+      "n_scored": 235
+    },
+    {
+      "n_conformers": 100,
+      "statistic": "mean",
+      "S1_spearman": 0.8681131646534317,
+      "S2_auroc_vs_scramble": 0.6840277777777778,
+      "E3_auroc_vs_tyr_hard": 0.7397058823529412,
+      "E1_potency_pair_auroc": 0.9166666666666666,
+      "n_scored": 235
+    },
+    {
+      "n_conformers": 100,
+      "statistic": "top10",
+      "S1_spearman": 0.7416660203839694,
+      "S2_auroc_vs_scramble": 0.7106481481481481,
+      "E3_auroc_vs_tyr_hard": 0.6865196078431373,
+      "E1_potency_pair_auroc": 0.9318181818181819,
+      "n_scored": 235
+    }
+  ],
+  "deltas_small_to_large_ensemble": {
+    "max": {
+      "from": 10,
+      "to": 100,
+      "dS2": 0.049575617283950546,
+      "dE3": 0.09240196078431373,
+      "dS1": 0.09488451041687457
+    },
+    "mean": {
+      "from": 10,
+      "to": 100,
+      "dS2": 0.030864197530864224,
+      "dE3": 0.046732026143790906,
+      "dS1": 0.30190150374849967
+    },
+    "top10": {
+      "from": 10,
+      "to": 100,
+      "dS2": 0.021219135802469147,
+      "dE3": 0.10767973856209145,
+      "dS1": 0.30075807016701644
+    }
+  },
+  "verdict": "reconciliation NOT supported",
+  "caveat": "Two conformer counts and one window is a weak test of an interaction; it can refute the reconciliation but cannot establish it. AUROC is also the wrong summary for screening (D6.8) - used here only because the question is a relative change in the same metric across ensemble sizes."
+}

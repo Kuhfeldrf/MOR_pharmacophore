@@ -182,11 +182,36 @@ conformers improve an average rather than adding draws to a maximum, and the mea
 consequence is the opposite: reproducibility *rises* with ensemble size (ρ 0.945 → 0.983
 from 400 → 800). Their result and ours are consistent if the mechanism is `max`-specific.
 
-**This is an inference, not a measurement**, and it is testable here: if their effect is
-`max`-specific, then screening performance under `max` should degrade with ensemble size
-while performance under `mean` does not. The sweep data needed already exists (400 and
-800 conformers at window 8, both seeds, all statistics recomputable from
-`scores.tab`). Added as item 6 in §9.
+**Tested, and the reconciliation above is wrong.** `scripts/21_ensemble_size_statistic.py`
+over 10 / 25 / 50 / 100 (and separately 400 / 800) conformers at window 8, both seeds:
+
+| statistic | 10 → 100 conformers | 400 → 800 |
+|---|---|---|
+| max | dS1 **+0.095**, dS2 **+0.050**, dE3 **+0.092** | dS1 −0.031, dS2 −0.026, dE3 +0.025 |
+| mean | dS1 **+0.302**, dS2 +0.031, dE3 +0.047 | dS1 +0.038, dS2 −0.012, dE3 +0.002 |
+| top10 | dS1 +0.301, dS2 +0.021, dE3 **+0.108** | dS1 +0.004, dS2 −0.008, dE3 +0.001 |
+
+In the 10–100 regime **everything improves, `max` included**, so the penalty is not
+`max`-specific and the proposed mechanism is not what is going on. Across the whole range
+under `mean`: S1 0.566 → 0.868 → 0.945 → 0.983 and E3 0.693 → 0.740 → 0.740 → 0.742, with
+S2 peaking near 400 and declining by 0.012 at 800.
+
+**The actual resolution is molecular flexibility, which was the caveat first recorded here
+and then over-corrected away from on reading their emphatic phrasing.** Conformer count
+needed to cover accessible space scales with rotatable bonds. McNutt et al. benchmark
+drug-like ligands; an 8-residue peptide window has ~37 rotatable bonds, for which 25
+conformers is severe undersampling — measured S1 = 0.576 at 25, against a 0.95 gate. Their
+recommendation is regime-specific and does not transfer to flexible peptides.
+
+**What survives of their warning:** S2 does decline slightly beyond ~400 conformers under
+every statistic, so the false-positive effect may exist weakly at the top of our range. It
+is an order of magnitude smaller than the reproducibility gain, so 800 stands — but 400 is
+defensible and cheaper, and the only metric that prefers 800 is S1.
+
+**Lesson recorded:** the first instinct ("that was for drug-like molecules") was right. The
+error was inventing a mechanism to reconcile a conflict that was really a domain mismatch,
+and then running a test (400 vs 800) that could not address the question because it did not
+span the regime in dispute.
 
 **Two of their findings support choices already made:** selecting the lowest-energy
 conformers does *not* improve retrieval of bioactive conformations, while rmsd-based
