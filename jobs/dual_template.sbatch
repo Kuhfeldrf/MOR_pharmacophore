@@ -21,8 +21,31 @@ set -euo pipefail
 source "${SLURM_SUBMIT_DIR:-$PWD}/jobs/env.sh"
 mkdir -p logs/dual
 
+TA=results/template_p8
 TB=results/template_8f7r_p4
 SEEDS=(20261020 61453)
+
+# --- 0. Template A, rebuilt if absent --------------------------------------------
+# Template A used to be assumed present, because it was. When the scratch allocation
+# was reaped it went with everything else, and a clean clone has data/ but not results/
+# (results/ is gitignored by D7.4). The holdout and milk-atlas screens both score
+# against template A, so without this the campaign fails three jobs deep for a reason
+# that has nothing to do with the campaign. Idempotent: skipped when already built.
+if [ ! -f "$TA/mor_template_excl_a1.phar" ]; then
+  echo "template A absent - rebuilding from data/8f7q_complex_p8.pdb"
+  python scripts/03_template.py \
+      --complex data/8f7q_complex_p8.pdb \
+      --chain P \
+      --out "$TA"
+  python scripts/20_template_exclusion.py \
+      --complex data/8f7q_complex_p8.pdb \
+      --ligand-chain P \
+      --template "$TA/mor_template.phar" \
+      --out "$TA" \
+      --alphas 0.5 1.0
+else
+  echo "template A already built, reusing $TA"
+fi
 
 # --- 1. Template B from the complete endomorphin-1 ligand -------------------------
 # data/8f7r_complex_p4.pdb is built by scripts/22_prepare_complex.py and committed with
