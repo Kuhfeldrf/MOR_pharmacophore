@@ -38,7 +38,28 @@ pre-registered acceptance criteria: [`PLAN.md`](PLAN.md). Result:
 | Conformers + scoring, SLURM array | `scripts/04_screen.py`, `jobs/` | yes, full library |
 | Validation against pre-registered criteria | `scripts/05_validate.py` | yes |
 | Tiered scoring | not yet - decile tiers are not stable enough to use (C5) | - |
+| Table S2 affinities, all four opioid receptors | `data/reference/wang2023_tableS2.csv` | yes, cross-checked |
+| Dual-template screen (8F7Q + 8F7R), pre-registered | code, data and design: `docs/dual_template_design.md` | not yet scored |
+| SMILES targets, for ligands with no one-letter code | `conformers.build_from_smiles` | yes |
 | 83-receptor batch run, ARM build | not yet | planned for the seed-fund Q1-Q2 milestones |
+
+### Which endogenous ligand should the template come from?
+
+Five endogenous peptides bind the mu-opioid receptor, but only two have an experimentally
+determined mOR-bound pose, so only two can be templates:
+
+| Endogenous muOR ligand | muOR pKi | mOR-bound structure |
+|---|---|---|
+| Endomorphin-1 | **8.73** | **8F7R** |
+| Leu-enkephalin | 7.97 | none |
+| Met-enkephalin | 7.40 | none |
+| beta-Endorphin (1-31) | 7.11 | **8F7Q** |
+| Dynorphin A (1-13) | 6.02 | 8F7W (kappa, not mu) |
+
+The pipeline's original template came from 8F7Q, which is the 4th-strongest of the five at
+muOR and non-selective mu-vs-delta. A second template from 8F7R is built and
+pre-registered but not yet scored; the argument, the predictions and what would falsify
+them are in [`docs/dual_template_design.md`](docs/dual_template_design.md).
 
 **First run, 2026-10-20: C1, C2 and C4 pass; C3 and C5 fail.** The template recovers an
 independent experimental ligand (endomorphin-1, held-out structure 8F7R) at the ~99th

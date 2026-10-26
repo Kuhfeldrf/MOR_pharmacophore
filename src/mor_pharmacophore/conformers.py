@@ -236,6 +236,58 @@ def ensemble_for_sequence(sequence, window=WINDOW, c_term="auto",
     return mol, meta
 
 
+def build_from_smiles(smiles):
+    """Return (mol, False) for an explicit SMILES target.
+
+    `build_window` covers anything expressible as a one-letter sequence, which after
+    `parse_sequence` (D-residues) and `_amidate_c_terminus` (amide caps) is every
+    peptide in the digestion library and every endogenous reference ligand. It does not
+    cover backbone chemistry that has no one-letter code.
+
+    The case that forced this is DAMGO, Tyr-D-Ala-Gly-N-MePhe-Gly-ol, the ligand of the
+    held-out structure 8EFQ (docs/dual_template_design.md 4). Its D-Ala is expressible
+    and its C-terminus is not: N-methylation of the Phe backbone nitrogen and the
+    C-terminal glycinol are both outside `Chem.MolFromSequence`. Scoring DAMGO from its
+    deposited coordinates instead would have made it the one target in the screen whose
+    conformers were not generated the same way as everyone else's, which is precisely
+    what a percentile against the library distribution cannot tolerate.
+
+    So the molecule is built from SMILES and then goes through the *same* embedding,
+    minimisation and ensemble-size check as every other target. No window is applied: a
+    SMILES target is a complete molecule by definition, and there is no residue
+    numbering to truncate on. The second element of the tuple is always False, matching
+    `build_window`'s (mol, was_truncated) contract so callers need no special case.
+    """
+    mol = Chem.MolFromSmiles(smiles)
+    if mol is None:
+        raise ValueError(f"RDKit could not parse SMILES {smiles!r}")
+    return mol, False
+
+
+def ensemble_for_smiles(smiles, n_conformers=N_CONFORMERS, seed=0xF00D,
+                        n_threads=None, use_random_coords=True):
+    """SMILES counterpart of `ensemble_for_sequence`. Returns (mol, metadata).
+
+    The metadata keys match `ensemble_for_sequence` so both kinds of target land in the
+    same score table without the reader having to know which path produced a row.
+    `window` carries the SMILES rather than a residue window, and `truncated` is False.
+    """
+    mol, truncated = build_from_smiles(smiles)
+    mol = embed_conformers(mol, n_conformers=n_conformers, seed=seed,
+                           n_threads=n_threads,
+                           use_random_coords=use_random_coords)
+    meta = {
+        "sequence": smiles,
+        "window": smiles,
+        "truncated": truncated,
+        "c_term_applied": "smiles",
+        "n_conformers": mol.GetNumConformers(),
+        "seed": seed,
+        "built_from": "smiles",
+    }
+    return mol, meta
+
+
 def write_sdf(mol, path, name=None, properties=None):
     """Write every conformer of `mol` as a record in one SDF."""
     if name:

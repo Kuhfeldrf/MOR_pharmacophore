@@ -28,7 +28,7 @@ from rdkit import Chem, RDLogger  # noqa: E402
 from mor_pharmacophore.alignit import (  # noqa: E402
     best_per_candidate, read_scores, score, version)
 from mor_pharmacophore.conformers import (  # noqa: E402
-    N_CONFORMERS, WINDOW, ensemble_for_sequence)
+    N_CONFORMERS, WINDOW, ensemble_for_sequence, ensemble_for_smiles)
 
 RDLogger.DisableLog("rdApp.*")
 
@@ -55,10 +55,18 @@ def build_block_sdf(rows, sdf_path, n_conformers, window, seed):
         c_term = row.get("c_term") or "auto"
         if c_term not in ("auto", "free", "amide"):
             c_term = "auto"
+        # An explicit `smiles` overrides `sequence`, for ligands whose backbone chemistry
+        # has no one-letter code (DAMGO's N-MePhe and glycinol). Same embedding protocol
+        # either way, so the scores stay comparable; see conformers.build_from_smiles.
+        smiles = (row.get("smiles") or "").strip()
         try:
-            mol, info = ensemble_for_sequence(
-                sequence, window=window, c_term=c_term,
-                n_conformers=n_conformers, seed=seed)
+            if smiles:
+                mol, info = ensemble_for_smiles(
+                    smiles, n_conformers=n_conformers, seed=seed)
+            else:
+                mol, info = ensemble_for_sequence(
+                    sequence, window=window, c_term=c_term,
+                    n_conformers=n_conformers, seed=seed)
         except Exception as exc:                      # recorded, never silently dropped
             failures.append({"id": name, "sequence": sequence, "error": str(exc)[:200]})
             continue

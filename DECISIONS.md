@@ -50,12 +50,86 @@ drop.
 
 ## 2. Receptor and template
 
-### D2.1 Template from 8F7Q, held-out structure 8F7R — HELD
+### D2.1 Template from 8F7Q, held-out structure 8F7R — REVISED by D2.7
 **Decision.** Build the pharmacophore from 8F7Q chain P only; never use 8F7R in template
 construction, and use it solely for held-out retrieval (E4).
 **Rationale.** A template validated on the structure it was built from proves nothing.
 **Evidence.** *Measured* — endomorphin-1 retrieved at the ~99th percentile from 8F7R
 (`docs/screen_validation.md`).
+**Superseded.** The premise — that 8F7Q is the right template and 8F7R is only a test set
+— was never argued; 8F7Q was inherited. Table S2 of the source paper says it is the worse
+of the two choices (D2.7). The held-out role moves to 8EFQ (D2.9).
+
+### D2.7 A second template from 8F7R, and two screens rather than one — OPEN, pre-registered
+**Decision.** Add template **B** from 8F7R (mOR–endomorphin-1–Gi) alongside template A
+(8F7Q, β-endorphin, extent 8), screen the dietary set against both, and report each
+template separately plus a consensus. Design and predictions:
+[`docs/dual_template_design.md`](docs/dual_template_design.md).
+
+**Rationale — why two, and why these two.** Five endogenous peptides bind μOR
+(endomorphin-1, Leu- and Met-enkephalin, β-endorphin, dynorphin A) but only **two** have an
+experimentally determined mOR-bound pose, and a structure-based pharmacophore needs a pose.
+So the number of screens follows from the number of poses, not from preference. The
+enkephalins are higher-affinity than β-endorphin at μOR and have no mOR complex in this
+deposition set, so they can only ever be candidates here.
+
+**Evidence that A alone was the wrong default.** *Literature*, from
+[`data/reference/wang2023_tableS2.csv`](data/reference/wang2023_tableS2.csv):
+endomorphin-1 binds μOR at pKi 8.73 against β-endorphin's 7.11 — **42-fold tighter** — and
+is the only μ-exclusive peptide in the set (δ/κ/NOPR all `N.A.`), where β-endorphin is
+non-selective μ vs δ (ΔpKi 0.16). *Measured*, this repo: 8F7R resolves **all 4** residues
+of endomorphin-1 plus its amide cap, so template B involves no truncation decision at all,
+where template A is a truncation (8 of 21 resolved, of 31 total) and D2.6 records what
+getting that truncation wrong already cost. The two copies of the complex in 8F7R agree to
+**0.635 Å** ligand RMSD after receptor superposition (287 Cα, 0.001 Å), so the pose does not
+depend on which copy is used.
+
+**Cost, accepted deliberately.** Promoting 8F7R spends the only held-out structure; see
+D2.9 for the replacement.
+
+**What this cannot do.** Template B is still a message-region template — endomorphin-1 is
+four residues and does not reach ECL2 — so the μ-selectivity argument is a mechanistic
+hypothesis from the source paper's Fig. 2F–H, not something the screen measures. The
+pan-opioid ceiling of `docs/structural_basis.md` §5 stands.
+
+### D2.8 Template B screened at window 8, not at its own extent of 4 — OPEN, pre-registered
+**Decision.** Screen template B at candidate window **8**, the same window as template A,
+despite its ligand being 4 residues. Also run window 4 as a sensitivity check, flagged as
+weak evidence at best.
+**Rationale.** Extent-matching is this project's own principle (D3.1,
+`22_prepare_complex.py`), and it points at window 4. Two measured facts override it.
+**Evidence.** *Measured*, computed before any score existed, on the actual E8 pools:
+(i) the aromatic-confound margin that makes E8 interpretable — antagonists being *more*
+aromatic than agonists, so composition alone would rank them higher — collapses from
+**+0.67 to +0.08** aromatic residues on the μ pool at window 4, removing the safeguard
+rather than reversing it; (ii) window 4 collapses **6 of 15** μ-pool peptides onto shared
+windows (β-casomorphin-4/5/7 → `YPFP`; three soymorphins and two human β-casomorphins →
+`YPFV`), which destroys the within-series potency ladder. An earlier draft of the design
+doc claimed the confound *reverses* at window 4; that was computed over all 20 peptides
+instead of the 15-peptide μ pool and was wrong. Corrected in place.
+**Consequence.** Template B carries a 4-residue reference against an 8-residue window — an
+extent mismatch, the mechanism behind ρ = +0.909 (`docs/optimisation_study.md` §7.2).
+Exclusion volumes are expected to contain it, and T6 is the test of whether they do.
+
+### D2.9 Held-out structure re-pointed from 8F7R to 8EFQ — OPEN, pre-registered
+**Decision.** E4 becomes **E4′**: held-out retrieval of **DAMGO** from 8EFQ (mOR–DAMGO–Gi),
+replacing endomorphin-1 from 8F7R.
+**Rationale.** 8F7R cannot be both a template and a held-out test. Dropping the held-out
+test instead would discard the study's strongest independent evidence; 8EFQ restores it.
+**Evidence.** *Literature* — 8EFQ is used nowhere else in this project, was deposited by a
+different paper than 8F7Q/8F7R (so it is independent of both templates), and DAMGO is the
+highest-affinity ligand in Table S2 (pKi 8.88, Ki 1.32 nM).
+**Implementation cost, and why it was paid rather than worked around.** DAMGO is
+Tyr-D-Ala-Gly-N-MePhe-Gly-ol. The candidate builder handles D-residues (lowercase
+convention) and amide caps (`c_term`) but has no way to express N-methyl-Phe or the
+C-terminal glycinol, so the target table gained an optional `smiles` column
+(`conformers.build_from_smiles`). Scoring DAMGO from its deposited coordinates would have
+been less code and was rejected: it would have made DAMGO the one target whose conformers
+were not generated like everyone else's, and a percentile against the library distribution
+cannot tolerate that. Verified: `C26H35N5O6`, MW 513.60, stereocentres S/R/S = L-Tyr /
+D-Ala / L-N-MePhe, 50/50 conformers embedded (`tests/test_conformers_smiles.py`).
+**Caveat.** DAMGO is synthetic. It is a held-out retrieval target only — never a template,
+never part of an endogenous-ligand analysis.
 
 ### D2.2 PLIP for interaction detection — HELD
 **Decision.** Derive features from PLIP-detected receptor–ligand interactions rather than
@@ -499,6 +573,35 @@ badly posed comparison.
 Never folded into the ranking; carried as its own column so the contribution of the free
 one-line sequence rule stays separable from the 3D matching's.
 
+### D6.12 Consensus over two templates is rank fusion, not score averaging — OPEN, pre-registered
+**Decision.** The two-template consensus is the **mean rank** across templates (primary),
+with per-peptide **max of min-max-scaled scores** reported secondary.
+**Rationale.** The two templates' score distributions are not on a common scale: Tversky
+reference similarity is normalised by the reference, and template A carries 27 features
+from 8 residues against template B's complete 4-residue ligand. Averaging raw scores would
+silently weight whichever template has the wider spread. Rank fusion needs no calibration.
+Max-of-two is reported because it encodes the biologically motivated reading — a dietary
+peptide need only mimic *one* natural binding mode — but it is secondary because it is
+upward-biased by construction (two chances to score well) and the antagonists receive the
+same bias, so it does not cancel.
+**Evidence.** *Literature* for rank fusion in consensus virtual screening; untested here.
+
+### D6.13 Template-B statistics must reuse the existing E8 pools and seed-averaging — HELD
+**Decision.** `24_dual_template_consensus.py` imports its pool predicates and statistics
+from `23_dietary_screen.py` instead of reimplementing them, and reports the seed-averaged
+AUROC as primary.
+**Rationale.** A near-duplicate of a statistic is how two numbers that should agree stop
+agreeing. E8 does not score all 20 dietary peptides: the published **0.917** is the
+μ-dominant-assay pool, **12 agonists against 3 antagonists**, seed-averaged. A first draft
+of the new script computed the AUROC over all 20 peptides and 6 antagonists and returned
+0.774 for template A — a number that looks comparable to 0.917 and is not.
+**Evidence.** *Measured* — after reusing the pool definitions, the new script reproduces
+template A's published 0.917 (μ pool, n=12/3, exact p=0.0154) exactly, which is what makes
+T1 a comparison rather than a coincidence.
+**Standing caveat.** Every E8 number in this project rests on **3 antagonists**. The exact
+one-sided permutation p and the full leave-one-antagonist-out range are reported for each,
+and a result whose LOO range straddles 0.5 is not claimed whatever its point estimate.
+
 ---
 
 ## 7. Infrastructure
@@ -573,6 +676,7 @@ success.
 | 4 | Adopt AVE-style debiasing for decoy selection | literature; [LIT-PCBA](https://www.researchgate.net/publication/340614114_LIT-PCBA_An_unbiased_dataset_for_machine_learning_and_virtual_screening) uses asymmetric validation embedding for exactly this | moderate |
 | 5 | **Retest the Tversky asymmetry once exclusion volumes are in** (D5.3) | literature; TVERSKY_DB was tested with the "no growth" constraint absent from the template, so metric and constraint were confounded | re-analysis of the D2.4 rescreen |
 | 6 | **Test whether the ensemble-size penalty is `max`-specific** (D4.2) | literature; McNutt's false-positive mechanism should apply to `max` and not to `mean`, which would reconcile 800 conformers with a <25 recommendation | re-analysis only, data already on disk |
+| 7 | **Run the dual-template screen** (D2.7–D2.9, D6.12) — built and pre-registered, not yet scored | measured + literature; β-endorphin is the 4th-best of five endogenous μOR ligands and 42× weaker than endomorphin-1, and 8F7Q is a truncation where 8F7R is not | one template build + 4 dietary runs (`jobs/dual_template.sbatch`, minutes); the E4′ percentile additionally needs a full library screen (`jobs/dual_template_library.sbatch`, ~52 CPU-h), which should **not** be run until T3 shows the templates are non-redundant |
 
 Items 1 and 2 are the ones that could change the study's conclusion. Item 3 is what would
 make the conclusion trustworthy either way.

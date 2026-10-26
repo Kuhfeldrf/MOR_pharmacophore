@@ -1,0 +1,20 @@
+{
+  "generated": "2026-10-26",
+  "pdb_id": "8EFQ",
+  "source_url": "https://files.rcsb.org/download/8EFQ.cif",
+  "source_cif": "data/8EFQ.cif",
+  "source_cif_sha256": "7959b7e6b46ec3adad9bb4f043cd604b45f18e96d9bd2360f9ffdd9e8a7c2d17",
+  "model": "1",
+  "receptor_chain": "R",
+  "n_receptor_residues": 283,
+  "n_receptor_atoms": 2272,
+  "peptide_chain": "P",
+  "peptide_residues_resolved_in_deposition": 5,
+  "peptide_sequence_resolved": "YXGXX",
+  "peptide_residues_kept": 5,
+  "peptide_sequence_kept": "YXGXX",
+  "peptide_truncated": false,
+  "output": "data/8efq_complex_damgo.pdb",
+  "output_sha256": "495c23125009d3807c70356b1b629ebcd8664260d7d104c954937b78bdc1e287",
+  "note": "Peptide extent is a recorded choice, not an accident. The previous inherited file carried 5 of the 21 resolved peptide residues and that was not checked against the deposition."
+}
