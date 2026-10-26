@@ -43,6 +43,27 @@ for SEED in "${SEEDS[@]}"; do
       --template "$TB/mor_template_excl_a1.phar" \
       --out "results/milk_atlas/b8excl_s${SEED}" \
       --window 8 --n-conformers 800 --seed "$SEED" --with-exclusion
+
+  # The SAME targets WITHOUT exclusion volumes, both templates.
+  #
+  # Not redundant, and not optional. Two of the five novel candidates are aromatic-rich
+  # (YPYAVWYYPQ and MUC1 YPTYHTHGRYVPP, 4 aromatics each) and so sit exactly where this
+  # project's documented confound lives: score correlates with aromatic count at
+  # rho = +0.909, and a His-rich repeat once outscored every endogenous ligand
+  # (docs/optimisation_study.md 7.2). Exclusion volumes are the fix (D2.4), and the
+  # evidence that they worked on the dietary set was with-against-without: E8 AUROC 0.917
+  # with, 0.444 without. Without the no-exclusion arm there is nothing to difference
+  # against, and a high score for an aromatic-rich peptide is uninterpretable.
+  python scripts/04_screen.py \
+      --targets data/milk_atlas/milk_atlas_targets.tsv \
+      --template "$TA/mor_template.phar" \
+      --out "results/milk_atlas/a8bare_s${SEED}" \
+      --window 8 --n-conformers 800 --seed "$SEED"
+  python scripts/04_screen.py \
+      --targets data/milk_atlas/milk_atlas_targets.tsv \
+      --template "$TB/mor_template.phar" \
+      --out "results/milk_atlas/b8bare_s${SEED}" \
+      --window 8 --n-conformers 800 --seed "$SEED"
 done
 
 echo MILK_ATLAS_SCREEN_DONE

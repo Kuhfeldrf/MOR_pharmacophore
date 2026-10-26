@@ -77,18 +77,34 @@ The 35 released peptides cluster at 12 sites, in **β-casein (24), αs1-casein (
 *known* opioid peptides with published activity, recovered without the script being told
 they exist:
 
-| Site | Released peptide (shortest observed) | Known as | Published activity |
-|---|---|---|---|
-| β-casein P02666 @75 | **`YPFPGPI`** | **β-casomorphin-7** | GPI 57 / 5.14 / 3.2 µM; μ K_D 2 µM |
-| β-casein P05814 @66 | `YPFVEPIP` | human β-casomorphin (`YPFVE`…) | μ K_D 0.4–1.6 µM |
-| β-casein P02666 @129 | `YPVEPFTES` | neocasomorphin-6 (`YPVEPF`) | GPI 59 µM; μ IC50 92 µM |
-| α-lactalbumin P00709 @69 | `YGLFQISNK` | α-lactorphin (`YGLF`) | in the dietary set |
-| αs1-casein P02662 @106 | `YLGYLEQLL` | αs1-casein f91–96 (`YLGYLE`) | IC50 5.2 µM (Loukas 1983) |
-| αs1-casein P47710-3 @137 | `YPYAVWYYPQ` | — | novel |
+**Positions below are mature-protein f-numbers**, which is what the literature uses. The
+atlas emits both: `site_position_1based` is the UniProt precursor coordinate and
+`site_position_mature` subtracts the signal peptide (`SIGNAL_PEPTIDE` in the script).
+Without that conversion every position here would be off by the signal-peptide length in
+the direction that makes a known peptide look novel.
+
+| Protein | Species | Site | Released peptide (shortest observed) | Known as | Published activity |
+|---|---|---|---|---|---|
+| β-casein P02666 | **bovine** | **f60** | **`YPFPGPI`** | **β-casomorphin-7** | GPI 57 / 5.14 / 3.2 µM; μ K_D 2 µM |
+| β-casein P05814 | human | f51 | `YPFVEPIP` | human β-casomorphin-5 (`YPFVE`…) | μ K_D 0.4–1.6 µM |
+| β-casein P02666 | bovine | f114 | `YPVEPFTES` | neocasomorphin-6 (`YPVEPF`) | GPI 59 µM; μ IC50 92 µM |
+| αs1-casein P02662 | bovine | f91 | `YLGYLEQLL` | αs1-casein exorphin f91–96 (`YLGYLE`) | IC50 5.2 µM (Loukas 1983) |
+| α-lactalbumin P00709 | **human** | f50 | `YGLFQISNK` | **homologue** of α-lactorphin (`YGLF`) | bovine form is in the dietary set |
+
+Every mature position above lands exactly on its published f-number — f60, f51, f114, f91,
+f50 — across three different signal-peptide offsets (15, 15, 19). That agreement is an
+independent check on the atlas's coordinates, not a restatement of them.
 
 `YPFPGPI` is β-casomorphin-7 exactly, observed as a released N-terminus. That the scan
 finds the single best-characterised dietary opioid peptide, at its correct position in
 bovine β-casein, with a free Tyr, is the positive control for the whole approach.
+
+**The α-lactalbumin hit is the human homologue, not α-lactorphin itself.** P00709 is
+`LALBA_HUMAN`; bovine α-lactalbumin is P00711. Canonical α-lactorphin is the bovine f50–53
+`YGLF`, and what is released and observed here is the *human* protein at the same mature
+position — the site is conserved. Worth keeping straight, because the whole point of
+carrying both proteomes is to distinguish a breast-milk peptide from a formula one, which
+a gene name alone cannot do. Species is now a column on every row.
 
 **The αs1-casein hit is worth a second look.** The canonical exorphin in the dietary set is
 `RYLGYLE` (f90–96), which begins with **Arg** — it carries the motif but *fails the
@@ -101,13 +117,19 @@ identified the form of it that the binding model says should work.
 
 Five sites, released and motif-bearing, with no published opioid activity:
 
-| Site | Peptide | Class | Note |
-|---|---|---|---|
-| αs1-casein P47710-3 @137 | `YPYAVWYYPQ` | `casomorphin_YP` | **Most interesting.** Human αs1-casein, 4 aromatics in 10 residues (Y,W,Y,Y). High aromatic content is the known confound (ρ = +0.909), so this one needs the exclusion-volume template specifically — see §5. |
-| β-casein P05814 @56 | `YPSFQPQPLI` | `casoxin_YPxY` | human β-casein; `YPSF` resembles casoxin A's `YPSY` |
-| β-casein P05814 @211 | `YPVTQPLAPVH` | `casomorphin_YP` | human β-casein C-terminal region |
-| MUC1 P15941 @1209 | `YPTYHTHGRYVPP` | `casoxin_YPxY` | mucin; 4 aromatics, same caveat as above |
-| ACTA1 P68133 @71 | `YPIEHGIITNWDDMEK` | `casomorphin_YP` | actin — not a milk protein; almost certainly an incidental match |
+| Protein | Species | Site | Peptide | Class | Note |
+|---|---|---|---|---|---|
+| αs1-casein P47710-3 | human | f122 | `YPYAVWYYPQ` | `casomorphin_YP` | **Most interesting.** 4 aromatics in 10 residues (Y,W,Y,Y). High aromatic content is the known confound (ρ = +0.909), so this one needs the exclusion-volume comparison specifically — see §5. |
+| β-casein P05814 | human | f41 | `YPSFQPQPLI` | `casoxin_YPxY` | `YPSF` resembles casoxin A's `YPSY` |
+| β-casein P05814 | human | f196 | `YPVTQPLAPVH` | `casomorphin_YP` | C-terminal region |
+| MUC1 P15941 | human | — (prec. 1209) | `YPTYHTHGRYVPP` | `casoxin_YPxY` | mucin; 4 aromatics, same caveat as above. No mature coordinate: MUC1's signal peptide is not in the script's validated table, so precursor numbering is reported rather than a guess |
+| ACTA1 P68133 | human | — (prec. 71) | `YPIEHGIITNWDDMEK` | `casomorphin_YP` | actin — **not a milk protein**; a cytoskeletal contaminant of the milk fat globule membrane and almost certainly an incidental motif match. Carried because the scan is proteome-wide, flagged `major_milk_protein=no`, and should be dropped from any biological reading |
+
+All five novel sites are in **human** proteins, so they are breast-milk candidates rather
+than formula ones. Three of the four plausible ones are in human β-casein or αs1-casein —
+the same two parents that produce the known bovine opioids — which is where you would
+expect undescribed sites to be if the casein opioid repertoire is genuinely larger than
+the characterised set.
 
 ## 5. How to read the screen when it comes back
 

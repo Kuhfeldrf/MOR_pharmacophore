@@ -23,6 +23,6 @@ case $CFG in
   1) T=results/template_p8/mor_template.phar;            TAG=p8;      EX="" ;;
   2) T=results/template_p8/mor_template_excl_a1.phar;    TAG=p8excl;  EX="--with-exclusion" ;;
 esac
-python scripts/04_screen.py --targets data/dietary_targets.tsv --template $T \
+python scripts/04_screen.py --targets data/dietary/dietary_targets.tsv --template $T \
   --out results/dietary/${TAG}_s${SEED} --window 8 --n-conformers 800 --seed $SEED $EX
 echo DIET_DONE tag=$TAG seed=$SEED

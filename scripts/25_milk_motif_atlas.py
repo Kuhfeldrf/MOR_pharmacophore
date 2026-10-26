@@ -77,6 +77,52 @@ MAJOR_GENES = {
     "CSN1S2A", "CSN1S2B", "XDH", "BTN", "FOLR1",
 }
 
+# Signal-peptide length per accession, for converting precursor numbering to the MATURE
+# numbering the literature uses.
+#
+# This is not cosmetic. UniProt sequences are precursors including the signal peptide, so
+# a site this script reports at position 75 of P02666 is the peptide every paper calls
+# f60-66 -- beta-casomorphin-7. Reporting only precursor coordinates would put every
+# position in this atlas off by the signal-peptide length relative to the literature,
+# silently, in the direction that makes a known peptide look novel.
+#
+# `validated` entries are confirmed by this repo: the known opioid peptide at that site
+# lands on its published mature position once the offset is applied (see docs/milk_atlas.md
+# 4). `uniprot` entries are taken from the UniProt SIGNAL annotation and are not
+# independently checked here. An accession absent from this table gets a blank mature
+# position rather than a guess.
+SIGNAL_PEPTIDE = {
+    # accession: (length, basis)
+    "P02666": (15, "validated"),   # CASB_BOVIN    YPFPGPI -> f60-66, beta-casomorphin-7
+    "P02662": (15, "validated"),   # CASA1_BOVIN   YLGYLE  -> f91-96, alphas1 exorphin
+    "P00709": (19, "validated"),   # LALBA_HUMAN   YGLF    -> f50-53, alpha-lactorphin site
+    "P00711": (19, "uniprot"),     # LALBA_BOVIN
+    "P05814": (15, "uniprot"),     # CASB_HUMAN
+    "P47710": (15, "uniprot"),     # CASA1_HUMAN
+    "P02663": (15, "uniprot"),     # CASA2_BOVIN
+    "P02668": (21, "uniprot"),     # CASK_BOVIN
+    "P07498": (20, "uniprot"),     # CASK_HUMAN
+    "P02754": (16, "uniprot"),     # LACB_BOVIN, beta-lactoglobulin
+    "P24627": (19, "uniprot"),     # TRFL_BOVIN, lactoferrin
+    "P02788": (19, "uniprot"),     # TRFL_HUMAN, lactoferrin
+}
+
+
+def mature_position(accession, precursor_pos):
+    """(mature_position, basis) for a precursor position, or ("", "") if unknown.
+
+    Isoform suffixes are stripped: P47710-3 uses P47710's signal peptide.
+    """
+    base = accession.split("-")[0]
+    entry = SIGNAL_PEPTIDE.get(base)
+    if not entry:
+        return "", ""
+    length, basis = entry
+    pos = precursor_pos - length
+    # A site inside the signal peptide has no mature coordinate, and a signal-peptide
+    # fragment is not a dietary peptide anyway.
+    return (pos, basis) if pos >= 1 else ("", basis)
+
 
 def read_fasta(path):
     """Yield (header, sequence). Minimal reader: these are plain UniProt FASTA files."""
@@ -106,7 +152,17 @@ def parse_header(h):
         gene = m.group(1)
     desc = h.split(" ", 1)[1] if " " in h else ""
     desc = re.split(r" (?:OS|OX|GN|PE|SV)=", desc)[0]
-    return acc, name, gene, desc
+    # Species from OS=, falling back to the entry-name suffix (LALBA_HUMAN). Worth
+    # carrying explicitly: P00709 is LALBA_HUMAN and P00711 is LALBA_BOVIN, so an atlas
+    # that reports only the gene name cannot distinguish a breast-milk peptide from a
+    # formula one -- which is the whole point of the comparison this feeds.
+    species = ""
+    m = re.search(r"OS=([^=]+?)(?: [A-Z]{2}=|$)", h)
+    if m:
+        species = m.group(1).strip()
+    elif "_" in name:
+        species = name.rsplit("_", 1)[1]
+    return acc, name, gene, desc, species
 
 
 class ProteomeIndex:
@@ -124,10 +180,11 @@ class ProteomeIndex:
         self.proteins = []          # (acc, name, gene, desc, seq, offset, source)
         self._parts, self._cursor = [], 0
 
-    def add(self, acc, name, gene, desc, seq, source):
+    def add(self, acc, name, gene, desc, seq, source, species=""):
         self.proteins.append({
             "acc": acc, "name": name, "gene": gene, "desc": desc,
-            "seq": seq, "offset": self._cursor, "source": source})
+            "species": species, "seq": seq, "offset": self._cursor,
+            "source": source})
         self._parts.append(seq)
         self._cursor += len(seq) + len(self.SEP)
 
@@ -164,13 +221,16 @@ def scan_sites(index, motifs, tier):
             for m in re.finditer(f"(?=({pattern}))", prot["seq"]):
                 start = m.start()
                 matched = m.group(1)
+                mat, mat_basis = mature_position(prot["acc"], start + 1)
                 sites.append({
                     "source": prot["source"], "accession": prot["acc"],
                     "entry": prot["name"], "gene": prot["gene"],
-                    "protein": prot["desc"],
+                    "species": prot["species"], "protein": prot["desc"],
                     "major_milk_protein": "yes" if prot["gene"] in MAJOR_GENES else "no",
                     "tier": tier, "motif_class": label, "motif_regex": pattern,
                     "site_position_1based": start + 1,
+                    "site_position_mature": mat,
+                    "mature_numbering_basis": mat_basis,
                     "matched": matched,
                     "context_8mer": prot["seq"][start:start + 8],
                     "basis": basis,
@@ -200,8 +260,8 @@ def main():
         for header, seq in read_fasta(path):
             if not seq:
                 continue
-            acc, name, gene, desc = parse_header(header)
-            index.add(acc, name, gene, desc, seq, label)
+            acc, name, gene, desc, species = parse_header(header)
+            index.add(acc, name, gene, desc, seq, label, species)
             n += 1
         print(f"{label}: {n} proteins from {path}")
     index.build()
@@ -285,12 +345,15 @@ def main():
             "gene": r["gene"],
             "accession": r["accession"],
             "site_position_1based": r["site_position_1based"],
+            "site_position_mature": r["site_position_mature"],
+            "species": r["species"],
             "major_milk_protein": r["major_milk_protein"],
             "source": r["source"],
         })
     write_tsv(args.out / "milk_atlas_targets.tsv", targets,
               fields=["id", "sequence", "set", "c_term", "motif_class", "gene",
-                      "accession", "site_position_1based", "major_milk_protein", "source"])
+                      "accession", "species", "site_position_1based",
+                      "site_position_mature", "major_milk_protein", "source"])
 
     # ---- summary -------------------------------------------------------------------
     def tally(rows, key):
