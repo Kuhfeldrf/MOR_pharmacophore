@@ -20,11 +20,8 @@
 # Requires templates built by jobs/dual_template.sbatch (template B) and the existing
 # results/template_p8 (template A).
 set -euo pipefail
-source /scratch/kuhfeldr-Kuhfeld_temp/miniforge3/etc/profile.d/conda.sh
-conda activate mor-pharm
-cd "$SLURM_SUBMIT_DIR"
+source "${SLURM_SUBMIT_DIR:-$PWD}/jobs/env.sh"
 mkdir -p logs/milk_atlas
-export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
 
 TA=results/template_p8
 TB=results/template_8f7r_p4

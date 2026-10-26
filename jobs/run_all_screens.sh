@@ -32,8 +32,7 @@ echo "1  dual_template   $J1"
 J2=$(sbatch --parsable --dependency=afterok:"$J1" \
      --job-name=mor_dualanalyse --partition=short --time=00:20:00 \
      --cpus-per-task=2 --mem=8G --output=logs/dual/analyse_%j.log \
-     --wrap "source /scratch/kuhfeldr-Kuhfeld_temp/miniforge3/etc/profile.d/conda.sh && \
-             conda activate mor-pharm && cd \"\$SLURM_SUBMIT_DIR\" && \
+     --wrap "source \"\$SLURM_SUBMIT_DIR/jobs/env.sh\" && \
              python scripts/23_dietary_screen.py --runs results/dietary --out docs && \
              python scripts/24_dual_template_consensus.py --runs results/dietary \
                  --template-a p8excl --template-b b8excl \
@@ -51,8 +50,7 @@ echo "3  milk_atlas      $J3"
 J3b=$(sbatch --parsable --dependency=afterok:"$J3" \
       --job-name=mor_atlasanalyse --partition=short --time=00:20:00 \
       --cpus-per-task=2 --mem=8G --output=logs/milk_atlas/analyse_%j.log \
-      --wrap "source /scratch/kuhfeldr-Kuhfeld_temp/miniforge3/etc/profile.d/conda.sh && \
-              conda activate mor-pharm && cd \"\$SLURM_SUBMIT_DIR\" && \
+      --wrap "source \"\$SLURM_SUBMIT_DIR/jobs/env.sh\" && \
               python scripts/27_milk_atlas_analysis.py --runs results/milk_atlas \
                   --targets data/milk_atlas/milk_atlas_targets.tsv --out docs")
 echo "3b atlas analysis  $J3b"

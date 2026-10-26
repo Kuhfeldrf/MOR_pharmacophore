@@ -11,10 +11,7 @@
 # structure supports (ARG213/ECL2 salt bridge present), p5 is the old truncated
 # template kept for comparison, and p8+excl adds receptor exclusion volumes.
 set -euo pipefail
-source /scratch/kuhfeldr-Kuhfeld_temp/miniforge3/etc/profile.d/conda.sh
-conda activate mor-pharm
-cd "$SLURM_SUBMIT_DIR"
-export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
+source "${SLURM_SUBMIT_DIR:-$PWD}/jobs/env.sh"
 CFG=$((SLURM_ARRAY_TASK_ID / 2))
 SEEDS=(20261020 61453)
 SEED=${SEEDS[$((SLURM_ARRAY_TASK_ID % 2))]}

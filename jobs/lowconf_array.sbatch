@@ -9,10 +9,7 @@
 # Low conformer counts, the regime where McNutt et al. 2023 locate their
 # larger-ensemble penalty (<25 vs hundreds). The 400-vs-800 test could not probe it.
 set -euo pipefail
-source /scratch/kuhfeldr-Kuhfeld_temp/miniforge3/etc/profile.d/conda.sh
-conda activate mor-pharm
-cd "$SLURM_SUBMIT_DIR"
-export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
+source "${SLURM_SUBMIT_DIR:-$PWD}/jobs/env.sh"
 NCS=(10 25 50 100)
 SEEDS=(20261020 61453)
 NC=${NCS[$((SLURM_ARRAY_TASK_ID / 2))]}

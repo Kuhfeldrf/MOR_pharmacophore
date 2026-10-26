@@ -4,7 +4,7 @@
 #SBATCH -c 8
 #SBATCH --mem=24G
 #SBATCH -t 240
-#SBATCH -o /scratch/kuhfeldr-Kuhfeld_temp/MOR_pharmacophore/logs/stageB2/%A_%a.log
+#SBATCH -o logs/stageB2/%A_%a.log
 #SBATCH --array=0-23%24
 # Window 8 at 800 conformers, both seeds, full benchmark.
 #
@@ -13,11 +13,9 @@
 # 0.95 gate, which it cleared (0.960) on the shorter selection set. Rather than relax
 # the gate, double the ensemble and re-measure.
 set -euo pipefail
-source /scratch/kuhfeldr-Kuhfeld_temp/miniforge3/etc/profile.d/conda.sh
-conda activate mor-pharm
-ROOT=/scratch/kuhfeldr-Kuhfeld_temp/MOR_pharmacophore
+source "${SLURM_SUBMIT_DIR:-$PWD}/jobs/env.sh"
+ROOT="$MOR_ROOT"
 cd "$ROOT"; mkdir -p logs/stageB2
-export OMP_NUM_THREADS=${SLURM_CPUS_PER_TASK:-8}
 SEEDS=(61453 20261020); NBLOCKS=12
 i=${SLURM_ARRAY_TASK_ID}
 blk=$(( i % NBLOCKS )); s_i=$(( i / NBLOCKS ))

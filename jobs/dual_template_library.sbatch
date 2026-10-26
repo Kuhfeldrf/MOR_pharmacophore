@@ -4,7 +4,7 @@
 #SBATCH -c 8
 #SBATCH --mem=16G
 #SBATCH -t 120
-#SBATCH -o /scratch/kuhfeldr-Kuhfeld_temp/MOR_pharmacophore/logs/libB/%A_%a.log
+#SBATCH -o logs/libB/%A_%a.log
 #SBATCH --array=0-145%48
 # Dual-template screen, stage 2: the full 14,595-target library under template B.
 #
@@ -23,12 +23,10 @@
 # note the original library screen used --n-conformers 50 at window 5, so DO NOT compare
 # percentiles across those two settings (D4.2: ensemble size shifts the distribution).
 set -euo pipefail
-source /scratch/kuhfeldr-Kuhfeld_temp/miniforge3/etc/profile.d/conda.sh
-conda activate mor-pharm
-ROOT=/scratch/kuhfeldr-Kuhfeld_temp/MOR_pharmacophore
+source "${SLURM_SUBMIT_DIR:-$PWD}/jobs/env.sh"
+ROOT="$MOR_ROOT"
 cd "$ROOT"
 mkdir -p logs/libB
-export OMP_NUM_THREADS=${SLURM_CPUS_PER_TASK:-8}
 python scripts/04_screen.py \
     --targets data/targets.tsv \
     --template "${TEMPLATE:-results/template_8f7r_p4/mor_template_excl_a1.phar}" \

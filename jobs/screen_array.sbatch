@@ -4,7 +4,7 @@
 #SBATCH -c 8
 #SBATCH --mem=16G
 #SBATCH -t 120
-#SBATCH -o /scratch/kuhfeldr-Kuhfeld_temp/MOR_pharmacophore/logs/screen/%A_%a.log
+#SBATCH -o logs/screen/%A_%a.log
 #SBATCH --array=0-145%48
 # Stage 2+4: conformers and Align-it scoring, one block per array task.
 #
@@ -15,13 +15,11 @@
 # sibling MOR_peptide_binding workflow uses on this cluster; blocks are independent, so
 # raising it costs nothing but queue courtesy.
 set -euo pipefail
-source /scratch/kuhfeldr-Kuhfeld_temp/miniforge3/etc/profile.d/conda.sh
-conda activate mor-pharm
-ROOT=/scratch/kuhfeldr-Kuhfeld_temp/MOR_pharmacophore
+source "${SLURM_SUBMIT_DIR:-$PWD}/jobs/env.sh"
+ROOT="$MOR_ROOT"
 cd "$ROOT"
 mkdir -p logs/screen
 # RDKit threading is set from the allocation, not left to default.
-export OMP_NUM_THREADS=${SLURM_CPUS_PER_TASK:-8}
 python scripts/04_screen.py \
     --targets data/targets.tsv \
     --template results/01_template/mor_template.phar \

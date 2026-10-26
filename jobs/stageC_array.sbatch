@@ -15,10 +15,7 @@
 # seed jitter has to be RE-MEASURED under exclusion volumes, because the scores
 # compress and the old 0.0013 no longer applies.
 set -euo pipefail
-source /scratch/kuhfeldr-Kuhfeld_temp/miniforge3/etc/profile.d/conda.sh
-conda activate mor-pharm
-cd "$SLURM_SUBMIT_DIR"
-export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
+source "${SLURM_SUBMIT_DIR:-$PWD}/jobs/env.sh"
 NBLOCKS=8
 BLOCK=$((SLURM_ARRAY_TASK_ID % NBLOCKS))
 CFG=$((SLURM_ARRAY_TASK_ID / NBLOCKS))

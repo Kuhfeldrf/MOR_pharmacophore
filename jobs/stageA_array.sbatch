@@ -4,7 +4,7 @@
 #SBATCH -c 8
 #SBATCH --mem=24G
 #SBATCH -t 240
-#SBATCH -o /scratch/kuhfeldr-Kuhfeld_temp/MOR_pharmacophore/logs/stageA/%A_%a.log
+#SBATCH -o logs/stageA/%A_%a.log
 #SBATCH --array=0-71%24
 # STUDY.md 4, stage A: the selection sweep.
 #
@@ -15,14 +15,12 @@
 #
 # 3 windows x 3 conformer counts x 2 seeds x 4 blocks = 72 tasks.
 set -euo pipefail
-source /scratch/kuhfeldr-Kuhfeld_temp/miniforge3/etc/profile.d/conda.sh
-conda activate mor-pharm
-ROOT=/scratch/kuhfeldr-Kuhfeld_temp/MOR_pharmacophore
+source "${SLURM_SUBMIT_DIR:-$PWD}/jobs/env.sh"
+ROOT="$MOR_ROOT"
 cd "$ROOT"
 mkdir -p logs/stageA
 # Explicit: RDKit numThreads=0 would mean all 64 hardware cores and oversubscribe the
 # node (measured CPULoad 319 in sweep 237134).
-export OMP_NUM_THREADS=${SLURM_CPUS_PER_TASK:-8}
 
 WINDOWS=(5 8 12)
 NCONFS=(50 150 400)

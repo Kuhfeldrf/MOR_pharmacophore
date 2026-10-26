@@ -18,11 +18,8 @@
 # job: jobs/dual_template_library.sbatch. Run this one first and check T1/T3 before
 # spending 50+ CPU-hours on that.
 set -euo pipefail
-source /scratch/kuhfeldr-Kuhfeld_temp/miniforge3/etc/profile.d/conda.sh
-conda activate mor-pharm
-cd "$SLURM_SUBMIT_DIR"
+source "${SLURM_SUBMIT_DIR:-$PWD}/jobs/env.sh"
 mkdir -p logs/dual
-export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
 
 TB=results/template_8f7r_p4
 SEEDS=(20261020 61453)

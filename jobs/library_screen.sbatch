@@ -4,7 +4,7 @@
 #SBATCH -c 8
 #SBATCH --mem=24G
 #SBATCH -t 1200
-#SBATCH -o /scratch/kuhfeldr-Kuhfeld_temp/MOR_pharmacophore/logs/library/%A_%a.log
+#SBATCH -o logs/library/%A_%a.log
 #SBATCH --array=0-299%48
 # Full library screen at the VALIDATED configuration (docs/optimisation_study.md):
 #
@@ -23,11 +23,9 @@
 # estimate lands close enough to 4 h that `short` would risk losing whole blocks to the
 # wall clock, which is how this project lost a campaign once already.
 set -euo pipefail
-source /scratch/kuhfeldr-Kuhfeld_temp/miniforge3/etc/profile.d/conda.sh
-conda activate mor-pharm
-ROOT=/scratch/kuhfeldr-Kuhfeld_temp/MOR_pharmacophore
+source "${SLURM_SUBMIT_DIR:-$PWD}/jobs/env.sh"
+ROOT="$MOR_ROOT"
 cd "$ROOT"; mkdir -p logs/library
-export OMP_NUM_THREADS=${SLURM_CPUS_PER_TASK:-8}
 python scripts/04_screen.py \
     --targets data/targets.tsv \
     --template results/01_template/mor_template.phar \

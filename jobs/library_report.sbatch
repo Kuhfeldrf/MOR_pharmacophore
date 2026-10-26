@@ -15,9 +15,7 @@
 #   2. Rank and tier the full library. Reads ~1.2 GB of per-conformer score tables,
 #      which is why this is a batch job and not a login-node command.
 set -euo pipefail
-source /scratch/kuhfeldr-Kuhfeld_temp/miniforge3/etc/profile.d/conda.sh
-conda activate mor-pharm
-cd "$SLURM_SUBMIT_DIR"
+source "${SLURM_SUBMIT_DIR:-$PWD}/jobs/env.sh"
 
 python scripts/12_analyze_sweep.py --sweep results/stageB --out docs
 

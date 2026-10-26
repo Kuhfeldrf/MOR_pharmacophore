@@ -4,7 +4,7 @@
 #SBATCH -c 8
 #SBATCH --mem=24G
 #SBATCH -t 240
-#SBATCH -o /scratch/kuhfeldr-Kuhfeld_temp/MOR_pharmacophore/logs/sweep/%A_%a.log
+#SBATCH -o logs/sweep/%A_%a.log
 #SBATCH --array=0-17%9
 # STUDY.md 4: the optimisation sweep.
 #
@@ -12,12 +12,10 @@
 # whole 235-peptide benchmark in one block. Scoring metric and ensemble statistic are
 # read post hoc from the retained per-conformer score tables, so they cost nothing here.
 set -euo pipefail
-source /scratch/kuhfeldr-Kuhfeld_temp/miniforge3/etc/profile.d/conda.sh
-conda activate mor-pharm
-ROOT=/scratch/kuhfeldr-Kuhfeld_temp/MOR_pharmacophore
+source "${SLURM_SUBMIT_DIR:-$PWD}/jobs/env.sh"
+ROOT="$MOR_ROOT"
 cd "$ROOT"
 mkdir -p logs/sweep
-export OMP_NUM_THREADS=${SLURM_CPUS_PER_TASK:-8}
 
 NCONFS=(50 200 500)
 WINDOWS=(5 8 0)

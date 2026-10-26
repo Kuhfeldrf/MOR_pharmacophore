@@ -4,7 +4,7 @@
 #SBATCH -c 8
 #SBATCH --mem=24G
 #SBATCH -t 240
-#SBATCH -o /scratch/kuhfeldr-Kuhfeld_temp/MOR_pharmacophore/logs/stageB/%A_%a.log
+#SBATCH -o logs/stageB/%A_%a.log
 #SBATCH --array=0-71%24
 # STUDY.md 4-5, stage B: evaluation.
 #
@@ -17,12 +17,10 @@
 #   window  8, 400 conformers   minimum window at which the potency pair is testable
 #   window 12, 150 conformers   most family-pair comparisons
 set -euo pipefail
-source /scratch/kuhfeldr-Kuhfeld_temp/miniforge3/etc/profile.d/conda.sh
-conda activate mor-pharm
-ROOT=/scratch/kuhfeldr-Kuhfeld_temp/MOR_pharmacophore
+source "${SLURM_SUBMIT_DIR:-$PWD}/jobs/env.sh"
+ROOT="$MOR_ROOT"
 cd "$ROOT"
 mkdir -p logs/stageB
-export OMP_NUM_THREADS=${SLURM_CPUS_PER_TASK:-8}
 
 WINDOWS=(5 8 12)
 NCONFS=(400 400 150)

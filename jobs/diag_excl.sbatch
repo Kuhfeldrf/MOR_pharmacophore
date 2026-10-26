@@ -6,10 +6,7 @@
 #SBATCH --mem=32G
 #SBATCH --output=logs/report/%j.log
 set -euo pipefail
-source /scratch/kuhfeldr-Kuhfeld_temp/miniforge3/etc/profile.d/conda.sh
-conda activate mor-pharm
-cd "$SLURM_SUBMIT_DIR"
-export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
+source "${SLURM_SUBMIT_DIR:-$PWD}/jobs/env.sh"
 T=results/01_template
 # same conformers (same seed) scored against three templates
 python scripts/04_screen.py --targets data/diagnostic/diag_targets.tsv --template $T/mor_template.phar \
