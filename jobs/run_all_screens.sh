@@ -48,12 +48,22 @@ echo "2  analyse+gate    $J2   (submits step 4 if the gate passes)"
 J3=$(sbatch --parsable --dependency=afterok:"$J1" jobs/milk_atlas_screen.sbatch)
 echo "3  milk_atlas      $J3"
 
+J3b=$(sbatch --parsable --dependency=afterok:"$J3" \
+      --job-name=mor_atlasanalyse --partition=short --time=00:20:00 \
+      --cpus-per-task=2 --mem=8G --output=logs/milk_atlas/analyse_%j.log \
+      --wrap "source /scratch/kuhfeldr-Kuhfeld_temp/miniforge3/etc/profile.d/conda.sh && \
+              conda activate mor-pharm && cd \"\$SLURM_SUBMIT_DIR\" && \
+              python scripts/27_milk_atlas_analysis.py --runs results/milk_atlas \
+                  --targets data/milk_atlas/milk_atlas_targets.tsv --out docs")
+echo "3b atlas analysis  $J3b"
+
 cat <<EOF
 
 Submitted. Watch with:  squeue -u \$USER
 Results land in:
   docs/dietary_screen.json          single-template E8/E9, now including template B
   docs/dual_template_result.json    T1-T4, T6, consensus, E4'
+  docs/milk_atlas_result.json       M1-M4 on the 35 motif-bearing released peptides
   results/milk_atlas/               35 motif-bearing released peptides, both templates
   results/library_b8excl/           only if the T3 gate passed
 
