@@ -27,7 +27,8 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "src"))
 
-from mor_pharmacophore.alignit import generate_pharmacophore, version  # noqa: E402
+from mor_pharmacophore.alignit import (  # noqa: E402
+    babel_env, generate_pharmacophore, version)
 from mor_pharmacophore.plip_step import peptide_interactions  # noqa: E402
 
 
@@ -45,6 +46,7 @@ def protonate(in_path, out_sdf, ph=7.4):
     """
     result = subprocess.run(
         ["obabel", str(in_path), "-O", str(out_sdf), "-p", str(ph)],
+        env=babel_env(),   # pin OpenBabel's plugin dir; see alignit.babel_env
         capture_output=True, text=True)
     if result.returncode != 0 or not Path(out_sdf).exists():
         raise RuntimeError(f"obabel protonation failed: {result.stderr.strip()[:300]}")

@@ -7,6 +7,7 @@ g++, because conda-forge OpenBabel requires a newer CXXABI than RHEL's libstdc++
 
 Feature codes used by Align-it: AROM, HDON, HACC, LIPO, CHARGE.
 """
+import os
 import shutil
 import subprocess
 from pathlib import Path
@@ -15,6 +16,54 @@ from pathlib import Path
 _CANDIDATE_NAMES = ("align_it", "align-it")
 
 FEATURE_CODES = ("AROM", "HDON", "HACC", "LIPO", "CHARGE")
+
+
+def babel_env():
+    """Environment for any OpenBabel-linked subprocess, with the plugin path pinned.
+
+    Use this for `align_it` AND for `obabel`: both are conda-forge binaries linked
+    against the conda `libopenbabel.so`, and both break the same way if they inherit the
+    pip wheel's plugin directory.
+
+    There can be two OpenBabels in one prefix, and they are not interchangeable.
+    `align_it` is a C++ binary linked against the conda-forge `libopenbabel.so`. PLIP's
+    dependency chain pulls the *pip* `openbabel` wheel, which bundles its own
+    `libopenbabel.so` and its own 128 format plugins built with a different C++ ABI.
+
+    The wheel's `openbabel/__init__.py` sets `BABEL_LIBDIR` and `BABEL_DATADIR` into
+    `os.environ` at import time, pointing at its own directories. Any script here that
+    touches PLIP therefore has those variables set by the time it shells out, the child
+    inherits them, and align_it loads the wheel's plugins against the conda library:
+
+        APIInterface.so did not load properly.
+        undefined symbol: _ZN9OpenBabel8OBFormat7DisplayERSsPKcS3_
+
+    `--help` survives this because it loads no format plugin; the failure appears only
+    when a structure is actually read, which is why a smoke test can pass and the
+    template build still die (job 242423).
+
+    So the plugin path is pinned to the prefix that owns the align_it binary rather than
+    inherited. Explicitly setting it also beats the compiled-in default, so this is
+    correct whether or not Python has polluted the environment.
+    """
+    env = dict(os.environ)
+    # Any conda-forge OpenBabel consumer identifies the prefix; align_it and obabel live
+    # in the same <prefix>/bin.
+    exe = alignit_path() or shutil.which("obabel")
+    if not exe:
+        return env
+    # <prefix>/bin/<exe> -> <prefix>
+    prefix = Path(exe).resolve().parent.parent
+    for var, subdir in (("BABEL_LIBDIR", "lib/openbabel"),
+                        ("BABEL_DATADIR", "share/openbabel")):
+        base = prefix / subdir
+        # One versioned directory per OpenBabel release, e.g. lib/openbabel/3.2.1.
+        versions = sorted(p for p in base.glob("*") if p.is_dir()) if base.is_dir() else []
+        if versions:
+            env[var] = str(versions[-1])
+        else:
+            env.pop(var, None)      # inheriting a wrong value is worse than none
+    return env
 
 
 def alignit_path():
@@ -36,7 +85,8 @@ def _require():
 
 
 def _run(args):
-    result = subprocess.run([_require()] + args, capture_output=True, text=True)
+    result = subprocess.run([_require()] + args, capture_output=True, text=True,
+                            env=babel_env())
     if result.returncode != 0:
         raise RuntimeError(
             f"align-it failed ({result.returncode}): {result.stderr.strip()[:500]}")
@@ -44,7 +94,8 @@ def _run(args):
 
 
 def alignit_help():
-    return subprocess.run([_require(), "--help"], capture_output=True, text=True)
+    return subprocess.run([_require(), "--help"], capture_output=True, text=True,
+                          env=babel_env())
 
 
 def version():
@@ -163,3 +214,7 @@ def best_per_candidate(rows, metric="tversky_ref"):
             f"{metric}_spread": values[-1] - values[0],
         }
     return out
+
+
+# Back-compat alias; `babel_env` is the name to use.
+_babel_env = babel_env

@@ -26,7 +26,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "src"))
 from rdkit import Chem, RDLogger  # noqa: E402
 
 from mor_pharmacophore.alignit import (  # noqa: E402
-    best_per_candidate, read_scores, score, version)
+    babel_env, best_per_candidate, read_scores, score, version)
 from mor_pharmacophore.conformers import (  # noqa: E402
     N_CONFORMERS, WINDOW, ensemble_for_sequence, ensemble_for_smiles)
 
@@ -81,6 +81,7 @@ def build_block_sdf(rows, sdf_path, n_conformers, window, seed):
 def protonate_sdf(in_sdf, out_sdf, ph=7.4):
     result = subprocess.run(
         ["obabel", str(in_sdf), "-O", str(out_sdf), "-p", str(ph)],
+        env=babel_env(),   # pin OpenBabel's plugin dir; see alignit.babel_env
         capture_output=True, text=True)
     if not Path(out_sdf).exists() or Path(out_sdf).stat().st_size == 0:
         raise RuntimeError(f"obabel protonation produced nothing: {result.stderr[:300]}")
