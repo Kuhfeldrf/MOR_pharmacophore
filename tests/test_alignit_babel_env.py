@@ -68,6 +68,28 @@ def test_rest_of_the_environment_is_preserved(fake_prefix, monkeypatch):
     assert "PATH" in env
 
 
-def test_no_binary_means_the_environment_is_left_alone(monkeypatch):
+def test_no_openbabel_binary_at_all_means_the_environment_is_left_alone(monkeypatch):
+    """Both lookups must miss: babel_env falls back to obabel when align_it is absent.
+
+    That fallback is the point -- obabel and align_it live in the same prefix, and the
+    pin is needed for whichever of them is being invoked -- so stubbing only
+    `alignit_path` is not enough to simulate "no OpenBabel present". On a real cluster
+    env obabel is on PATH, which is exactly how this test caught itself.
+    """
     monkeypatch.setattr(alignit, "alignit_path", lambda: None)
-    assert alignit._babel_env() == dict(os.environ)
+    monkeypatch.setattr(alignit.shutil, "which", lambda _name: None)
+    assert alignit.babel_env() == dict(os.environ)
+
+
+def test_obabel_is_used_to_find_the_prefix_when_alignit_is_missing(tmp_path, monkeypatch):
+    """obabel alone is enough to pin, because it is the same conda prefix."""
+    (tmp_path / "bin").mkdir()
+    obabel = tmp_path / "bin" / "obabel"
+    obabel.write_text("#!/bin/sh\nexit 0\n")
+    obabel.chmod(0o755)
+    (tmp_path / "lib" / "openbabel" / "3.2.1").mkdir(parents=True)
+    monkeypatch.setattr(alignit, "alignit_path", lambda: None)
+    monkeypatch.setattr(alignit.shutil, "which",
+                        lambda name: str(obabel) if name == "obabel" else None)
+    env = alignit.babel_env()
+    assert env["BABEL_LIBDIR"] == str(tmp_path / "lib" / "openbabel" / "3.2.1")
