@@ -1,0 +1,115 @@
+{
+  "generated": "2026-10-26",
+  "n_proteins": 923,
+  "n_observed_peptides": 14571,
+  "n_observed_unmapped_to_proteome": 18,
+  "motif_definitions": {
+    "tier1_canonical": [
+      {
+        "class": "message_GGF",
+        "regex": "[YF]GGF",
+        "basis": "Met-/Leu-enkephalin YGGFM/YGGFL, beta-endorphin YGGFMTSEK..., dynorphin A YGGFLRRIRPKLK, N/OFQ FGGFTGARK... (F anchor)"
+      },
+      {
+        "class": "casomorphin_YP",
+        "regex": "YP[FWYVLIM]",
+        "basis": "bovine beta-casomorphins YPFP/YPFPG/YPFPGPI, human YPFV, soymorphin YPFVVN, neocasomorphin YPVEPF, endomorphin-1 YPWF, casoxin B YPYY"
+      },
+      {
+        "class": "casoxin_YPxY",
+        "regex": "YP[STAG][YFW]",
+        "basis": "casoxin A YPSYGLN, casoxin-6 SRYPSY (internal site)"
+      },
+      {
+        "class": "lactorphin_YxxF",
+        "regex": "Y[GL][LGSF][FY]",
+        "basis": "alpha-lactorphin YGLF, beta-lactorphin YLLF, lactoferroxin A YLGSGY"
+      }
+    ],
+    "tier2_aromatic_pair": [
+      {
+        "class": "aromatic_pair",
+        "regex": "[YF].{1,2}[FWY]",
+        "basis": "docs/structural_basis.md 4: YGGF, YPW, Y[D-Ala]F and FGGF share one aromatic pocket"
+      }
+    ]
+  },
+  "sites": {
+    "total": 4437,
+    "tier1": 235,
+    "tier1_in_major_milk_proteins": 16,
+    "tier1_by_class": {
+      "casomorphin_YP": 159,
+      "lactorphin_YxxF": 51,
+      "casoxin_YPxY": 14,
+      "message_GGF": 11
+    },
+    "tier1_by_gene_top20": {
+      "PENK": 15,
+      "": 8,
+      "CSN2": 5,
+      "FMO3": 5,
+      "LPL": 4,
+      "CFB": 4,
+      "HAPLN3": 4,
+      "CD36": 4,
+      "PDCD6IP": 4,
+      "MUC5B": 4,
+      "CSN1S1": 3,
+      "CSN3": 3,
+      "LALBA": 3,
+      "GALNT1": 3,
+      "LEF1": 3,
+      "TMEM39A": 3,
+      "PRL": 2,
+      "ACTB": 2,
+      "B4GALT1": 2,
+      "CEL": 2
+    }
+  },
+  "released_nterminal": {
+    "rows": 244,
+    "tier1_rows": 40,
+    "tier1_distinct_peptides": 35,
+    "tier1_distinct_sites": 12,
+    "tier1_by_class": {
+      "casomorphin_YP": 29,
+      "casoxin_YPxY": 6,
+      "lactorphin_YxxF": 5
+    },
+    "tier1_by_gene": {
+      "CSN2": 24,
+      "CSN1S1": 11,
+      "LALBA": 2,
+      "ACTA1": 1,
+      "ACTA2": 1,
+      "MUC1": 1
+    }
+  },
+  "spanning_blocked": {
+    "rows": 3334,
+    "distinct_peptides": 1767
+  },
+  "screening_targets": {
+    "n": 35,
+    "rule": "tier 1 motif, released as peptide N-terminus, length >= 4, deduplicated by sequence",
+    "by_class": {
+      "casomorphin_YP": 24,
+      "casoxin_YPxY": 6,
+      "lactorphin_YxxF": 5
+    },
+    "by_gene": {
+      "CSN2": 24,
+      "CSN1S1": 7,
+      "LALBA": 2,
+      "ACTA1": 1,
+      "MUC1": 1
+    }
+  },
+  "caveats": [
+    "Tier 2 is permissive by construction (aromatic anchor + second aromatic at +2/+3) and a tier-2 hit is a hypothesis, not a prediction. Only tier 1 becomes a screening target.",
+    "A motif site is evidence of a potential N-terminus, not of release. The released_nterminal set is the only one with peptidomic evidence behind it.",
+    "Nothing here measures binding. The atlas selects what is worth scoring.",
+    "Peptides are mapped to parents by exact substring match, so a peptide shared between two parents is reported against both."
+  ]
+}

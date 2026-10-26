@@ -69,8 +69,21 @@ shown to add discrimination beyond the free "starts with Tyr" baseline, and at 5
 conformers the score is not reproducible enough to tier. Numbers, both seeds, and what
 to fix first are in [`docs/screen_validation.md`](docs/screen_validation.md).
 
-The sequence-level pre-screen of milk proteins (39 opioid-like motif sites, 11 released as
-N-termini) lives in `milk-opioid-motif-atlas`.
+## Milk opioid-motif atlas
+
+The sequence-level pre-screen of milk proteins now lives in this repo:
+`scripts/25_milk_motif_atlas.py`, written up in [`docs/milk_atlas.md`](docs/milk_atlas.md).
+It scans 923 milk proteins for opioid motifs and intersects them with the 14,571
+MS-observed digesta peptides, so "could be released" is a measurement rather than a
+prediction.
+
+**235 canonical motif sites; 35 peptides at 12 sites are released with the motif at their
+own N-terminus; 1,767 peptides span a motif with the amine blocked** — so the positional
+rule discards 98% of motif-bearing observed peptides. The atlas recovers
+beta-casomorphin-7 (`YPFPGPI`), the human beta-casomorphin series, neocasomorphin-6,
+alpha-lactorphin and the alphas1-casein exorphin unprompted, which is the positive control
+for the method, and leaves 5 novel candidate sites. (The earlier count in the sibling
+`milk-opioid-motif-atlas` repo was 11 released sites; this finds 12.)
 
 ## Run the tests
 
