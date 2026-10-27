@@ -50,11 +50,20 @@ the cheap screen came first precisely so this could be decided for the price of 
 minutes, by a number rather than by whoever was at the terminal.
 
 **The conclusion does not rest on where the T3 threshold was drawn.** ρ = 0.917 is close
-to 0.9, and the margin would be easy to argue. It does not need arguing, because T1 and
-T2 fail independently of T3: template A beats template B on agonist/antagonist
-discrimination at **both** seeds and on **both** pools, and neither consensus method
-beats A alone — rank fusion only ties it, on one seed. At a threshold of 0.95 the design
-still fails. The complete-ligand advantage predicted in §3 did not appear.
+to 0.9, and the margin would be easy to argue. It does not need arguing: T1 and T2 fail
+independently of T3. `B8` did not reach `A8` on either seed or either pool, and neither
+consensus method beat the better single template — rank fusion only tied it, on one seed.
+At a threshold of 0.95 the design still fails. The complete-ligand advantage predicted in
+§3 did not appear.
+
+**But "A beats B" is not a supported claim either, and T1 was never equipped to make
+one.** T1 was pre-registered as a comparison of point estimates with no test attached.
+A paired bootstrap over peptides puts the observed Δ AUROC of +0.083 at a 95% CI of
+**[0.000, +0.333]**, with 32% of resamples placing A at or below B. The honest reading is
+that `B8` failed to beat `A8` as predicted, **not** that `A8` is the better template. See
+[`power_analysis.md`](power_analysis.md): on 12 agonists × 3 antagonists, the probability
+of resolving even a 0.15 AUROC gap between two templates correlated at ρ = 0.9 is 0.11.
+This set cannot adjudicate templates, and T1 and T2 were decided by a class of three.
 
 ## What passed, and it is worth stating
 
