@@ -1,8 +1,8 @@
 peptide,sequence,chemistry,origin,endogenous_human,precursor,pdb_in_wang2023,receptor,pKi,pKi_SEM,Ki_nM_derived,pEC50,pEC50_SEM,Emax_pct,Emax_SEM,binding_measured,signalling_measured,source
-beta-Endorphin (1-31),YGGFMTSEKSQTPLVTLFKNAIIKNAYK,"all-L, free acid",human,yes,POMC (P01189),8F7Q,mOR,7.11,0.07,77.6,6.75,0.11,100.7,5.10,yes,yes,"Wang et al. 2023 Cell 186:413-427, Table S2"
-beta-Endorphin (1-31),YGGFMTSEKSQTPLVTLFKNAIIKNAYK,"all-L, free acid",human,yes,POMC (P01189),8F7Q,dOR,6.95,0.07,112,7.01,0.19,98.27,8.25,yes,yes,"Wang et al. 2023 Cell 186:413-427, Table S2"
-beta-Endorphin (1-31),YGGFMTSEKSQTPLVTLFKNAIIKNAYK,"all-L, free acid",human,yes,POMC (P01189),8F7Q,kOR,,,,5.84,0.21,77.83,10.67,no,yes,"Wang et al. 2023 Cell 186:413-427, Table S2"
-beta-Endorphin (1-31),YGGFMTSEKSQTPLVTLFKNAIIKNAYK,"all-L, free acid",human,yes,POMC (P01189),8F7Q,NOPR,,,,,,,,no,no,"Wang et al. 2023 Cell 186:413-427, Table S2"
+beta-Endorphin (1-31),YGGFMTSEKSQTPLVTLFKNAIIKNAYKKGE,"all-L, free acid",human,yes,POMC (P01189),8F7Q,mOR,7.11,0.07,77.6,6.75,0.11,100.7,5.10,yes,yes,"Wang et al. 2023 Cell 186:413-427, Table S2"
+beta-Endorphin (1-31),YGGFMTSEKSQTPLVTLFKNAIIKNAYKKGE,"all-L, free acid",human,yes,POMC (P01189),8F7Q,dOR,6.95,0.07,112,7.01,0.19,98.27,8.25,yes,yes,"Wang et al. 2023 Cell 186:413-427, Table S2"
+beta-Endorphin (1-31),YGGFMTSEKSQTPLVTLFKNAIIKNAYKKGE,"all-L, free acid",human,yes,POMC (P01189),8F7Q,kOR,,,,5.84,0.21,77.83,10.67,no,yes,"Wang et al. 2023 Cell 186:413-427, Table S2"
+beta-Endorphin (1-31),YGGFMTSEKSQTPLVTLFKNAIIKNAYKKGE,"all-L, free acid",human,yes,POMC (P01189),8F7Q,NOPR,,,,,,,,no,no,"Wang et al. 2023 Cell 186:413-427, Table S2"
 DAMGO,Tyr-D-Ala-Gly-N-MePhe-Gly-ol,"D-Ala, N-Me-Phe, C-glycinol",synthetic,no,none - synthetic analogue,8EFQ,mOR,8.88,0.02,1.32,7.3,0.07,99.68,2.75,yes,yes,"Wang et al. 2023 Cell 186:413-427, Table S2"
 DAMGO,Tyr-D-Ala-Gly-N-MePhe-Gly-ol,"D-Ala, N-Me-Phe, C-glycinol",synthetic,no,none - synthetic analogue,8EFQ,dOR,,,,,,,,no,no,"Wang et al. 2023 Cell 186:413-427, Table S2"
 DAMGO,Tyr-D-Ala-Gly-N-MePhe-Gly-ol,"D-Ala, N-Me-Phe, C-glycinol",synthetic,no,none - synthetic analogue,8EFQ,kOR,6.10,0.09,794,,,,,yes,no,"Wang et al. 2023 Cell 186:413-427, Table S2"
