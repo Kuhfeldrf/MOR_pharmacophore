@@ -117,6 +117,18 @@ selectivity") sits at residues ~13–21, and a 21-residue reference cannot be co
 tractable candidate conformer ensemble — a 17-mer has 81 rotatable bonds and returns zero
 conformers (§1). **This is a structural limit on the method, not a tuning problem.**
 
+> **Correction, 2026-10-27 — the paragraph above is wrong about where the reachable limit
+> lies.** Measured from the 8F7Q coordinates with `scripts/29_ligand_contacts.py`
+> (table: [`8f7q_contacts.tsv`](8f7q_contacts.tsv)), **every** ECL2 and TM6-tip contact
+> β-endorphin makes is at residues 4–9: Thr6↔Arg213 3.7 Å, Ser7↔Lys305(6.58) 4.2 Å,
+> Glu8↔Arg213/Gln214 3.3/3.1 Å, Lys9↔Asp218 3.1 Å. Residues 10–21 contact **only** ECL1
+> and the TM1 tip, and residues 10, 16, 17, 18, 20 and 21 contact nothing at all within
+> 4.5 Å. The "address region proper" at 13–21 is therefore not where this receptor is
+> touched, and declining to model it costs almost nothing. The extent ≥8 / ≥9 arithmetic
+> in this section is right; the conclusion drawn from it is not. Extent 9 spans the lot,
+> and the real ceiling is conformational sampling, not reach — see
+> [`post_t3_design.md`](post_t3_design.md) §2.
+
 ## 6. Endomorphin-1 binds differently from β-endorphin
 
 Their Figure 2F–H: endomorphin's **W3 overlaps F4 of β-endorphin**, and endomorphin's
