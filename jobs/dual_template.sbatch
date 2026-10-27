@@ -66,11 +66,41 @@ python scripts/20_template_exclusion.py \
     --alphas 0.5 1.0
 
 # --- 3. Dietary screen, both windows x both seeds ---------------------------------
-# B8 is primary: it matches A8 (results/dietary/p8excl_s*) on window, conformer count,
-# seed, metric and exclusion treatment, so the only difference is the template.
+# B8 is primary: it matches A8 (results/dietary/p8excl_s*, step 3a) on window, conformer
+# count, seed, metric and exclusion treatment, so the only difference is the template.
 # B4 is the extent-matched sensitivity run and is pre-registered as UNINTERPRETABLE as
 # evidence for template B - at window 4 the aromatic confound favours the hypothesis and
 # 8 of 20 peptides collapse onto a shared window. See design doc 5.2.
+
+# --- 3a. Template A's dietary runs, rebuilt if absent -----------------------------
+# Same reasoning as step 0, and the same bug: these were assumed present because they
+# were, having been produced by jobs/dietary_array.sbatch CFG=2 in an earlier allocation.
+# When that allocation was reaped the template was rebuilt by step 0 but these were not,
+# so this job reported DUAL_TEMPLATE_DONE and the analysis behind it died on
+# `no runs for template tag 'p8excl'` - three jobs deep, for a reason unrelated to the
+# campaign, after every expensive screen had already run (job 242431).
+#
+# A8 is not optional: it is the control arm B8 is compared against, so T3 - and therefore
+# the gate on the ~52 CPU-hour library screen - cannot be computed without it. Keeping it
+# here rather than in the submitter means the comparison arm is built by the same job
+# that builds the thing it is compared to, and cannot drift from it.
+#
+# Must stay identical to dietary_array.sbatch CFG=2: window 8, 800 conformers, alpha-1
+# exclusion volumes, both seeds. Idempotent on block0000.json, which 04_screen.py writes
+# last, so a completed run is never recomputed. ~1.9 h per seed when it does run.
+for SEED in "${SEEDS[@]}"; do
+  if [ -f "results/dietary/p8excl_s${SEED}/block0000.json" ]; then
+    echo "template A dietary already screened for seed $SEED, reusing"
+  else
+    echo "template A dietary absent for seed $SEED - screening"
+    python scripts/04_screen.py \
+        --targets data/dietary/dietary_targets.tsv \
+        --template "$TA/mor_template_excl_a1.phar" \
+        --out "results/dietary/p8excl_s${SEED}" \
+        --window 8 --n-conformers 800 --seed "$SEED" --with-exclusion
+  fi
+done
+
 for SEED in "${SEEDS[@]}"; do
   for W in 8 4; do
     python scripts/04_screen.py \
