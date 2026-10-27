@@ -34,12 +34,24 @@
 # (2.2x the measured arm, because the bare arms are unmeasured and the aromatic-rich
 # candidates are the slow ones). `normal` is 24 h; `short` is 4 h and is not an option.
 #
-# Idempotent, so a partial campaign resumes instead of restarting. An arm is finished
-# only when scripts/04_screen.py has written block0000.json, which it does last (after
-# the TSV, after scoring); a bare block0000/ directory means an interrupted arm, and
-# scripts/04_screen.py reuses a complete conformers SDF from it, so a resumed arm skips
-# straight to scoring. Note it does NOT discard a partial scores.tab - align-it rewrites
-# it - and best-per-candidate takes a max over identical rescored conformers either way.
+# Idempotent at ARM granularity, so a partial campaign resumes instead of restarting. An
+# arm is finished only when scripts/04_screen.py has written block0000.json, which it does
+# last (after the TSV, after scoring); a bare block0000/ directory means an interrupted
+# arm and is redone from the start.
+#
+# There is no resume WITHIN an arm, and the conformer ensemble is not cached: the
+# existence check at 04_screen.py:86 is obabel's "produced nothing" error check inside
+# protonate_sdf, not a reuse cache, and build_block_sdf rebuilds conformers.sdf
+# unconditionally. Measured here as 5431s of the interrupted arm's wall clock, spent
+# rebuilding 666 MB that was already on disk.
+#
+# That is also the obvious saving, and it is deliberately not taken here: conformers
+# depend on (targets, seed, window, n_conformers) and NOT on the template, so all four
+# arms of a seed rebuild the same ensemble and the campaign pays for it 4x per seed,
+# ~12 h across the eight arms. A cache would cost 666 MB per seed kept on a scratch
+# filesystem that is 96% full and whose SDFs are transient by design (--keep-sdf,
+# "scratch is tight"). Changing that is a change to 04_screen.py and affects every
+# screen in the project, so it belongs in its own commit with its own measurement.
 set -euo pipefail
 source "${SLURM_SUBMIT_DIR:-$PWD}/jobs/env.sh"
 mkdir -p logs/milk_atlas
