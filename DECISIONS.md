@@ -573,7 +573,7 @@ badly posed comparison.
 Never folded into the ranking; carried as its own column so the contribution of the free
 one-line sequence rule stays separable from the 3D matching's.
 
-### D6.12 Consensus over two templates is rank fusion, not score averaging — OPEN, pre-registered
+### D6.12 Consensus over two templates is rank fusion, not score averaging — WITHDRAWN
 **Decision.** The two-template consensus is the **mean rank** across templates (primary),
 with per-peptide **max of min-max-scaled scores** reported secondary.
 **Rationale.** The two templates' score distributions are not on a common scale: Tversky
@@ -585,6 +585,40 @@ peptide need only mimic *one* natural binding mode — but it is secondary becau
 upward-biased by construction (two chances to score well) and the antagonists receive the
 same bias, so it does not cancel.
 **Evidence.** *Literature* for rank fusion in consensus virtual screening; untested here.
+**Withdrawn 2026-10-27.** There is nothing to fuse. T3 measured Spearman ρ = **+0.917**
+between the two templates' score vectors (per-seed +0.926, +0.912), so the second template
+re-measures the first and a consensus of the two is a consensus of one view. Both consensus
+statistics were computed anyway, and neither beat the better single template: rank fusion
+0.903 and max-normalised 0.861 against template A's 0.944 (μ pool, seed-averaged). The
+choice between the two fusion rules was therefore never reached.
+See [`docs/dual_template_result.md`](docs/dual_template_result.md).
+
+### D6.14 The ~52 CPU-hour library screen is gated on T3, by a script — HELD
+**Decision.** `jobs/dual_template_library.sbatch` is submitted only by
+`scripts/26_t3_gate.py`, which exits non-zero when |ρ(A,B)| ≥ 0.9. A missing or unreadable
+result file also exits non-zero, so the expensive default is never the fallback.
+**Rationale.** The redundancy question is answerable from a 20-peptide screen costing
+minutes. Ordering the cheap screen first and letting a number decide means the expensive
+one is never run out of momentum.
+**Evidence.** *Measured* — the gate fired on 2026-10-27
+(`GATE FAIL: |rho| = 0.917 >= 0.9`) and the chain reported `LIBRARY SCREEN NOT SUBMITTED`.
+~52 CPU-hours were not spent on a percentile against a distribution nobody should quote.
+
+### D6.15 Exclusion volumes are confirmed on a second, independent peptide set — HELD
+**Decision.** Exclusion volumes (D2.4) are mandatory in every screening arm; bare arms are
+run only as the paired comparator that measures their effect.
+**Rationale.** The aromatic-composition confound (ρ = +0.909, `optimisation_study.md` §7.2)
+is the project's most serious documented artefact, and D2.4 was adopted to target it.
+**Evidence.** *Measured*, twice and independently. Dietary set (T6): ρ vs aromatic count
+−0.231 (template A) and −0.116 (B). Milk atlas (M3): **+0.805 without** exclusion volumes
+for both templates against **−0.012** (A) and **+0.310** (B) with them — and without them
+the top five hits are the two aromatic-rich novel candidates, the documented failure mode
+reproduced unprompted. M2: those two lose −0.106/−0.115 (A) and −0.170/−0.186 (B) under
+exclusion against set medians of −0.084/−0.136, i.e. more than the known controls, which is
+the pre-registered criterion for calling them confound artefacts rather than candidates.
+**Caveat.** The same atlas run failed its primary positive-control test (M1, best AUROC
+0.663 against a required 0.70), so this confirms the *fix*, not the screen.
+See [`docs/milk_atlas_result.md`](docs/milk_atlas_result.md).
 
 ### D6.13 Template-B statistics must reuse the existing E8 pools and seed-averaging — HELD
 **Decision.** `24_dual_template_consensus.py` imports its pool predicates and statistics
@@ -670,13 +704,17 @@ success.
 
 | # | Change | Basis | Cost |
 |---|---|---|---|
-| 1 | **Add receptor-derived exclusion volumes** (D2.4) | literature; mechanistically targets the confound | one template rebuild + one benchmark rescreen |
+| ~~1~~ | ~~**Add receptor-derived exclusion volumes**~~ (D2.4) — **DONE and now confirmed on a second set** (D6.15): ρ vs aromatic count +0.909 → −0.231/−0.116 on the dietary set, +0.805 → −0.012/+0.310 on the milk atlas | measured | spent |
 | 2 | **Make `POSC` a mandatory feature** (D2.5) | literature; filter-then-rank | rescreen with `-o`; see cost correction in D2.5 |
 | 3 | **Expand the active set to power the 2- and 3-aromatic strata** (D6.6) | measured; 26 of 36 actives in a stratum at AUROC 0.513 | curation, not compute |
 | 4 | Adopt AVE-style debiasing for decoy selection | literature; [LIT-PCBA](https://www.researchgate.net/publication/340614114_LIT-PCBA_An_unbiased_dataset_for_machine_learning_and_virtual_screening) uses asymmetric validation embedding for exactly this | moderate |
 | 5 | **Retest the Tversky asymmetry once exclusion volumes are in** (D5.3) | literature; TVERSKY_DB was tested with the "no growth" constraint absent from the template, so metric and constraint were confounded | re-analysis of the D2.4 rescreen |
 | 6 | **Test whether the ensemble-size penalty is `max`-specific** (D4.2) | literature; McNutt's false-positive mechanism should apply to `max` and not to `mean`, which would reconcile 800 conformers with a <25 recommendation | re-analysis only, data already on disk |
-| 7 | **Run the dual-template screen** (D2.7–D2.9, D6.12) — built and pre-registered, not yet scored | measured + literature; β-endorphin is the 4th-best of five endogenous μOR ligands and 42× weaker than endomorphin-1, and 8F7Q is a truncation where 8F7R is not | one template build + 4 dietary runs (`jobs/dual_template.sbatch`, minutes); the E4′ percentile additionally needs a full library screen (`jobs/dual_template_library.sbatch`, ~52 CPU-h), which should **not** be run until T3 shows the templates are non-redundant |
+| ~~7~~ | ~~**Run the dual-template screen**~~ — **DONE 2026-10-27, negative.** T1, T2 and T3 all failed: template B did not reach template A (0.861 vs 0.944, μ pool) and ρ(A,B) = +0.917, so the two templates are one measurement. The gated library screen was not run. A paired bootstrap puts the A−B gap at [0.000, +0.333], so "A is better" is **not** a supported claim either — this set cannot adjudicate templates (power 0.11 for a 0.15 gap). See [`docs/dual_template_result.md`](docs/dual_template_result.md), [`docs/power_analysis.md`](docs/power_analysis.md) | measured | spent: ~2.2 h wall, 8 CPU |
 
-Items 1 and 2 are the ones that could change the study's conclusion. Item 3 is what would
-make the conclusion trustworthy either way.
+Item 1 is done and confirmed. **Item 3 is now the binding constraint on everything else.**
+Two pre-registered campaigns have now failed for the same reason rather than for reasons of
+their own: the dual-template comparison was decided by 3 antagonists at power 0.11
+([`docs/power_analysis.md`](docs/power_analysis.md)), and the milk atlas by 5 positive-control
+sites (M1 best 0.663 against 0.70). Item 2 can still change the conclusion; no amount of
+compute on the present sets can. The next thing worth doing is curation, not screening.
