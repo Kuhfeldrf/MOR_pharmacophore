@@ -1,0 +1,21 @@
+{
+  "generated": "2026-10-27",
+  "design": "docs/post_t3_design.md",
+  "thresholds": {
+    "W1_min_seed_rho": 0.98,
+    "W3_max_rho_vs_extent8": 0.9,
+    "W4_max_aromatic_rho": 0.909
+  },
+  "W1_seed_to_seed_rho": 0.9774436090225563,
+  "W2_posc_extent9": 2,
+  "W2_posc_extent8": 1,
+  "W2_features_extent9": 30,
+  "W2_features_extent8": 27,
+  "W3_rho_vs_extent8": 0.98796992481203,
+  "W3_n_peptides": 20,
+  "W4_rho_vs_aromatic": -0.23122932520643197,
+  "failures": [
+    "W1",
+    "W3"
+  ]
+}
