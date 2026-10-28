@@ -27,6 +27,7 @@ Usage:
     python scripts/31_determinism_check.py --out docs/determinism_check.json
 """
 import argparse
+import csv
 import hashlib
 import json
 import shutil
@@ -48,14 +49,40 @@ RDLogger.DisableLog("rdApp.*")
 
 # The two peptides that failed to reproduce, plus one that did, as a negative control:
 # a test that calls everything non-deterministic is not measuring anything.
-PEPTIDES = {
-    "beta_lactorphin": "YLLF",          # moved +0.0277
-    "casoxin_a": "YPSYGLNY",            # moved +0.0213
-    "met_enkephalin": "YGGFM",          # reproduced exactly; control
+#
+# Keyed by `id` in the production targets table, with sequence AND c_term read from that
+# table rather than restated here. The first version of this script hardcoded
+# c_term="auto" and so built the wrong molecule for beta-lactorphin, which the table
+# marks `amide`: 788 conformers against the 793 that both production runs produced. The
+# determinism verdict was unaffected -- identical input twice is identical either way --
+# but one of the two peptides under investigation was not the molecule the screen scored,
+# which is the whole point of naming those two.
+PEPTIDE_IDS = {
+    "diet_beta_lactorphin": "moved +0.0277 on regeneration",
+    "diet_casoxin_a": "moved +0.0213 on regeneration",
+    "diet_met_enkephalin": "reproduced exactly; control",
 }
+DEFAULT_TARGETS = Path("data/dietary/dietary_targets.tsv")
 SEED = 61453          # the seed whose run showed the discrepancy
 WINDOW = 8
 N_CONFORMERS = 800
+
+
+def load_peptides(targets_path):
+    """Sequence and c_term exactly as the production screen reads them."""
+    rows = {}
+    with Path(targets_path).open() as fh:
+        for row in csv.DictReader(fh, delimiter="\t"):
+            if row["id"] in PEPTIDE_IDS:
+                c_term = row.get("c_term") or "auto"
+                if c_term not in ("auto", "free", "amide"):   # same guard as 04_screen
+                    c_term = "auto"
+                rows[row["id"]] = {"sequence": row["sequence"], "c_term": c_term,
+                                   "why": PEPTIDE_IDS[row["id"]]}
+    missing = set(PEPTIDE_IDS) - set(rows)
+    if missing:
+        raise SystemExit(f"targets table {targets_path} is missing {sorted(missing)}")
+    return rows
 
 
 def conformer_fingerprint(mol):
@@ -71,9 +98,9 @@ def conformer_fingerprint(mol):
     return h.hexdigest(), mol.GetNumConformers()
 
 
-def build_once(sequence):
+def build_once(sequence, c_term):
     mol, info = ensemble_for_sequence(
-        sequence, window=WINDOW, c_term="auto",
+        sequence, window=WINDOW, c_term=c_term,
         n_conformers=N_CONFORMERS, seed=SEED)
     digest, n = conformer_fingerprint(mol)
     return mol, info, digest, n
@@ -111,6 +138,9 @@ def main():
     ap.add_argument("--template",
                     default=Path("results/template_p8/mor_template_excl_a1.phar"),
                     type=Path)
+    ap.add_argument("--targets", default=DEFAULT_TARGETS, type=Path,
+                    help="production targets table; sequence and c_term are read "
+                         "from it so the molecule matches what the screen scored")
     ap.add_argument("--out", default=Path("docs/determinism_check.json"), type=Path)
     args = ap.parse_args()
 
@@ -127,15 +157,20 @@ def main():
     }
     print("environment:", json.dumps(env_record, indent=2))
 
+    peptides = load_peptides(args.targets)
+    print("peptides (sequence and c_term read from the production targets table):",
+          json.dumps(peptides, indent=2))
+
     results = {}
     workdir = Path(tempfile.mkdtemp(prefix="determinism_"))
     try:
-        for name, seq in PEPTIDES.items():
-            print(f"\n=== {name} ({seq}) ===")
+        for name, spec in peptides.items():
+            seq, c_term = spec["sequence"], spec["c_term"]
+            print(f"\n=== {name} ({seq}, c_term={c_term}) -- {spec['why']} ===")
 
             # --- C1: conformer generation, twice, same seed --------------------------
-            mol_a, info_a, dig_a, n_a = build_once(seq)
-            mol_b, info_b, dig_b, n_b = build_once(seq)
+            mol_a, info_a, dig_a, n_a = build_once(seq, c_term)
+            mol_b, info_b, dig_b, n_b = build_once(seq, c_term)
             c1_identical = (dig_a == dig_b) and (n_a == n_b)
             print(f"  C1 conformers: n={n_a} vs {n_b}, "
                   f"{'IDENTICAL' if c1_identical else 'DIFFER'}")
@@ -158,6 +193,8 @@ def main():
             mean_b = sum(vals_b) / len(vals_b) if vals_b else None
             results[name] = {
                 "sequence": seq,
+                "c_term": c_term,
+                "why_included": spec["why"],
                 "C1_conformers_identical": c1_identical,
                 "C1_digest_run1": dig_a, "C1_digest_run2": dig_b,
                 "C1_n_conformers": [n_a, n_b],
