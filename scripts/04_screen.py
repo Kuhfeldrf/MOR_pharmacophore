@@ -33,6 +33,35 @@ from mor_pharmacophore.conformers import (  # noqa: E402
 RDLogger.DisableLog("rdApp.*")
 
 
+def environment_record():
+    """The library stack that produced these scores.
+
+    Deliberately tolerant: a missing version must degrade this record, never fail a
+    screen that has already spent its CPU. Unknown entries are recorded as null so the
+    gap is visible rather than absent.
+    """
+    import platform
+
+    import rdkit
+
+    def safe(fn):
+        """Every lookup is independently fallible; one missing tool loses one field."""
+        try:
+            return fn() or None
+        except Exception:
+            return None
+
+    return {
+        "rdkit": getattr(rdkit, "__version__", None),
+        "alignit": safe(version),
+        "obabel": safe(lambda: subprocess.run(
+            ["obabel", "-V"], env=babel_env(),
+            capture_output=True, text=True).stdout.strip()),
+        "python": platform.python_version(),
+        "platform": platform.platform(),
+    }
+
+
 def read_targets(path):
     with Path(path).open() as fh:
         return list(csv.DictReader(fh, delimiter="\t"))
@@ -162,6 +191,13 @@ def main():
         "n_targets": len(rows), "n_scored": len(best),
         "failures": failures,
         "alignit_version": version(),
+        # Library versions, not just align-it's. Template A's dietary runs were
+        # regenerated after the scratch allocation was reaped, two of twenty peptides
+        # moved ~10x seed jitter, and the obvious explanation - the environment was
+        # rebuilt from scratch in between - could not be checked, because the original
+        # run recorded only align-it's version. A seed is not provenance if the stack
+        # that consumed it is unrecorded. See docs/determinism_check.md.
+        "environment": environment_record(),
         "window": args.window, "n_conformers": args.n_conformers, "seed": args.seed,
         "seconds_conformers": round(t_conf, 1), "seconds_scoring": round(t_score, 1),
     }, indent=2) + "\n")
