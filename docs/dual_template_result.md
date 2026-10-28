@@ -109,8 +109,8 @@ templates. Both arms are now post-fix.
 
 `E4′` needs the library scored against the same template. The raw library scores
 (`results/library_w8`) went with the reaped allocation; what survives is the committed
-[`library_ranked.tsv`](library_ranked.tsv), 14,571 peptides at the same window 8, 800
-conformers and `TVERSKY_REF`.
+[`library_bare_ranked.tsv`](library_bare_ranked.tsv), 14,571 peptides at the same window
+8, 800 conformers and `TVERSKY_REF`.
 
 It is tempting and it is wrong. `jobs/library_screen.sbatch` scored against the **bare**
 `mor_template.phar`, while every holdout run here used `mor_template_excl_a1.phar`.

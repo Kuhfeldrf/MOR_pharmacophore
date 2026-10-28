@@ -217,9 +217,9 @@ embed faster per peptide than a truncated 8-mer. All 14,571 library peptides sco
 Ranking the library at the validated configuration produced a result that the
 pre-registered benchmark had no way to catch. **This section is post-hoc** — everything
 in it was written after the library ranking existed — and is labelled as such throughout.
-Machine-readable: [`library_report.json`](library_report.json),
+Machine-readable: [`library_bare_report.json`](library_bare_report.json),
 [`composition_control.json`](composition_control.json),
-[`library_shortlist.json`](library_shortlist.json).
+[`library_bare_shortlist.json`](library_bare_shortlist.json).
 
 ### 7.1 No known active reaches tier 1
 
@@ -314,9 +314,9 @@ bar set by the weakest endogenous ligand in the *same* stratum
 | 3 aromatics | endomorphin-1, 0.3875 | 8 of 144 |
 
 **363 peptides, 212 distinct windows, 72 Tyr-starting** —
-[`library_shortlist.tsv`](library_shortlist.tsv). The 52 peptides in the 4- and
+[`library_bare_shortlist.tsv`](library_bare_shortlist.tsv). The 52 peptides in the 4- and
 5-aromatic strata are listed separately and flagged as uncalibratable
-([`library_high_aromatic_flagged.tsv`](library_high_aromatic_flagged.tsv)) rather than
+([`library_bare_high_aromatic_flagged.tsv`](library_bare_high_aromatic_flagged.tsv)) rather than
 ranked alongside.
 
 The 2-aromatic bar is weak: half that stratum clears the weakest endogenous ligand. That
