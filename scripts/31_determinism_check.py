@@ -24,7 +24,7 @@ A clean pass on C1 and C2 does not prove C3; it removes the alternatives, which 
 most this evidence can do. Say that in the write-up rather than claiming C3 confirmed.
 
 Usage:
-    python scripts/29_determinism_check.py --out docs/determinism_check.json
+    python scripts/31_determinism_check.py --out docs/determinism_check.json
 """
 import argparse
 import hashlib
