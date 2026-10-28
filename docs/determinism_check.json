@@ -1,0 +1,85 @@
+{
+  "generated": "2026-10-28",
+  "question": "is the screen deterministic given a fixed seed and fixed input?",
+  "seed": 61453,
+  "window": 8,
+  "n_conformers": 800,
+  "template": "results/template_p8/mor_template_excl_a1.phar",
+  "environment": {
+    "rdkit": "2024.09.6",
+    "alignit": "align-it v1.0.4",
+    "obabel": "Open Babel 3.2.1 -- Jul 11 2026 -- 19:56:28",
+    "python": "3.11.18"
+  },
+  "peptides": {
+    "diet_casoxin_a": {
+      "sequence": "YPSYGLNY",
+      "c_term": "free",
+      "why_included": "moved +0.0213 on regeneration",
+      "C1_conformers_identical": true,
+      "C1_digest_run1": "53b78b8cef878e67d4a9e6742838cd953637241735993bc25d691f1d6b4a3f5f",
+      "C1_digest_run2": "53b78b8cef878e67d4a9e6742838cd953637241735993bc25d691f1d6b4a3f5f",
+      "C1_n_conformers": [
+        800,
+        800
+      ],
+      "C2_alignit_identical": true,
+      "C2_n_scored": [
+        800,
+        800
+      ],
+      "C2_max_abs_delta": 0.0,
+      "tversky_ref_mean": [
+        0.13479158375000005,
+        0.13479158375000005
+      ]
+    },
+    "diet_beta_lactorphin": {
+      "sequence": "YLLF",
+      "c_term": "amide",
+      "why_included": "moved +0.0277 on regeneration",
+      "C1_conformers_identical": true,
+      "C1_digest_run1": "80d96b84267c22fea727872bf3afb234f412bd6adc876d496fa7db21e0a93256",
+      "C1_digest_run2": "80d96b84267c22fea727872bf3afb234f412bd6adc876d496fa7db21e0a93256",
+      "C1_n_conformers": [
+        793,
+        793
+      ],
+      "C2_alignit_identical": true,
+      "C2_n_scored": [
+        793,
+        793
+      ],
+      "C2_max_abs_delta": 0.0,
+      "tversky_ref_mean": [
+        0.19044586380832276,
+        0.19044586380832276
+      ]
+    },
+    "diet_met_enkephalin": {
+      "sequence": "YGGFM",
+      "c_term": "free",
+      "why_included": "reproduced exactly; control",
+      "C1_conformers_identical": true,
+      "C1_digest_run1": "568109b68b9e9b03b6d7bed27ab59af51cbb8e65ecf8b6b4cbc26e4bd8ae794f",
+      "C1_digest_run2": "568109b68b9e9b03b6d7bed27ab59af51cbb8e65ecf8b6b4cbc26e4bd8ae794f",
+      "C1_n_conformers": [
+        797,
+        797
+      ],
+      "C2_alignit_identical": true,
+      "C2_n_scored": [
+        797,
+        797
+      ],
+      "C2_max_abs_delta": 0.0,
+      "tversky_ref_mean": [
+        0.18466620828105398,
+        0.18466620828105398
+      ]
+    }
+  },
+  "C1_conformer_generation_deterministic": true,
+  "C2_alignit_deterministic": true,
+  "verdict": "C1 and C2 both clean: within one environment the pipeline is bit-for-bit reproducible, so the regeneration discrepancy is not non-determinism. C3 (a different library build) is the remaining candidate and cannot be confirmed retrospectively, because the original run recorded no library versions."
+}

@@ -86,11 +86,19 @@ seed 20261020 and 13 of 20 for seed 61453 are identical to four decimal places, 
 
 Two peptides in seed 61453 did not. β-lactorphin moved **+0.0277** and casoxin A
 **+0.0213**, roughly ten times jitter, with conformer counts unchanged (793→793,
-800→800) — so this is not an ensemble-size effect. **The cause is not isolated.** The
-candidates are align-it's alignment search and the fact that the two runs are not the
-same code: `a89b9a2`, which pinned OpenBabel's plugin directory for subprocesses, landed
-between the original runs (2026-10-22) and these. Either way it is a ~0.02 effect on 2 of
+800→800) — so this is not an ensemble-size effect. Either way it is a ~0.02 effect on 2 of
 20 peptides, and it is recorded here rather than averaged away.
+
+**Resolved 2026-10-28 as far as the evidence allows; see
+[`determinism_check.md`](determinism_check.md).** Non-determinism is ruled out: conformer
+generation and align-it's alignment search are both bit-for-bit identical on repeated runs
+over these same peptides, and this run reproduces the regenerated production scores to
+full precision two days later (β-lactorphin 0.190446 against 0.1904, casoxin A 0.134792
+against 0.1348). The surviving explanation is that the original and regenerated runs used
+different library builds — the environment was rebuilt from scratch between them — which
+**cannot be confirmed**, because the original run recorded only align-it's version and not
+RDKit's. The numbers are sound within an environment and must not be compared across a
+rebuild. `04_screen.py` now records the full library stack so this is answerable next time.
 
 That is enough to move the AUROC, because on 12 agonists × 3 antagonists the statistic is
 granular: **33/36 → 34/36, one discordant pair.** A single shift of this size flips one

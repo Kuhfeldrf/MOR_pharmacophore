@@ -657,6 +657,23 @@ A zero-row output that looks like a successful run is worse than a failure.
 Only derived, human-readable results are committed. Grant-internal documents are excluded
 via `.git/info/exclude`.
 
+### D7.5 Every screen records the library stack that produced it — HELD
+**Decision.** `04_screen.py` writes `rdkit`, `alignit`, `obabel`, `python` and `platform`
+into each block's JSON. Unknown values are recorded as `null`, never omitted, and each
+lookup is independently guarded so a missing tool costs one field rather than a screen
+that has already spent its CPU.
+**Rationale.** A seed is not provenance if the stack that consumed it is unrecorded.
+**Evidence.** *Measured.* Template A's dietary runs were regenerated after the scratch
+allocation was reaped; 27 of 40 peptide-scores reproduced to four decimals and two moved
+~10x seed jitter (beta-lactorphin +0.0277, casoxin A +0.0213). `31_determinism_check.py`
+then showed the pipeline is bit-for-bit reproducible within one environment — identical
+conformer coordinate digests and identical align-it scores on repeated runs — and that a
+fresh run reproduces the regenerated production scores to full precision. The surviving
+explanation is a different library build, and it **cannot be confirmed**, because the
+original run recorded only align-it's version. That unanswerable question is the entire
+basis for this decision. Scores are comparable within an environment, not across a
+rebuild. See [`docs/determinism_check.md`](docs/determinism_check.md).
+
 ---
 
 ## 8. Where this sits against the published work
